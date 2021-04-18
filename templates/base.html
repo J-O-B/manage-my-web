@@ -31,28 +31,32 @@
             {% block extra_js %}
             {% endblock %}
 
-            <!--Facebook SEO-->
-            <meta property="og:title" content="Your Store Template">
-            <meta property="og:description" content="A customizable web store with stripe payments, admin panel and more.">
-            <meta property="og:image" content="{% static 'media/background.jpg' %}">
-            <meta property="og:url" content="">
+            {% block social_seo %}
+                <!--Facebook SEO-->
+                <meta property="og:title" content="Your Store Template">
+                <meta property="og:description" content="A customizable web store with stripe payments, admin panel and more.">
+                <meta property="og:image" content="{% static 'media/background.jpg' %}">
+                <meta property="og:url" content="">
 
-            <!--Twitter SEO-->
-            <meta name="twitter:title" content="Your Store Template ">
-            <meta name="twitter:description" content=" Offering tour packages for individuals or groups.">
-            <meta name="twitter:image" content="{% static 'media/background.jpg' %}">
-            <meta name="twitter:card" content="summary_large_image">        
+                <!--Twitter SEO-->
+                <meta name="twitter:title" content="Your Store Template ">
+                <meta name="twitter:description" content=" Offering tour packages for individuals or groups.">
+                <meta name="twitter:image" content="{% static 'media/background.jpg' %}">
+                <meta name="twitter:card" content="summary_large_image">        
+            {% endblock %}
 
             <!--Icon-->
             <link rel="icon" type="image/jpg" href=""/>
 
             <!--Browser Title-->
-            <title>Manage My Web</title>
+            <title>Manage My Web{% block extra_title %}{%endblock%}</title>
     </head>
         <body>
-            
+            <header class="container-fluid fixed-top"></header>
 
-            
+            {% if messages %}
+                <div class="message-container"></div>
+            {% endif %}
 
             {% block page_header %}
             {% endblock %}
@@ -60,8 +64,7 @@
             {% block content %}
             {% endblock %}
 
-            {% block post_js %}
+            {% block postloadjs %}
             {% endblock %}
-
         </body>
     </html>
