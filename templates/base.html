@@ -59,7 +59,7 @@
                             <h2 class="logo-font text-black my-0">Manage My Web</h2>
                         </a>
                     </div>
-                    <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                    <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-none d-lg-block">
                         <form method="GET" action="">
                             <div class="input-group w-100">
                                 <input type="text" class="form-control border border-black rounded-0" name="q" placeholder="Search This Site">
@@ -73,7 +73,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                    <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-none d-lg-block">
                         <ul class="list-inline list-unstyled text-center text-lg-end my-0">
                             <li class="list-inline-item dropdown">
                                 <a href="#" class="text-black nav-link" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -121,6 +121,17 @@
                             </li>
                         </ul>
                     </div>
+                </div>
+                <div class="row bg-white" id="secRow">
+                    <nav class="navbar navbar-expand-lg navbar-light w-100">
+                        <button class="navbar-toggler text-black" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="d-lg-none">
+                            {% include 'includes/mobile-top-header.html' %}
+                        </div>
+                        {% include 'includes/main-nav.html' %}
+                    </nav>
                 </div>
             </header>
 

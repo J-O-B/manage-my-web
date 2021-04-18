@@ -9,6 +9,15 @@ body{
     font-family: 'Zen Dots', cursive;
 }
 
+.bg-white{
+    background-color: #f5f5f5 !important;
+}
+
+#mobileSearchbox{
+    left: 0;
+}
+
+
 #home-hero{
     width: 100vw;
     overflow: hidden;
