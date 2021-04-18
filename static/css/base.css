@@ -3,8 +3,88 @@ html{
 }
 
 body{
-    background-color: #333333;
-    color: #f5f5f5;
+    background-color: #f5f5f5;
+    color: #333333;
     height: calc(100vh - 164px);
     font-family: 'Zen Dots', cursive;
+}
+
+#home-hero{
+    width: 100vw;
+    overflow: hidden;
+    background: url('../../media/hero-home.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 
+        inset 0px -20px 20px #f5f5f5,
+        inset 0px 1px 2px #333333;
+}
+
+.icon{
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.logo-font{
+    text-transform: uppercase;
+}
+
+.main-logo-link{
+    width: fit-content;
+}
+
+.shop-now-button{
+    background: #000;
+    color: #f5f5f5;
+    min-width: 260px;
+}
+
+.btn-black{
+    background: #000;
+    color: #f5f5f5;
+}
+
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus{
+    background: #f5f5f5;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.text-black{
+    color: #000 !important;
+}
+
+.border-black{
+    border: 1px solid #000 !important;
+}
+
+/* ------- MEDIA QUERIES ------- */
+
+/* Larger Container on XL screens */
+@media (min-width:1200px){
+    .container{
+        max-width: 80%;
+    }
+}
+
+@media (max-width:992px){
+    .fixed-top-desktop-only{
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+    .header-container{
+        padding-top: 164px;
+    }
 }
