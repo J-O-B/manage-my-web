@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/products.css' %}"> 
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mt-5">
+        <div class="row g-3 m-0">
+            <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                <div class="image-container my-0">
+                    {% if product.image %}
+                        <a href="{{ product.image.url }}" target="_blank">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top img-fluid">
+                        </a>
+                    {% else %}
+                        <a href="">
+                            <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ MEDIA_URL }}noimage.jpg" class="card-img-top img-fluid">
+                        </a>
+                    {% endif %}
+                    <div class="row px-3 d-flex justify-content-evenly align-items-center text-center">
+                        <div class="col-3 box-shadow">1</div>
+                        <div class="col-3 box-shadow">2</div>
+                        <div class="col-3 box-shadow">3</div>
+                        <div class="col-3 box-shadow">4</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 box-shadow">
+                <div class="product-details-container mb-5 mx-4 mt-md-5">
+                    <h1 class="h5 mb-0 logo-font">{{product.name}}</h1>
+                    <p class="lead mb-0 text-start font-weight-bold">
+                        {% if product.on_sale %}
+                            <span class="text-danger"><del>€{{product.normal_price}}</del></span>
+                            <i class="fas fa-angle-double-right"></i>
+                            <span class="text-success">€{{product.price}}</span>
+                        {% else %}
+                            <span class="text-success">€{{product.price}}</span>
+                        {% endif %}
+                    </p>
+                    {% if product.rating %}
+                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating|floatformat:2 }} / 5.00</small>
+                    {% else %}
+                        <small class="text-muted">No Rating</small>
+                    {% endif %}
+                    <p class="mt-3">{{ product.summary }}</p>
+                    <div class="row">
+                        <button class="btn btn-sm w-50 mx-auto btn-success box-shadow">
+                            Add To Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3 m-0">
+            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 box-shadow">
+                <h2 class="text-black text-center">
+                    {{ product.name|title }} Description:
+                </h2>
+                <hr class="pb-1 w-25 mx-auto">
+                <p class="text-black text-justify px-5">
+                    {{product.description}}
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
