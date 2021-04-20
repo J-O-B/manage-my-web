@@ -72,10 +72,11 @@
                 <div class="product-details-container mb-5 mx-4 mt-md-5">
                     <h1 class="h5 mb-0 logo-font">{{product.name}}</h1>
                     <p class="lead mb-0 text-start font-weight-bold">
-                        {% if product.on_sale %}
+                        {% if product.on_sale == 2 %}
                             <span class="text-danger"><del>€{{product.normal_price}}</del></span>
                             <i class="fas fa-angle-double-right"></i>
-                            <span class="text-success">€{{product.price}}</span>
+                            <span class="text-success">€{{product.price}}</span><br>
+                            <span class="text-success small"><small>{{saving|floatformat:2}}% Saving</small></span>
                         {% else %}
                             <span class="text-success">€{{product.price}}</span>
                         {% endif %}

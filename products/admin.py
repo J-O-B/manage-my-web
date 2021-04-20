@@ -7,6 +7,7 @@ class ProductAdmin(admin.ModelAdmin):
         "name",
         "category",
         "price",
+        "plan",
         "on_sale",
         "sold",
         "rating",

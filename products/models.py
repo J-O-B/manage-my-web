@@ -20,9 +20,14 @@ class Product(models.Model):
         (1, "No"),
         (2, "Yes"),
     )
+    planOptions = (
+        (1, "No"),
+        (2, "Yes"),
+    )
+
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
-    plan = models.BooleanField(default=False)
+    plan = models.IntegerField(choices=planOptions, default=1)
     name = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     on_sale = models.IntegerField(choices=salesOptions, default=1)

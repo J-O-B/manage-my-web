@@ -8,10 +8,38 @@ def all_products(request):
     products = Product.objects.all()
     query = None
     categories = None
+    sort = None
+    direction = None
+    custom_title = None
+    subtitle = None
     
     if request.GET:
+        if 'on_sale' in request.GET:
+            products = products.filter(on_sale=2)
+            custom_title = "Products On Sale"            
+
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            subtitle = sort
+            if sortkey == 'name':
+                sortkey = "lower_name"
+                products = products.annotate(lower_name=Lower('name'))
+
+            if 'direction' in request.GET:
+                direction = request.GET["direction"]
+                if direction == "desc":
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
+            if "webdesign" in categories:
+                custom_title = "All Web Design Products"
+            elif "seo" in categories:
+                custom_title = "All SEO Products"
+            else:
+                custom_title = categories[0]
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
@@ -24,12 +52,19 @@ def all_products(request):
             queries = (
                 Q(name__icontains=query) | Q(description__icontains=query))
             products = products.filter(queries)
+            custom_title = "Search Results For " + query
+
+    current_sorting = f'{sort}_{direction}'
+
 
     template = 'products/products.html'
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
+        'current_sorting': current_sorting,
+        'custom_title': custom_title,
+        'subtitle': subtitle,
     }
     return render(request, template, context)
 
@@ -37,8 +72,15 @@ def all_products(request):
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
+    saving = None
+
+    if product.normal_price:
+        saving = (
+            product.normal_price - product.price) / product.normal_price * 100
+    
     template = 'products/product_detail.html'
     context = {
         'product': product,
+        'saving': saving,
     }
     return render(request, template, context)

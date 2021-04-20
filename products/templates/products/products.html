@@ -18,7 +18,16 @@
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col text-center mt-3">
-                <h2 class="logo-font">Products</h2>
+                <h2 class="logo-font">
+                    {% if custom_title %}
+                        {{custom_title}}
+                    {% else %}
+                        Products
+                    {% endif %}
+                </h2>
+                {% if subtitle %}
+                    <h3 class="text-muted h5">Sorted By {{subtitle|title}}</h3>
+                {% endif %}
                 <hr class="w-25 mb-2 mx-auto">
             </div>
         </div>
@@ -52,7 +61,7 @@
                                             <p class="lead mb-0 text-start font-weight-bold">
                                                 {% if product.on_sale == 2 %}
                                                     <span class="text-danger"><del>€{{ product.normal_price }}</del></span> -
-                                                    <span class="text-success">€{{ product.price }}</span>
+                                                    <span class="text-success">€{{ product.price }}</span><br>
                                                 {% else %}
                                                     €{{ product.price }}
                                                 {% endif %}
