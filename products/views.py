@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category
+from django.db.models.functions import Lower
 
 
 def all_products(request):
@@ -25,12 +26,15 @@ def all_products(request):
             if sortkey == 'name':
                 sortkey = "lower_name"
                 products = products.annotate(lower_name=Lower('name'))
+            if sortkey == "category":
+                sortkey = "category__name"
 
             if 'direction' in request.GET:
                 direction = request.GET["direction"]
                 if direction == "desc":
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
+
 
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
@@ -39,7 +43,9 @@ def all_products(request):
             elif "seo" in categories:
                 custom_title = "All SEO Products"
             else:
-                custom_title = categories[0]
+                category = Category.objects.filter(name=categories[0])
+                for c in category:
+                    custom_title = c.friendly_name
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
@@ -56,7 +62,8 @@ def all_products(request):
 
     current_sorting = f'{sort}_{direction}'
 
-
+    found = products.count()
+    found_str = f'Displaying {found} Items'
     template = 'products/products.html'
     context = {
         'products': products,
@@ -65,6 +72,7 @@ def all_products(request):
         'current_sorting': current_sorting,
         'custom_title': custom_title,
         'subtitle': subtitle,
+        'found_str': found_str,
     }
     return render(request, template, context)
 

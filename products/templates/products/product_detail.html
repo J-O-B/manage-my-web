@@ -71,6 +71,13 @@
             <div class="col-12 col-md-6 col-lg-4 box-shadow">
                 <div class="product-details-container mb-5 mx-4 mt-md-5">
                     <h1 class="h5 mb-0 logo-font">{{product.name}}</h1>
+                    {% if product.category %}
+                        <p class="small mt-1 mb-0">
+                            <a href="{% url 'products' %}?category={{product.category.name}}" class="text-muted">
+                                <i class="fas fa-tag mr-1"></i> {{product.category.friendly_name}}
+                            </a>
+                        </p>
+                    {% endif %}
                     <p class="lead mb-0 text-start font-weight-bold">
                         {% if product.on_sale == 2 %}
                             <span class="text-danger"><del>€{{product.normal_price}}</del></span>

@@ -22,6 +22,11 @@ body{
     position: absolute;
 }
 
+.top-right{
+    top: 5px;
+    right: 5px;
+}
+
 .bottom{
     bottom: 10%;
     left: 0;
@@ -70,10 +75,10 @@ body{
         0px 2px 2px #5cb85c,
         0px -2px 2px #5cb85c;
 }
+
 #mobileSearchbox{
     left: 0;
 }
-
 
 #home-hero{
     width: 100vw;
@@ -143,7 +148,31 @@ body{
         -1px 1px 2px #333,
         0px -1px 2px #333;
 }
+.scale{
+    background: #f5f5f5;
+    color: #000;
+    transition: all 0.1s ease-out;
+}
+.scale:hover{
+    transform: scale(1.1,1.1);
+    background: #5cb85c;
+}
+.scale:hover i{
+    color: #0275d8;
+}
 
+.btt-button{
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link{
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+}
 /* ------- MEDIA QUERIES ------- */
 
 /* Larger Container on XL screens */
