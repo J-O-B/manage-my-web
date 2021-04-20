@@ -8,16 +8,18 @@ class ProductAdmin(admin.ModelAdmin):
         "category",
         "price",
         "on_sale",
+        "sold",
         "rating",
-        "image",
+        "image1",
     )
 
     ordering = ('name',)
 
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
-        "name",
         "friendly_name",
+        "name",
     )
 
 admin.site.register(Product, ProductAdmin)

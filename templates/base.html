@@ -52,7 +52,7 @@
             <title>Manage My Web{% block extra_title %}{%endblock%}</title>
         </head>
         <body>
-            <header class="container-fluid fixed-top-desktop-only sticky-lg-top" id="topHeader">
+            <header class="container-fluid fixed-top-desktop-only sticky-lg-top bg-white" id="topHeader">
                 <div class="row">
                     <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-start d-none d-lg-block">
                         <a href="{% url 'home' %}" class="nav-link main-logo-link">
@@ -60,7 +60,7 @@
                         </a>
                     </div>
                     <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-none d-lg-block">
-                        <form method="GET" action="">
+                        <form method="GET" action="{% url 'products' %}">
                             <div class="input-group w-100">
                                 <input type="text" class="form-control border border-black rounded-0" name="q" placeholder="Search This Site">
                                 <div class="input-group-append bg-primary">
@@ -145,6 +145,83 @@
             {% block content %}
             {% endblock %}
 
+            <footer class="container-fluid bg-white" id="footer">
+                <div class="row">
+                    <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0">
+                        <div class="w-100 h-100 box-shadow text-center">
+                            <h3 class="h4 text-black logo-font pt-3">
+                                Navigation
+                            </h3>
+                            <hr class="mx-auto w-50">
+                            <ul class="list-unstyled text-primary text-center">
+                                <li>Products</li>
+                                <li>Web Design</li>
+                                <li>SEO</li>
+                                <li>Offers</li>
+                                <li>Products</li>
+                                <li>Products</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0">
+                        <div class="w-100 h-100 box-shadow text-center">
+                            <h3 class="h4 text-black logo-font pt-3">
+                                Navigation
+                            </h3>
+                            <hr class="mx-auto w-50">
+                            <ul class="list-unstyled text-primary text-center">
+                                <li>Products</li>
+                                <li>Web Design</li>
+                                <li>SEO</li>
+                                <li>Offers</li>
+                                <li>Products</li>
+                                <li>Products</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0">
+                        <div class="w-100 h-100 box-shadow text-center">
+                            <h3 class="h4 text-black logo-font pt-3">
+                                Navigation
+                            </h3>
+                            <hr class="mx-auto w-50">
+                            <ul class="list-unstyled text-primary text-center">
+                                <li>Products</li>
+                                <li>Web Design</li>
+                                <li>SEO</li>
+                                <li>Offers</li>
+                                <li>Products</li>
+                                <li>Products</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0">
+                        <div class="w-100 h-100 box-shadow text-center">
+                            <h3 class="h4 text-black logo-font pt-3">
+                                Navigation
+                            </h3>
+                            <hr class="mx-auto w-50">
+                            <ul class="list-unstyled text-primary text-center">
+                                <li>Products</li>
+                                <li>Web Design</li>
+                                <li>SEO</li>
+                                <li>Offers</li>
+                                <li>Products</li>
+                                <li>Products</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <script type="text/javascript">
+                $( function () {
+                    let height_diff = $( window ).height() - $( 'body' ).height();
+                    if ( height_diff > 0 ) {
+                        $( '#footer' ).css( 'margin-top', height_diff );
+                    }
+                });
+            </script>
             {% block postloadjs %}
             {% endblock %}
         </body>

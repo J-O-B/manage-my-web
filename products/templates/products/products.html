@@ -34,9 +34,9 @@
                                         <p class="logo-font px-5 my-auto">On Sale</p>
                                     </div>
                                 {% endif %}
-                                {% if product.image %}
+                                {% if product.image1 %}
                                     <a href="{% url 'product_detail' product.id %}">
-                                        <img src="{{ product.image.url }}" alt="{{product.name }}" class="card-img-top img-fluid">
+                                        <img src="{{ product.image1.url }}" alt="{{ product.name }}" class="card-img-top img-fluid product-img">
                                     </a>
                                 {% else %}
                                     <a href="">

@@ -18,15 +18,28 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
+    plan = models.BooleanField(default=False)
     name = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     on_sale = models.BooleanField(default=False)
-    normal_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    normal_price = models.DecimalField(
+        max_digits=6, decimal_places=2, null=True, blank=True)
     summary = models.TextField()
     description = models.TextField()
-    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    rating = models.DecimalField(
+        max_digits=6, decimal_places=2, null=True, blank=True)
+    included = models.TextField()
+    image_url1 = models.URLField(max_length=1024, null=True, blank=True)
+    image1 = models.ImageField(null=True, blank=True)
+    image_url2 = models.URLField(max_length=1024, null=True, blank=True)
+    image2 = models.ImageField(null=True, blank=True)
+    image_url3 = models.URLField(max_length=1024, null=True, blank=True)
+    image3 = models.ImageField(null=True, blank=True)
+    image_url4 = models.URLField(max_length=1024, null=True, blank=True)
+    image4 = models.ImageField(null=True, blank=True)
+    image_url5 = models.URLField(max_length=1024, null=True, blank=True)
+    image5 = models.ImageField(null=True, blank=True)
+    sold = models.IntegerField(null=True, default=0)
 
     def __str__(self):
         return str(self.name)
@@ -39,3 +52,6 @@ class Product(models.Model):
     
     def get_rating(self):
         return str(self.rating)
+    
+    def get_sold(self):
+        return str(self.sold)
