@@ -16,12 +16,16 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    salesOptions = (
+        (1, "No"),
+        (2, "Yes"),
+    )
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
     plan = models.BooleanField(default=False)
     name = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    on_sale = models.BooleanField(default=False)
+    on_sale = models.IntegerField(choices=salesOptions, default=1)
     normal_price = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
     summary = models.TextField()

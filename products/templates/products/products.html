@@ -29,7 +29,7 @@
                     {% for product in products %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-0 box-shadow rounded-3 relative">
-                                {% if product.on_sale %}
+                                {% if product.on_sale == 2 %}
                                     <div class="sale-banner">
                                         <p class="logo-font px-5 my-auto">On Sale</p>
                                     </div>
@@ -50,11 +50,23 @@
                                     <div class="row">
                                         <div class="col">
                                             <p class="lead mb-0 text-start font-weight-bold">
-                                                €{{ product.price }}
+                                                {% if product.on_sale == 2 %}
+                                                    <span class="text-danger"><del>€{{ product.normal_price }}</del></span> -
+                                                    <span class="text-success">€{{ product.price }}</span>
+                                                {% else %}
+                                                    €{{ product.price }}
+                                                {% endif %}
                                             </p>
                                             {% if product.rating %}
                                                 <small class="text-muted">
-                                                    <i class="fas fa-star mr-1"></i> {{product.rating|floatformat:2}} / 5.00
+                                                    <i class="fas fa-star mr-1 {% if product.rating > 4 %}text-success {% elif product.rating > 2 %}text-primary {% else %}text-muted{% endif %}"></i> 
+                                                    {% if product.rating > 4 %}
+                                                        <span class="text-success">{{product.rating|floatformat:2}}</span> / 5.00
+                                                    {% elif product.rating > 2 %}
+                                                        <span class="text-primary">{{product.rating|floatformat:2}}</span> / 5.00
+                                                    {% else %}
+                                                        <span class="text-muted">{{product.rating|floatformat:2}}</span> / 5.00
+                                                    {% endif %}
                                                 </small>
                                             {% else %}
                                                 <small class="text-muted">
