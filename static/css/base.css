@@ -168,7 +168,9 @@ body{
     bottom: 10px;
     right: 10px;
 }
-
+.dropdown-menu.show {
+    z-index: 99999;
+}
 .btt-link{
     cursor: pointer;
     transition: all 1s ease-in-out;

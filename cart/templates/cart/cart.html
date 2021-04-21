@@ -19,9 +19,13 @@
                 </h1>
                 <hr>
             </div>
+        </div>
+        <div class="row">
             <div class="col">
                 {% if cart_items %}
-                    <div class="table-responsive roun"></div>
+                    <div class="table-responsive rounded">
+                        {{ cart_items }}
+                    </div>
                 {% else %}
                     <p class="lead mb-5 text-info">
                         Your Cart Is Empty
