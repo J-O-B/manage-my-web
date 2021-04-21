@@ -10,10 +10,13 @@ def cart_contents(request):
     total = 0
     product_count = 0
     grand_total = 0
+    subscription = False
     cart = request.session.get("cart", {})
 
     for item_id, quantity in cart.items():
         product = get_object_or_404(Product, pk=item_id)
+        if product.plan == 2:
+            subscription = True
         total += quantity * product.price
         product_count += quantity
         cart_items.append({
@@ -31,6 +34,7 @@ def cart_contents(request):
         "total": total,
         "product_count": product_count,
         "grand_total": grand_total,
+        "subscription": subscription,
         "tax": tax,
     }
 
