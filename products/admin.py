@@ -10,9 +10,9 @@ class ProductAdmin(admin.ModelAdmin):
         "plan",
         "on_sale",
         "sold",
-        "rating",
         "image1",
         "add_date",
+        "rating_update",
     )
 
     ordering = ('name',)

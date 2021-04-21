@@ -86,7 +86,7 @@
                                     </a>
                                 {% else %}
                                     <a href="">
-                                        <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ MEDIA_URL }}noimage.jpg" class="card-img-top img-fluid">
+                                        <img src="noimage.jpg" alt="{{ MEDIA_URL }}noimage.jpg" class="card-img-top img-fluid">
                                     </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
@@ -111,7 +111,7 @@
                                                     </a>
                                                 </p>
                                             {% endif %}
-                                            {% if product.rating %}
+                                            {% if product.rating > 0 %}
                                                 <small class="text-muted">
                                                     <i class="fas fa-star mr-1 {% if product.rating > 4 %}text-success {% elif product.rating > 2 %}text-primary {% else %}text-muted{% endif %}"></i> 
                                                     {% if product.rating > 4 %}
