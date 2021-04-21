@@ -173,6 +173,11 @@ body{
     cursor: pointer;
     transition: all 1s ease-in-out;
 }
+
+.btn-outline-black{
+    color: #000 !important;
+    border: 1px solid #000;
+}
 /* ------- MEDIA QUERIES ------- */
 
 /* Larger Container on XL screens */
