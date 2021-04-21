@@ -25,11 +25,13 @@ def cart_contents(request):
     if total > 0:
         grand_total = total + (total * Decimal(settings.TAX_RATE))
 
+    tax = total * Decimal(settings.TAX_RATE)
     context = {
         "cart_items": cart_items,
         "total": total,
         "product_count": product_count,
         "grand_total": grand_total,
+        "tax": tax,
     }
 
     return context

@@ -13,6 +13,9 @@ body{
 .bg-white{
     background-color: #f5f5f5 !important;
 }
+.text-white{
+    color: #f5f5f5;
+}
 
 .relative{
     position: relative;
@@ -116,7 +119,7 @@ body{
 
 .btn-black{
     background: #000;
-    color: #f5f5f5;
+    color: #f5f5f5 !important;
 }
 
 .shop-now-button:hover,
@@ -126,7 +129,7 @@ body{
 .btn-black:active,
 .btn-black:focus{
     background: #f5f5f5;
-    color: #000;
+    color: #0275d8 !important;
     border: 1px solid #000;
 }
 
@@ -177,8 +180,14 @@ body{
 }
 
 .btn-outline-black{
-    color: #000 !important;
+    color: #000;
     border: 1px solid #000;
+}
+.cart-product-image{
+    height: 100px;
+}
+.small{
+    font-size: smaller;
 }
 /* ------- MEDIA QUERIES ------- */
 

@@ -12,6 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
         "sold",
         "rating",
         "image1",
+        "add_date",
     )
 
     ordering = ('name',)

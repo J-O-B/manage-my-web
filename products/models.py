@@ -16,6 +16,9 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    class Meta:
+        verbose_name_plural = "Products"
+
     salesOptions = (
         (1, "No"),
         (2, "Yes"),
@@ -28,6 +31,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
     plan = models.IntegerField(choices=planOptions, default=1)
+    add_date = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     on_sale = models.IntegerField(choices=salesOptions, default=1)

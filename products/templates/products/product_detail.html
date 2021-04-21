@@ -87,6 +87,9 @@
                         {% else %}
                             <span class="text-success">€{{product.price}}</span>
                         {% endif %}
+                        {% if product.plan == 2 %}
+                            <span class="text-muted">/ Year</span>
+                        {% endif %}
                     </p>
                     {% if product.rating %}
                         <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating|floatformat:2 }} / 5.00</small>

@@ -15,7 +15,7 @@
             <div class="col">
                 <hr>
                 <h1 class="logo-font mb-4">
-                    {{ title }}
+                    {{ title }} <i class="fas fa-shopping-cart text-primary"></i>
                 </h1>
                 <hr>
             </div>
@@ -24,7 +24,68 @@
             <div class="col">
                 {% if cart_items %}
                     <div class="table-responsive rounded">
-                        {{ cart_items }}
+                        <table class="table table-sm table-borderless">
+                            <thead class="text-black">
+                                <tr>
+                                    <th scope="col"><u><em>Product Info</em></u></th>
+                                    <th scope="col"><u><em>Product Name</em></u></th>
+                                    <th scope="col"><u><em>Price</em></u></th>
+                                    <th scope="col"><u><em>Qty</em></u></th>
+                                    <th scope="col"><u><em>Subtotal</em></u></th>
+                                </tr>
+                            </thead>
+
+                            {% for item in cart_items %}
+                                <tr class="my-auto">
+                                    <td class="mx-auto">
+                                        {% if item.product.image1 %}
+                                            <img src="{{ item.product.image1.url }}" alt="{{ item.product.name}}" class="img-fluid rounded cart-product-image">
+                                        {% endif %}
+                                    </td>
+                                    <td class="pt-5">
+                                        <p class="my-0"><strong>{{item.product.name|title}}</strong></p>
+                                        <p class="my-0 small text-muted">Category: {{item.product.category.friendly_name|title}}</p>
+                                    </td>
+                                    <td class="pt-5">
+                                        <p class="my-0">${{item.product.price}}</p>
+                                    </td>
+                                    <td class="pt-5">
+                                        <p class="my-0 px-3">
+                                            {{item.quantity}}
+                                            {% if item.product.plan == 2 %}
+                                                <span class="text-muted small"> Year{%if item.quantity > 1%}s{%endif%}</span>
+                                            {% endif %}
+                                        </p>
+                                    </td>
+                                    <td class="pt-5">
+                                        <p class="my-0 px-1">${{item.product.price}}</p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                                <tr>
+                                    <td colspan="5" class="pt-5 text-end">
+                                        <h6><strong>Cart Total: ${{total|floatformat:2}}</strong></h6>
+                                        <h6>Tax: ${{tax|floatformat:2}}</h6>
+                                        <h4 class="mt-4"><strong>Grand Total: ${{grand_total|floatformat:2}}</strong></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td colspan="5" class="text-center">
+                                    <a href="{% url 'products' %}" class="btn btn-outline-black btn-black rounded-0 btn-lg">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span class="text-uppercase">Keep Shopping</span>
+                                    </a>
+                                    <a href="" class="btn btn-success rounded-0 btn-lg btn-outline-black">
+                                        <span class="text-uppercase">Secure Checkout</span>
+                                        <span class="icon">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 {% else %}
                     <p class="lead mb-5 text-info">
