@@ -24,7 +24,9 @@ body{
 .absolute{
     position: absolute;
 }
-
+.absolute-right{
+    right: 0;
+}
 .top-right{
     top: 5px;
     right: 5px;

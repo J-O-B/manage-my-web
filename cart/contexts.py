@@ -24,6 +24,7 @@ def cart_contents(request):
 
     if total > 0:
         grand_total = total + (total * Decimal(settings.TAX_RATE))
+    
 
     tax = total * Decimal(settings.TAX_RATE)
     context = {
