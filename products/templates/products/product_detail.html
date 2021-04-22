@@ -117,6 +117,7 @@
                                                 {% if product.plan == 1 %}
                                                     <input type="number" class="form-control qtn_input" name="quantity" value="1" min="1" max="99" data-item_id={{product.id}} id="id_qty_{{product.id}}">
                                                 {% elif product.plan == 2 %}
+                                                    <input type="hidden" name="quantity" value="1" data-item_id={{product.id}} id="id_qty_{{product.id}}">
                                                     <p class="text-center small">
                                                         This product is a subscription based product. The price indicated is a 1 year fee for this service. <br>
                                                         For further information, please review the <a href="#subscription" class="text-decoration-none">subscription section</a> below.

@@ -2,6 +2,11 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
+from dateutil.relativedelta import relativedelta
+from datetime import datetime
+
+
+currentDate = datetime.now()
 
 
 def cart_contents(request):
@@ -9,14 +14,21 @@ def cart_contents(request):
     cart_items = []
     total = 0
     product_count = 0
+    discount = 0
     grand_total = 0
     subscription = False
+
+    expiry = (currentDate + relativedelta(years=1)).date()
     cart = request.session.get("cart", {})
 
     for item_id, quantity in cart.items():
         product = get_object_or_404(Product, pk=item_id)
-        if product.plan == 2:
-            subscription = True
+
+        # Only follow this step if subscription is still False
+        if not subscription:
+            if product.plan == 2:
+                subscription = True
+
         total += quantity * product.price
         product_count += quantity
         cart_items.append({
@@ -26,7 +38,12 @@ def cart_contents(request):
         })
 
     if total > 0:
-        grand_total = total + (total * Decimal(settings.TAX_RATE))
+        if subscription:
+            add = float(total + (total * Decimal(settings.TAX_RATE)))
+            grand_total = add * 0.9
+            discount = add * 0.1
+        else:
+            grand_total = total + (total * Decimal(settings.TAX_RATE))
 
     tax = total * Decimal(settings.TAX_RATE)
     context = {
@@ -36,6 +53,8 @@ def cart_contents(request):
         "grand_total": grand_total,
         "subscription": subscription,
         "tax": tax,
+        "expiry": expiry,
+        "discount": discount,
     }
 
     return context

@@ -8,6 +8,7 @@ from datetime import datetime
 
 def all_products(request):
     products = Product.objects.all()
+    all_categories = Category.objects.all()
     query = None
     categories = None
     sort = None
@@ -89,6 +90,7 @@ def all_products(request):
         'products': products,
         'search_term': query,
         'current_categories': categories,
+        'categories': all_categories,
         'current_sorting': current_sorting,
         'custom_title': custom_title,
         'subtitle': subtitle,
