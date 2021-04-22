@@ -1,0 +1,22 @@
+<script type="text/javascript">
+    // Increment Quantity
+    $('.increment-qty').click(function(e){
+        e.preventDefault();
+        let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        let currentValue = parseInt($(closestInput).val());
+        let productAvailability = $('#productAvailability').val()
+        if (currentValue < productAvailability){
+            $(closestInput).val(currentValue + 1);
+        }
+    });
+
+    // Decrement Quantity
+    $('.decrement-qty').click(function(e){
+        e.preventDefault();
+        let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        let currentValue = parseInt($(closestInput).val());
+        if ($(closestInput).val() > 1){
+            $(closestInput).val(currentValue - 1);
+        }
+    });
+</script>

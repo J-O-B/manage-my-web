@@ -57,6 +57,7 @@ class Product(models.Model):
     image_url5 = models.URLField(max_length=1024, null=True, blank=True)
     image5 = models.ImageField(null=True, blank=True)
     sold = models.IntegerField(null=True, default=0)
+    available = models.IntegerField(null=True, default=10)
 
     def __str__(self):
         return str(self.name)

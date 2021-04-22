@@ -115,7 +115,26 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 {% if product.plan == 1 %}
-                                                    <input type="number" class="form-control qtn_input" name="quantity" value="1" min="1" max="99" data-item_id={{product.id}} id="id_qty_{{product.id}}">
+                                                    <div class="input-group-prepend">
+                                                        <button class="decrement-qty btn btn-black rounded-0"
+                                                            data-item-id="{{product.id}}" id="decrement-qty_{{ product.id }}">
+                                                            <span class="icon">
+                                                                <i class="fas fa-minus"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    <input type="number" class="form-control qty_input" 
+                                                        name="quantity" value="1" min="1" max="{% if product.available %}{{product.available}}{% else %}10{% endif %}" 
+                                                        data-item_id={{product.id}} id="id_qty_{{product.id}}">
+                                                    <input type="hidden" value="{{product.available}}" id="productAvailability">
+                                                    <div class="input-group-append">
+                                                        <button class="increment-qty btn btn-black rounded-0"
+                                                            data-item-id="{{product.id}}" id="increment-qty_{{ product.id }}">
+                                                            <span class="icon">
+                                                                <i class="fas fa-plus"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
                                                 {% elif product.plan == 2 %}
                                                     <input type="hidden" name="quantity" value="1" data-item_id={{product.id}} id="id_qty_{{product.id}}">
                                                     <p class="text-center small">
@@ -176,4 +195,7 @@
     </div>
 
 {% endblock %}
-
+{% block postloadjs %}
+    {{ block.super }}
+    {% include 'includes/quantity_input_script.html' %}
+{% endblock %}

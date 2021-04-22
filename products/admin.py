@@ -10,6 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
         "plan",
         "on_sale",
         "sold",
+        "available",
         "image1",
         "add_date",
         "rating_update",
