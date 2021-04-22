@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.topLimitMessage').hide();
+    })
+    function handleEnableDisable(itemId){
+        let currentValue = parseInt($(`#id_qty_${itemId}`).val());
+        let maximum = $(`#id_qty_${itemId}`).closest('.input-group').find('.productAvailability').val();
+        let minusDisabled = currentValue < 1;
+        let plusDisabled = currentValue > maximum;
+        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
+    }
+
+    let allQtyInputs = $('.qty_input');
+    for (let i = 0; i < allQtyInputs.length; i++){
+        let itemId = $(allQtyInputs[i]).data('item_id');
+        handleEnableDisable(itemId);
+    }
+
+    $('.qty_input').change(function() {
+        let itemId = $(this).data('item_id')
+        handleEnableDisable(itemId);
+    })
+    // Increment Quantity
+    $('.increment-qty').click(function(e){
+        e.preventDefault();
+        let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        let currentValue = parseInt($(closestInput).val());
+        let closestMaximum = $(this).closest('.input-group').find('.productAvailability');
+        let currentMaximum = parseInt($(closestMaximum).val());
+        if ($(closestInput).val() < currentMaximum){
+            $(closestInput).val(currentValue + 1);
+        }
+        if ($(closestInput).val() == currentMaximum){
+            $(this).closest('.input-group').find('.topLimitMessage').show();
+        }else{
+            $(this).closest('.input-group').find('.topLimitMessage').hide();
+        }
+        let itemId = $(this).data('item_id');
+        handleEnableDisable(itemId);
+    });
+
+    // Decrement Quantity
+    $('.decrement-qty').click(function(e){
+        e.preventDefault();
+        let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        let currentValue = parseInt($(closestInput).val());
+        let closestMaximum = $(this).closest('.input-group').find('.productAvailability');
+        let currentMaximum = parseInt($(closestMaximum).val());
+        if ($(closestInput).val() > 1){
+            $(closestInput).val(currentValue - 1);
+        }
+        $(this).closest('.input-group').find('.topLimitMessage').hide();
+        
+        let itemId = $(this).data('item_id');
+        handleEnableDisable(itemId);
+    });
+</script>

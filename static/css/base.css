@@ -195,6 +195,10 @@ body{
 .small{
     font-size: smaller;
 }
+.productDetailCarouselImage{
+    height: 400px;
+    width: auto;
+}
 /* ------- MEDIA QUERIES ------- */
 
 /* Larger Container on XL screens */

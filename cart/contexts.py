@@ -23,7 +23,7 @@ def cart_contents(request):
 
     for item_id, quantity in cart.items():
         product = get_object_or_404(Product, pk=item_id)
-
+        
         # Only follow this step if subscription is still False
         if not subscription:
             if product.plan == 2:
