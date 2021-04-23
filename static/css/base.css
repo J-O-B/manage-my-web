@@ -7,7 +7,21 @@ body{
     color: #333333;
     height: calc(100vh - 164px);
     font-family: 'Zen Dots', cursive;
+    font-weight: 400;
     overflow-x: hidden;
+}
+h4,
+h5,
+h6,
+.plain-text{
+    font-family: 'Acme', sans-serif;
+    font-weight: 400;
+    font-size: larger;
+}
+
+.intro-text{
+    line-height: 1.7;
+    font-size: larger;
 }
 
 .bg-white{
@@ -223,6 +237,15 @@ body{
 .home-subtitle{
     min-height: 70px;
 }
+#homeCards{
+    margin-top: -90px;
+}
+.bg-silver{
+    background: #C0C0C0;
+}
+.bg-gold{
+    background: #FFD700;
+}
 /* ------- MEDIA QUERIES ------- */
 
 /* Larger Container on XL screens */
@@ -239,6 +262,9 @@ body{
         right: 0;
         left: 0;
         z-index: 1030;
+    }
+    #homeCards{
+        margin-top: 0;
     }
     .header-container{
         padding-top: 164px;
