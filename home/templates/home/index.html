@@ -19,6 +19,13 @@
                     <span class="text-success">Web Design</span> and 
                     <span class="text-success">SEO</span> 
                 </h1>
+                <div class="home-subtitle align-middle">
+                    <h2 class="h3 text-success text-center">
+                        <p class="typewrite p-3" data-period="2000" data-type='[ "Web Design", "Graphic Design", "eCommerce", "Portfolios", "Scripting", "UX Design", "Turnkey Websites" ]'>
+                            <span class="wrap"></span>
+                        </p>
+                    </h2>
+                </div>
                 <div class="my-5">
                     <h4 class="text-center">
                         <a href="{% url 'products' %}" class="shop-now-button btn btn-lg text rounded-0 text-uppercase py-3">
@@ -30,4 +37,59 @@
         </div>
     </div>
 
+{% endblock %}
+{% block postloadjs %}
+    <script type="text/javascript">
+        let TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        let i = this.loopNum % this.toRotate.length;
+        let fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        let that = this;
+        let delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        let elements = document.getElementsByClassName('typewrite');
+        for (let i=0; i<elements.length; i++) {
+            let toRotate = elements[i].getAttribute('data-type');
+            let period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+    };
+</script>
 {% endblock %}

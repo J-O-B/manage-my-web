@@ -25,7 +25,7 @@ body{
     position: absolute;
 }
 .absolute-right{
-    right: 0;
+    right: 10px;
 }
 .top-right{
     top: 5px;
@@ -206,6 +206,22 @@ body{
 }
 .qty_input{
     width: 100%;
+}
+
+.message-container{
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+.custom-toast{
+    overflow: visable;
+}
+.toast-capper{
+    height: 2px;
+}
+.home-subtitle{
+    min-height: 70px;
 }
 /* ------- MEDIA QUERIES ------- */
 
