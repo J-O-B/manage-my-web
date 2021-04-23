@@ -170,6 +170,10 @@ body{
     color: #0275d8;
 }
 
+.hidden{
+    display:none;
+}
+
 .btt-button{
     height: 42px;
     width: 42px;
@@ -180,9 +184,10 @@ body{
 .dropdown-menu.show {
     z-index: 99999;
 }
-.btt-link{
+.btt-link,
+.update-link,
+.remove-item{
     cursor: pointer;
-    transition: all 1s ease-in-out;
 }
 
 .btn-outline-black{
@@ -198,6 +203,9 @@ body{
 .productDetailCarouselImage{
     height: 400px;
     width: auto;
+}
+.qty_input{
+    width: 100%;
 }
 /* ------- MEDIA QUERIES ------- */
 
