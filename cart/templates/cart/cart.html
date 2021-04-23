@@ -27,32 +27,32 @@
                     <div class="table rounded">
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
-                                <tr>
-                                    <th scope="col"><u><em>Product Info</em></u></th>
+                                <tr class="text-center">
+                                    <th scope="col"><strong class="lead">Product Info <i class="fas fa-chevron-circle-right d-none d-lg-inline"></i></strong></th>
                                     <th scope="col"><u><em>Product Name</em></u></th>
                                     <th scope="col"><u><em>Price</em></u></th>
                                     <th scope="col"><u><em>Qty</em></u></th>
                                     <th scope="col"><u><em>Subtotal</em></u></th>
-                                    <th scope="col"></th>
+                                    <th scope="col"><!-- Delete Icon Column --></th>
                                 </tr>
                             </thead>
 
                             {% for item in cart_items %}
                                 <tr class="my-auto">
-                                    <td class="w-25">
+                                    <td class="align-middle d-flex align-items-center">
                                         {% if item.product.image1 %}
-                                            <img src="{{ item.product.image1.url }}" alt="{{ item.product.name}}" class="img-fluid rounded cart-product-image">
+                                            <img src="{{ item.product.image1.url }}" alt="{{ item.product.name}}" class="mx-auto img-fluid rounded cart-product-image">
                                         {% endif %}
                                     </td>
-                                    <td class="pt-5">
+                                    <td class="w-25 text-center align-middle">
                                         <p class="my-0"><strong>{{item.product.name|title}}</strong></p>
                                         <p class="my-0"><strong class="small">Type: {% if item.product.plan == 2 %}Subscription{%else%}Product{%endif%}</strong></p>
                                         <p class="my-0 small text-muted">Category: {{item.product.category.friendly_name|title}}</p>
                                     </td>
-                                    <td class="pt-5">
+                                    <td class="align-middle text-center">
                                         <p class="my-0">${{item.product.price}}</p>
                                     </td>
-                                    <td class="pt-5 w-25">
+                                    <td class="pt-4 w-25">
                                         <div class="my-0 px-3 text-center">
                                             {% if item.product.plan == 2 %}
                                                 <p class="text-muted">{{item.quantity}} Year</p>
@@ -62,25 +62,39 @@
                                                     {% csrf_token %}
                                                     <div class="form-group">
                                                         <div class="input-group w-100">
-                                                            <div class="input-group-prepend mx-auto">
-                                                                <button class="decrement-qty btn btn-sm btn-qty rounded-0"
-                                                                    data-item-id="{{item.product.id}}" id="decrement-qty_{{ item.product.id }}" disabled>
-                                                                    <span>
-                                                                        <i class="fas fa-minus fa-sm"></i>
-                                                                    </span>
-                                                                </button>
+                                                            <div class="col-12 col-md-3 d-flex">
+                                                                <div class="input-group-prepend mx-auto">
+                                                                    <button class="decrement-qty btn btn-sm btn-qty rounded-0"
+                                                                        data-item-id="{{item.product.id}}" id="decrement-qty_{{ item.product.id }}" disabled>
+                                                                        <span>
+                                                                            <i class="fas fa-minus fa-sm"></i>
+                                                                        </span>
+                                                                    </button>
+                                                                    <button class="increment-qty btn btn-sm btn-qty rounded-0 d-md-none"
+                                                                        data-item-id="{{item.product.id}}" id="increment-qty_{{ item.product.id }}">
+                                                                        <span>
+                                                                            <i class="fas fa-plus fa-sm"></i>
+                                                                        </span>
+                                                                    </button>
+                                                                </div>
                                                             </div>
-                                                            <input type="number" class="w-100 form-control form-control-sm qty_input text-center" 
-                                                                name="quantity" value="{{item.quantity}}" min="0" max="{% if item.product.available %}{{item.product.available}}{% else %}10{% endif %}" 
-                                                                data-item_id={{item.product.id}} id="id_qty_{{item.product.id}}">
-                                                            <input type="hidden" value="{{item.product.available}}" class="productAvailability">
-                                                            <div class="input-group-append mx-auto">
-                                                                <button class="increment-qty btn btn-sm btn-qty rounded-0"
-                                                                    data-item-id="{{item.product.id}}" id="increment-qty_{{ item.product.id }}">
-                                                                    <span>
-                                                                        <i class="fas fa-plus fa-sm"></i>
-                                                                    </span>
-                                                                </button>
+
+                                                            <div class="col-12 col-md-6">
+                                                                <input type="number" class="w-100 form-control form-control-sm qty_input text-center" 
+                                                                    name="quantity" value="{{item.quantity}}" min="0" max="{% if item.product.available %}{{item.product.available}}{% else %}10{% endif %}" 
+                                                                    data-item_id={{item.product.id}} id="id_qty_{{item.product.id}}">
+                                                                <input type="hidden" value="{{item.product.available}}" class="productAvailability">
+                                                            </div>
+
+                                                            <div class="col-12 col-md-3">
+                                                                <div class="input-group-append mx-auto d-none d-md-block">
+                                                                    <button class="increment-qty btn btn-sm btn-qty rounded-0 "
+                                                                        data-item-id="{{item.product.id}}" id="increment-qty_{{ item.product.id }}">
+                                                                        <span>
+                                                                            <i class="fas fa-plus fa-sm"></i>
+                                                                        </span>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                             <span class="text-danger topLimitMessage">Limit Reached</span>
                                                         </div>
@@ -94,8 +108,8 @@
                                             {% endif %}
                                         </div>
                                     </td>
-                                    <td class="pt-5">
-                                        <p class="my-0 px-1">${{item.product.price}}</p>
+                                    <td class="align-middle text-center">
+                                        <p class="my-0 px-1">${{ item.product.price | calc_subtotal:item.quantity }}</p>
                                     </td>
                                     <td class="align-middle">
                                         <i class="remove-item fas fa-trash-alt fa-lg text-danger" id="{{ item.product.id }}"></i>
@@ -136,7 +150,7 @@
                                 <tr>
                                     <td colspan="5" class="pt-3 text-center text-lg-end">
                                         <h6><strong>Cart Total: ${{total|floatformat:2}}</strong></h6>
-                                        <h6>+ Tax: ${{tax|floatformat:2}}</h6>
+                                        <h6>+ Tax ({{tax_rate|floatformat:0}}%): ${{tax|floatformat:2}}</h6>
                                         {% if discount > 0 %}
                                         <h6 class="text-success">- Discount: ${{discount|floatformat:2}}</h6>
                                         {% endif %}

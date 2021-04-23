@@ -23,7 +23,7 @@ def cart_contents(request):
 
     for item_id, quantity in cart.items():
         product = get_object_or_404(Product, pk=item_id)
-        
+
         # Only follow this step if subscription is still False
         if not subscription:
             if product.plan == 2:
@@ -46,6 +46,7 @@ def cart_contents(request):
             grand_total = total + (total * Decimal(settings.TAX_RATE))
 
     tax = total * Decimal(settings.TAX_RATE)
+    tax_rate = 100 * settings.TAX_RATE
     context = {
         "cart_items": cart_items,
         "total": total,
@@ -53,6 +54,7 @@ def cart_contents(request):
         "grand_total": grand_total,
         "subscription": subscription,
         "tax": tax,
+        "tax_rate": tax_rate,
         "expiry": expiry,
         "discount": discount,
     }
