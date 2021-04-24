@@ -82,42 +82,65 @@
                         <!-- Icons -->
                         <div class="col-6 border-right">
                             <div class="row py-5">
-                                <div class="col-2 d-none d-md-block offset-2 pt-2 text-center">
-                                    <p class="h1 py-auto"><i class="pt-3 text-success fab fa-searchengin"></i></p>
-                                    <p class="small text-black"><br></p>
-                                    <p class="h1 py-auto"><i class="pt-3 text-success fas fa-tachometer-alt"></i></p>
-                                    <p class="small text-black"><br></p>
-                                    <p class="h1 py-auto"><i class="pt-2 text-success fas fa-award"></i></p>
-                                    <p class="small text-black"><br></p>
+                                <!--Icon - Text Rows-->
+                                <div class="row chooseItems">
+                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
+                                        <i class="h1 text-success fab fa-searchengin"></i>
+                                    </div>
+                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
+                                        <p class="h1 pt-1 text-success chooseHeading">SEO</p>
+                                        <p class="small text-black">SEO Friendly Websites</p>
+                                    </div>
                                 </div>
-                                <div class="col-8 text-start">
-                                    <p class="h1 pt-1 text-success">SEO</p>
-                                    <p class="small text-black">SEO Friendly Websites</p>
-                                    <p class="h1 pt-1 text-success">Speed</p>
-                                    <p class="small text-black">Website Performance</p>
-                                    <p class="h1 pt-1 text-success">Quality</p>
-                                    <p class="small text-black">Qualified Developers</p>
+                                <div class="row chooseItems">
+                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
+                                        <i class="h1 text-success fas fa-tachometer-alt"></i>
+                                    </div>
+                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
+                                        <p class="h1 pt-1 text-success chooseHeading">Speed</p>
+                                        <p class="small text-black">Website Performance</p>
+                                    </div>
+                                </div>
+                                <div class="row chooseItems">
+                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
+                                        <i class="h1 text-success fas fa-award"></i>
+                                    </div>
+                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
+                                        <p class="h1 pt-1 text-success chooseHeading">Quality</p>
+                                        <p class="small text-black">Qualified Developers</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Text -->
                         <div class="col-6">
                             <div class="row py-5">
-                                <div class="col-2 d-none d-md-block offset-3 pt-2 text-center">
-                                    <p class="h1 py-auto"><i class="pt-3 text-success fas fa-laptop-code"></i></p>
-                                    <p class="small text-black"><br></p>
-                                    <p class="h1 py-auto"><i class="pt-2 text-success fas fa-dollar-sign"></i></p>
-                                    <p class="small text-black"><br></p>
-                                    <p class="h1 py-auto"><i class="pt-3 text-success fas fa-redo"></i></p>
-                                    <p class="small text-black"><br></p>
+                                <div class="row chooseItems">
+                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
+                                        <i class="h1 text-success fas fa-laptop-code"></i>
+                                    </div>
+                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
+                                        <p class="h1 pt-1 text-success chooseHeading">Code</p>
+                                        <p class="small text-black">Custom Coding</p>
+                                    </div>
                                 </div>
-                                <div class="col-7 text-start">
-                                    <p class="h1 pt-1 text-success">Code</p>
-                                    <p class="small text-black">Custom Coding</p>
-                                    <p class="h1 pt-1 text-success">Cost</p>
-                                    <p class="small text-black">Cost Efficiency</p>
-                                    <p class="h1 pt-1 text-success">Revisions</p>
-                                    <p class="small text-black">Revisions Available</p>
+                                <div class="row chooseItems">
+                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
+                                        <i class="h1 text-success fas fa-dollar-sign"></i>
+                                    </div>
+                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
+                                        <p class="h1 pt-1 text-success chooseHeading">Cost</p>
+                                        <p class="small text-black">Cost Efficiency</p>
+                                    </div>
+                                </div>
+                                <div class="row chooseItems">
+                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
+                                        <i class="h1 text-success fas fa-redo"></i>
+                                    </div>
+                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
+                                        <p class="h1 pt-1 text-success chooseHeading">Revisions</p>
+                                        <p class="small text-black">Revisions Available</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -260,14 +283,26 @@
         };
 
         window.onload = function() {
-        let elements = document.getElementsByClassName('typewrite');
-        for (let i=0; i<elements.length; i++) {
-            let toRotate = elements[i].getAttribute('data-type');
-            let period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
+            let elements = document.getElementsByClassName('typewrite');
+            for (let i=0; i<elements.length; i++) {
+                let toRotate = elements[i].getAttribute('data-type');
+                let period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
             }
-        }
-    };
+        };
+        $('.chooseItems').mouseenter(function(){
+            $(this).find("i").addClass('text-primary');
+            $(this).find(".chooseHeading").addClass('text-primary');
+            $(this).find("i").removeClass('text-success');
+            $(this).find(".chooseHeading").removeClass('text-success');
+        })
+        $('.chooseItems').mouseleave(function(){
+            $(this).find("i").removeClass('text-primary');
+            $(this).find(".chooseHeading").removeClass('text-primary');
+            $(this).find("i").addClass('text-success');
+            $(this).find(".chooseHeading").addClass('text-success');
+        })
 </script>
 {% endblock %}
