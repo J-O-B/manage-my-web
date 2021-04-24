@@ -7,28 +7,24 @@
 
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+    <!--Override Top Margin-->
 {% endblock %}
 
 {% block content %}
 
     <div class="container-fluid g-0 h-100" id="home-hero">
         <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-7 my-auto">
                 <h1 class="display-4 logo-font text-black text-center">
                     Professional 
                     <span class="text-success">Web Design</span> and 
                     <span class="text-success">SEO</span> 
                 </h1>
-                <div class="home-subtitle align-middle">
+                <div class="home-subtitle pt-5 align-middle">
                     <h2 class="h3 text-success text-center">
-                        <p class="typewrite p-3" data-period="2000" data-type='[ "Web Design", "Graphic Design", "eCommerce", "Portfolios", "Scripting", "UX Design", "Turnkey Websites" ]'>
+                        <span class="typewrite p-1 logo-font" data-period="2000" data-type='[ "Web Design", "Graphic Design", "eCommerce", "Portfolios", "Scripting", "UX Design", "Turnkey Websites" ]'>
                             <span class="wrap"></span>
-                        </p>
+                        </span>
                     </h2>
                 </div>
                 <div class="my-5">
@@ -44,9 +40,9 @@
     <div class="row" id="homeCards">
         <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-1 mx-auto">
             <div class="card w-lg-75 box-shadow">
-                <h5 class="card-header text-center bg-success">Professional Web Design</h5>
+                <h3 class="h5 card-header text-center text-black bg-success">Professional Web Design</h3>
                 <div class="card-body text-center">
-                    <h5 class="card-title text-primary">Do You Need A Professional Website?</h5>
+                    <h3 class="h5 card-title text-primary">Do You Need A Professional Website?</h3>
                     <p class="card-text">We Provide A Selection Of Services That Are Designed To Help You.</p>
                     <a href="#" class="btn btn-primary">Read More</a>
                 </div>
@@ -54,9 +50,9 @@
         </div>
         <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0 mx-auto">
             <div class="card w-lg-75 box-shadow">
-                <h5 class="card-header text-center bg-success">Website Management</h5>
+                <h3 class="h5 card-header text-center text-black bg-success">Website Management</h3>
                 <div class="card-body text-center">
-                    <h5 class="card-title text-primary">Do You Need A Professional To Look After Your Website?</h5>
+                    <h3 class="h5 card-title text-primary">Do You Need A Professional To Look After Your Website?</h3>
                     <p class="card-text">We Provide Premium Services To Create & Manage Websites.</p>
                     <a href="#" class="btn btn-primary">Read More</a>
                 </div>
@@ -64,41 +60,105 @@
         </div>
         <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0 mx-auto">
             <div class="card w-lg-75 box-shadow">
-                <h5 class="card-header text-center bg-success">SEO</h5>
+                <h3 class="h5 card-header text-center text-black bg-success">SEO</h3>
                 <div class="card-body text-center">
-                    <h5 class="card-title text-primary">Get Noticed Online With Search Engine Optimization</h5>
+                    <h3 class="h5 card-title text-primary">Get Noticed Online With Search Engine Optimization</h3>
                     <p class="card-text">Get The Traffic You Deserve! See How We Can Help Improve Your Search Rank.</p>
                     <a href="#" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>
     </div>
-    <!--Intro Text-->
+
+    <div class="container-fluid g-0 m-0 bg-business">
+        
+        <div class="row h-100">
+            <div class="col-12 col-sm-10 offset-sm-1 col-lg-7 offset-lg-0 relative" id="whyChooseUs">
+                <div class="haze-white"></div>
+                <div class="infront relative text-center my-auto">
+                    <h2 class="h1 logo-font text-black mt-5">
+                        <span class="text-success">Why</span> <span class="underline-success"></span>choose us?
+                    </h2>
+                    <div class="row mt-lg-5 align-middle">
+                        <!-- Icons -->
+                        <div class="col-6 border-right">
+                            <div class="row pt-3">
+                                <div class="col-2 d-none d-md-block offset-2 pt-2 text-center">
+                                    <p class="h1 btn-outline-black bg-success-circle py-auto"><i class="text-black fab fa-searchengin"></i></p>
+                                    <p class="small text-black"><br></p>
+                                    <p class="h1 btn-outline-black bg-success-circle py-auto"><i class="text-black fas fa-tachometer-alt"></i></p>
+                                    <p class="small text-black"><br></p>
+                                    <p class="h1 btn-outline-black bg-success-circle py-auto"><i class="text-black fas fa-award"></i></p>
+                                    <p class="small text-black"><br></p>
+                                </div>
+                                <div class="col-8 text-start">
+                                    <p class="h1 pt-1 text-success">SEO</p>
+                                    <p class="small text-black">SEO Friendly Websites</p>
+                                    <p class="h1 pt-1 text-success">Speed</p>
+                                    <p class="small text-black">Website Performance</p>
+                                    <p class="h1 pt-1 text-success">Quality</p>
+                                    <p class="small text-black">Qualified Developers</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text -->
+                        <div class="col-6">
+                            <div class="row pt-3">
+                                <div class="col-2 d-none d-md-block offset-3 pt-2 text-center">
+                                    <p class="h1 btn-outline-black bg-success-circle py-auto"><i class="text-black fas fa-laptop-code"></i></p>
+                                    <p class="small text-black"><br></p>
+                                    <p class="h1 btn-outline-black bg-success-circle py-auto"><i class="text-black fas fa-dollar-sign"></i></p>
+                                    <p class="small text-black"><br></p>
+                                    <p class="h1 btn-outline-black bg-success-circle py-auto"><i class="text-black fas fa-redo"></i></p>
+                                    <p class="small text-black"><br></p>
+                                </div>
+                                <div class="col-7 text-start">
+                                    <p class="h1 pt-1 text-success">Code</p>
+                                    <p class="small text-black">Custom Coding</p>
+                                    <p class="h1 pt-1 text-success">Cost</p>
+                                    <p class="small text-black">Cost Efficiency</p>
+                                    <p class="h1 pt-1 text-success">Revisions</p>
+                                    <p class="small text-black">Revisions Available</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 g-0 col-sm-10 offset-sm-1 col-lg-5 offset-lg-0 relative">
+                <div class="haze-black"></div>
+                <div class="infront relative text-center my-auto mx-auto h-100" id="rightHomeCol">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container mt-5">
-        <!--Heading-->
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="h1 logo-font text-black">Manage My Web</h2>
                 <hr class="w-25 mx-auto">
             </div>
         </div>
-        <!--Body-->
         <div class="row">
             <div class="col-12 text-center mb-2">
                 <p class="lead">
                     Manage My Web is one stop shop for individuals, and businesses alike. We offer web design, web development and SEO solutions
                     that will enhance your online capabilities and search ratings. We do this through building responsive websites, with the latest in UX 
-                    design and ensuring high quality user experience.
+                    design and ensuring high quality user experience on all of our projects.
                 </p>
             </div>
             <div class="col-12 col-sm-10 offset-sm-1 col-lg-6 offset-lg-0 py-5">
                 <div class="row">
-                    <div class="col-11 text-center text-black py-5 px-3 intro-text">
-                        <p>
-                            Manage My Web offer a range of services that aim to provide individuals and businesses an affordable way to ensure a professional 
-                            grade website, without the associated agency like fees, or the requirement to 'hire' a development team. <br>
-                            Although we offer a range of products covering web design, and search engine optimization (SEO) and more, our main expertise comes 
-                            as standard in our subscription services. These plans come with a range of benefits:
+                    <div class="col-11 text-center py-3 px-3">
+                        <p class="">
+                            Manage My Web offer a range of services across multiple areas of expertise, our aim is to provide individuals and businesses 
+                            with an affordable way to get their website, store, portfolio or other projects online. <br><br>
+                            Although we offer a range of products that are ready to buy 'off the shelf', our main area of expertise comes with our package, 
+                            subscription services. These subscriptions come with a wide range of additional features which will be beneficial to you, your 
+                            business, and your future users. Our subscription services are what separates Manage My Web from other 'standard' web development 
+                            agencies. <br><br>
                         </p>
                     </div>
                     <div class="col-1 m-auto">
@@ -109,10 +169,10 @@
             <div class="col-12 col-sm-10 offset-sm-1 col-lg-6 offset-lg-0">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h3 class="h4 pt-4"><u>Plans Include:</u></h3>
+                        <h3 class="h4 pt-5"><u>Plans Include:</u></h3>
                     </div>
-                    <div class="col-5 text-center">
-                        <p class="lead w-100 bg-silver rounded-3"><i class="fas fa-gem text-black"></i> Silver Plan <i class="fas fa-gem text-black"></i></p>
+                    <div class="col-5 text-center pt-5">
+                        <p class="lead w-100 bg-silver rounded-3 mb-3"><i class="fas fa-gem text-black"></i> <u>Silver Plan</u> <i class="fas fa-gem text-black"></i></p>
                         <ul class="list-unstyled lh-3">
                             <li><em>Custom Domain</em></li>
                             <li><em>Hosting Plan</em></li>
@@ -121,10 +181,10 @@
                             <li><em>Updates</em></li>
                         </ul>
                     </div>
-                    <div class="col-7 text-center">
+                    <div class="col-7 text-center pt-5">
                         <div class="row">
                             <div class="col-12">
-                                <p class="lead w-100 bg-gold rounded-3"><i class="fas fa-gem text-black"></i> Gold Plan <i class="fas fa-gem text-black"></i></p>
+                                <p class="lead w-100 bg-gold rounded-3 mb-3"><i class="fas fa-gem text-black"></i> <u>Gold Plan</u> <i class="fas fa-gem text-black"></i></p>
                             </div>
                             <div class="col-6">
                                 <ul class="list-unstyled lh-3">
@@ -146,50 +206,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 py-2 text-center">
+                        <p class="small">* Website Types May Be Limited Depending On Plan Type.</p>
+                        <a href="" class="btn btn-lg btn-black rounded-0 logo-font">View subscription plans</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    
-    <div class="container relative">
-        <ul class="customUL">
-            <li class="customLI box-shadow">
-                <div class="section-title">
-                    <h2 class="logo-font">Web Design</h2>
-                </div>
-                <div class="section-content">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatum temporibus dicta 
-                        reprehenderit tempore quisquam consequuntur porro omnis laboriosam praesentium at et sapiente, provident 
-                        sit! Suscipit recusandae, ab ratione dignissimos.
-                    </p>
-                </div>
-            </li>
-            <li class="customLI active">
-                <div class="section-title">
-                    <h2 class="logo-font">SEO</h2>
-                </div>
-                <div class="section-content">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur 
-                        voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat 
-                        necessitatibus!
-                    </p>
-                </div>
-            </li>
-            <li class="customLI">
-                <div class="section-title">
-                    <h2 class="logo-font">Web Management</h2>
-                </div>
-                <div class="section-content">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur saepe vel facilis quae nihil ad aspernatur 
-                        ex delectus. Tenetur nulla voluptates similique quos, quia possimus, magnam esse natus quis ipsa.
-                    </p>
-                </div>
-            </li>
-        </ul>
     </div>
 
 {% endblock %}
@@ -247,14 +270,5 @@
             }
         }
     };
-
-        let section = $('.customLI');
-
-        function toggleAccordion() {
-        section.removeClass('active');
-        $(this).addClass('active');
-        }
-
-        section.on('click', toggleAccordion);
 </script>
 {% endblock %}

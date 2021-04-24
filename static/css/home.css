@@ -1,60 +1,18 @@
-.customUL {
-    display: flex;
-    min-height: 100vh;
-    max-height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    list-style-type: none;
-  }
-  
-.customLI {
-    flex: 1;
-    display: flex;
-    align-items: stretch;
-    padding: 20px;
-    background: #0275d8;
-    cursor: pointer;
-    transition: all 0.5s ease;
-  }
-  .customLI:hover {
-    background: #5cb85c;
-  }
-  .customLI.active {
-    flex: 5;
-    background: #fff;
-    cursor: default;
-  }
-  .customLI.active h2 {
-    color: #5cb85c;
-  }
-  .customLI.active .section-content {
-    flex: 4;
-    opacity: 1;
-    transform: scaleX(1);
-    color: #5cb85c;
-  }
-  .customLI .section-title {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    color: white;
-  }
-  .customLI .section-title h2 {
-    margin: 0;
-    transform: rotate(-90deg);
-    white-space: nowrap;
-  }
-  .customLI .section-content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-    transition: all 0.25s 0.1s ease-out;
-  }
+.carousel-home{
+  height: 500px;
+}
+#rightHomeCol{
+  background: url('../../media/ipad.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  opacity: 0.8;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#whyChooseUs{
+  overflow: hidden;
+  height: 100%;
+  padding-bottom: 75px;
+}

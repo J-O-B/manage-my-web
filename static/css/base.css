@@ -10,6 +10,7 @@ body{
     font-weight: 400;
     overflow-x: hidden;
 }
+
 h4,
 h5,
 h6,
@@ -18,12 +19,47 @@ h6,
     font-weight: 400;
     font-size: larger;
 }
-
-.intro-text{
-    line-height: 1.7;
-    font-size: larger;
+.underline-success{
+    text-decoration: underline;
+    text-decoration-color: #198754;
 }
 
+.bg-success-circle{
+    background: #198754;
+    border-radius: 50%;
+    padding: 5px;
+    width: 60px;
+    height: 60px;
+}
+.bg-business{
+    background: url('../../media/conference.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+.haze-white{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #f5f5f5;
+    opacity: 0.7;
+    z-index: 1;
+}
+.infront{
+    z-index: 999999;
+}
+.haze-black{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #fff, #000);
+    opacity: 0.4;
+    z-index: 1;
+}
+.border-right{
+    border-right: 2px solid #000;
+}
 .bg-white{
     background-color: #f5f5f5 !important;
 }
@@ -91,8 +127,8 @@ h6,
     text-align: center;
     color: #f5f5f5;
     box-shadow: 
-        0px 2px 2px #5cb85c,
-        0px -2px 2px #5cb85c;
+        0px 2px 2px #198754,
+        0px -2px 2px #198754;
 }
 
 #mobileSearchbox{
@@ -161,7 +197,7 @@ h6,
 }
 
 .hover-success:hover{
-    color: #5cb85c !important;
+    color: #198754 !important;
 }
 
 .border-black{
@@ -246,6 +282,10 @@ h6,
 .bg-gold{
     background: #FFD700;
 }
+.header-container{
+    margin: 0;
+    padding: 0;
+}
 /* ------- MEDIA QUERIES ------- */
 
 /* Larger Container on XL screens */
@@ -267,7 +307,7 @@ h6,
         margin-top: 0;
     }
     .header-container{
-        padding-top: 164px;
+        padding-top: 116px;
     }
 }
 @media (max-width:991px){
