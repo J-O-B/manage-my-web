@@ -38,6 +38,9 @@ h6,
     background-position: center;
     overflow: hidden;
 }
+#topOfPage{
+    height: 0.1px;
+}
 .haze-white{
     position: absolute;
     height: 100%;
@@ -48,6 +51,9 @@ h6,
 }
 .infront{
     z-index: 999999;
+}
+.rounded-50{
+    border-radius: 50%;
 }
 .haze-black{
     position: absolute;
