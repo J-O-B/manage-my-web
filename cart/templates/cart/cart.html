@@ -28,7 +28,7 @@
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
                                 <tr class="text-center">
-                                    <th scope="col"><strong class="lead">Product Info <i class="fas fa-chevron-circle-right d-none d-lg-inline"></i></strong></th>
+                                    <th scope="col"><strong class="h3">Product Info:</strong></th>
                                     <th scope="col"><u><em>Product Name</em></u></th>
                                     <th scope="col"><u><em>Price</em></u></th>
                                     <th scope="col"><u><em>Qty</em></u></th>
@@ -149,12 +149,15 @@
                             {% endif %}
                                 <tr>
                                     <td colspan="5" class="pt-3 text-center text-lg-end">
-                                        <h6><strong>Cart Total: ${{total|floatformat:2}}</strong></h6>
-                                        <h6>+ Tax ({{tax_rate|floatformat:0}}%): ${{tax|floatformat:2}}</h6>
+                                        <p class="h6"><strong>Cart Total: <span class="text-primary">${{total|floatformat:2}}</span></strong></p>
+                                        <p class="h6">+ Tax ({{tax_rate|floatformat:0}}%): <span class="text-danger">${{tax|floatformat:2}}</span></p>
                                         {% if discount > 0 %}
-                                        <h6 class="text-success">- Discount: ${{discount|floatformat:2}}</h6>
+                                        <p class="h6 text-success">- Discount: <span class="text-success">${{discount|floatformat:2}}</span></p>
                                         {% endif %}
-                                        <h4 class="mt-4"><strong>Grand Total: ${{grand_total|floatformat:2}}</strong></h4>
+                                        <div class="d-flex justify-content-lg-end justify-content-xs-center g-0 m-0">
+                                            <hr class="w-25 align-middle">
+                                        </div>
+                                        <h3 class="mt-2"><strong>Grand Total: <span class="text-success">${{grand_total|floatformat:2}}</span></strong></h3>
                                     </td>
                                 </tr>
                                 <tr>
