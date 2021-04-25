@@ -12,7 +12,7 @@
 
 {% block content %}
 
-    <div class="container-fluid g-0 h-100" id="home-hero">
+    <div class="container-fluid g-0 h-100 infront" id="home-hero">
         <div class="row h-100">
             <div class="col-12 col-sm-12 col-md-6 col-lg-7 my-auto">
                 <h1 class="display-4 logo-font text-black text-center">
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <div class="container-fluid g-0 m-0 bg-business">
+    <div class="container-fluid g-0 m-0" id="bg-business">
         <div class="row h-100">
             <div class="col-12 col-sm-10 offset-sm-1 col-lg-7 offset-lg-0 relative" id="whyChooseUs">
                 <div class="haze-white"></div>
@@ -83,7 +83,7 @@
                         <div class="col-6 border-right">
                             <div class="row py-5">
                                 <!--Icon - Text Rows-->
-                                <div class="row chooseItems">
+                                <div class="row chooseItems" id="viewSEO">
                                     <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
                                         <i class="h1 text-success fab fa-searchengin"></i>
                                     </div>
@@ -92,7 +92,7 @@
                                         <p class="small text-black">SEO Friendly Websites</p>
                                     </div>
                                 </div>
-                                <div class="row chooseItems">
+                                <div class="row chooseItems" id="viewSpeed">
                                     <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
                                         <i class="h1 text-success fas fa-tachometer-alt"></i>
                                     </div>
@@ -101,7 +101,7 @@
                                         <p class="small text-black">Website Performance</p>
                                     </div>
                                 </div>
-                                <div class="row chooseItems">
+                                <div class="row chooseItems" id="viewQuality">
                                     <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
                                         <i class="h1 text-success fas fa-award"></i>
                                     </div>
@@ -115,7 +115,7 @@
                         <!-- Text -->
                         <div class="col-6">
                             <div class="row py-5">
-                                <div class="row chooseItems">
+                                <div class="row chooseItems" id="viewCode">
                                     <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
                                         <i class="h1 text-success fas fa-laptop-code"></i>
                                     </div>
@@ -124,7 +124,7 @@
                                         <p class="small text-black">Custom Coding</p>
                                     </div>
                                 </div>
-                                <div class="row chooseItems">
+                                <div class="row chooseItems" id="viewCost">
                                     <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
                                         <i class="h1 text-success fas fa-dollar-sign"></i>
                                     </div>
@@ -133,7 +133,7 @@
                                         <p class="small text-black">Cost Efficiency</p>
                                     </div>
                                 </div>
-                                <div class="row chooseItems">
+                                <div class="row chooseItems" id="viewRevisions">
                                     <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
                                         <i class="h1 text-success fas fa-redo"></i>
                                     </div>
@@ -150,7 +150,55 @@
             <div class="col-12 g-0 col-sm-10 offset-sm-1 col-lg-5 offset-lg-0 relative">
                 <div class="haze-black"></div>
                 <div class="infront relative text-center my-auto mx-auto h-100" id="rightHomeCol">
-                    
+                    <div class="col-10 offset-1" id="seo">
+                        <h2 class="logo-text text-success">Search Engine Optimization</h2>
+                        <hr class="mx-auto w-50">
+                        <p class="text-black plain-text">
+                            We develop websites that not only look great, but perform great on search engines. This factor 
+                            means that our websites will generate quality traffic, through multiple search engines.
+                        </p>
+                    </div>
+                    <div class="col-10 offset-1" id="speed">
+                        <h2 class="logo-text text-success">Website Performance</h2>
+                        <hr class="mx-auto w-50">
+                        <p class="text-black plain-text">
+                            Due to custom coding, we don't rely on bulky website plugins or other features that will hurt your 
+                            website speed and user experience. This means that our websites will help create businesses that will 
+                            generate lower bouce rates, whilst increasing sales per user.
+                        </p>
+                    </div>
+                    <div class="col-10 offset-1" id="quality">
+                        <h2 class="logo-text text-success">Website Quality</h2>
+                        <hr class="mx-auto w-50">
+                        <p class="text-black plain-text">
+                            As our websites are fully customized, your new website will be created specific to your needs. This means 
+                            your website will be individually tailord and provide a higher qualiity product when compared to "generic websites".
+                        </p>
+                    </div>
+                    <div class="col-10 offset-1" id="code">
+                        <h2 class="logo-text text-success">Custom Coding</h2>
+                        <hr class="mx-auto w-50">
+                        <p class="text-black plain-text">
+                            Depending on the needs of your website or project, we will create the custom code to ensure your 
+                            new website has all the tools needed to function perfectly. 
+                        </p>
+                    </div>
+                    <div class="col-10 offset-1" id="cost">
+                        <h2 class="logo-text text-success">Cost Efficiency</h2>
+                        <hr class="mx-auto w-50">
+                        <p class="text-black plain-text">
+                            When comparing our services to web development agencies, or to the costs of hiring a team of developers, our 
+                            prices will ultimately save you money. 
+                        </p>
+                    </div>
+                    <div class="col-10 offset-1" id="revisions">
+                        <h2 class="logo-text text-success">Revision</h2>
+                        <hr class="mx-auto w-50">
+                        <p class="text-black plain-text">
+                            All of our plans come with unlimited revisions, this means that should you want a specific item changed, or 
+                            removed, our developers are on standby to fix your website exactly how you want it.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -238,8 +286,55 @@
     </div>
 
 {% endblock %}
-{% block postloadjs %}
+{% block postloadjs %} 
+    {{ block.super }}
     <script type="text/javascript">
+        $(document).ready(function(){
+            $("#seo").hide();
+            $("#speed").hide();
+            $("#quality").hide();
+            $("#code").hide();
+            $("#cost").hide();
+            $("#revisions").hide();
+        })
+
+        $("#viewSEO").mouseenter(function(){
+            $("#seo").show(1000);
+        })
+        $("#viewSpeed").mouseenter(function(){
+            $("#speed").show(1000);
+        })
+        $("#viewQuality").mouseenter(function(){
+            $("#quality").show(1000);
+        })
+        $("#viewCode").mouseenter(function(){
+            $("#code").show(1000);
+        })
+        $("#viewCost").mouseenter(function(){
+            $("#cost").show(1000);
+        })
+        $("#viewRevisions").mouseenter(function(){
+            $("#revisions").show(1000);
+        })
+
+        $("#viewSEO").mouseleave(function(){
+            $("#seo").hide(500);
+        })
+        $("#viewSpeed").mouseleave(function(){
+            $("#speed").hide(500);
+        })
+        $("#viewQuality").mouseleave(function(){
+            $("#quality").hide(500);
+        })
+        $("#viewCode").mouseleave(function(){
+            $("#code").hide(500);
+        })
+        $("#viewCost").mouseleave(function(){
+            $("#cost").hide(500);
+        })
+        $("#viewRevisions").mouseleave(function(){
+            $("#revisions").hide(500);
+        })
     // Typing Effect
         let TxtType = function(el, toRotate, period) {
             this.toRotate = toRotate;
@@ -304,5 +399,6 @@
             $(this).find("i").addClass('text-success');
             $(this).find(".chooseHeading").addClass('text-success');
         })
-</script>
+
+    </script>
 {% endblock %}

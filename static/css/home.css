@@ -5,7 +5,9 @@
   background: url('../../media/ipad.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: scroll;
   width: 100%;
+  max-height: 100%;
   opacity: 0.8;
   margin: 0;
   padding: 0;

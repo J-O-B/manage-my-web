@@ -50,7 +50,7 @@ def remove_from_cart(request, item_id):
         return HttpResponse(status=200)
 
     except Exception as e:
-        messages.error(request, f'Error Removing Item {e}')
+        messages.error(request, f'Error Removing Item: {e}')
         return HttpResponse(status=500)
 
 
@@ -61,7 +61,7 @@ def add_to_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
-    try: 
+    try:
         if item_id in list(cart.keys()):
             cart[item_id] += quantity
             messages.success(
