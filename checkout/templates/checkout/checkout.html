@@ -30,49 +30,51 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-lg-6 order-lg-last mb-5">
+            <div class="col-12 col-lg-6 order-lg-last mb-5" id="orderInformation">
                 <p class="text-muted">Order Summary ({{ product_count }} items)</p>
                 <div class="row">
                     <div class="col-7 offset-2">
-                        <p class="mb-1 mt-0 small text-muted">Item</p>
+                        <p class="mb-1 mt-0 mx-3 small text-muted">Item</p>
                     </div>
                     <div class="col-3 text-end">
                         <p class="mb-1 mt-0 small text-muted">Subtotal</p>
                     </div>
                 </div>
-                {% for item in cart_items %}
-                    <div class="row">
-                        <div class="col-2 mb-1">
-                            <a href="{% url 'product_detail' item.product.id %}">
-                                {% if item.product.image1 %}
-                                    <img src="{{ item.product.image1.url }}" alt="{{ product.name }}" class="w-100">
+                <div class="row contain-cart-items">
+                    {% for item in cart_items %}
+                        <div class="row g-0">
+                            <div class="col-2 mb-1 checkoutImage">
+                                <a href="{% url 'product_detail' item.product.id %}">
+                                    {% if item.product.image1 %}
+                                        <img src="{{ item.product.image1.url }}" alt="{{ product.name }}" class="w-100">
+                                    {% else %}
+                                        <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }}" class="w-100">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="col-7">
+                                <p class="my-0 mx-4"><strong>{{ item.product.name }}</strong></p>
+                                {% if item.product.plan == 2 %}
+                                    <p class="my-0 mx-4 small">1 Year Subscription</p>
                                 {% else %}
-                                    <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }}" class="w-100">
+                                    <p class="my-0 mx-4 small">Qty: {{item.quantity}}</p>
                                 {% endif %}
-                            </a>
+                            </div>
+                            <div class="col-3 text-end px-3">
+                                <p class="my-0 small text-muted text-end">
+                                    ${{ item.product.price | calc_subtotal:item.quantity }}
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-7">
-                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            {% if item.product.plan == 2 %}
-                                <p class="my-0 small">1 Year Subscription</p>
-                            {% else %}
-                                <p class="my-0 small">Qty: {{item.quantity}}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col-3 text-end">
-                            <p class="my-0 small text-muted">
-                                ${{ item.product.price | calc_subtotal:item.quantity }}
-                            </p>
-                        </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
                 <hr class="my-0">
                 <div class="row text-black text-end">
                     <div class="col-7 offset-2">
                         <p class="my-0">Order Total:</p>
                         <p class="my-0 small">+ Tax <span class="small text-muted">({{tax_rate | floatformat:0 }}%):</span></p>
                         {% if discount > 0 %}
-                        <p class="my-0 small">Discount:</p>
+                        <p class="my-0 small">- Discount <span class="small text-muted">(10%):</span></p>
                         {% endif %}
                         <div class="g-0 m-0 p-0 d-flex justify-content-end">
                             <hr class="w-25">
@@ -83,30 +85,33 @@
                         <p class="my-0">€{{ total | floatformat:2 }}</p>
                         <p class="my-0 text-danger small">€{{ tax | floatformat:2 }}</p>
                         {% if discount > 0 %}
-                        <p class="my-0 text-success small">€{{ discount | floatformat:2 }} (10%)</p>
+                        <p class="my-0 text-success small">€{{ discount | floatformat:2 }}</p>
                         {% endif %}
                         <hr>
                         <p class="my-0"><strong>€{{grand_total | floatformat:2 }}</strong></p>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-6" id="checkoutFormDiv">
                 <p class="text-muted">Please fill out the form below to complete your order</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
-                    <fieldset class="rounded px-3 mb-5">
+                    <fieldset class="rounded px-3 mb-5 detailsSet">
                         <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
                         {{ order_form.full_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
                         {{ order_form.phone_number | as_crispy_field }}
                     </fieldset>
-                    <fieldset class="rounded px-3 mb-5">
+                    <fieldset class="rounded px-3 mb-5 billingSet">
                         <legend class="fieldset-label small text-black px-2 w-auto">Billing</legend>
                         {{ order_form.country | as_crispy_field }}
                         {{ order_form.town_or_city | as_crispy_field }}
                         {{ order_form.street_address1 | as_crispy_field }}
                         {{ order_form.street_address2 | as_crispy_field }}
                         {{ order_form.postcode | as_crispy_field }}
+                        {% if subscription %}
+                            <input type="checkbox" name="subscription" placeholder="subscription" class="hidden" id="id_subscription" checked>
+                        {% endif %}
                         <div class="form-check form-check-inline float-end mr-0">
                             {% if user.is_authenticated %}
                                 <label for="id-save-info" class="form-check-label">Save this information to my profile. (*No Card Information Saved)</label>
@@ -152,4 +157,20 @@
         </div>
     </div>
 
+{% endblock %}
+{% block postloadjs %}
+{{block.super}}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            equalizeHeight();
+        })
+        function equalizeHeight(){
+            let height = $('.billingSet').height() + $('.detailsSet').height();
+            console.log(height);
+            $('.contain-cart-items').css('height', height);
+        }
+    </script>
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
