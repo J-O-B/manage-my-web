@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
+from django.contrib import messages
 
 
 currentDate = datetime.now()
@@ -30,6 +31,7 @@ def cart_contents(request):
                 subscription = True
 
         total += quantity * product.price
+
         product_count += quantity
         cart_items.append({
             'item_id': item_id,
