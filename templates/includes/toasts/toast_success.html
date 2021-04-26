@@ -18,7 +18,7 @@
         </div>
         {% if grand_total %}
             <p class="logo-font bg-white text-black py-1">Your Cart ({{ product_count }})</p>
-            <div class="bag-notification-wrapper">
+            <div class="cart-notification-wrapper">
                 {% for item in cart_items %}
                     <div class="row">
                         <div class="col-3 my-1">
@@ -30,12 +30,18 @@
                         </div>
                         <div class="col-9">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                            <p class="my-0 small text-muted">{% if item.product.plan == 2 %}{{ item.quantity }} Year{% else %}Qty: {{ item.quantity }}{%endif%}</p>
                         </div>
                     </div>
                 {% endfor %}
                 <div class="row">
                     <div class="col-12">
+                        {% if subscription %}
+                        <p class="text-center">
+                            <span class="text-success">10% Discount Applied</span><br>
+                            <span class="small">*Subscription Saving Offer</span>
+                        </p>
+                        {% endif %}
                         <p class="text-end small">Total (incl. tax): $<u><em>{{grand_total|floatformat:2}}</em></u></p>
                     </div>
                 </div>

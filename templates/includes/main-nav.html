@@ -4,7 +4,7 @@
             <a class="logo-font text-black font-weight-bold nav-link mx-5 hover-success" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products
             </a>
-            <div class="dropdown-menu bg-white border-0" aria-labelledby="all-products-link">
+            <div class="dropdown-menu bg-white border-0 px-5 menu-border" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> By Price</a>
                 <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> By Rating</a>
                 <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> By Category</a>
@@ -16,7 +16,7 @@
             <a class="logo-font text-success font-weight-bold nav-link text-black mx-5 hover-success" href="#" id="webdesign-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Web Design
             </a>
-            <div class="dropdown-menu bg-white border-0" aria-labelledby="webdesign-nav">
+            <div class="dropdown-menu bg-white border-0 px-5 menu-border" aria-labelledby="webdesign-nav">
                 <a href="{% url 'products' %}?category=personal" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Personal</a>
                 <a href="{% url 'products' %}?category=business" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Business</a>
                 <a href="{% url 'products' %}?category=ecommerce" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> eCommerce</a>
@@ -28,7 +28,7 @@
             <a class="logo-font text-success font-weight-bold nav-link text-black mx-5 hover-success" href="#" id="seo-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 SEO
             </a>
-            <div class="dropdown-menu bg-white border-0" aria-labelledby="seo-nav">
+            <div class="dropdown-menu bg-white border-0 px-5 menu-border" aria-labelledby="seo-nav">
                 <a href="{% url 'products' %}?category=report" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> SEO Reports</a>
                 <a href="{% url 'products' %}?category=technical" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Technical SEO</a>
                 <a href="{% url 'products' %}?category=onpage" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> On Page SEO</a>
@@ -41,7 +41,7 @@
             <a class="logo-font text-success font-weight-bold nav-link text-black mx-5 hover-success" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 New Offers
             </a>
-            <div class="dropdown-menu bg-white border-0" aria-labelledby="specials-link">
+            <div class="dropdown-menu bg-white border-0 px-5 menu-border" aria-labelledby="specials-link">
                 <a href="{% url 'products' %}?sort=category" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> New Additions</a>
                 <a href="{% url 'products' %}?bargains" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Bargains</a>
                 <a href="{% url 'products' %}?on_sale" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> On Sale</a>

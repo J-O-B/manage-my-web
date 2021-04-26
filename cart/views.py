@@ -66,11 +66,13 @@ def add_to_cart(request, item_id):
             if cart[item_id] + quantity > product.available:
                 cart[item_id] = product.available
                 messages.info(
-                    request, f'Limited {product.name} Quantity To {cart[item_id]}')
+                    request, f'Updated {product.name} Quantity To \
+                        {cart[item_id]}')
             else:
                 cart[item_id] += quantity
                 messages.success(
-                    request, f'Updated {product.name} Quantity To {cart[item_id]}')
+                    request, f'Updated {product.name} Quantity To \
+                        {cart[item_id]}')
         else:
             cart[item_id] = quantity
             messages.success(request, f'Added {product.name} To Your Cart.')

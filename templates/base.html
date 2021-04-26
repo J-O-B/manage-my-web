@@ -125,10 +125,18 @@
                 </div>
                 <div class="row bg-white fixed-sm-top" id="secRow">
                     <nav class="navbar navbar-expand-lg navbar-light w-100">
-                        <button class="navbar-toggler text-black" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="d-lg-none">
+                        <div class="row d-lg-none w-100">
+                            <div class="col-4">
+                                <button class="navbar-toggler text-black" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </div>
+                            <div class="col-8 text-end">
+                                <h2 class="logo-font text-success">Manage My Web</h2>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 d-lg-none d-flex justify-content-around">
                             {% include 'includes/mobile-top-header.html' %}
                         </div>
                         {% include 'includes/main-nav.html' %}

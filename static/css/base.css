@@ -229,6 +229,14 @@ h6,
 .hover-success:hover{
     color: #28a745 !important;
 }
+.hover-white:hover{
+    color: #fff;
+    text-shadow: 
+        1px 0px 2px #000,
+        -1px -0px 2px #000,
+        0px 1px 2px #000,
+        0px -1px 2px #000;
+}
 
 .border-black{
     border: 1px solid #000 !important;
@@ -289,7 +297,7 @@ h6,
 }
 
 .message-container{
-    position: fixed;
+    position: absolute;
     top: 72px;
     right: 15px;
     z-index: 99999999999;
@@ -325,7 +333,17 @@ h6,
 .chooseItems:hover{
     cursor: pointer;
 }
-
+.cart-notification-wrapper{
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.menu-border{
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    box-shadow: 5px 5px 10px #000;
+}
 /* ----------- Messages Styling -------------- */
 .arrow-up{
     width: 0;
