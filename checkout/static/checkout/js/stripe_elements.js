@@ -43,6 +43,7 @@ card.addEventListener('change', function (event) {
 });
 
 // Handle form submit
+/*
 let form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
@@ -107,5 +108,5 @@ form.addEventListener('submit', function(ev) {
     }).fail(function () {
         // just reload the page, the error will be in django messages
         location.reload();
-    })
-});
+    }) 
+}); */

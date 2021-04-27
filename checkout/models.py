@@ -4,6 +4,12 @@ from django.conf import settings
 
 from products.models import Product
 import uuid
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
+
+now = datetime.now()
+next_year = now + relativedelta(years=1)
 
 
 class Order(models.Model):
@@ -46,6 +52,8 @@ class Order(models.Model):
 
     subscription = models.BooleanField(null=False, default=False)
 
+    expiry = models.DateField(null=False, default=now)
+
     def _generate_order_number(self):
         # Generate a random, unique order number using UUID
         return uuid.uuid4().hex.upper()
@@ -60,6 +68,11 @@ class Order(models.Model):
         else:
             self.order_total = 0
             self.grand_total = 0
+        self.save()
+
+    def update_subscription(self):
+        product = OrderLineItem.product
+        print(product)
         self.save()
 
     def save(self, *args, **kwargs):
@@ -77,15 +90,21 @@ class OrderLineItem(models.Model):
         Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE)
-    subscription = models.BooleanField(null=False, blank=False, default=False)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):
         # Override the original save method
         self.lineitem_total = self.product.price * self.quantity
+        product = Product.objects.get(id=self.product.id)
+        print(product.plan)
+        if product.plan == 2:
+            self.order.subscription = True
+            self.order.expiry = next_year
+        else:
+            self.order.subscription = False
         super().save(*args, **kwargs)
-    
+
     def __str__(self):
         return f'Product: {self.product.name} on order \
             {self.order.order_number}'
