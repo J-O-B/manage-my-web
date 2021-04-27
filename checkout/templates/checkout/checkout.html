@@ -111,6 +111,8 @@
                         {{ order_form.postcode | as_crispy_field }}
                         {% if subscription %}
                             <input type="checkbox" name="subscription" placeholder="subscription" class="hidden" id="id_subscription" checked>
+                        {% else %}
+                            <input type="checkbox" name="subscription" placeholder="subscription" class="hidden" id="id_subscription">
                         {% endif %}
                         <div class="form-check form-check-inline float-end mr-0">
                             {% if user.is_authenticated %}
@@ -166,7 +168,6 @@
         })
         function equalizeHeight(){
             let height = $('.billingSet').height() + $('.detailsSet').height();
-            console.log(height);
             $('.contain-cart-items').css('height', height);
         }
     </script>

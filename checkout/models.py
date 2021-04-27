@@ -44,7 +44,7 @@ class Order(models.Model):
     grand_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
 
-    subscription = models.BooleanField(default=False)
+    subscription = models.BooleanField(null=False, default=False)
 
     def _generate_order_number(self):
         # Generate a random, unique order number using UUID
@@ -52,10 +52,14 @@ class Order(models.Model):
 
     def update_total(self):
         # Update grand total each time a line item is added, accounting for tax
-        self.order_total = self.lineitems.aggrigate(Sum('lineitem_total'))['lineitem_total__sum']
-        if self.subscription:
-            self.order_total = self.order_total * 0.9
-        self.grand_total = self.order_total * settings.TAX_RATE
+        self.order_total = self.lineitems.aggregate(
+            Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        if self.order_total > 0:
+            self.grand_total = self.order_total + (
+                self.order_total * settings.TAX_PERCENTAGE / 100)
+        else:
+            self.order_total = 0
+            self.grand_total = 0
         self.save()
 
     def save(self, *args, **kwargs):

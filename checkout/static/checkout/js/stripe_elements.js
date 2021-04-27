@@ -36,11 +36,7 @@ card.addEventListener('change', function (event) {
                 <i class="fas fa-times"></i>
             </span>
             <span>${event.error.message}</span>`;
-        $(errorDiv).html(`
-        <span class="icon" role="alert">
-            <i class="fas fa-times"></i>
-        </span>
-        <span>${event.error.message}</span>`);
+        $(errorDiv).html(html);
     } else {
         errorDiv.textContent = '';
     }
@@ -57,6 +53,10 @@ form.addEventListener('submit', function(ev) {
     $('#loading-overlay').fadeToggle(100);
 
     let saveInfo = Boolean($('#id-save-info').attr('checked'));
+    
+    // Check if user has a subscription in cart
+    let isSubscription = Boolean($('#id_subscription').attr('checked'));
+    
     // From using {% csrf_token %} in the form
     let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     let postData = {
@@ -83,8 +83,7 @@ form.addEventListener('submit', function(ev) {
                 }
             },
             subscription: {
-                subscription: $('#id_subscription').is(":checked"),
-
+                subscription: isSubscription,
             },
         }).then(function(result) {
             if (result.error) {
