@@ -109,11 +109,6 @@
                         {{ order_form.street_address1 | as_crispy_field }}
                         {{ order_form.street_address2 | as_crispy_field }}
                         {{ order_form.postcode | as_crispy_field }}
-                        {% if subscription %}
-                            <input type="checkbox" name="subscription" placeholder="subscription" class="hidden" id="id_subscription" checked>
-                        {% else %}
-                            <input type="checkbox" name="subscription" placeholder="subscription" class="hidden" id="id_subscription">
-                        {% endif %}
                         <div class="form-check form-check-inline float-end mr-0">
                             {% if user.is_authenticated %}
                                 <label for="id-save-info" class="form-check-label">Save this information to my profile. (*No Card Information Saved)</label>

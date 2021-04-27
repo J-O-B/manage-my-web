@@ -37,8 +37,6 @@ def checkout(request):
             "town_or_city": request.POST['town_or_city'],
             "street_address1": request.POST['street_address1'],
             "street_address2": request.POST['street_address2'],
-            "subscription": subscription,
-            "expiry": expiry,
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
@@ -52,33 +50,15 @@ def checkout(request):
                             product=product,
                             quantity=item_data,
                         )
-                        if subscription:
-                            order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                quantity=item_data,
-                                subscription=subscription,
-                                expiry=expiry,
-                            )
                         order_line_item.save()
                     else:
-                        for subscription, quantity in (item_data['subscription'].items()):
+                        for quantity in item_data.items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
                                 quantity=quantity,
                             )
-                        if subscription:
-                            order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                quantity=quantity,
-                                subscription=subscription,
-                                expiry=expiry,
-                            )
-                            order_line_item.save()
-                        else:
-                            order_line_item.save()
+                        order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your cart wasn't found \
