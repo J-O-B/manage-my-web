@@ -54,7 +54,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(23, 162,184, .85);
+    background: rgb(2,117,216,.85);
     z-index: 9999;
 }
 
@@ -64,4 +64,10 @@
     justify-content: center;
     margin: 0;
     height: 100%;
+}
+.bg-checkout-success{
+    background: url("../../../../media/checkout-success.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
 }

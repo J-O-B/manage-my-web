@@ -43,10 +43,12 @@ class Order(models.Model):
 
     order_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
+    
+    tax = models.DecimalField(
+        max_digits=10, decimal_places=2, null=False, default=0)
 
     grand_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
-
 
     def _generate_order_number(self):
         # Generate a random, unique order number using UUID
@@ -59,9 +61,11 @@ class Order(models.Model):
         if self.order_total > 0:
             self.grand_total = self.order_total + (
                 self.order_total * settings.TAX_PERCENTAGE / 100)
+            self.tax = self.order_total * settings.TAX_PERCENTAGE / 100
         else:
             self.order_total = 0
             self.grand_total = 0
+            self.tax = 0
         self.save()
 
     def save(self, *args, **kwargs):

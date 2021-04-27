@@ -110,6 +110,11 @@
                         {{ order_form.street_address2 | as_crispy_field }}
                         {{ order_form.postcode | as_crispy_field }}
                         <div class="form-check form-check-inline float-end mr-0">
+                            {% if subscription %}
+                                <input type="checkbox" class="hidden" name="subscription" id="subscription" checked>
+                            {% else %}
+                            <input type="checkbox" class="hidden" name="subscription" id="subscription">
+                            {% endif %}
                             {% if user.is_authenticated %}
                                 <label for="id-save-info" class="form-check-label">Save this information to my profile. (*No Card Information Saved)</label>
                                 <input type="checkbox" class="form-check-input ml-2 mr-0" id="id-save-info" name="save-info" checked>
@@ -152,6 +157,13 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div id="loading-overlay">
+        <h2 class="text-light logo-font loading-spinner">
+            <span class="logo">
+                <i class="fas fa-3x fa-sync-alt fa-spin text-success"></i>
+            </span>
+        </h2>
     </div>
 
 {% endblock %}

@@ -1,5 +1,7 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import (render, redirect, reverse, 
+                              get_object_or_404, HttpResponse)
 from django.contrib import messages
+from django.views.decorators.http import require_POST
 from django.conf import settings
 from .forms import OrderForm
 from products.models import Product
@@ -10,6 +12,25 @@ from dateutil.relativedelta import relativedelta
 
 import stripe
 from datetime import datetime
+import json
+
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+
+        stripe.PaymentIntent.modify(pid, metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
@@ -21,12 +42,6 @@ def checkout(request):
     if request.method == "POST":
         cart = request.session.get('cart', {})
         current_cart = cart_contents(request)
-        if current_cart['subscription']:
-            subscription = True
-            expiry = next_year
-        else:
-            subscription = False
-            expiry = today
 
         form_data = {
             "full_name": request.POST['full_name'],
@@ -85,12 +100,6 @@ def checkout(request):
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
 
-        if current_cart['subscription']:
-            today = datetime.now()
-            end_subscription = today + relativedelta(years=1)
-        else:
-            today = datetime.now()
-            end_subscription = today
         if User:
             username = None
             email = None
@@ -103,12 +112,6 @@ def checkout(request):
             intent = stripe.PaymentIntent.create(
                 amount=stripe_total,
                 currency=settings.STRIPE_CURRENCY,
-                metadata={
-                    "user": username,
-                    "email": email,
-                    "purchase": f'Purchase: {today}, \
-                        Expiry: {end_subscription}'
-                    },
                 receipt_email=email,
             )
         else:

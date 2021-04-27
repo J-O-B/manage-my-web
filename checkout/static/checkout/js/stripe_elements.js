@@ -43,7 +43,7 @@ card.addEventListener('change', function (event) {
 });
 
 // Handle form submit
-/*
+
 let form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
@@ -54,10 +54,7 @@ form.addEventListener('submit', function(ev) {
     $('#loading-overlay').fadeToggle(100);
 
     let saveInfo = Boolean($('#id-save-info').attr('checked'));
-    
-    // Check if user has a subscription in cart
-    let isSubscription = Boolean($('#id_subscription').attr('checked'));
-    
+        
     // From using {% csrf_token %} in the form
     let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     let postData = {
@@ -83,9 +80,6 @@ form.addEventListener('submit', function(ev) {
                     }
                 }
             },
-            subscription: {
-                subscription: isSubscription,
-            },
         }).then(function(result) {
             if (result.error) {
                 let errorDiv = document.getElementById('card-errors');
@@ -109,4 +103,4 @@ form.addEventListener('submit', function(ev) {
         // just reload the page, the error will be in django messages
         location.reload();
     }) 
-}); */
+});
