@@ -6,7 +6,8 @@ from django.conf import settings
 from .forms import OrderForm
 from products.models import Product
 from .models import OrderLineItem, Order
-from cart.contexts import cart_contents
+from django.utils.safestring import mark_safe
+from cart.contexts import cart_contents, user_subscription
 from django.contrib.auth.models import User
 from dateutil.relativedelta import relativedelta
 
@@ -25,6 +26,7 @@ def cache_checkout_data(request):
             'cart': json.dumps(request.session.get('cart', {})),
             'save_info': request.POST.get('save_info'),
             'username': request.user,
+            'subscription': request.POST.get('subscription_product'),
         })
         return HttpResponse(status=200)
     except Exception as e:
@@ -34,6 +36,11 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """
+    The checkout view to handle the page, its variables,
+    as well as provide inputs to users that can be handed to 
+    stripe for payment processing.
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     today = datetime.now()
@@ -86,8 +93,8 @@ def checkout(request):
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, "There was an error with your form. \
-                Please check all your information is correct.")
+            messages.error(request, mark_safe("There was an error with your form.<br/> \
+                Please check all your information is correct."))
     else:
         cart = request.session.get('cart', {})
         if not cart:
@@ -141,10 +148,10 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}. \
-        Thank You.')
+    messages.success(request, mark_safe(f'<strong>Order Successfully Processed!</strong><br><br> \
+        <small>Your order number is: <br><em>{order_number}</em></small>.<br><br>A confirmation \
+        email will be sent to {order.email}.<br><br> \
+        <strong>Thank You.</strong>'))
 
     if 'cart' in request.session:
         del request.session['cart']

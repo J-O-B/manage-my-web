@@ -111,9 +111,9 @@
                         {{ order_form.postcode | as_crispy_field }}
                         <div class="form-check form-check-inline float-end mr-0">
                             {% if subscription %}
-                                <input type="checkbox" class="hidden" name="subscription" id="subscription" checked>
+                                <input type="checkbox" class="onepx" name="subscription-product" id="id-subscription-product" checked>
                             {% else %}
-                            <input type="checkbox" class="hidden" name="subscription" id="subscription">
+                                <input type="checkbox" class="onepx" name="subscription-product" id="id-subscription-product">
                             {% endif %}
                             {% if user.is_authenticated %}
                                 <label for="id-save-info" class="form-check-label">Save this information to my profile. (*No Card Information Saved)</label>

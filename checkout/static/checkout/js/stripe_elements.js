@@ -54,6 +54,7 @@ form.addEventListener('submit', function(ev) {
     $('#loading-overlay').fadeToggle(100);
 
     let saveInfo = Boolean($('#id-save-info').attr('checked'));
+    let subscriber = Boolean($('#id-subscription-product').attr('checked'));
         
     // From using {% csrf_token %} in the form
     let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
@@ -61,6 +62,7 @@ form.addEventListener('submit', function(ev) {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
         'save_info': saveInfo,
+        'subscriber': subscriber,
     };
     let url = '/checkout/cache_checkout_data/';
 
@@ -100,7 +102,7 @@ form.addEventListener('submit', function(ev) {
             }
         });
     }).fail(function () {
-        // just reload the page, the error will be in django messages
+        // Reload the page, the error will be in django messages
         location.reload();
     }) 
 });
