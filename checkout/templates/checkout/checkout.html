@@ -109,12 +109,14 @@
                         {{ order_form.street_address1 | as_crispy_field }}
                         {{ order_form.street_address2 | as_crispy_field }}
                         {{ order_form.postcode | as_crispy_field }}
+                        <div class="onepx">
+                        {% if subscription %}
+                            <input type="checkbox" name="subscription" placeholder="subscription" class="stripe-style-input checkboxinput form-check-input" id="id_subscription" checked>
+                        {% else %}
+                            <input type="checkbox" name="subscription" placeholder="subscription" class="stripe-style-input checkboxinput form-check-input" id="id_subscription">
+                        {% endif %}
+                        </div>
                         <div class="form-check form-check-inline float-end mr-0">
-                            {% if subscription %}
-                                <input type="checkbox" class="onepx" name="subscription-product" id="id-subscription-product" checked>
-                            {% else %}
-                                <input type="checkbox" class="onepx" name="subscription-product" id="id-subscription-product">
-                            {% endif %}
                             {% if user.is_authenticated %}
                                 <label for="id-save-info" class="form-check-label">Save this information to my profile. (*No Card Information Saved)</label>
                                 <input type="checkbox" class="form-check-input ml-2 mr-0" id="id-save-info" name="save-info" checked>

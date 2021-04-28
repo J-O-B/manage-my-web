@@ -1,5 +1,6 @@
 from django import forms
 from .models import Order
+from cart.contexts import cart_contents
 
 
 class OrderForm(forms.ModelForm):
@@ -25,6 +26,7 @@ class OrderForm(forms.ModelForm):
             "street_address2": "Address Line 2",
             "postcode": "Post Code",
         }
+        
         self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if self.fields[field].required:

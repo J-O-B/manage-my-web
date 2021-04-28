@@ -10,20 +10,6 @@ from django.contrib import messages
 currentDate = datetime.now()
 
 
-def user_subscription(self, request):
-    self.subscription = False
-    self.cart = request.session.get('cart', {})
-
-    for item_id in self.cart.items():
-        print(item_id)
-        product = get_object_or_404(Product, pk=item_id)
-        # Only follow this step if subscription is still False
-        if product.plan == 2:
-            self.subscription = True
-            return str(self.subscription)
-    return str(self.subscription)
-
-
 def cart_contents(request):
 
     cart_items = []

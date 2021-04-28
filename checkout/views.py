@@ -7,7 +7,7 @@ from .forms import OrderForm
 from products.models import Product
 from .models import OrderLineItem, Order
 from django.utils.safestring import mark_safe
-from cart.contexts import cart_contents, user_subscription
+from cart.contexts import cart_contents
 from django.contrib.auth.models import User
 from dateutil.relativedelta import relativedelta
 
@@ -26,7 +26,6 @@ def cache_checkout_data(request):
             'cart': json.dumps(request.session.get('cart', {})),
             'save_info': request.POST.get('save_info'),
             'username': request.user,
-            'subscription': request.POST.get('subscription_product'),
         })
         return HttpResponse(status=200)
     except Exception as e:
@@ -90,6 +89,7 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('cart'))
             request.session['save_info'] = 'save-info' in request.POST
+            request.session['subscriber'] = 'subscription' in request.POST
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]))
         else:
