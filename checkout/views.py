@@ -141,12 +141,11 @@ def checkout(request):
             intent = stripe.PaymentIntent.create(
                 amount=stripe_total,
                 currency=settings.STRIPE_CURRENCY,
-                receipt_email=email,
                 metadata={
                     "name": username,
                     "date": str(today),
                     "subscription": str(subscription),
-                    "expiry": expiry,
+                    "grand_total": total,
                 }
             )
         else:
