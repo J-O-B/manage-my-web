@@ -5,16 +5,12 @@ from .models import OrderLineItem
 
 
 @receiver(post_save, sender=OrderLineItem)
-def update_on_save(sender, instance, created, **kwargs):
+def update_on_save(sender, instance, created, *args, **kwargs):
     """
     Update order total on lineitem update or create
     """
     instance.order.update_total()
-    subscription = sender.subscription
-    if subscription:
-        instance.order.update_subscription(bool="yes")
-    else:
-        instance.order.update_subscription(bool="no")
+    instance.order.update_subscription()
 
 
 @receiver(post_delete, sender=OrderLineItem)
