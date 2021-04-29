@@ -50,7 +50,7 @@ class Order(models.Model):
     grand_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
 
-    subscription = models.BooleanField(default=False)
+    subscription = models.BooleanField(default=False, null=True, editable=True)
 
     def _generate_order_number(self):
         # Generate a random, unique order number using UUID
@@ -73,10 +73,11 @@ class Order(models.Model):
     def update_subscription(self, bool, *args, **kwargs):
         if bool == "yes":
             self.subscription = True
-            self.save()
+            return self.subscription
         else:
             self.subscription = False
-            super().save()
+            return self.subscription
+        self.save()
 
     def save(self, *args, **kwargs):
         # Override the original save method
