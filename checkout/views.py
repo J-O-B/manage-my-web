@@ -21,11 +21,18 @@ def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
+        cart = request.session.get('cart', {})
+        current_cart = cart_contents(request)
+        if current_cart['subscription']:
+            subscription = True
+        else:
+            subscription = False
 
         stripe.PaymentIntent.modify(pid, metadata={
             'cart': json.dumps(request.session.get('cart', {})),
             'save_info': request.POST.get('save_info'),
             'username': request.user,
+            'subscription': subscription,
         })
         return HttpResponse(status=200)
     except Exception as e:
@@ -48,6 +55,10 @@ def checkout(request):
     if request.method == "POST":
         cart = request.session.get('cart', {})
         current_cart = cart_contents(request)
+        if current_cart['subscription']:
+            subscription = True
+        else:
+            subscription = False
 
         form_data = {
             "full_name": request.POST['full_name'],
@@ -58,8 +69,10 @@ def checkout(request):
             "town_or_city": request.POST['town_or_city'],
             "street_address1": request.POST['street_address1'],
             "street_address2": request.POST['street_address2'],
+            "subscription": subscription,
         }
         order_form = OrderForm(form_data)
+        print(order_form)
         if order_form.is_valid():
             order = order_form.save()
             for item_id, item_data in cart.items():
@@ -70,6 +83,7 @@ def checkout(request):
                             order=order,
                             product=product,
                             quantity=item_data,
+                            subscription=subscription,
                         )
                         order_line_item.save()
                     else:
@@ -78,6 +92,7 @@ def checkout(request):
                                 order=order,
                                 product=product,
                                 quantity=quantity,
+                                subscription=subscription,
                             )
                         order_line_item.save()
                 except Product.DoesNotExist:
@@ -89,7 +104,7 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('cart'))
             request.session['save_info'] = 'save-info' in request.POST
-            request.session['subscriber'] = 'subscription' in request.POST
+            request.session['subscription'] = subscription
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]))
         else:
@@ -104,6 +119,13 @@ def checkout(request):
 
         current_cart = cart_contents(request)
         total = current_cart['grand_total']
+        if current_cart['subscription']:
+            subscription = True
+            expiry = str(next_year)
+        else:
+            subscription = False
+            expiry = str(today)
+        date = str(today)
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
 
@@ -120,6 +142,12 @@ def checkout(request):
                 amount=stripe_total,
                 currency=settings.STRIPE_CURRENCY,
                 receipt_email=email,
+                metadata={
+                    "name": username,
+                    "date": str(today),
+                    "subscription": str(subscription),
+                    "expiry": expiry,
+                }
             )
         else:
             intent = stripe.PaymentIntent.create(
@@ -146,6 +174,7 @@ def checkout_success(request, order_number):
     Handle All Successful Checkouts
     """
     save_info = request.session.get('save_info')
+    subscription = request.session.get('subscription')
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.success(request, mark_safe(f'<strong>Order Successfully Processed!</strong><br><br> \
@@ -160,5 +189,6 @@ def checkout_success(request, order_number):
     context = {
         "order": order,
         "save_info": save_info,
+        "subscription": subscription,
     }
     return render(request, template, context)

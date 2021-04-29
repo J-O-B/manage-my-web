@@ -54,7 +54,7 @@ form.addEventListener('submit', function(ev) {
     $('#loading-overlay').fadeToggle(100);
 
     let saveInfo = Boolean($('#id-save-info').attr('checked'));
-    let subscriber = Boolean($('#id-subscription-product').attr('checked'));
+    let subscription = Boolean($('#id-subscription-product').attr('checked'));
         
     // From using {% csrf_token %} in the form
     let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
@@ -62,7 +62,7 @@ form.addEventListener('submit', function(ev) {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
         'save_info': saveInfo,
-        'subscriber': subscriber,
+        'subscription': subscription,
     };
     let url = '/checkout/cache_checkout_data/';
 
@@ -80,6 +80,17 @@ form.addEventListener('submit', function(ev) {
                         city: $.trim(form.town_or_city.value),
                         country: $.trim(form.country.value),
                     }
+                }
+            },
+            shipping: {
+                name: $.trim(form.full_name.value),
+                phone: $.trim(form.phone_number.value),
+                address: {
+                    line1: $.trim(form.street_address1.value),
+                    line2: $.trim(form.street_address2.value),
+                    city: $.trim(form.town_or_city.value),
+                    country: $.trim(form.country.value),
+                    postal_code: $.trim(form.postcode.value),
                 }
             },
         }).then(function(result) {

@@ -42,6 +42,8 @@
                                     <td class="align-middle d-flex align-items-center">
                                         {% if item.product.image1 %}
                                             <img src="{{ item.product.image1.url }}" alt="{{ item.product.name}}" class="mx-auto img-fluid rounded cart-product-image">
+                                        {% else %}
+                                            <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ item.product.name}}" class="mx-auto img-fluid rounded cart-product-image">
                                         {% endif %}
                                     </td>
                                     <td class="w-25 text-center align-middle">
@@ -50,7 +52,7 @@
                                         <p class="my-0 small text-muted">Category: {{item.product.category.friendly_name|title}}</p>
                                     </td>
                                     <td class="align-middle text-center">
-                                        <p class="my-0">${{item.product.price}}</p>
+                                        <p class="my-0">€{{item.product.price}}</p>
                                     </td>
                                     <td class="pt-4 w-25">
                                         <div class="my-0 px-3 text-center">
@@ -96,7 +98,7 @@
                                                                     </button>
                                                                 </div>
                                                             </div>
-                                                            <span class="text-danger topLimitMessage">Limit Reached</span>
+                                                            <span class="text-danger topLimitMessage text-center w-100">Limit Reached</span>
                                                         </div>
                                                     </div>
                                                     <button type="submit" class="hidden updateValue"></button>
@@ -109,7 +111,7 @@
                                         </div>
                                     </td>
                                     <td class="align-middle text-center">
-                                        <p class="my-0 px-1">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                        <p class="my-0 px-1">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                     </td>
                                     <td class="align-middle">
                                         <i class="remove-item fas fa-trash-alt fa-lg text-danger" id="{{ item.product.id }}"></i>
@@ -149,15 +151,15 @@
                             {% endif %}
                                 <tr>
                                     <td colspan="5" class="pt-3 text-center text-lg-end">
-                                        <p class="h6"><strong>Cart Total: <span class="text-primary">${{total|floatformat:2}}</span></strong></p>
-                                        <p class="h6">+ Tax ({{tax_rate|floatformat:0}}%): <span class="text-danger">${{tax|floatformat:2}}</span></p>
+                                        <p class="h6"><strong>Cart Total: <span class="text-primary">€{{total|floatformat:2}}</span></strong></p>
+                                        <p class="h6">+ Tax ({{tax_rate|floatformat:0}}%): <span class="text-danger">€{{tax|floatformat:2}}</span></p>
                                         {% if discount > 0 %}
-                                        <p class="h6 text-success">- Discount: <span class="text-success">${{discount|floatformat:2}}</span></p>
+                                        <p class="h6 text-success">- Discount: <span class="text-success">€{{discount|floatformat:2}}</span></p>
                                         {% endif %}
                                         <div class="d-flex justify-content-lg-end justify-content-xs-center g-0 m-0">
                                             <hr class="w-25 align-middle">
                                         </div>
-                                        <h3 class="mt-2"><strong>Grand Total: <span class="text-success">${{grand_total|floatformat:2}}</span></strong></h3>
+                                        <h3 class="mt-2"><strong>Grand Total: <span class="text-success">€{{grand_total|floatformat:2}}</span></strong></h3>
                                     </td>
                                 </tr>
                                 <tr>

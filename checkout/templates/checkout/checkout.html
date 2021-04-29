@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-3 text-end px-3">
                                 <p class="my-0 small text-muted text-end">
-                                    ${{ item.product.price | calc_subtotal:item.quantity }}
+                                    €{{ item.product.price | calc_subtotal:item.quantity }}
                                 </p>
                             </div>
                         </div>
@@ -109,13 +109,6 @@
                         {{ order_form.street_address1 | as_crispy_field }}
                         {{ order_form.street_address2 | as_crispy_field }}
                         {{ order_form.postcode | as_crispy_field }}
-                        <div class="onepx">
-                        {% if subscription %}
-                            <input type="checkbox" name="subscription" placeholder="subscription" class="stripe-style-input checkboxinput form-check-input" id="id_subscription" checked>
-                        {% else %}
-                            <input type="checkbox" name="subscription" placeholder="subscription" class="stripe-style-input checkboxinput form-check-input" id="id_subscription">
-                        {% endif %}
-                        </div>
                         <div class="form-check form-check-inline float-end mr-0">
                             {% if user.is_authenticated %}
                                 <label for="id-save-info" class="form-check-label">Save this information to my profile. (*No Card Information Saved)</label>
@@ -153,7 +146,7 @@
                             <span class="icon">
                                 <i class="fas fa-exclamation-circle"></i>
                             </span>
-                            <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                            <span>Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong></span>
                         </p>
                     </div>
                 </form>

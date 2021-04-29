@@ -50,7 +50,7 @@ class Order(models.Model):
     grand_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
 
-    subscription = models.BooleanField(default=False, null=False)
+    subscription = models.BooleanField(default=False)
 
     def _generate_order_number(self):
         # Generate a random, unique order number using UUID
@@ -70,6 +70,14 @@ class Order(models.Model):
             self.tax = 0
         self.save()
 
+    def update_subscription(self, bool, *args, **kwargs):
+        if bool == "yes":
+            self.subscription = True
+            self.save()
+        else:
+            self.subscription = False
+            super().save()
+
     def save(self, *args, **kwargs):
         # Override the original save method
         if not self.order_number:
@@ -86,6 +94,7 @@ class OrderLineItem(models.Model):
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
+    subscription = models.BooleanField(default=False)
     lineitem_total = models.DecimalField(
         max_digits=6, decimal_places=2,
         null=False, blank=False, editable=False)
@@ -95,6 +104,10 @@ class OrderLineItem(models.Model):
         Override the original save method to set the lineitem total
         and update the order total.
         """
+        if self.product.plan == 2:
+            self.subscription = True
+        else:
+            self.subscription = False
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 

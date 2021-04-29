@@ -10,6 +10,11 @@ def update_on_save(sender, instance, created, **kwargs):
     Update order total on lineitem update or create
     """
     instance.order.update_total()
+    subscription = sender.subscription
+    if subscription:
+        instance.order.update_subscription(bool="yes")
+    else:
+        instance.order.update_subscription(bool="no")
 
 
 @receiver(post_delete, sender=OrderLineItem)
