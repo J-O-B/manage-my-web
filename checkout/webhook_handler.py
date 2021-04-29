@@ -22,9 +22,7 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
-        cart = intent.metadata.cart
-        save_info = intent.metadata.save_info
-        subscription = intent.metadata.subscription.lower()
+        print(pid)
         return HttpResponse(
             content=f'Intent Webhook Received: {event["type"]}',
             status=200)
