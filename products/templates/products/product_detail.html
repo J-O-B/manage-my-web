@@ -24,7 +24,18 @@
     <div class="container-fluid mt-5">
         <div class="row g-3 m-0">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
-                <div class="image-container my-0">
+                <div class="image-container my-0 relative overflow-hidden">
+                    {% if product.available > 0 and product.available < 5 %}
+                        <div class="last-available-banner">
+                            <p class="logo-font px-5 my-auto">{{product.available}} Available</p>
+                        </div>
+                    {% endif %}
+                    {% if product.available < 1 %}
+                        <div class="last-available-banner">
+                            <p class="logo-font px-5 my-auto">Sold Out</p>
+                        </div>
+                    {% endif %}
+
                     {% if product.image1 %}
                         <a href="{{ product.image1.url }}" target="_blank">
                             <img src="{{ product.image1.url }}" alt="{{ product.name }}" class="card-img-top img-fluid details-top-image">
@@ -170,7 +181,7 @@
                                             </span>
                                             <span class="text-uppercase">Keep Shopping</span>
                                         </a>
-                                        <button type="submit" class="btn btn-primary btn-outline-black rounded-0 text-uppercase mt-5">
+                                        <button type="submit" class="btn btn-primary btn-outline-black rounded-0 text-uppercase mt-5" {% if product.available < 1 %}disabled{%endif%}>
                                             <i class="fas fa-cart-plus fa-lg"></i> 
                                             <span class="text-uppercase">Add To Cart</span>
                                         </button>

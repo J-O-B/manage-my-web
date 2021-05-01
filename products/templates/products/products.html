@@ -93,6 +93,16 @@
                                         <p class="logo-font px-5 my-auto">On Sale</p>
                                     </div>
                                 {% endif %}
+                                {% if product.available > 0 and product.available < 5 %}
+                                    <div class="last-available-banner">
+                                        <p class="logo-font px-5 my-auto">{{product.available}} Available</p>
+                                    </div>
+                                {% endif %}
+                                {% if product.available < 1 %}
+                                    <div class="last-available-banner">
+                                        <p class="logo-font px-5 my-auto">Sold Out</p>
+                                    </div>
+                                {% endif %}
                                 {% if product.image1 %}
                                     <a href="{% url 'product_detail' product.id %}">
                                         <img src="{{ product.image1.url }}" alt="{{ product.name }}" class="card-img-top img-fluid product-img">
@@ -143,38 +153,41 @@
                                             {% endif %}
                                         </div>
                                     </div>
-                                    <div class="row my-0">
-                                        <div class="col-6 text-start">
-                                            <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-info w-100">More Info</a>
+                                    <form action="{% url 'add_to_cart' product.id %}" method="POST" class="form">
+                                    {% csrf_token %}
+                                        <div class="row my-0">
+                                            <div class="col-6 text-start">
+                                                <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-info w-100">More Info</a>
+                                            </div>
+                                            <div class="col-6 text-end">
+                                                <button type="submit" class="btn btn-sm btn-success w-100" {% if product.available < 1 %}disabled{%endif%}>Add To Cart</button>
+                                            </div>
                                         </div>
-                                        <div class="col-6 text-end">
-                                            <a href="#" class="btn btn-sm btn-success w-100">Add To Cart</a>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
 
-                        {% if forloop.counter|divisibleby:1 %}
-                            <div class="col-12 d-sm-none my-3 mx-auto">
-                                <hr class="w-50 mx-auto">
-                            </div>
-                        {% endif %}
-                        {% if forloop.counter|divisibleby:2 %}
-                            <div class="col-12 d-none d-sm-block d-md-block d-lg-none my-3 mx-auto">
-                                <hr class="w-50 mx-auto">
-                            </div>
-                        {% endif %}
-                        {% if forloop.counter|divisibleby:3 %}
-                            <div class="col-12 d-none d-lg-block d-xl-none my-3 mx-auto">
-                                <hr class="w-50 mx-auto">
-                            </div>
-                        {% endif %}
-                        {% if forloop.counter|divisibleby:4 %}
-                            <div class="col-12 d-none d-xl-block my-3 mx-auto">
-                                <hr class="w-50 mx-auto">
-                            </div>
-                        {% endif %}
+                            {% if forloop.counter|divisibleby:1 %}
+                                <div class="col-12 d-sm-none my-3 mx-auto">
+                                    <hr class="w-50 mx-auto">
+                                </div>
+                            {% endif %}
+                            {% if forloop.counter|divisibleby:2 %}
+                                <div class="col-12 d-none d-sm-block d-md-block d-lg-none my-3 mx-auto">
+                                    <hr class="w-50 mx-auto">
+                                </div>
+                            {% endif %}
+                            {% if forloop.counter|divisibleby:3 %}
+                                <div class="col-12 d-none d-lg-block d-xl-none my-3 mx-auto">
+                                    <hr class="w-50 mx-auto">
+                                </div>
+                            {% endif %}
+                            {% if forloop.counter|divisibleby:4 %}
+                                <div class="col-12 d-none d-xl-block my-3 mx-auto">
+                                    <hr class="w-50 mx-auto">
+                                </div>
+                            {% endif %}
                     {% endfor %}
                 </div>
             </div>
