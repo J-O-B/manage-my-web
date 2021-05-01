@@ -93,6 +93,9 @@ def checkout(request):
                             quantity=item_data,
                             subscription=subscription,
                         )
+                        product.sold = product.sold + item_data
+                        product.available = product.available - item_data
+                        product.save()
                         order_line_item.save()
                     else:
                         for quantity in item_data.items():
@@ -102,6 +105,9 @@ def checkout(request):
                                 quantity=quantity,
                                 subscription=subscription,
                             )
+                            product.sold = product.sold + quantity
+                            product.available = product.available - quantity
+                            product.save()
                         order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (

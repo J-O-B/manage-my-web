@@ -107,11 +107,17 @@ h6,
 .absolute-right{
     right: 10px;
 }
+.absolute-left{
+    left: 10px;
+}
 .top-right{
     top: 5px;
     right: 5px;
 }
-
+.bottom-left{
+    bottom:10px;
+    left:10px;
+}
 .bottom{
     bottom: 10%;
     left: 0;

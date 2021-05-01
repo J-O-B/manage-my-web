@@ -54,10 +54,9 @@ class StripeWH_Handler:
         street_address2 = billing_details.address.line2
         postcode = billing_details.address.postal_code
 
-
         grand_total = round(intent.charges.data[0].amount_captured / 100, 2)
         # correct till here
-   
+
         if full_name == "":
             full_name = None
         if email == "":
@@ -136,6 +135,9 @@ class StripeWH_Handler:
                             quantity=item_data,
                             subscription=subscription,
                         )
+                        product.sold = product.sold + item_data
+                        product.available = product.available - item_data
+                        product.save()
                         order_line_item.save()
                     else:
                         for quantity in item_data.items():
@@ -145,6 +147,9 @@ class StripeWH_Handler:
                                 quantity=quantity,
                                 subscription=subscription,
                             )
+                        product.sold = product.sold + quantity
+                        product.available = product.available - quantity
+                        product.save()
                         order_line_item.save()
             except Exception as e:
                 if order:

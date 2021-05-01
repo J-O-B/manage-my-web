@@ -5,6 +5,12 @@
     <link rel="stylesheet" href="{% static 'css/products.css' %}"> 
 {% endblock %}
 
+{% if product.title|length > 50  %}
+    {% block extra_title %}
+        {{product.title}} -
+    {%endblock%}
+{% endif %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -13,8 +19,8 @@
     </div>
 {% endblock %}
 
-{% block content %}
 
+{% block content %}
     <div class="container-fluid mt-5">
         <div class="row g-3 m-0">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
