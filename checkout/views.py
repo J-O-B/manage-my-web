@@ -57,8 +57,10 @@ def checkout(request):
         current_cart = cart_contents(request)
         if current_cart['subscription']:
             subscription = True
+            subscriber = "Yes"
         else:
             subscription = False
+            subscriber = "No"
 
         form_data = {
             "full_name": request.POST['full_name'],
@@ -72,9 +74,15 @@ def checkout(request):
             "subscription": subscription,
         }
         order_form = OrderForm(form_data)
-        print(order_form)
+        
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_cart = json.dumps(cart)
+            order.subscriber = subscriber
+            order.subscription = subscription
+            order.save()
             for item_id, item_data in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)

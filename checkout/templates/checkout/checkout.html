@@ -128,6 +128,7 @@
 
                         <!-- Card Errors Will Be Displayed Here -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
                     <div class="submit-button text-end mt-5 mb-2">
                         <a href="{% url 'cart' %}" class="btn btn-outline-black rounded-0 float-start mx-4">

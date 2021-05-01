@@ -54,6 +54,9 @@ class Order(models.Model):
 
     subscriber = models.CharField(max_length=3, null=True, default="No")
 
+    original_cart = models.TextField(null=False, blank=False, default='')
+
+    stripe_pid = models.CharField(max_length=512, null=False, blank=False, default='')
     def _generate_order_number(self):
         # Generate a random, unique order number using UUID
         return uuid.uuid4().hex.upper()
