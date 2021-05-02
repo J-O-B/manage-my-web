@@ -245,7 +245,14 @@
             <script type="text/javascript">
                 $('.btt-link').click(function(e){
                     window.scrollTo(0,0);
-                })
+                });
+                // Stick the footer on bottom
+                let footer = $('#footer');
+                let bottom = footer.position().top + footer.outerHeight(true);
+                let height = $(window).height();
+                if (bottom < height){
+                    footer.css('position', 'absolute').css('bottom', '0');
+                }
             </script>
             
 
