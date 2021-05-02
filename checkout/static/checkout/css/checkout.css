@@ -79,3 +79,13 @@
     top: 0;
     left: -1000px;
 }
+select,
+select option{
+    color: #000;
+    height: 110%;
+}
+select:invalid,
+select option[value=""]{
+    color: #aab7c4 !important;
+    height: 110%;
+}

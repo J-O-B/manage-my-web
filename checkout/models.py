@@ -7,6 +7,7 @@ import uuid
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.utils import timezone
+from django_countries.fields import CountryField
 
 
 class Order(models.Model):
@@ -23,8 +24,8 @@ class Order(models.Model):
     phone_number = models.CharField(
         max_length=20, null=False, blank=False)
 
-    country = models.CharField(
-        max_length=40, null=False, blank=False)
+    country = CountryField(
+        blank_label="Country *", null=False, blank=False)
 
     postcode = models.CharField(
         max_length=20, null=True, blank=True)

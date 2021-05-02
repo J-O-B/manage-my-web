@@ -27,6 +27,7 @@ class Product(models.Model):
         (1, "No"),
         (2, "Yes"),
     )
+    # Title is for Meta description
     title = models.CharField(max_length=65, null=True, blank=True)
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
