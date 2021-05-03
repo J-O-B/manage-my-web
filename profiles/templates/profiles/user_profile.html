@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% '/profiles/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static '/profiles/css/profile.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -22,11 +22,106 @@
                 <hr>
             </div>
         </div>
+        <!--Dashboard-->
+        <div class="row" id="front-panel">
+            <div class="row d-flex justify-content-around py-3 my-4">
+                <div class="col-4 rounded-3 text-center">
+                    <a class="btn btn-lg btn-black" id="edit-profile">Edit Profile</a>
+                </div>
+                <div class="col-4 rounded-3 text-center">
+                    <a class="btn btn-lg btn-black">Orders</a>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center py-3 my-4">
+                <div class="col-4 rounded-3 text-center">
+                    <a class="btn btn-lg btn-black">Dashboard</a>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-around py-3 my-4">
+                <div class="col-4 rounded-3 text-center">
+                    <a class="btn btn-lg btn-black">Completed Orders</a>
+                </div>
+                <div class="col-4 rounded-3 text-center">
+                    <a class="btn btn-lg btn-black">Pending Orders</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="container-fluid">
+        <!--Analytics Row-->
+        <div class="row">
+            <div class="row" id="notices">
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    One
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    Two
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    Three
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    Four
+                </div>
+            </div>
+            <div class="row" id="sales">
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    One
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    Two
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    Three
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    Four
+                </div>
+            </div>
+            <div class="row" id="analytics">
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    One
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    Two
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    Three
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
+                    Four
+                </div>
+            </div>
+        </div>
+
+        <!--Update Profile Row-->
+        <div class="row" id="update_profile">
+            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
+                {% for i in form %}
+                    <div class="row">
+                        <div class="col-8 offset-2">
+                            {{ i | as_crispy_field}}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
     
 {% endblock %}
 {% block postloadjs %}
     {{ block.super }}
-
+    <script type="text/javascript">
+    $('#notices').hide();
+    $('#sales').hide();
+    $('#analytics').hide();
+    $('#update_profile').hide();
+    $('#edit-profile').click(function(){
+        $('#front-panel').hide(200);
+        $('#update_profile').show(500);
+    })
+    </script>
 {% endblock %}

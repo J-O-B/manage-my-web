@@ -81,7 +81,7 @@ class Order(models.Model):
             self.grand_total = 0
             self.tax = 0
         self.save()
-    
+
     # Updates Main Model Subscription Based On Line Items
     def update_subscription(self):
         line_items = OrderLineItem.objects.filter(order=self.id)
@@ -115,6 +115,9 @@ class OrderLineItem(models.Model):
     lineitem_total = models.DecimalField(
         max_digits=6, decimal_places=2,
         null=False, blank=False, editable=False)
+    rating = models.DecimalField(
+        max_digits=6, decimal_places=2,
+        null=True, blank=True)
 
     def save(self, *args, **kwargs):
         """

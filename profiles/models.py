@@ -26,12 +26,13 @@ class UserProfile(models.Model):
     street_address2 = models.CharField(
         max_length=80, null=True, blank=True)
     subscription = models.BooleanField(
-        default=False, null=True, editable=False)
+        default=False)
     subscription_expiry = models.DateField(
         default=datetime.now(), null=True, blank=True)
+    created = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.user.username)
+        return str(self.full_name)
 
 
 @receiver(post_save, sender=User)
