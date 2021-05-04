@@ -14,114 +14,187 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <hr>
-                <h1 id="header" class="logo-font mb-4 h2">My Profile</h1>
-                <hr>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <hr>
+            <h1 id="header" class="logo-font mb-4 h2">My Profile</h1>
+            {% if orders %}
+            <div id="carouselOrders" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner bg-black">
+                    <div class="carousel-item text-center active">
+                        <p class="lead text-secondary">Your Purchase History</p>
+                    </div>
+                    {% for line in line_items %}
+                    <div class="carousel-item text-center">
+                        <p class="lead text-secondary">
+                            <span class="mx-2">Name: {{ line.product }} </span> 
+                            <span class="mx-2">Quantity: {{ line.quantity }} </span>
+                            <span class="mx-2">Total (Excluding Tax): {{ line.lineitem_total }}</span>
+                        </p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev bg-success" href="#carouselOrders" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next bg-success" href="#carouselOrders" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
+            {% else %}
+            <div class="row text-center">
+                <p class="logo-font lead">Looks Like You Dont Have Any Orders... <span class="btn btn-md btn-black"><a href="{% url 'products' %}">Shop Now</a></span></p>
+            </div>
+            {% endif %}
+            <hr>
         </div>
-        <!--Dashboard-->
-        <div class="row" id="front-panel">
-            <div class="row d-flex justify-content-around py-3 my-4">
-                <div class="col-4 rounded-3 text-center">
-                    <a class="btn btn-lg btn-black" id="edit-profile">Edit Profile</a>
-                </div>
-                <div class="col-4 rounded-3 text-center">
-                    <a class="btn btn-lg btn-black">Orders</a>
-                </div>
-            </div>
-            <div class="row d-flex justify-content-center py-3 my-4">
-                <div class="col-4 rounded-3 text-center">
-                    <a class="btn btn-lg btn-black">Dashboard</a>
-                </div>
-            </div>
-            <div class="row d-flex justify-content-around py-3 my-4">
-                <div class="col-4 rounded-3 text-center">
-                    <a class="btn btn-lg btn-black">Completed Orders</a>
-                </div>
-                <div class="col-4 rounded-3 text-center">
-                    <a class="btn btn-lg btn-black">Pending Orders</a>
-                </div>
-            </div>
-        </div>
-
-
     </div>
-    <div class="container-fluid">
-        <!--Analytics Row-->
-        <div class="row">
-            <div class="row" id="notices">
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    One
-                </div>
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    Two
-                </div>
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    Three
-                </div>
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    Four
-                </div>
-            </div>
-            <div class="row" id="sales">
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    One
-                </div>
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    Two
-                </div>
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    Three
-                </div>
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    Four
-                </div>
-            </div>
-            <div class="row" id="analytics">
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    One
-                </div>
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    Two
-                </div>
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    Three
-                </div>
-                <div class="col-12 col-sm-6 col-md-3 text-center border-box g-3">
-                    Four
-                </div>
-            </div>
-        </div>
+</div>
 
-        <!--Update Profile Row-->
-        <div class="row" id="update_profile">
-            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
-                {% for i in form %}
-                    <div class="row">
-                        <div class="col-8 offset-2">
-                            {{ i | as_crispy_field}}
+<div class="container-fluid overflow-hidden" id="main-profile-page-wrap">
+    <div class="container-fluid my-5">
+        <!--Profile Links-->
+        <div class="row">
+            <div class="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 box-shadow relative overflow-hidden" id="profile-dashboard-card">
+                <!--Blur-->
+                <div class="profile-btn-background glass"></div>
+
+                <!--Image Backgrounds-->
+                <div class="profile-btn-background" id="profile-card-background">
+                    <img class="h-100 w-100" src="{{ MEDIA_URL }}profile-btn.jpg" alt="Several unopened doors">
+                </div>
+                <div class="profile-btn-background" id="seo-background">
+                    <img class="h-100 w-100" src="{{ MEDIA_URL}}seo-btn.jpg" alt="Several unopened doors">
+                </div>
+                <div class="profile-btn-background" id="website-profile-background">
+                    <img class="h-100 w-100" src="{{ MEDIA_URL}}websites-btn.jpg" alt="Several unopened doors">
+                </div>
+                <div class="profile-btn-background" id="orders-profile-background">
+                    <img class="h-100 w-100" src="{{ MEDIA_URL}}receipt.jpg" alt="Several unopened doors">
+                </div>
+                <div class="profile-btn-background" id="calendar-profile-background">
+                    <img class="h-100 w-100" src="{{ MEDIA_URL}}calendar.jpg" alt="Several unopened doors">
+                </div>
+
+                <!--Buttons-->
+                <div class="py-5">
+                    <div class="row relative infront">
+                        <div class="col-6 offset-3 text-center">
+                            <a href="" class="btn btn-lg btn-black p-2 my-2 border w-100 mt-5" id="edit-profile-btn">
+                                Edit Profile
+                            </a>
                         </div>
                     </div>
-                {% endfor %}
+                    <div class="row relative infront">
+                        <div class="col-6 offset-3 text-center">
+                            <a href="" class="btn btn-lg btn-black p-2 my-2 border w-100" id="seo-profile-btn">
+                                Search Engine Optimization
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row relative infront">
+                        <div class="col-6 offset-3 text-center">
+                            <a href="" class="btn btn-lg btn-black p-2 my-2 border w-100" id="web-profile-btn">
+                                My Websites
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row relative infront">
+                        <div class="col-6 offset-3 text-center">
+                            <a href="" class="btn btn-lg btn-black p-2 my-2 border w-100" id="order-profile-btn">
+                                Order History
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row relative infront">
+                        <div class="col-6 offset-3 text-center">
+                            <a href="" class="btn btn-lg btn-black p-2 my-2 border w-100 mb-5" id="meeting-profile-btn">
+                                Schedule Meeting
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    
+<div class="container-fluid overflow-hidden" id="edit-profile">
+    <div class="row">
+        <div class="col-12 col-md-4 col-lg-3 col-xl-2 text-center d-block">
+            <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="true">Edit Profile</a>
+            <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">SEO</a>
+            <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">Websites</a>
+            <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">Orders</a>
+            <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">Calendar</a>
+        </div>
+    </div>
+</div>
 {% endblock %}
 {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript">
-    $('#notices').hide();
-    $('#sales').hide();
-    $('#analytics').hide();
-    $('#update_profile').hide();
-    $('#edit-profile').click(function(){
-        $('#front-panel').hide(200);
-        $('#update_profile').show(500);
+    $(document).ready(function(){
+        mainPageWrap();
     })
+    function mainPageWrap(){
+        // Click Events
+        $('#edit-profile-btn').click(function(e){
+            e.preventDefault();
+            $('#main-profile-page-wrap').hide(200);
+            $('#edit-profile').show(700);
+        })
+        // Styling
+        $('#edit-profile').hide();
+        $('#seo-background').hide();
+        $('#profile-card-background').hide();
+        $('#website-profile-background').hide();
+        $('#orders-profile-background').hide();
+        $('#calendar-profile-background').hide();
+        
+        $('#edit-profile-btn').mouseenter(function(){
+            $('#profile-card-background').fadeIn(300);
+            $('#main-profile-page-wrap').css('background', '#333333').css('transition', 'all 2s ease-in-out');
+        })
+        $('#edit-profile-btn').mouseleave(function(){
+            $('#profile-card-background').fadeOut(300);
+            $('#main-profile-page-wrap').css('background', '#f5f5f5');
+        })
+        $('#seo-profile-btn').mouseenter(function(){
+            $('#seo-background').fadeIn(300);
+            $('#main-profile-page-wrap').css('background', '#333333').css('transition', 'all 2s ease-in-out');
+        })
+        $('#seo-profile-btn').mouseleave(function(){
+            $('#seo-background').fadeOut(300);
+            $('#main-profile-page-wrap').css('background', '#f5f5f5');
+        })
+        $('#web-profile-btn').mouseenter(function(){
+            $('#website-profile-background').fadeIn(300);
+            $('#main-profile-page-wrap').css('background', '#333333').css('transition', 'all 2s ease-in-out');
+        })
+        $('#web-profile-btn').mouseleave(function(){
+            $('#website-profile-background').fadeOut(300);
+            $('#main-profile-page-wrap').css('background', '#f5f5f5');
+        })
+        $('#order-profile-btn').mouseenter(function(){
+            $('#orders-profile-background').fadeIn(300);
+            $('#main-profile-page-wrap').css('background', '#333333').css('transition', 'all 2s ease-in-out');
+        })
+        $('#order-profile-btn').mouseleave(function(){
+            $('#orders-profile-background').fadeOut(300);
+            $('#main-profile-page-wrap').css('background', '#f5f5f5');
+        })
+        $('#meeting-profile-btn').mouseenter(function(){
+            $('#calendar-profile-background').fadeIn(300);
+            $('#main-profile-page-wrap').css('background', '#333333').css('transition', 'all 2s ease-in-out');
+        })
+        $('#meeting-profile-btn').mouseleave(function(){
+            $('#calendar-profile-background').fadeOut(300);
+            $('#main-profile-page-wrap').css('background', '#f5f5f5');
+        })
+    }
     </script>
 {% endblock %}

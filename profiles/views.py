@@ -3,6 +3,7 @@ from .models import UserProfile, create_or_update_user_profile
 from datetime import datetime
 from django.contrib import messages
 from .forms import UserProfileForm
+from checkout.models import Order, OrderLineItem
 
 today = datetime.today()
 
@@ -32,10 +33,20 @@ def user_profile(request):
     """
     Display a user profile
     """
+    user = request.user
+    profile = UserProfile.objects.get(user=user)
+    orders = Order.objects.filter(user_profile=profile)
+    line_items = []
+    for order in orders:
+        line_items += OrderLineItem.objects.filter(order=order.id)
+
     form = UserProfileForm
     template = 'profiles/user_profile.html'
     context = {
-        "profile": UserProfile,
+        "profile": profile,
         "form": form,
+        "user": user,
+        "orders": orders,
+        "line_items": line_items,
     }
     return render(request, template, context)

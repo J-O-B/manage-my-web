@@ -5,6 +5,7 @@ from django.views.decorators.http import require_POST
 from django.conf import settings
 from .forms import OrderForm
 from products.models import Product
+from profiles.models import UserProfile
 from .models import OrderLineItem, Order
 from django.utils.safestring import mark_safe
 from cart.contexts import cart_contents
@@ -82,6 +83,9 @@ def checkout(request):
             order.original_cart = json.dumps(cart)
             order.subscriber = subscriber
             order.subscription = subscription
+            user = request.user
+            order.user_profile = UserProfile.objects.get(
+                user=user)
             order.save()
             for item_id, item_data in cart.items():
                 try:

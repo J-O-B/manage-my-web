@@ -64,6 +64,7 @@ class Order(models.Model):
     original_cart = models.TextField(null=False, blank=False, default='')
 
     stripe_pid = models.CharField(max_length=512, null=False, blank=False, default='')
+
     def _generate_order_number(self):
         # Generate a random, unique order number using UUID
         return uuid.uuid4().hex.upper()
@@ -85,6 +86,7 @@ class Order(models.Model):
     # Updates Main Model Subscription Based On Line Items
     def update_subscription(self):
         line_items = OrderLineItem.objects.filter(order=self.id)
+        print(self.id)
         for i in line_items:
             if i.subscription:
                 self.subscription = True
