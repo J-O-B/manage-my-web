@@ -59,7 +59,7 @@ class Order(models.Model):
 
     subscription = models.BooleanField(default=False, null=True, editable=True)
 
-    subscriber = models.CharField(max_length=3, null=True, default="No")
+    subscriber = models.CharField(max_length=3, null=True, default="No", editable=True)
 
     original_cart = models.TextField(null=False, blank=False, default='')
 
@@ -69,7 +69,7 @@ class Order(models.Model):
         # Generate a random, unique order number using UUID
         return uuid.uuid4().hex.upper()
 
-    def update_total(self):
+    def update_order(self):
         # Update grand total each time a line item is added, accounting for tax
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total'))['lineitem_total__sum'] or 0
@@ -81,12 +81,7 @@ class Order(models.Model):
             self.order_total = 0
             self.grand_total = 0
             self.tax = 0
-        self.save()
-
-    # Updates Main Model Subscription Based On Line Items
-    def update_subscription(self):
         line_items = OrderLineItem.objects.filter(order=self.id)
-        print(self.id)
         for i in line_items:
             if i.subscription:
                 self.subscription = True

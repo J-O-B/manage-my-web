@@ -1,4 +1,4 @@
-from django.shortcuts import (render, redirect, reverse, 
+from django.shortcuts import (render, redirect, reverse,
                               get_object_or_404, HttpResponse)
 from django.contrib import messages
 from django.views.decorators.http import require_POST
@@ -30,7 +30,7 @@ def cache_checkout_data(request):
             subscription = False
 
         stripe.PaymentIntent.modify(pid, metadata={
-            'cart': json.dumps(request.session.get('cart', {})),
+            'cart': json.dumps(cart),
             'save_info': request.POST.get('save_info'),
             'username': request.user,
             'subscription': subscription,
@@ -45,7 +45,7 @@ def cache_checkout_data(request):
 def checkout(request):
     """
     The checkout view to handle the page, its variables,
-    as well as provide inputs to users that can be handed to 
+    as well as provide inputs to users that can be handed to
     stripe for payment processing.
     """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -75,7 +75,7 @@ def checkout(request):
             "subscription": subscription,
         }
         order_form = OrderForm(form_data)
-        
+
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
@@ -83,9 +83,12 @@ def checkout(request):
             order.original_cart = json.dumps(cart)
             order.subscriber = subscriber
             order.subscription = subscription
-            user = request.user
-            order.user_profile = UserProfile.objects.get(
-                user=user)
+            try:
+                user = request.user
+                order.user_profile = UserProfile.objects.get(
+                    user=user)
+            except user.DoesNotExist:
+                pass
             order.save()
             for item_id, item_data in cart.items():
                 try:
@@ -161,7 +164,9 @@ def checkout(request):
                 currency=settings.STRIPE_CURRENCY,
                 metadata={
                     "name": username,
-                    "date": str(today),
+                    "email": email,
+                    "date": date,
+                    "expiry": expiry,
                     "subscription": str(subscription),
                     "grand_total": total,
                 }
@@ -195,9 +200,10 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.success(request, mark_safe(f'<strong>Order Successfully Processed!</strong><br><br> \
-        <small>Your order number is: <br><em>{order_number}</em></small>.<br><br>A confirmation \
-        email will be sent to {order.email}.<br><br> \
-        <strong>Thank You.</strong>'))
+        <small>Your order number is: <br><em>{order_number}\
+            </em></small>.<br><br>A confirmation email will be\
+                sent to {order.email}.<br><br> \
+                    <strong>Thank You.</strong>'))
 
     if 'cart' in request.session:
         del request.session['cart']

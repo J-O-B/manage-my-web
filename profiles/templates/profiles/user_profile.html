@@ -124,12 +124,49 @@
 
 <div class="container-fluid overflow-hidden" id="edit-profile">
     <div class="row">
-        <div class="col-12 col-md-4 col-lg-3 col-xl-2 text-center d-block">
-            <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="true">Edit Profile</a>
-            <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">SEO</a>
+        <div class="col-12 col-md-4 col-lg-3 col-xl-2 text-center d-block justify-content-middle bg-success" id="menu">
+            <h3 class="logo-font mt-3">Menu:</h3>
+            <a class="btn btn-md btn-black text-center w-50 my-2" id="edit-profile-details" aria-disabled="false">Edit Profile</a>
+            <a class="btn btn-md btn-black text-center w-50 my-2" id="view-seo" aria-disabled="false">SEO</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">Websites</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">Orders</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">Calendar</a>
+        </div>
+        <div class="col-12 col-md-8 col-lg-9 col-xl-10 text-center p5 bg-success" id="update-info">
+            <h2 class="h1 text-black mt-3">Update Profile Information</h2>
+            <div class="w-100 d-flex justify-content-center">
+                <hr class="w-50">
+            </div>
+            <form action="" method="POST" id="profile-update-form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
+                        <fieldset class="rounded px-3 mb-5 detailsSet" id="personal-details">
+                            <legend class="fieldset-label small text-black mx-2 w-100"><em>Personal Details:</em></legend>
+                            {{ form.full_name | as_crispy_field }}
+                            {{ form.email | as_crispy_field }}
+                            {{ form.phone_number | as_crispy_field }}
+                            <p class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-billing">Next <i class="fas fa-angle-right"></i></p>
+                        </fieldset>
+                        <fieldset class="rounded px-3 mb-5 billingSet" id="billing-details">
+                            <legend class="fieldset-label small text-black mx-2 w-100"><em>Billing Address:</em></legend>
+                            {{ form.town_or_city | as_crispy_field }}
+                            {{ form.street_address1 | as_crispy_field }}
+                            {{ form.street_address2 | as_crispy_field }}
+                            {{ form.postcode | as_crispy_field }}
+                            {{ form.country | as_crispy_field }}
+                            <p class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-personal"><i class="fas fa-angle-left"></i> Previous</p>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-12 col-md-8 col-lg-9 col-xl-10 text-center p5 bg-success" id="seo-info">
+            <h3 class="logo-font mt-3">SEO News:</h3>
+            <div class="w-100 d-flex justify-content-center">
+                <hr class="w-50">
+            </div>
         </div>
     </div>
 </div>
@@ -140,14 +177,45 @@
     $(document).ready(function(){
         mainPageWrap();
     })
+    function equalHeight(height){
+        $('#menu').css('height', height).css("vertical-align", 'middle');
+    }
     function mainPageWrap(){
         // Click Events
+        $('#edit-profile-details').click(function(e){
+            e.preventDefault();
+            $('#update-info').siblings().hide(200);
+            $('#update-info').show(700);
+        });
         $('#edit-profile-btn').click(function(e){
             e.preventDefault();
             $('#main-profile-page-wrap').hide(200);
             $('#edit-profile').show(700);
+            let height = $('#update-info').outerHeight();
+            equalHeight(height);
+        });
+        $('#go-billing').click(function(e){
+            e.preventDefault();
+            $('#personal-details').hide();
+            $('#billing-details').show();
+            let height = $('#update-info').outerHeight();
+            equalHeight(height);
+        });
+        $('#go-personal').click(function(e){
+            e.preventDefault();
+            $('#billing-details').hide();
+            $('#personal-details').show();
+            let height = $('#update-info').outerHeight();
+            equalHeight(height);
+        });
+        $('#view-seo').click(function(e){
+            e.preventDefault();
+            $('#update-info').hide(200);
+            $('#seo-info').show(700);
         })
         // Styling
+        $('#seo-info').hide();
+        $('#billing-details').hide();
         $('#edit-profile').hide();
         $('#seo-background').hide();
         $('#profile-card-background').hide();
