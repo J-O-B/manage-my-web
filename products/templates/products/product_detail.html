@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/products.css' %}"> 
+
+
+
+{% block extra_title %}
+    {% if product.title|length > 0 %}
+        {{product.title|title}} -
+    {% else %}
+        {{product.name|title}} -
+    {% endif %}
 {% endblock %}
 
-{% if product.title|length > 50  %}
-    {% block extra_title %}
-        {{product.title}} -
-    {%endblock%}
-{% endif %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -37,48 +39,58 @@
                     {% endif %}
 
                     {% if product.image1 %}
+                    <div class="main-img-holder">
                         <a href="{{ product.image1.url }}" target="_blank">
-                            <img src="{{ product.image1.url }}" alt="{{ product.name }}" class="card-img-top img-fluid details-top-image">
+                            <img src="{{ product.image1.url }}" alt="{{ product.name }}" class="card-img-top img-fluid details-top-image img1">
                         </a>
+                    </div>
                     {% else %}
                         <a href="">
-                            <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ MEDIAURL }}noimage.jpg" class="card-img-top img-fluid">
+                            <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ MEDIAURL }}noimage.jpg" class="card-img-top img-fluid img1">
                         </a>
                     {% endif %}
-                    <div class="row px-3 d-flex justify-content-evenly align-items-center text-center">
+                    <div class="row px-5 h-100 d-flex justify-content-evenly align-items-center text-center">
                         <div class="col-3 p-1 box-shadow pointer detail-bottom-images">
                             {% if product.image2 %}
-                                <img src="{{ product.image2.url }}" alt="{{ product.name }} image two" class="img-fluid">
+                                <a href="{{ product.image2.url }}" target="_blank">
+                                    <img src="{{ product.image2.url }}" alt="{{ product.name }} image two" class="img-fluid img2">
+                                </a>
                             {% else %}
                                 <a href="">
-                                    <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }} image two" class="card-img-top img-fluid">
+                                    <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }} image two" class="card-img-top img-fluid img2">
                                 </a>
                             {% endif %}
                         </div>
                         <div class="col-3 p-1 box-shadow pointer detail-bottom-images">
                             {% if product.image3 %}
-                                <img src="{{ product.image3.url }}" alt="{{ product.name }} image three" class="img-fluid">
+                                <a href="{{ product.image3.url }}" target="_blank">
+                                    <img src="{{ product.image3.url }}" alt="{{ product.name }} image three" class="img-fluid img3">
+                                </a>
                             {% else %}
                                 <a href="">
-                                    <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }} image three" class="card-img-top img-fluid">
+                                    <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }} image three" class="card-img-top img-fluid img3">
                                 </a>
                             {% endif %}
                         </div>
                         <div class="col-3 p-1 box-shadow pointer detail-bottom-images">
                             {% if product.image4 %}
-                                <img src="{{ product.image4.url }}" alt="{{ product.name }} image four" class="img-fluid">
+                                <a href="{{ product.image4.url }}" target="_blank">
+                                    <img src="{{ product.image4.url }}" alt="{{ product.name }} image four" class="img-fluid img4">
+                                </a>
                             {% else %}
                                 <a href="">
-                                    <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }} image four" class="card-img-top img-fluid">
+                                    <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }} image four" class="card-img-top img-fluid img4">
                                 </a>
                             {% endif %}
                         </div>
                         <div class="col-3 p-1 box-shadow pointer detail-bottom-images">
                             {% if product.image5 %}
-                                <img src="{{ product.image5.url }}" alt="{{ product.name }} image five" class="img-fluid">
+                                <a href="{{ product.image5.url }}" target="_blank">
+                                    <img src="{{ product.image5.url }}" alt="{{ product.name }} image five" class="img-fluid img5">
+                                </a>
                             {% else %}
                                 <a href="">
-                                    <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }} image five" class="card-img-top img-fluid">
+                                    <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }} image five" class="card-img-top img-fluid img5">
                                 </a>    
                             {% endif %}
                         </div>
@@ -317,4 +329,35 @@
 {% block postloadjs %}
     {{ block.super }}
     {% include 'products/includes/quantity_input_script.html' %}
+    <script type="text/javascript">
+    // Images:
+    let image1 = $('.img1').attr('src');
+    let image2 = $('.img2').attr('src');
+    let image3 = $('.img3').attr('src');
+    let image4 = $('.img4').attr('src');
+    let image5 = $('.img5').attr('src');
+    bigPicture = $('.main-img-holder').find('img').attr('src');
+    // Click events and shuffle
+    $('.detail-bottom-images').mouseenter(function(){
+        wantedPicture = $(this).find('img').attr('src');
+        if (wantedPicture == image1){
+            $('.main-img-holder').find('img').attr('src', image1);
+        }
+        if (wantedPicture == image2){
+            $('.main-img-holder').find('img').attr('src', image2);
+        }
+        if (wantedPicture == image3){
+            $('.main-img-holder').find('img').attr('src', image3);
+        }
+        if (wantedPicture == image4){
+            $('.main-img-holder').find('img').attr('src', image4);
+        }
+        if (wantedPicture == image5){
+            $('.main-img-holder').find('img').attr('src', image5);
+        }
+    })
+    $('.detail-bottom-images').mouseleave(function(){
+        $('.main-img-holder').find('img').attr('src', image1);
+    })
+    </script>
 {% endblock %}

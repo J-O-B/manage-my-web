@@ -83,11 +83,11 @@ def checkout(request):
             order.original_cart = json.dumps(cart)
             order.subscriber = subscriber
             order.subscription = subscription
-            try:
-                user = request.user
+            user = request.user
+            if str(user) != "AnonymousUser":
                 order.user_profile = UserProfile.objects.get(
-                    user=user)
-            except user.DoesNotExist:
+                    user=user.id)
+            else:
                 pass
             order.save()
             for item_id, item_data in cart.items():

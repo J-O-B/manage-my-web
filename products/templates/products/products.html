@@ -93,6 +93,7 @@
                                         <p class="logo-font px-5 my-auto">On Sale</p>
                                     </div>
                                 {% endif %}
+
                                 {% if product.available > 0 and product.available < 5 %}
                                     <div class="last-available-banner">
                                         <p class="logo-font px-5 my-auto">{{product.available}} Available</p>
@@ -103,15 +104,17 @@
                                         <p class="logo-font px-5 my-auto">Sold Out</p>
                                     </div>
                                 {% endif %}
+
                                 {% if product.image1 %}
-                                    <a href="{% url 'product_detail' product.id %}">
+                                    <a href="{% url 'product_detail' product.id %}" class="p-5">
                                         <img src="{{ product.image1.url }}" alt="{{ product.name }}" class="card-img-top img-fluid product-img">
                                     </a>
                                 {% else %}
-                                    <a href="{% url 'product_detail' product.id %}">
+                                    <a href="{% url 'product_detail' product.id %}" class="p-5">
                                         <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ product.name }}" class="card-img-top img-fluid">
                                     </a>
                                 {% endif %}
+                                
                                 <div class="card-body pb-0 relative">
                                     <p class="mb-0 absolute bottom-left">{{product.name}}</p>
                                 </div>
