@@ -102,11 +102,16 @@ def all_products(request):
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     rating = None
-
+    whole_stars = None
+    half_star = None
     if product.rating_count > 0:
         total = product.rating_total
         count = product.rating_count
         rating = total / count
+
+        whole_stars = range(int(rating))
+        if rating % 1 != 0:
+            half_star = 1
 
     saving = None
 
@@ -119,5 +124,7 @@ def product_detail(request, product_id):
         'product': product,
         'saving': saving,
         'rating': rating,
+        'whole_stars': whole_stars,
+        'half_star': half_star,
     }
     return render(request, template, context)

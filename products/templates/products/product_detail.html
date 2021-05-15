@@ -207,20 +207,20 @@
             </div>
         </div>
         <div class="row g-3 m-0">
-            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 box-shadow">
-                <h2 class="text-black text-center pt-3">
+            <div class="col-12 col-md-12 col-lg-8 bg-white offset-lg-2 box-shadow">
+                <h2 class="text-primary text-center pt-3">
                     {{ product.name|title }} Description:
                 </h2>
                 <hr class="pb-1 w-25 mx-auto">
                 <p class="text-black text-justify px-5">
-                    {{product.description}}
+                    {{product.description|linebreaksbr}}
                 </p>
             </div>
         </div>
         {% if product.plan == 2 %}
         <div class="row g-3 m-0" id="subscription">
-            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 box-shadow">
-                <h2 class="text-black text-center pt-3">
+            <div class="col-12 col-md-12 bg-white col-lg-8 offset-lg-2 box-shadow">
+                <h2 class="text-primaryk text-center pt-3">
                     Subscription Explained
                 </h2>
                 <hr class="pb-1 w-25 mx-auto">
@@ -234,23 +234,9 @@
         </div>
         {% endif %}
 
-        {% if product.included %}
-        <div class="row g-3 m-0" id="included">
-            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 box-shadow">
-                <h2 class="text-black text-center pt-3">
-                    Whats Included?
-                </h2>
-                <hr class="pb-1 w-25 mx-auto">
-                <p class="text-black text-justify px-5">
-                    {{product.included}}
-                </p>
-            </div>
-        </div>
-        {% endif %}
-
         <div class="row g-3 m-0" id="detailCarousel">
-            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 box-shadow">
-                <h2 class="text-black text-center pt-3">
+            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 bg-white box-shadow">
+                <h2 class="text-primary text-center pt-3">
                     Carousel
                 </h2>
                 <hr class="pb-1 w-25 mx-auto">
@@ -323,6 +309,77 @@
             </div>
         </div>
 
+        <div class="row g-3 m-0">
+            <div class="col-12 col-md-12 bg-white col-lg-8 offset-lg-2 box-shadow">
+                <div class="row w-100">
+                    <div class="col-12 col-md-6">
+                        <div class="inner bg-white p-2" id="rating">
+                            <h2 class="text-primary text-center pt-3">
+                                Rating
+                            </h2>
+                            <hr class="pb-1 w-25 mx-auto">
+                            <p class="text-center">
+                                {% for i in whole_stars %}
+                                    <span class="text-success"><i class="fas fa-star"></i></span>
+                                {% endfor %}
+                                {% if half_star == 1 %}
+                                    <span class="text-success"><i class="fas fa-star-half-alt"></i></span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="inner bg-white p-2 w-100" id="included">
+                            <h2 class="text-primary text-center pt-3">
+                                Whats Included?
+                            </h2>
+                            <hr class="pb-1 w-25 mx-auto">
+                            <p class="text-black text-justify px-1">
+                                {{product.included|linebreaksbr}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row g-3 m-0">
+            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 bg-white box-shadow">
+                <h2 class="text-primary text-center pt-3">
+                    Want To Know More?
+                </h2>
+                <hr class="pb-1 w-25 mx-auto">
+                <p class="text-center text-capitalize">
+                    Contact us to find out more!
+                </p>
+                <form action="">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 text-center">
+                            <div class="form-group">
+                                <label for="first_name">First Name:</label>
+                                <input class="form-control" name="first_name" id="first_name" type="text" placeholder="First Name">
+                                <label for="last_name">Last Name:</label>
+                                <input class="form-control" name="last_name" id="last_name" type="text" placeholder="Last Name">
+                                <label for="email">Email:</label>
+                                <input class="form-control" name="email" id="email" type="email" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 text-center">
+                            <div class="form-group">
+                                <label for="subject">Subject:</label>
+                                <input class="form-control" name="subject" id="subject" type="text" placeholder="More Info On {{product.title}}" readonly>
+                                <label for="message">Subject:</label>
+                                <textarea class="form-control" id="message" name="message" placeholder="Enter Your Message Here..." rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 my-2 text-center">
+                            <input type="reset" value="Reset" class="btn btn-lg btn-danger rounded-0 btn-outline-black mx-3">
+                            <button type="submit" class="btn btn-lg btn-success rounded-0 btn-outline-black mx-3">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
 {% endblock %}
@@ -359,5 +416,7 @@
     $('.detail-bottom-images').mouseleave(function(){
         $('.main-img-holder').find('img').attr('src', image1);
     })
+
+    $('#rating').height($('#included').height());
     </script>
 {% endblock %}
