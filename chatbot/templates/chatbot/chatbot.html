@@ -3,11 +3,11 @@
 {% block content %}
 
 <h1>Chatbot Testing</h1>
-<form action="{% url 'chat' %}" method="POST">
+<form action="" method="POST">
     {%csrf_token%}
     <input type="text" id="inmessage" name="inmessage" placeholder="Message...">
     <div class="reply">
-        <p class="response">{{response}}</p>
+        <p class="response"></p>
     </div>
     <button type="submit">Send</button>
 </form>

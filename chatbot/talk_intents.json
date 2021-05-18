@@ -1,0 +1,74 @@
+{
+    "intents": [
+        {
+            "tag": "intro",
+            "patterns": ["Hi", "hello", "good day", "hey", "hi there", "good morning", "good afternoon"],
+            "responses": ["Hello, how can I help you today?", "Good day, how can I assist you today?"]
+        },
+        {
+            "tag": "outro",
+            "patterns": ["bye", "good buy", "talk to you later", "leave", "bye bye", "see you later"],
+            "responses": ["Have a great day!", "Enjoy the rest of your day!"]
+        },
+        {
+            "tag": "thanks",
+            "patterns": ["Thanks", "thank you", "thanks for your help", "thanks for helping me"],
+            "responses": ["No problem, anytime!", "You're welcome."]
+        },
+        {
+            "tag": "noanswer",
+            "patterns": [],
+            "responses": ["Sorry, I didn't fully understand what you are looking for. Could you repeat that?", "Could you give me more information so I can help you further?", "Not sure I fully understand, could you rephrase?"]
+        },
+        {
+            "tag": "name",
+            "patterns": ["who am i speaking with?", "who are you?", "what's your name?", "who is this?", "who's this?", "who am i talking to?"],
+            "responses": ["My name is John. I'm a virtual assistant programmed to help customers.", "I'm John, a virtual assistant. You can speak with me or type 'human' to contact a member of the team"]
+        },
+        {
+            "tag": "discount",
+            "patterns": ["can i get a discount?", "do you offer discounts?", "are prices negotiable?"],
+            "responses": ["Prices are normally fixed, however from time to time we do offer discounts which will be labelled with an 'on sale' banner.", "Prices are usually fixed, you can get a complete pricing explainer on our pricing page in the 'About' section.", "Prices are fixed, however, you can submit a proposal to the team via the contact form on the contact page. Please select 'Proposal' in the subject field and we will respond to your proposal as soon as possible."]
+        },
+        {
+            "tag": "payments",
+            "patterns": ["what payments are accepted?", "do you accept cheque?", "what cards are accepted?", "how can i pay?", "payment method", "payment processing", "installments"],
+            "responses": ["Manage My Web currently uses Stripe to handle all of our transactions. Therefore we can only accept: Visa, Mastercard, American Express, Discover & Diners, China Union Pay, Japan Credit Bureau, Cartes Bancaires, and Interac. Some of these cards do however have restrictions. Please visit our 'About' page, and navigate to 'Payments' for further information."]
+        },
+        {
+            "tag": "contact",
+            "patterns": ["how can i contact you?", "who should i contact", "can i speak to a manager?", "contact"],
+            "responses": ["You can contact us at any time via the contact page. A link is located at the bottom of each page, in the 'footer' area. Alternatively you can email us at 'Admin@ManageMyWeb.org'."]
+        },
+        {
+            "tag": "refund",
+            "patterns": ["refund", "can i get a refund?", "can i get my money back?", "refund policy"],
+            "responses": ["For refunds, please check our refund section on the 'About' page.", "Due to the nature of refunds, please check our refund policy on our about page, or feel free to contact us at Admin@ManageMyWeb.org, alternatively you can use the contact form located on the contact page."]
+        },
+        {
+            "tag": "help",
+            "patterns": ["i need help", "can you help me?", "i'm looking for help", "where can i find"],
+            "responses": ["To ensure I offer the correct help, could you please indicate what you require help with? Please type 'payments', 'about', 'refund', 'web design', 'SEO', or 'contact' into this chat."]
+        },
+        {
+            "tag": "about",
+            "patterns": ["about", "who are manage my web", "what is manage my web", "how can manage my web help me?", "tell me more about your company"],
+            "responses": ["Manage My Web is a company based out of Dublin, Ireland. We provide turnkey websites, and search engine optimization services to clients around the world. For more information on us, please visit our about page.", "Manage My Web are a web development, and SEO company based in Dublin, Ireland. We offer a range of services to clients from web applications, custom scripts, advisory / reporting, as well as SEO services. We offer turnkey solutions to both individuals, and businesses in the form of single products, as well as subscription based services. To find out more, please visit our About page or contact us using the contact form located on the Contact Us page."]
+        },
+        {
+            "tag": "webdesign",
+            "patterns": ["web design", "what websites do you make", "can you build a website for me?", "website"],
+            "responses": ["Manage My Web create various websites across multiple markets. What type of website are you looking for?", "Our development teams normally create websites from the ground up, we can build almost any website you may be looking for, are you looking for a simple landing page, eCommerce website or something else?"]
+        },
+        {
+            "tag": "ecommerce",
+            "patterns": ["ecommerce website", "online store", "online shop", "ecommerce"],
+            "responses": ["Due to the nature of eCommerce websites, we build these platforms on an order by order basis. This allows us to build a unique and custom website for you. We currently offer two options for our eCommerce websites, a simple 'product', which is simply you purchasing the website off us, or we offer subscription based eCommerce solutions. Our subscription plans come packed with added extras and bonuses. For more on our subscriptions, check out our subscription section on the About Us page.", "Our eCommerce websites are fully custom and built specific to customer needs. You can find more about our eCommerce websites on our about page, pre made packages are for sale via our online store if you browse through our products. If you wish to know more, you can contact us anytime via the contact form located on the contact page, or email us at Admin@ManageMyWeb.org"]
+        },
+        {
+            "tag": "businesswebsite",
+            "patterns": ["business website", "business site", "company website", "business page"],
+            "responses": ["We offer a range of business websites which are available at our online store. If you don't see what you're looking for, please contact us to get a custom quote. You can contact us via our contact page.", "We currently offer a package deal for business pages which can be found on our products page. Should you wish to create something different, thats no problem! Feel free to contact us via our contact page, and we will get back to you as soon as possible with a quote and possibly to arrange a meeting if this may help."]
+        }
+    ]
+}
