@@ -62,11 +62,3 @@ def cart_contents(request):
     }
 
     return context
-
-
-"""
-Code at checkout reminder!!!!!!
-
-For each lineitem, you need to add product.sold + quantity.
-    Also needed is product.available - 1.
-"""
