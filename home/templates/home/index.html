@@ -291,7 +291,7 @@
 
 {% endblock %}
 {% block postloadjs %} 
-    {{ block.super }}
+{{ block.super }}
     <script type="text/javascript">
         $(document).ready(function(){
             $("#seo").hide();
@@ -304,6 +304,7 @@
 
         $("#viewSEO").mouseenter(function(){
             $("#seo").fadeIn(500);
+            console.log("found");
         })
         $("#viewSpeed").mouseenter(function(){
             $("#speed").fadeIn(500);
