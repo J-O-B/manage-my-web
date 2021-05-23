@@ -14,7 +14,18 @@ body{
 input[name="q"]::placeholder{
     color: #aab7c4;
 }
-
+.modal,
+.modal-dialog{
+    z-index: 9999999;
+}
+.bg-mask{
+    z-index: 9999998;
+    background-color: #333333;
+    opacity: 0.8;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
 p,
 h4,
 h5,
