@@ -215,3 +215,16 @@ def checkout_success(request, order_number):
         "subscription": subscription,
     }
     return render(request, template, context)
+
+
+def checkout_receipt(request, order_number):
+    """
+    Deliver a webpage that can be easily printed.
+    """
+    order = get_object_or_404(Order, order_number=order_number)
+
+    template = 'checkout/checkout_receipt.html'
+    context = {
+        "order": order,
+    }
+    return render(request, template, context)

@@ -17,6 +17,10 @@ input[name="q"]::placeholder{
 .modal,
 .modal-dialog{
     z-index: 9999999;
+    overflow-x: hidden;
+}
+.half-lh{
+    line-height: 0.5;
 }
 .bg-mask{
     z-index: 9999998;
@@ -502,6 +506,10 @@ h6,
 }
 
 /* ------- MEDIA QUERIES ------- */
+
+@media print { 
+    .no-print { display:none; } 
+}
 
 /* Larger Container on XL screens */
 @media (min-width:1200px){

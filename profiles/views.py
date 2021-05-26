@@ -5,6 +5,8 @@ from django.contrib import messages
 from .forms import UserProfileForm
 from checkout.models import Order, OrderLineItem
 
+import json
+
 today = datetime.today()
 
 

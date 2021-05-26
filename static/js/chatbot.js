@@ -2,31 +2,7 @@ let botui = new BotUI('my-botui-app');
 let usersName = "";
 let container = $('.calc-height').height();
 $('.botui-app-container').css('max-height', container);
-function init(){
-    botui.message.add({
-        loading: true,
-        delay: 3000,
-        content: 'Hello! Welcome to the Manage My Web helper chat. Who am I speaking with?'
-    }).then(function () { 
-        botui.action.text({
-            loading: true,
-            delay: 500,
-            action: {
-                placeholder: 'Please enter your name here.'
-            }
-        }).then(function(res){
-            usersName = res.value; 
-            botui.message.add({
-                loading: true,
-                delay: 3000,
-                content: `Great! Thanks for speaking with us today ${usersName}.`
-            }).then(function(){
-                options();
-            })
-        })
-    });
-}
-init();
+
 function options(){
     botui.message.add({
         loading: true,
@@ -150,7 +126,8 @@ function seo(){
                                 })
                             }else{
                                 // User clicked contact
-                                window.location = "/products";
+// Place Contact URL HERE when available
+                                window.location = "";
                             }
                         })
                     })
@@ -197,6 +174,8 @@ function seo(){
                                                     }
                                                 }, 1000);
                                             })
+                                        }else if (res.value == "n"){
+                                            standby();
                                         }
                                     });
                                 })
@@ -303,7 +282,137 @@ function website(){
                         })
                     })
                 }else if (res.value == "b"){
-
+                    botui.message.add({
+                        delay: 2000,
+                        loading: true,
+                        content: "Sure, so we offer both subscription based websites and single websites, essentially a buy and collect service. Are you looking for a subscription based service?"
+                    }).then(function newSiteOptions(){
+                        botui.action.button({
+                            action: [
+                                {text: "Yes, I want a subscription", value: "y"},
+                                {text: "No, I just want a single website", value: "n"},
+                                {text: "I want more information on a subscription service", value: "moreInfo"}
+                            ]
+                        }).then(function(res){
+                            if (res.value == "moreInfo"){
+                                botui.message.add({
+                                    delay: 2000,
+                                    loading: true,
+                                    content: "Our subscription is currently charged annually. Within our subscriptions we offer multiple perks, which allow our customers leave the heavy lifting to us completely. The perks of subscription services include: domain registration and upkeep, SSL certificates, web hosting, web design, graphic design, search engine optimization and more.",
+                                }).then(function(){
+                                    botui.message.add({
+                                        delay: 2000,
+                                        loading: true,
+                                        content: "Manage My Web currently offer two different plans, 'Silver' and 'Gold'. These are designed to provide levels of support that cover different websites. You can view these plans by using the buttons below: (opens in new tab)"
+                                    }).then(function(){
+                                        botui.action.button({
+                                            action: [
+                                                {text: "Silver Package", value:"silver"},
+                                                {text: "Gold Package", value:"gold"},
+                                                {text: "Back To Options", value:"back"},
+                                            ]
+                                        }).then(function openSub(res){
+                                            if (res.value == "silver"){
+                                                // Url for silver pack
+                                                let url = "/subscriptions";
+                                                //window.open(url);
+                                                botui.message.add({
+                                                    content: "I will now open a new tab for you. If this is blocked by your browser, please enable popups and click 'Open Silver Subscription' below."
+                                                }).then(function(){
+                                                    botui.action.button({
+                                                        action: [
+                                                            {text: "Open Silver Subscription", value: "r"}
+                                                        ]
+                                                    }).then(function(res){
+                                                        window.open(url);
+                                                        standby();
+                                                    })
+                                                })
+                                                standby();
+                                            }else if (res.value == "gold"){
+                                                // Url for gold pack
+                                                let url = "";
+                                                botui.message.add({
+                                                    content: "I will now open a new tab for you. If this is blocked by your browser, please enable popups and click 'Open Gold Subscription' below."
+                                                }).then(function(){
+                                                    botui.action.button({
+                                                        action: [
+                                                            {text: "Open Gold Subscription", value: "r"}
+                                                        ]
+                                                    }).then(function(res){
+                                                        window.open(url);
+                                                        standby();
+                                                    })
+                                                })
+                                                standby();
+                                                window.open(url);
+                                            }else if (res.value == "back"){
+                                                newSiteOptions();
+                                            }
+                                        })
+                                    })
+                                })
+                            }else if (res.value == "y"){
+                                botui.message.add({
+                                    delay: 2000,
+                                    loading: true,
+                                    content: "Our subscription based services are aimed to provide your website, with an entire IT department without the need to hire any internal staff. Although we will be the creators of your new website, you will retain all rights, and copyrights to this website."
+                                }).then(function(){
+                                    botui.message.add({
+                                        delay: 2000,
+                                        loading: true,
+                                        content: "We currently offer two different packages, aimed at providing the perfect level of support regardless of website / business type."
+                                    }).then(function newSubOptions(){
+                                        botui.action.button({
+                                            action: [
+                                                {text: "Silver Package", value: "s"},
+                                                {text: "Gold Package", value: "g"},
+                                                {text: "Silver Package", value: "s"},
+                                            ]
+                                        }).then(function(res){
+                                            if (res.value == "s"){
+                                                botui.message.add({
+                                                    delay: 2000,
+                                                    loading: true,
+                                                    content: "Our silver package is designed specifically to both individuals and businesses."
+                                                }).then(function(){
+                                                    botui.message.add({
+                                                        delay: 2000,
+                                                        loading: true,
+                                                        content: "This subscription service will grant you access to our SEO and development teams throughout your subscription. This means all variations, SEO, hosting plans and more will be completely looked after for you. We understand that customers will want to participate in varying amounts, so, we can provide you with this service with minimal, or maximum input from you."
+                                                    }).then(function(){
+                                                        botui.message.add({
+                                                            delay:2000,
+                                                            loading: true,
+                                                            content: "You can view the full details of this subscription plan, or contact us to find out more by clicking the links below:"
+                                                        }).then(function(){
+                                                            botui.action.button({
+                                                                action : [
+                                                                    {text: "View Silver Package", value: "v"},
+                                                                    {text: "Contact Us", value: "c"},
+                                                                    {text: "View Options", value: "o"},
+                                                                ]
+                                                            }).then(function(){
+                                                                if (res.value == "o"){
+                                                                    newSubOptions();
+                                                                }else if (res.value == "v"){
+                                                                    
+                                                                    window.location("");
+                                                                }else if (res.value == "c"){
+                                                                    // Contact link
+                                                                    window.location("");
+                                                                }
+                                                            })
+                                                        })
+                                                    })
+                                                })
+                                            }
+                                        })
+                                    })
+                                })
+                            }
+                        })
+                    })
                 }
             });
         })
@@ -320,3 +429,29 @@ function standby(){
         }
     })
 }
+
+function init(){
+    botui.message.add({
+        loading: true,
+        delay: 3000,
+        content: 'Hello! Welcome to the Manage My Web helper chat. Who am I speaking with?'
+    }).then(function () { 
+        botui.action.text({
+            loading: true,
+            delay: 500,
+            action: {
+                placeholder: 'Please enter your name here.'
+            }
+        }).then(function(res){
+            usersName = res.value; 
+            botui.message.add({
+                loading: true,
+                delay: 3000,
+                content: `Great! Thanks for speaking with us today ${usersName}.`
+            }).then(function(){
+                options();
+            })
+        })
+    });
+}
+init();
