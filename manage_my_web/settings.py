@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'about',
-    'chatbot',
+    'subscription',
 ]
 
 MIDDLEWARE = [
