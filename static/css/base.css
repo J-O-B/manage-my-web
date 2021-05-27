@@ -565,3 +565,12 @@ h6,
     }
  }
 
+
+
+#costs:hover,
+#efficiency:hover,
+#design:hover,
+#returns:hover,
+#pro:hover{
+    cursor: pointer;
+}
