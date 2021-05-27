@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block extra_meta %}
+    <meta name="description" content="The gold plan from ManageMyWeb provides an unbeatable, turnkey solution to web design.">
+{% endblock %}
+
+{% block page_header %}
+    <!--Override Top Margin-->
+{% endblock %}
+
+{% block content %}
+<div id="home-hero" class="row p-5 g-0">
+    <div class="col-8 my-5 px-5">
+        <hr class="mx-5 px-5 w-25">
+        <h1 class="my-5 px-5 logo-font title"><em>Gold Plan</em></h1>
+        <hr class="mx-5 px-5 w-25">
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="h1 gold-down-arrow">
+                <i class="fas fa-chevron-down fa-lg pointer"></i>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row my-5 relative" id="why">
+        <div class="mockup h-100 w-100 absolute"></div>
+        <div class="col-12">
+            <h2 class="text-center text-black h1 logo-font">Why Subscribe?</h2>
+        </div>
+        <div class="p-5 mb-5 col-12 col-sm-10 offset-sm-1 col-md-7 offset-md-1 col-lg-5 offset-lg-1 h-100 infront why-bg">
+            <p class="text-center text-black">
+                Our Gold Subscription Is An All In One Package:
+            </p>
+            <p id="whyList" class="infront text-center">
+                <span class="whylist pointer hover-white">Domain Name (.com / .org / .net)</span><br>
+                <span class="whylist pointer hover-white">Compspanmentary Hosting</span><br>
+                <span class="whylist pointer hover-white">Web Development</span><br>
+                <span class="whylist pointer hover-white">Custom Scripting</span><br>
+                <span class="whylist pointer hover-white">Unspanmited Products</span><br>
+                <span class="whylist pointer hover-white">Up To 15 Apps*</span><br>
+                <span class="whylist pointer hover-white">Stripe Integration</span><br>
+                <span class="whylist pointer hover-white">Social Media</span><br>
+                <span class="whylist pointer hover-white">Email Marketing Lists</span><br>
+                <span class="whylist pointer hover-white">Technical SEO</span><br>
+                <span class="whylist pointer hover-white">On Page SEO</span><br>
+                <span class="whylist pointer hover-white">Off Page SEO</span><br>
+                <span class="whylist pointer hover-white">Graphics</span>
+            </p>
+        </div>
+        <div class="p-5 mb-5 col-12 col-sm-10 offset-sm-1 col-md-3 offset-md-1 col-lg-4 offset-lg-1 h-100 infront why-bg">
+            right
+        </div>
+        <div class="col-12 text-center absolute bottom infront">
+            <p class="h1 gold-text">
+                <i class="fas fa-chevron-down fa-lg pointer"></i>
+            </p>
+        </div>
+    </div>
+    <div class="row my-5 p-5" id="steps">
+        <div class="p-5 mb-5 col-12 col-sm-10 offset-sm-1 col-md-3 offset-md-1 col-lg-3 offset-lg-1 h-100 infront steps-bg">
+            right
+        </div>
+        <div class="p-5 mb-5 col-12 col-sm-10 offset-sm-1 col-md-7 offset-md-1 col-lg-6 offset-lg-1 h-100 steps-bg">
+            <div class="row g-0 infront">
+                <div class="col-6 mb-3 box">
+                    <h3 class="logo-font">Step 1</h3>
+                    <p class="text-black hover-white">
+                        After purchasing your plan the first step will be to arrange a meeting. This can be arranged for a time that suits you, and 
+                        will provide us with the information needed to begin our design and development phase.
+                    </p>
+                </div>
+                <div class="col-6 mt-5 mb-3">
+                    <h3 class="logo-font">Step 2</h3>
+                    <p class="text-black hover-white">
+                        With the information you provide, we will create website mockups, also known as wireframes, this is a basic structure which will form the 
+                        blueprints which will be handed off to our development team.
+                    </p>
+                </div>
+                <div class="col-6 mt-4 mb-3">
+                    <h3 class="logo-font">Step 3</h3>
+                    <p class="text-black hover-white">
+
+                    </p>
+                </div>
+                <div class="col-6 mt-5 mb-3">
+                    <h3 class="logo-font">Step 4</h3>
+                    <p class="text-black hover-white">
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block postloadjs %}
+{{block.super}}
+<script type="text/javascript">
+    $('.gold-down-arrow').hide();
+    $('#home-hero').mouseenter(function(){
+        $('.title').css("color", "#d4af37").css("transition", "all 1s ease-in-out");
+        $('.gold-down-arrow').show(1000);
+    })
+    $('#home-hero').mouseleave(function(){
+        $('.title').css("color", "#000").css("transition", "all 1s ease-in-out");
+        $('.gold-down-arrow').hide(1000);
+    })
+
+    $('.gold-down-arrow').click(function (e) { 
+    $('html, body').animate({
+        scrollTop: $('#why').offset().top - 20
+    }, 'slow');
+
+
+
+});
+</script>
+
+
+{% endblock %}

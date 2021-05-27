@@ -346,6 +346,16 @@ h6,
 .hover-success:hover{
     color: #28a745 !important;
 }
+.hover-bg-silver{
+    transition: all 1s ease-in-out;
+    background-color: #c0c0c0;
+    box-shadow: 2px 2px 30px #c0c0c0;
+}
+.hover-bg-gold{
+    transition: all 1s ease-in-out;
+    background-color: #d4af37;
+    box-shadow: 2px 2px 30px #d4af37;
+}
 .hover-white:hover{
     color: #fff;
     text-shadow: 
@@ -566,11 +576,48 @@ h6,
  }
 
 
-
-#costs:hover,
-#efficiency:hover,
-#design:hover,
-#returns:hover,
-#pro:hover{
-    cursor: pointer;
+/*-----------Subscription Page----------*/
+.silver-plan:hover,
+.gold-plan:hover{
+    background: url('../../media/conference.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    opacity: 0.4;
+    z-index: 1;
+    transition: all 3s ease-in-out;
+}
+.gold-down-arrow{
+    color: #d4af37;
+    text-shadow: 1px 1px 2px #f5f5f5;
+}
+.gold-text{
+    color: #d4af37;
+    text-shadow: 1px 1px 2px #f5f5f5;
+}
+#why{
+    min-height: 90vh;
+}
+.why-bg{
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+}
+.whylist:hover{
+    transform: scale(1.2,1.2);
+    transition: all 1s ease-in-out;
+}
+.mockup{
+    background: url("../../media/mockup.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    opacity: 0.4;
+    z-index: 1;
+}
+#steps{
+    min-height: 90vh;
 }
