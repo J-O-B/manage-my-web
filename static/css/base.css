@@ -40,6 +40,9 @@ h6,
     font-size: larger;
     letter-spacing: 2px;
 }
+.faded{
+    opacity: 0.5;
+}
 
 #seo,
 #speed,
@@ -147,6 +150,10 @@ h6,
     bottom: 10%;
     left: 0;
     right: 0;
+}
+.center{
+    left: auto;
+    right: auto;
 }
 .pointer:hover{
     cursor: pointer;
@@ -355,6 +362,19 @@ h6,
     transition: all 1s ease-in-out;
     background-color: #d4af37;
     box-shadow: 2px 2px 30px #d4af37;
+}
+.gold-title{
+    color: #d4af37;
+    text-shadow: 
+        1px 1px 1px #000,
+        1px 2px 1px #919191,
+        1px 3px 1px #919191,
+        1px 4px 1px #919191,
+        1px 5px 1px #919191,
+        1px 18px 6px rgba(16,16,16,0.4),
+        1px 22px 10px rgba(16,16,16,0.2),
+        1px 25px 35px rgba(16,16,16,0.2),
+        1px 30px 60px rgba(16,16,16,0.4);
 }
 .hover-white:hover{
     color: #fff;
@@ -604,12 +624,16 @@ h6,
     height: 100vh;
     background: rgba(0,0,0,0.4);
 }
-.whylist:hover{
-    transform: scale(1.2,1.2);
-    transition: all 1s ease-in-out;
+#whyList>.whylist:hover{
+    color: #000 !important;
+    text-shadow: 
+        1px 1px 2px #f5f5f5,
+        -1px -1px #f5f5f5,
+        2px 2px 10px #000;
+    transform: scale(2, 2);
 }
 .mockup{
-    background: url("../../media/mockup.jpg");
+    background: url("../../media/question.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -620,4 +644,24 @@ h6,
 }
 #steps{
     min-height: 90vh;
+}
+.steps-cover{
+    background: url("../../media/steps.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    opacity: 0.2;
+    z-index: 1;
+}
+.included{
+    background: rgba(255, 255, 255, 0.5);
+}
+.price-fade{
+    text-shadow: 
+        1px 1px 5px #000,
+        -1px -1px #000,
+        2px 2px 10px #fff,
+        3px 3px 20px #000;
 }
