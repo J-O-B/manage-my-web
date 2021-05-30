@@ -1,15 +1,420 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Silver</h1>
-    <a href="{% url 'gold' %}">Gold</a>
-    <a href="{% url 'silver' %}">silver</a>
-    <a href="{% url 'subscription' %}">subs menu</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block extra_meta %}
+    <meta name="description" content="The silver plan from ManageMyWeb provides an unbeatable, turnkey solution to web design.">
+{% endblock %}
+
+{% block page_header %}
+    <!--Override Top Margin-->
+{% endblock %}
+
+{% block content %}
+<div id="home-hero" class="row p-5 g-0">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-7 my-5 px-5">
+        <hr class="mx-5 px-5 w-25">
+        <h1 class="my-5 px-5 logo-font silver-title"><em>silver Plan</em></h1>
+        <hr class="mx-5 px-5 w-25">
+        <p class="small px-5 text-black logo-font">
+            Perfect for business websites, personal portfolios and more!
+        </p>
+    </div>
+    <div class="col-12 col-sm-12 col-md-4 col-lg-5 my-5 px-5">
+        <div class="row included rounded-3">
+            <h2 class="silver-title">Included:</h2>
+            <div class="col-6">
+                <p class="infront text-black">
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Custom Domain Name</span><br>
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Complimentary Hosting</span><br>
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Web Development</span><br>
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Custom Scripting</span><br>
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Unlimited Products</span><br>
+                </p>
+            </div>
+            <div class="col-6">
+                <p class="infront text-black">
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Up To 8 Apps*</span><br>
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Stripe Integration</span><br>
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Technical SEO</span><br>
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Graphics</span>
+                </p>
+            </div>
+            <h3 class="h2 silver-title">Price:</h3>
+            <p class="infront text-center">
+                <span class="hover-white lead text-warning px-5 price-fade">999.99 / Year</span>
+            </p>
+            <p class="small text-black">
+                * Apps refer to individual sections of your website, for example a checkout, or blog would count as 1 app.
+            </p>
+        </div>
+    </div>
+    <div class="col-12 text-center">
+        <a href="" class="btn btn-lg rounded-3 btn-success btn-outline-black px-5 py-3 hover-bg-silver">
+            Sign Up
+        </a>
+        <p class="h1 silver-down-arrow">
+            <i class="fas fa-chevron-down fa-lg pointer"></i>
+        </p>
+    </div>
+</div>
+    <div class="row my-5 relative" id="why">
+        <div class="mockup h-100 w-100 absolute"></div>
+        <div class="col-12 infront mt-4">
+            <h2 class="text-center h1 logo-font silver-title">Why Subscribe?</h2>
+        </div>
+        <div id="leftWhy" class="p-5 mb-5 col-12 col-sm-10 offset-sm-1 col-md-4 offset-md-1 col-lg-3 offset-lg-1 h-100 infront why-bg rounded-3">
+            <p class="text-center silver-title lead">
+                Our silver Subscription Is An All In One Package:
+            </p>
+            <p id="whyList" class="infront text-center text-black">
+                <span class="whylist pointer hover-white" id="domain">Domain Name (.com / .org / .net)</span><br>
+                <span class="whylist pointer hover-white" id="host">Complimentary Hosting</span><br>
+                <span class="whylist pointer hover-white" id="dev">Web Development</span><br>
+                <span class="whylist pointer hover-white" id="script">Custom Scripting</span><br>
+                <span class="whylist pointer hover-white" id="prod">Unlimited Products</span><br>
+                <span class="whylist pointer hover-white" id="app">Up To 15 Apps*</span><br>
+                <span class="whylist pointer hover-white" id="stripe">Stripe Integration</span><br>
+                <span class="whylist pointer hover-white" id="social">Social Media</span><br>
+                <span class="whylist pointer hover-white" id="email">Email Marketing Lists</span><br>
+                <span class="whylist pointer hover-white" id="tSeo">Technical SEO</span><br>
+                <span class="whylist pointer hover-white" id="onSeo">On Page SEO</span><br>
+                <span class="whylist pointer hover-white" id="offSeo">Off Page SEO</span><br>
+                <span class="whylist pointer hover-white" id="graphic">Graphics</span>
+            </p>
+        </div>
+        <div id="rightWhy" class="mb-5 col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-1 col-lg-6 offset-lg-1 h-100 infront included rounded-3 relative g-0">
+            <div id="why-img" class="behind faded h-100 w-100 overflow-hidden absolute">
+                <img src="{{MEDIA_URL}}why.jpg" alt="" class="behind faded h-100 w-100">
+            </div>
+            <div id="text_domain" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Free Domain</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Each silver plan comes with a custom domain name. </span><br><br><br>
+                    Custom domains are a great way to give your website a home, and start building your brand.
+                </p>
+            </div>
+            <div id="text_host" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Free Hosting</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Each silver plan comes free hosting for the duration of your subscription. </span><br><br><br>
+                    This will allow us to host your new website on your new custom domain name.
+                </p>
+            </div>
+            <div id="text_dev" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Professionally Built Website</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Each website is built by a team of qualified, professional web developers. </span><br><br><br>
+                    This team will bring your business to life, through custom coding and structured in line with our UX/UI designers.
+                </p>
+            </div>
+            <div id="text_script" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Customized Scripting</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Customized web tools or service? No problem! </span><br><br><br>
+                    Our developers are competent in multiple programming languages across front and back end development. Where needed, we will 
+                    simply build custom code to support and create exactly what you are looking for!
+                </p>
+            </div>
+            <div id="text_prod" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Unlimited products</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Got lots to sell? We don't limit our silver clients by products! </span><br><br><br>
+                    After creating your completely custom website, we will meet online with you to give you a walkthrough of your new website. 
+                    Although we can add or delete products for you, we will show you how you can easily edit, add, or delete products from your own 
+                    adminitrative dashboard!
+                </p>
+            </div>
+            <div id="text_app" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Unique, Custom Apps</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Bring areas of your website to life! </span><br><br><br>
+                    With each website, you can decide on up to 15 apps that will make up the areas of your website. From custom blog apps, to user 
+                    dashboards, your app selection is ultimately up to you, but we will gladly offer advice where requested!
+                </p>
+            </div>
+            <div id="text_stripe" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Secure Payments</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Ensure safe, and secure online payments. </span><br><br><br>
+                    Our preferred payment gateway for all online payment processing is Stripe. As a global leader in this industry, using secure 
+                    platforms such as Stipe will likely increase your sales due to the security your website will offer customers.
+                </p>
+            </div>
+            <div id="text_social" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Social Networking</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Stay social and keep users informed! </span><br><br><br>
+                    Social media is an extremely powerful tool to help promote, and grow an online business. All of our silver clients will receive social 
+                    media accounts across various platforms. Some of which may be automated*.
+                </p>
+            </div>
+            <div id="text_email" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Email Marketing Lists</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Keep customers informed about updates, new products and more! </span><br><br><br>
+                    Your new website will come with a database of emails of both customers, and members. These lists can be split or devided in any way to 
+                    provide emails for any email marketing campaign.
+                </p>
+            </div>
+            <div id="text_tSeo" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Technical SEO</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Don't settle for second class code! </span><br><br><br>
+                    Our developers are trained, and competent in areas of Technical SEO practices. This allows us to create your new website using the latest 
+                    SEO practices, as well as provide the foundations on which our SEO team can launch their SEO plans.
+                </p>
+            </div>
+            <div id="text_onSeo" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">On Page SEO</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Provide valuable and quality on page content. </span><br><br><br>
+                    Our SEO team will optimize each page of your new website to ensure various "on page" SEO is complient. Areas such as keyword density, 
+                    image/text ratios, internal and external linking, as well as page layout will be streamlined into an overall SEO plan which will help 
+                    your search engine rankings, and provide more organic traffic.
+                </p>
+            </div>
+            <div id="text_offSeo" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Off page seo</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Get noticed by others online. </span><br><br><br>
+                    To help build up your online presence, a backlink building campaign will be followed. This plan will gather various quality backlinks 
+                    for your website. From guest posting, to press releases, we will help get your website noticed as well as build up your domain autority.
+                </p>
+            </div>
+            <div id="text_graphic" class="p-5 infront h-100 w-100 overflow-hidden absolute">
+                <h3 class="text-center logo-font silver-title">Website Graphics</h3>
+                <hr>
+                <p class="text-black lead text-center pt-4">
+                    <span class="lead logo-font h3 price-fade">Custom and premade graphics. </span><br><br><br>
+                    Each of our websites comes standard with both royalty free and custom graphics where needed.
+                </p>
+            </div>
+        </div>
+        <div class="col-12 text-center absolute bottom infront">
+            <p class="h1 silver-down-arrow">
+                <i class="fas fa-chevron-down fa-lg pointer "></i>
+            </p>
+        </div>
+    </div>
+    <div class="row my-5 relative" id="steps">
+        <div class="steps-cover g-0 h-100 w-100 absolute"></div>
+        <div class="p-5 mb-5 col-12 col-sm-10 offset-sm-1 h-100 relative infront steps-bg">
+            <h2 class="text-center h1 logo-font silver-title">Steps Taken With Each Subscription</h2>
+            <div class="row g-0 infront">
+                <div class="row">
+                    <div class="col-6" id="step1">
+                        <h3 class="logo-font silver-title">Step 1</h3>
+                        <p class="text-black">
+                            Purchase a subscription and schedule a meeting with us.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 offset-6" id="step2">
+                        <h3 class="logo-font silver-title">Step 2</h3>
+                        <p class="text-black">
+                            Based on our meeting, our UX designers will begin creating wireframe designs for your new website. <br>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6" id="step3">
+                        <h3 class="logo-font silver-title">Step 3</h3>
+                        <p class="text-black">
+                            Once initial design and layout is complete, we will schedule a follow up meeting with you to ensure our initial design 
+                            fits exactly with how you envisage your website.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 offset-6" id="step4">
+                        <h3 class="logo-font silver-title">Step 4</h3>
+                        <p class="text-black">
+                            Upon completion of our follow up meeting, our UX designers will hand off their wireframe designs to our development team. <br>
+                            Over the coming days, our development team will build your website, upon passing a minimum viable product stage, our SEO team 
+                            will be notified.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6" id="step5">
+                        <h3 class="logo-font silver-title">Step 5</h3>
+                        <p class="text-black">
+                            Our SEO team will perform a full SEO analysis for the market and competition with your given niche. This will provide specific 
+                            target keywords and other factors they wish to taget in order to fully 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-center absolute bottom infront">
+            <p class="h1 silver-down-arrow">
+                <i class="fas fa-chevron-down fa-lg pointer"></i>
+            </p>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block postloadjs %}
+{{block.super}}
+<script type="text/javascript">
+    $('#rightWhy').css("min-height", $('#leftWhy').outerHeight());
+
+    $('#home-hero').mouseenter(function(){
+        $('.title').css("color", "#d4af37").css("transition", "all 1s ease-in-out");
+    })
+    
+    $('#home-hero').mouseleave(function(){
+        $('.title').css("color", "#000").css("transition", "all 1s ease-in-out");
+    })
+
+    $('.silver-down-arrow').click(function (e) { 
+        let next_row = $(this).closest('.row').next('.row');
+        $('html, body').animate({
+            scrollTop: $(next_row).offset().top - 20
+        }, 'slow');
+    });
+
+    // Steps section
+    $.fn.isInViewport = function() {
+        let elementTop = $(this).offset().top;
+        let elementBottom = elementTop + $(this).outerHeight();
+
+        let viewportTop = $(window).scrollTop();
+        let viewportBottom = viewportTop + $(window).height();
+
+        return elementBottom > viewportTop && elementTop < viewportBottom;
+    };
+
+    $(window).on('resize scroll', function() {
+        if ($('#steps').isInViewport()) {
+            $('#step1').show(1000);
+            $('#step2').show(2000);
+            $('#step3').show(3000);
+            $('#step4').show(4000);
+            $('#step5').show(5000);
+        } else {
+            $('#step1').hide();
+            $('#step2').hide();
+            $('#step3').hide();
+            $('#step4').hide();
+            $('#step5').hide();
+        }
+        if ($('#whyList').isInViewport()) {
+            $('#rightWhy').show(2000);
+        }else{
+            $('#rightWhy').hide(500);
+        }
+    });
+
+    let height1 = $('#step1').outerHeight();
+    let height2 = $('#step2').outerHeight();
+    let height3 = $('#step3').outerHeight();
+    let height4 = $('#step4').outerHeight();
+    let height5 = $('#step5').outerHeight();
+    
+    let biggest = 0;
+
+    if (height1 >= biggest){
+        biggest = height1;
+    }
+    if (height2 >= biggest){
+        biggest = height2;
+    }
+    if (height3 >= biggest){
+        biggest = height3;
+    }
+    if (height4 >= biggest){
+        biggest = height4;
+    }
+    if (height5 >= biggest){
+        biggest = height5;
+    }
+
+    $('#step1').outerHeight(biggest * .75).css("margin-top", "30px");
+    $('#step2').outerHeight(biggest * .75).css("margin-top", "-30px");
+    $('#step3').outerHeight(biggest * .75).css("margin-top", "-30px");
+    $('#step4').outerHeight(biggest * .75).css("margin-top", "-30px");
+    $('#step5').outerHeight(biggest * .75).css("margin-top", "-30px");
+
+    // Why subscribe section
+    $('#text_domain').hide();
+    $('#text_host').hide();
+    $('#text_dev').hide();
+    $('#text_script').hide();
+    $('#text_prod').hide();
+    $('#text_app').hide();
+    $('#text_stripe').hide();
+    $('#text_social').hide();
+    $('#text_email').hide();
+    $('#text_tSeo').hide();
+    $('#text_onSeo').hide();
+    $('#text_offSeo').hide();
+    $('#text_graphic').hide();
+    $('#domain').click(function(){
+        $('#text_domain').siblings().hide(0);
+        $('#text_domain').fadeIn(1000);
+    })
+    $('#host').click(function(){
+        $('#text_host').siblings().hide(0);
+        $('#text_host').fadeIn(1000);
+    })
+    $('#dev').click(function(){
+        $('#text_dev').siblings().hide(0);
+        $('#text_dev').fadeIn(1000);
+    })
+    $('#script').click(function(){
+        $('#text_script').siblings().hide(0);
+        $('#text_script').fadeIn(1000);
+    })
+    $('#prod').click(function(){
+        $('#text_prod').siblings().hide(0);
+        $('#text_prod').fadeIn(1000);
+    })
+    $('#app').click(function(){
+        $('#text_app').siblings().hide(0);
+        $('#text_app').fadeIn(1000);
+    })
+    $('#stripe').click(function(){
+        $('#text_stripe').siblings().hide(0);
+        $('#text_stripe').fadeIn(1000);
+    })
+    $('#social').click(function(){
+        $('#text_social').siblings().hide(0);
+        $('#text_social').fadeIn(1000);
+    })
+    $('#email').click(function(){
+        $('#text_email').siblings().hide(0);
+        $('#text_email').fadeIn(1000);
+    })
+    $('#tSeo').click(function(){
+        $('#text_tSeo').siblings().hide(0);
+        $('#text_tSeo').fadeIn(1000);
+    })  
+    $('#onSeo').click(function(){
+        $('#text_onSeo').siblings().hide(0);
+        $('#text_onSeo').fadeIn(1000);
+    })
+    $('#offSeo').click(function(){
+        $('#text_offSeo').siblings().hide(0);
+        $('#text_offSeo').fadeIn(1000);
+    })
+    $('#graphic').click(function(){
+        $('#text_graphic').siblings().hide(0);
+        $('#text_graphic').fadeIn(1000);
+    })
+</script>
+{% endblock %}
