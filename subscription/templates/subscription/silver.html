@@ -14,8 +14,12 @@
         <hr class="mx-5 px-5 w-25">
         <h1 class="my-5 px-5 logo-font silver-title"><em>silver Plan</em></h1>
         <hr class="mx-5 px-5 w-25">
-        <p class="small px-5 text-black logo-font">
-            Perfect for business websites, personal portfolios and more!
+        <p class="small px-5 text-black">
+            <span class="lead silver-title logo-font">Perfect for: </span> <br>
+            <span class="silver-title lead"><i class="far fa-lg fa-check-square"></i></span><span class="px-3">Portfolio</span> <br>
+            <span class="silver-title lead"><i class="far fa-lg fa-check-square"></i></span><span class="px-3">Blog</span> <br>
+            <span class="silver-title lead"><i class="far fa-lg fa-check-square"></i></span><span class="px-3">Business Page</span> <br>
+            <span class="silver-title lead"><i class="far fa-lg fa-check-square"></i></span><span class="px-3"></span> <br>
         </p>
     </div>
     <div class="col-12 col-sm-12 col-md-4 col-lg-5 my-5 px-5">
@@ -32,18 +36,18 @@
             </div>
             <div class="col-6">
                 <p class="infront text-black">
-                    <span class="hover-white"><i class="far fa-check-circle"></i> Up To 8 Apps*</span><br>
-                    <span class="hover-white"><i class="far fa-check-circle"></i> Stripe Integration</span><br>
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Up To 8 <span class="small">(Basic)</span> Apps*</span><br>
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Payment Processing</span><br>
                     <span class="hover-white"><i class="far fa-check-circle"></i> Technical SEO</span><br>
                     <span class="hover-white"><i class="far fa-check-circle"></i> Graphics</span>
                 </p>
             </div>
             <h3 class="h2 silver-title">Price:</h3>
             <p class="infront text-center">
-                <span class="hover-white lead text-warning px-5 price-fade">999.99 / Year</span>
+                <span class="hover-white lead text-warning px-5 price-fade">€49.99 / Month - €599 / Year</span>
             </p>
             <p class="small text-black">
-                * Apps refer to individual sections of your website, for example a checkout, or blog would count as 1 app.
+                Minimum initial subscription is 1 Year.
             </p>
         </div>
     </div>
@@ -275,11 +279,11 @@
 
     $('#home-hero').mouseenter(function(){
         $('.title').css("color", "#d4af37").css("transition", "all 1s ease-in-out");
-    })
-    
+    });
+
     $('#home-hero').mouseleave(function(){
         $('.title').css("color", "#000").css("transition", "all 1s ease-in-out");
-    })
+    });
 
     $('.silver-down-arrow').click(function (e) { 
         let next_row = $(this).closest('.row').next('.row');
@@ -290,6 +294,7 @@
 
     // Steps section
     $.fn.isInViewport = function() {
+
         let elementTop = $(this).offset().top;
         let elementBottom = elementTop + $(this).outerHeight();
 
@@ -313,9 +318,10 @@
             $('#step4').hide();
             $('#step5').hide();
         }
+
         if ($('#whyList').isInViewport()) {
             $('#rightWhy').show(2000);
-        }else{
+        } else {
             $('#rightWhy').hide(500);
         }
     });
@@ -367,54 +373,54 @@
     $('#domain').click(function(){
         $('#text_domain').siblings().hide(0);
         $('#text_domain').fadeIn(1000);
-    })
+    });
     $('#host').click(function(){
         $('#text_host').siblings().hide(0);
         $('#text_host').fadeIn(1000);
-    })
+    });
     $('#dev').click(function(){
         $('#text_dev').siblings().hide(0);
         $('#text_dev').fadeIn(1000);
-    })
+    });
     $('#script').click(function(){
         $('#text_script').siblings().hide(0);
         $('#text_script').fadeIn(1000);
-    })
+    });
     $('#prod').click(function(){
         $('#text_prod').siblings().hide(0);
         $('#text_prod').fadeIn(1000);
-    })
+    });
     $('#app').click(function(){
         $('#text_app').siblings().hide(0);
         $('#text_app').fadeIn(1000);
-    })
+    });
     $('#stripe').click(function(){
         $('#text_stripe').siblings().hide(0);
         $('#text_stripe').fadeIn(1000);
-    })
+    });
     $('#social').click(function(){
         $('#text_social').siblings().hide(0);
         $('#text_social').fadeIn(1000);
-    })
+    });
     $('#email').click(function(){
         $('#text_email').siblings().hide(0);
         $('#text_email').fadeIn(1000);
-    })
+    });
     $('#tSeo').click(function(){
         $('#text_tSeo').siblings().hide(0);
         $('#text_tSeo').fadeIn(1000);
-    })  
+    });
     $('#onSeo').click(function(){
         $('#text_onSeo').siblings().hide(0);
         $('#text_onSeo').fadeIn(1000);
-    })
+    });
     $('#offSeo').click(function(){
         $('#text_offSeo').siblings().hide(0);
         $('#text_offSeo').fadeIn(1000);
-    })
+    });
     $('#graphic').click(function(){
         $('#text_graphic').siblings().hide(0);
         $('#text_graphic').fadeIn(1000);
-    })
+    });
 </script>
 {% endblock %}
