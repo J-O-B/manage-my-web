@@ -128,46 +128,94 @@
             <h3 class="logo-font mt-3">Menu:</h3>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="edit-profile-details" aria-disabled="false">Edit Profile</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="view-seo" aria-disabled="false">SEO</a>
-            <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">Websites</a>
-            <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">Orders</a>
-            <a class="btn btn-md btn-black text-center w-50 my-2" aria-disabled="false">Calendar</a>
+            <a class="btn btn-md btn-black text-center w-50 my-2" id="view-web" aria-disabled="false">Websites</a>
+            <a class="btn btn-md btn-black text-center w-50 my-2" id="view-orders" aria-disabled="false">Orders</a>
+            <a class="btn btn-md btn-black text-center w-50 my-2" id="view-calendar" aria-disabled="false">Calendar</a>
         </div>
-        <div class="col-12 col-md-8 col-lg-9 col-xl-10 text-center p5 bg-success" id="update-info">
-            <h2 class="h1 text-black mt-3">Update Profile Information</h2>
-            <div class="w-100 d-flex justify-content-center">
-                <hr class="w-50">
-            </div>
-            <form action="" method="POST" id="profile-update-form">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
-                        <fieldset class="rounded px-3 mb-5 detailsSet" id="personal-details">
-                            <legend class="fieldset-label small text-black mx-2 w-100"><em>Personal Details:</em></legend>
-                            {{ form.full_name | as_crispy_field }}
-                            {{ form.email | as_crispy_field }}
-                            {{ form.phone_number | as_crispy_field }}
-                            <p class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-billing">Next <i class="fas fa-angle-right"></i></p>
-                        </fieldset>
-                        <fieldset class="rounded px-3 mb-5 billingSet" id="billing-details">
-                            <legend class="fieldset-label small text-black mx-2 w-100"><em>Billing Address:</em></legend>
-                            {{ form.town_or_city | as_crispy_field }}
-                            {{ form.street_address1 | as_crispy_field }}
-                            {{ form.street_address2 | as_crispy_field }}
-                            {{ form.postcode | as_crispy_field }}
-                            {{ form.country | as_crispy_field }}
-                            <p class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-personal"><i class="fas fa-angle-left"></i> Previous</p>
-                        </fieldset>
-                    </div>
+        <div class="items col-12 col-md-8 col-lg-9 col-xl-10 p5 bg-success">
+            <div class="w-100 h-100" id="update-profile-info">
+                <h3 class="logo-font mt-3 text-center">Update Profile:</h3>
+                <div class="w-100 d-flex justify-content-center">
+                    <hr class="w-50">
                 </div>
-            </form>
-        </div>
-        
-        <div class="col-12 col-md-8 col-lg-9 col-xl-10 text-center p5 bg-success" id="seo-info">
-            <h3 class="logo-font mt-3">SEO News:</h3>
-            <div class="w-100 d-flex justify-content-center">
-                <hr class="w-50">
+                <form action="" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
+                            <fieldset class="rounded px-3 mb-5 detailsSet" id="personal-details">
+                                <legend class="fieldset-label small text-black mx-2 w-100"><em>Personal Details:</em></legend>
+                                {{ form.full_name | as_crispy_field }}
+                                {{ form.email | as_crispy_field }}
+                                {{ form.phone_number | as_crispy_field }}
+                                <p class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-billing">Next <i class="fas fa-angle-right"></i></p>
+                            </fieldset>
+                            <fieldset class="rounded px-3 mb-5 billingSet" id="billing-details">
+                                <legend class="fieldset-label small text-black mx-2 w-100"><em>Billing Address:</em></legend>
+                                {{ form.town_or_city | as_crispy_field }}
+                                {{ form.street_address1 | as_crispy_field }}
+                                {{ form.street_address2 | as_crispy_field }}
+                                {{ form.postcode | as_crispy_field }}
+                                {{ form.country | as_crispy_field }}
+                                <p class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-personal"><i class="fas fa-angle-left"></i> Previous</p>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
             </div>
-            
+            <div class="w-100 h-100" id="seo-info-profile">
+                <h3 class="logo-font mt-3 text-center">SEO News:</h3>
+                <div class="w-100 d-flex justify-content-center">
+                    <hr class="w-50">
+                </div>
+                <h4 class="h1 text-center text-white">Feature Coming Soon...</h4>
+                <p class="text-white">
+                    In the meantime, we will update you regularly via email on your 
+                    SEO rankings, metrics and other data.
+                </p>
+            </div>
+            <div class="w-100 h-100" id="orders-profile">
+                <h3 class="logo-font mt-3 text-center">Your Orders:</h3>
+                <div class="w-100 d-flex justify-content-center">
+                    <hr class="w-50">
+                </div>
+                {% if orders %}
+                    <div class="row">
+                        <p class="lead h4 text-black text-center">You Have Purchased {{line_items|length}} {% if line_items|length == 1 %}Item{% else %}Items{% endif %}</p>
+                        <p class="lead h4 text-black text-center">Total Spent: {{ price }}</p>
+                        {% for line in line_items %}
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3 p-2">
+                                <div class="relative box-shadow bg-primary overflow-hidden px-2">
+                                    <p class="lead text-center">{{ line.product }}</p>
+                                    <p class="lead">Price: <span class="small">{{ line.product.price }}</span></p>
+                                    <p class="lead">Ordered: <span class="small">{{ line.order.date }}</span></p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="w-100 h-100" id="websites-profile">
+                <h3 class="logo-font mt-3 text-center">Website:</h3>
+                <div class="w-100 d-flex justify-content-center">
+                    <hr class="w-50">
+                </div>
+                <h4 class="h1 text-center text-white">Feature Coming Soon...</h4>
+                <p class="text-white">
+                    This feature will be arriving in the coming weeks.
+                </p>
+            </div>
+            <div class="w-100 h-100" id="calendar-profile">
+                <h3 class="logo-font mt-3 text-center">Calendar:</h3>
+                <div class="w-100 d-flex justify-content-center">
+                    <hr class="w-50">
+                </div>
+                <h4 class="h1 text-center text-white">Feature Coming Soon...</h4>
+                <p class="text-white">
+                    You will soon be able to book meetings directly from your 
+                    profile page. <br>This will allow further automation, and ease of 
+                    access to our services.
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -177,43 +225,50 @@
     <script type="text/javascript">
     $(document).ready(function(){
         mainPageWrap();
+        sideMenuOptions();
     })
     function equalHeight(height){
         $('#menu').css('height', height).css("vertical-align", 'middle');
     }
     function mainPageWrap(){
-        // Click Events
-        $('#edit-profile-details').click(function(e){
-            e.preventDefault();
-            $('#update-info').siblings().hide(200);
-            $('#update-info').show(700);
-        });
-        $('#edit-profile-btn').click(function(e){
-            e.preventDefault();
-            $('#main-profile-page-wrap').hide(200);
-            $('#edit-profile').show(700);
-            let height = $('#update-info').outerHeight();
-            equalHeight(height);
-        });
-        $('#go-billing').click(function(e){
-            e.preventDefault();
-            $('#personal-details').hide();
-            $('#billing-details').show();
-            let height = $('#update-info').outerHeight();
-            equalHeight(height);
-        });
-        $('#go-personal').click(function(e){
-            e.preventDefault();
-            $('#billing-details').hide();
-            $('#personal-details').show();
-            let height = $('#update-info').outerHeight();
-            equalHeight(height);
-        });
-        $('#view-seo').click(function(e){
-            e.preventDefault();
-            $('#update-info').hide(200);
-            $('#seo-info').show(700);
-        })
+        $('#edit-profile').hide();
+        // Main Menu Options
+            $('#edit-profile-btn').click(function(e){
+                e.preventDefault();
+                $('#main-profile-page-wrap').hide(200);
+                $('#edit-profile').show(500);
+                $('#update-profile-info').siblings().hide();
+                $('#update-profile-info').show(200);
+            })
+            $('#seo-profile-btn').click(function(e){
+                e.preventDefault();
+                $('#main-profile-page-wrap').hide(200);
+                $('#edit-profile').show(500);
+                $('#seo-info-profile').siblings().hide();
+                $('#seo-info-profile').show(200);
+            })
+            $('#web-profile-btn').click(function(e){
+                e.preventDefault();
+                $('#main-profile-page-wrap').hide(200);
+                $('#edit-profile').show(500);
+                $('#websites-profile').siblings().hide();
+                $('#websites-profile').show(200);
+            })
+            $('#order-profile-btn').click(function(e){
+                e.preventDefault();
+                $('#main-profile-page-wrap').hide(200);
+                $('#edit-profile').show(500);
+                $('#orders-profile').siblings().hide();
+                $('#orders-profile').show(200);
+            })
+            $('#meeting-profile-btn').click(function(e){
+                e.preventDefault();
+                $('#main-profile-page-wrap').hide(200);
+                $('#edit-profile').show(500);
+                $('#calendar-profile').siblings().hide();
+                $('#calendar-profile').show(200);
+            })
+
         // Styling
         $('#seo-info').hide();
         $('#billing-details').hide();
@@ -263,6 +318,28 @@
         $('#meeting-profile-btn').mouseleave(function(){
             $('#calendar-profile-background').fadeOut(300);
             $('#main-profile-page-wrap').css('background', '#f5f5f5');
+        })
+    }
+    function sideMenuOptions(){
+        $('#edit-profile-details').click(function(){
+            $('#update-profile-info').siblings().hide(200);
+            $('#update-profile-info').show(500);
+        })
+        $('#view-seo').click(function(){
+            $('#seo-info-profile').siblings().hide(200);
+            $('#seo-info-profile').show(500);
+        })
+        $('#view-web').click(function(){
+            $('#websites-profile').siblings().hide(200);
+            $('#websites-profile').show(500);
+        })
+        $('#view-orders').click(function(){
+            $('#orders-profile').siblings().hide(200);
+            $('#orders-profile').show(500);
+        })
+        $('#view-calendar').click(function(){
+            $('#calendar-profile').siblings().hide(200);
+            $('#calendar-profile').show(500);
         })
     }
     </script>

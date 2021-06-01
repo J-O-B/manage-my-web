@@ -37,16 +37,26 @@ def user_profile(request):
     """
     user = request.user
     profile = UserProfile.objects.get(user=user)
-    orders = Order.objects.filter(user_profile=profile)
-    line_items = []
-    for order in orders:
-        line_items += OrderLineItem.objects.filter(order=order.id)
+    orders = ""
+    price = 0
+    try:
+        orders = Order.objects.filter(user_profile=profile)
+        line_items = []
+        for order in orders:
+            line_items += OrderLineItem.objects.filter(order=order.id)
+
+        for i in line_items:
+            price = price + i.lineitem_total
+
+    except Exception:
+        messages.error(request, "Error retreiving orders, or you have no order history")
 
     form = UserProfileForm
     template = 'profiles/user_profile.html'
     context = {
         "profile": profile,
         "form": form,
+        "price": price,
         "user": user,
         "orders": orders,
         "line_items": line_items,
