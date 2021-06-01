@@ -746,7 +746,27 @@ h6,
 }
 #contact-gold{
     min-height: 60vh;
-    background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+    background: -webkit-linear-gradient(left, #d4af37, #00c6ff);
+}
+#contact-silver{
+    min-height: 60vh;
+    background: -webkit-linear-gradient(left, #c0c0c0, #00c6ff);
+}
+.silver-haze{
+    background: #c0c0c0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.3;
+    z-index:0;
+}
+.gold-haze{
+    background: #d4af37;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.3;
+    z-index:0;
 }
 
 /* -------Contact Form -------- */
