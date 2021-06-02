@@ -42,6 +42,15 @@ def cache_checkout_data(request):
         return HttpResponse(content=e, status=400)
 
 
+def mockingPubKey():
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    return stripe_public_key
+
+def mockingSecKey():
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+    return stripe_secret_key
+
+
 def checkout(request):
     """
     The checkout view to handle the page, its variables,
