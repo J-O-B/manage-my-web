@@ -30,9 +30,9 @@
         <div class="dropdown-menu bg-white border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="user-options">
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
-                    <a href="#" class="dropdown-item w-100">Product Management</a>
+                    <a href="/admin" class="dropdown-item w-100">Product Management</a>
                 {% endif %}
-                <a href="#" class="dropdown-item w-100">My Profile</a>
+                <a href="{% url 'user_profile' %}" class="dropdown-item w-100">My Profile</a>
                 <a href="{% url 'account_logout' %}" class="dropdown-item w-100">Logout</a>
             {% else %}
                 <a href="{% url 'account_signup' %}" class="dropdown-item w-100">Register</a>

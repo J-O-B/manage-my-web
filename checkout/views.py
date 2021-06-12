@@ -46,6 +46,7 @@ def mockingPubKey():
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     return stripe_public_key
 
+
 def mockingSecKey():
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     return stripe_secret_key

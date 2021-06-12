@@ -28,7 +28,7 @@ class UserProfile(models.Model):
     subscription = models.BooleanField(
         default=False)
     subscription_expiry = models.DateField(
-        default=datetime.now(), null=True, blank=True)
+        default=datetime.utcnow(), null=True, blank=True)
     created = models.DateField(auto_now_add=True)
 
     def __str__(self):
