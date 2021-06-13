@@ -174,6 +174,7 @@
             {% block content %}
             {% endblock %}
 
+            <!-- Global Footer -->
             <footer class="container-fluid bg-white infront pt-5 no-print" id="footer">
                 <div class="row">
                     <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0">
@@ -240,7 +241,6 @@
                 </div>
             </footer>
 
-            {% block btt_button %}
             <!--Back to top button-->
             <div class="btt-button no-print rounded-50 border bg-white box-shadow infront">
                 <a class="btt-link d-flex h-100">
@@ -325,9 +325,39 @@
                   </div>
                 </div>
               </div>
-            {% endblock %}
 
+            {% if consent != "accepted" %}
+            <div class="container-fluid cookie-container">
+                <div class="popup-haze"></div>
+                <div class="row cookie-message w-100 g-0">
+                    <h3 class="h4 text-center">
+                        Cookie Policy
+                    </h3>
+                    <p class="text-capitalize text-center">
+                        We Use Cookies To ensure the functionality of this website.
+                        Should you wish to know more, please view our <a href="#" class="text-decoration-none">cookie policy</a>& <a href="#" class="text-decoration-none">privacy policy</a><br>
+                        By clicking accept, you agree to our policies. <br>
+                        {{ consent }}
+                    </p>
+                    <div class="w-100 text-end">
+                        <a href="#" class="btn btn-success btn-lg" id="cookie-accept">Accept</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <!-- Global Script -->
             <script type="text/javascript">
+                function setCookie(cname, cvalue, exdays) {
+                    var d = new Date();
+                    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                    var expires = "expires="+d.toUTCString();
+                    document.cookie = cname + "=" + cvalue + "; " + expires;
+                }
+                $('#cookie-accept').click(function(e){
+                    setCookie("MMWconsent", "accepted", 7)
+                    $('.cookie-container').fadeOut(500);
+                })
+                $('.popup-haze').height($(document).height());
                 $('#chatFormContain').hide();
                 $('#restartChat').click(function(){
                     $('#chatFormContain').hide();
@@ -335,7 +365,6 @@
                 $('.btt-link').click(function(e){
                     window.scrollTo(0,0);
                 });
-                // Stick the footer on bottom
                 let footer = $('#footer');
                 let bottom = footer.position().top + footer.outerHeight(true);
                 let height = $(window).height();
@@ -345,13 +374,13 @@
                 $('.restartChat').click(function(){
                     clear();
                 })
-            </script>
-            
-
-            {% block postloadjs %}
-            <script type="text/javascript">
                 $('.toast').toast('show');
             </script>
+            <script src="{% static 'js/cookie.js' %"></script>
+
+            <!-- Template Additional Scripts-->
+            {% block postloadjs %}
+
             {% endblock %}
             
         </body>

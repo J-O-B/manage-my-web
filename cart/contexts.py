@@ -21,6 +21,7 @@ def cart_contents(request):
 
     expiry = (currentDate + relativedelta(years=1)).date()
     cart = request.session.get("cart", {})
+    consent = request.COOKIES.get("MMWconsent",)
 
     for item_id, quantity in cart.items():
         product = get_object_or_404(Product, pk=item_id)
@@ -59,6 +60,7 @@ def cart_contents(request):
         "tax_rate": tax_rate,
         "expiry": expiry,
         "discount": discount,
+        "consent": consent,
     }
 
     return context

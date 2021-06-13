@@ -821,3 +821,28 @@ h6,
     border: none;
     cursor: pointer;
 }
+
+/*-------Cookie Container ----------*/
+
+.popup-haze{
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 999999;
+}
+.cookie-message{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999999;
+    background-color: #f5f5f5;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    border-top: 2px solid #000;
+    font-weight: 200;
+}
+.cookie-message a{
+    margin-right: 30px;
+}
