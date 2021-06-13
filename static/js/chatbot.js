@@ -392,7 +392,55 @@ function seo(){
         })
     })
 }
-
+function pay(){
+    botui.message.add({
+        delay: 2000,
+        loading: true,
+        content: "Manage My Web currently uses Stripe for all payment processing."
+    }).then(function(){
+        botui.message.add({
+            delay: 2000,
+            loading: true,
+            content: "We can facilitate other methods on an individual basis if needed. Would you like to know more about Stripe or our custom payments?"
+        }).then(function(){
+            botui.action.button({
+                action:[
+                    {value:"stripe", text: "Stripe Payments"},
+                    {value:"custom", text: "Custom Payments"},
+                ]
+            }).then(function(res){
+                if (res.value == "stripe"){
+                    botui.message.add({
+                        delay: 2000,
+                        loading: true,
+                        content: "Stripe is an global leader in online payment processing. They provide a secure & seamless user experience. More information on Stripe can be found at their website Stripe.com"
+                    }).then(function(){
+                        standby();
+                    })
+                }else if (res.value = "custom"){
+                    botui.message.add({
+                        delay: 2000,
+                        loading: true,
+                        content: "Our custom payments are dealt with on an individual basis. Although we do offer these payments in certain situations, we retain the right to refuse custom payment applications. Would you like to apply for a custom payment?"
+                    }).then(function(){
+                        botui.action.button({
+                            action:[
+                                {value:"yes", text:"Yes"},
+                                {value:"no", text:"No"},
+                            ]
+                        }).then(function(res){
+                            if (res.value == "yes"){
+                                $('#chatFormContain').show();
+                            }else{
+                                options();
+                            }
+                        })
+                    })
+                }
+            })
+        })
+    })
+}
 function refund(){
     botui.message.add({
         delay: 2000,
@@ -400,6 +448,21 @@ function refund(){
         content: "For all refund requests, please fill out the form provided."
     }).then(function(){
         $('#chatFormContain').show();
+    })
+}
+function aboutus(){
+    botui.message.add({
+        delay: 2000,
+        loading: true,
+        content: "Manage My Web is a web development team based in Dublin, Ireland. We offer various website services including design/development, search engine optimization and graphics."
+    }).then(function(){
+        botui.message.add({
+            delay: 2000,
+            loading: true,
+            content: "Our team is made up of various departments which are experts in their respective fields. For more information on us, please visit our about page."
+        }).then(function(){
+            standby();
+        })
     })
 }
 function standby(){
@@ -462,13 +525,13 @@ function options(){
                 website();
             }
             if (i == "pay"){
-                return
+                pay();
             }
             if (i == "refund"){
                 refund();
             }
             if (i == "aboutus"){
-                return
+                aboutus();
             }
         });
     })
