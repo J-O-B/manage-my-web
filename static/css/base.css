@@ -436,8 +436,8 @@ h6,
     bottom: 10px;
     left: 10px;
 }
-.dropdown-menu.show {
-    z-index: 99999;
+.dropdown-menu {
+    z-index: 999999999 !important;
 }
 .btt-link,
 .update-link,
@@ -703,13 +703,6 @@ h6,
     background-attachment: fixed;
 
 }
-.feedback-bg{
-    background: url('../../media/testemonial.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: scroll;
-}
 .contact-bg{
     background: url('../../media/contact.jpg');
     background-size: cover;
@@ -718,31 +711,6 @@ h6,
     background-attachment: fixed;
     opacity: 0.4;
 }
-#feedback{
-    min-height: 60vh;
-}
-.feedback-image img{
-    border-radius: 50%;
-    height: 130px;
-    width: 130px;
-    margin-top: -5%;
-    z-index: 999999999;
-}
-#feedback-intro{
-    margin-top: 25vh;
-    padding-right: 5vw;
-}
-#feedback-carousel{
-    background: #000;
-}
-.feedback-carousel-bg{
-    background: url('../../media/feedback.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    opacity: 0.2;
-}
 #contact-gold{
     min-height: 60vh;
     background: -webkit-linear-gradient(left, #d4af37, #00c6ff);
@@ -750,6 +718,9 @@ h6,
 #contact-silver{
     min-height: 60vh;
     background: -webkit-linear-gradient(left, #c0c0c0, #00c6ff);
+}
+#description{
+    height: auto;
 }
 .silver-haze{
     background: #c0c0c0;
