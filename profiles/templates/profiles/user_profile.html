@@ -188,6 +188,11 @@
                                     <p class="lead text-center">{{ line.product }}</p>
                                     <p class="lead">Price: <span class="small">{{ line.product.price }}</span></p>
                                     <p class="lead">Ordered: <span class="small">{{ line.order.date }}</span></p>
+                                    {% if line.delivered %}
+                                        <p class="lead">Delivered: <span class="small text-success">{{ line.delivered }}</span></p>
+                                    {% else %}
+                                        <p class="lead">Delivered: <span class="small text-success">In Progress</span></p>
+                                    {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
@@ -211,19 +216,21 @@
                 </div>
                 {% if orders %}
                     <div class="row">
-                        
                         {% for line in line_items %}
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3 p-2">
                             <div class="relative box-shadow bg-white overflow-hidden px-2">
                                 <p class="lead text-center">{{ line.product }}</p>
-                                <p class="lead">Price: <span class="small">{{ line.product.price }}</span></p>
-                                <p class="lead">Ordered: <span class="small">{{ line.order.date }}</span></p>
-                                <h1>{{line.product.id}}</h1>
-                                <!-- Append order line item with a user rating, then if no user rating show form-->
-                                <p class="lead">Your Rating:</p>
-                                {% if line.rating %}
-                                {{ line.rating|floatformat:1 }}
+                                <p class="lead">Price: <span class="small text-decoration-underline">{{ line.product.price }}</span></p>
+                                <p class="lead">Ordered: <span class="small text-decoration-underline">{{ line.order.date }}</span></p>
+                                {% if line.delivered %}
+                                    <p class="lead">Delivered: <span class="small text-success text-decoration-underline">{{ line.delivered }}</span></p>
                                 {% else %}
+                                    <p class="lead">Delivered: <span class="small text-success text-decoration-underline">In Progress</span></p>
+                                {% endif %}
+                                {% if line.rating %}
+                                <p class="text muted">You Rated This Product: {{ line.rating|floatformat:1 }} / 5.0 <br><span class="fst-italic">Thank You For Your Feedback</span></p>
+                                {% else %}
+                                <p class="text-muted">Please Provide Feedback For This Product</p>
                                 <form action="{% url 'user_profile' %}" method="POST" id="{{line.order.id}}">
                                     {% csrf_token %}
                                     <input type="hidden" name="ratingForm" class="ratingForm_{{line.order.id}}">
@@ -233,11 +240,11 @@
                                 </form>
                                 <div class="row">
                                     <p class="w-100 d-flex justify-content-around">
-                                        <span class="pointer" onclick="rating(1, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star star1"></i></span>
-                                        <span class="pointer" onclick="rating(2, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star star2"></i></span>
-                                        <span class="pointer" onclick="rating(3, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star star3"></i></span>
-                                        <span class="pointer" onclick="rating(4, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star star4"></i></span>
-                                        <span class="pointer" onclick="rating(5, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star star5"></i></span>
+                                        <span class="pointer star1" onclick="rating(1, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star"></i></span>
+                                        <span class="pointer star2" onclick="rating(2, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star"></i></span>
+                                        <span class="pointer star3" onclick="rating(3, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star"></i></span>
+                                        <span class="pointer star4" onclick="rating(4, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star"></i></span>
+                                        <span class="pointer star5" onclick="rating(5, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star"></i></span>
                                     </p>
                                 </div>
                                 {% endif %}
@@ -380,58 +387,52 @@
         $(`#submit-rating-${order_id}`).trigger('click');
     }
     // Stars Style
-    function stars(){
-        
+    function stars(){   
         $('.star1').mouseenter(function(){
-            $(this).removeClass('far').addClass('fas');
-        })
+            $(this).prevAll().children().removeClass('far').addClass('fas');
+            $(this).children().removeClass('far').addClass('fas');
+        });
         $('.star1').mouseleave(function(){
-            $(this).removeClass('fas').addClass('far');
-        })
+            $(this).prevAll().children().removeClass('fas').addClass('far');
+            $(this).children().removeClass('fas').addClass('far');
+        });
+        
         $('.star2').mouseenter(function(){
-            $('.star1').removeClass('far').addClass('fas');
-            $(this).removeClass('far').addClass('fas');
-        })
+            $(this).prevAll().children().removeClass('far').addClass('fas');
+            $(this).children().removeClass('far').addClass('fas');
+        });
         $('.star2').mouseleave(function(){
-            $('.star1').removeClass('fas').addClass('far');
-            $(this).removeClass('fas').addClass('far');
-        })
+            $(this).prevAll().children().removeClass('fas').addClass('far');
+            $(this).children().removeClass('fas').addClass('far');
+        });
+        
         $('.star3').mouseenter(function(){
-            $('.star1').removeClass('far').addClass('fas');
-            $('.star2').removeClass('far').addClass('fas');
-            $(this).removeClass('far').addClass('fas');
-        })
+            $(this).prevAll().children().removeClass('far').addClass('fas');
+            $(this).children().removeClass('far').addClass('fas');
+        });
         $('.star3').mouseleave(function(){
-            $('.star1').removeClass('fas').addClass('far');
-            $('.star2').removeClass('fas').addClass('far');
-            $(this).removeClass('fas').addClass('far');
-        })
+            $(this).prevAll().children().removeClass('fas').addClass('far');
+            $(this).children().removeClass('fas').addClass('far');
+        });
+        
         $('.star4').mouseenter(function(){
-            $('.star1').removeClass('far').addClass('fas');
-            $('.star2').removeClass('far').addClass('fas');
-            $('.star3').removeClass('far').addClass('fas');
-            $(this).removeClass('far').addClass('fas');
-        })
+            $(this).prevAll().children().removeClass('far').addClass('fas');
+            $(this).children().removeClass('far').addClass('fas');
+        });
         $('.star4').mouseleave(function(){
-            $('.star1').removeClass('fas').addClass('far');
-            $('.star2').removeClass('fas').addClass('far');
-            $('.star3').removeClass('fas').addClass('far');
-            $(this).removeClass('fas').addClass('far');
-        })
+            $(this).prevAll().children().removeClass('fas').addClass('far');
+            $(this).children().removeClass('fas').addClass('far');
+        });
+        
         $('.star5').mouseenter(function(){
-            $('.star1').removeClass('far').addClass('fas');
-            $('.star2').removeClass('far').addClass('fas');
-            $('.star3').removeClass('far').addClass('fas');
-            $('.star4').removeClass('far').addClass('fas');
-            $(this).removeClass('far').addClass('fas');
-        })
+            $(this).prevAll().children().removeClass('far').addClass('fas');
+            $(this).children().removeClass('far').addClass('fas');
+        });
         $('.star5').mouseleave(function(){
-            $('.star1').removeClass('fas').addClass('far');
-            $('.star2').removeClass('fas').addClass('far');
-            $('.star3').removeClass('fas').addClass('far');
-            $('.star4').removeClass('fas').addClass('far');
-            $(this).removeClass('fas').addClass('far');
-        })
+            $(this).prevAll().children().removeClass('fas').addClass('far');
+            $(this).children().removeClass('fas').addClass('far');
+        });
+        
     }
     stars();
     </script>

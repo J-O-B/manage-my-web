@@ -112,6 +112,7 @@ class OrderLineItem(models.Model):
     lineitem_total = models.DecimalField(
         max_digits=6, decimal_places=2,
         null=False, blank=False, editable=False)
+    delivered = models.DateField(null=True, blank=True)
     rating = models.DecimalField(
         max_digits=6, decimal_places=2,
         null=True, blank=True)
