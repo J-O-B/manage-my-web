@@ -161,6 +161,8 @@
                                         <div class="row my-0">
                                             <div class="col-6 text-start">
                                                 <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-info w-100">More Info</a>
+                                                <input type="hidden" id="quantity" name="quantity" value="1">
+                                                <input type="hidden" name="redirect_url" id="redirect_url" value="{{ request.path }}">
                                             </div>
                                             <div class="col-6 text-end">
                                                 <button type="submit" class="btn btn-sm btn-success w-100" {% if product.available < 1 %}disabled{%endif%}>Add To Cart</button>

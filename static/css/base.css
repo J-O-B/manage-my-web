@@ -160,6 +160,10 @@ h6,
 .product-img{
     height: 250px;
 }
+.main-img-holder{
+    height: 400px;
+    overflow: hidden;
+}
 .details-top-image{
     width:100%;
     max-height: 400px;
@@ -475,6 +479,13 @@ h6,
 .toast-capper{
     height: 2px;
 }
+.toast-image{
+    max-width: 100%;
+    max-height: 125px;
+}
+#toast-image-holder{
+    overflow: hidden;
+}
 .home-subtitle{
     min-height: 70px;
 }
@@ -722,6 +733,7 @@ h6,
 #description{
     height: auto;
 }
+
 .silver-haze{
     background: #c0c0c0;
     position: absolute;
