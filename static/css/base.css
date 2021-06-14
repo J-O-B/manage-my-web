@@ -158,7 +158,8 @@ h6,
     cursor: pointer;
 }
 .product-img{
-    height: 250px;
+    width:100%;
+    height: auto;
 }
 .main-img-holder{
     height: 400px;
