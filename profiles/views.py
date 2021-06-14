@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import UserProfile, create_or_update_user_profile
 from datetime import datetime
 from django.contrib import messages
 from .forms import UserProfileForm
 from checkout.models import Order, OrderLineItem
+from products.models import Product
+
 
 import json
 
@@ -50,6 +52,28 @@ def user_profile(request):
 
     except Exception:
         messages.error(request, "Error retreiving orders, or you have no order history")
+
+    if request.method == "POST":
+        try:
+            rating = request.POST.get('ratingForm')
+            productID = request.POST.get('productID')
+            orderID = request.POST.get('orderID')
+            print(rating)
+            print(productID)
+            print(orderID)
+            for line in line_items:
+                if int(productID) == int(line.product.id):
+                    product = get_object_or_404(Product, pk=int(productID))
+                    product.rating_count = product.rating_count + 1
+                    product.rating_total = product.rating_total + int(rating)
+                    product.rating = product.rating_total / product.rating_count
+                    product.save()
+                    line.rating = int(rating)
+                    line.save()
+                else:
+                    print('failed')
+        except Exception:
+            pass
 
     form = UserProfileForm
     template = 'profiles/user_profile.html'

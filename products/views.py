@@ -113,6 +113,35 @@ def product_detail(request, product_id):
         if rating % 1 != 0:
             half_star = 1
 
+    if product.image5:
+        carousel = [
+            product.image1.url,
+            product.image2.url,
+            product.image3.url,
+            product.image4.url,
+            product.image5.url,
+        ]
+    elif product.image4:
+        carousel = [
+            product.image1.url,
+            product.image2.url,
+            product.image3.url,
+            product.image4.url,
+        ]
+    elif product.image3:
+        carousel = [
+            product.image1.url,
+            product.image2.url,
+            product.image3.url,
+        ]
+    elif product.image2:
+        carousel = [
+            product.image1.url,
+            product.image2.url,
+        ]
+    else:
+        carousel = False
+
     saving = None
 
     if product.normal_price:
@@ -126,5 +155,6 @@ def product_detail(request, product_id):
         'rating': rating,
         'whole_stars': whole_stars,
         'half_star': half_star,
+        'carousel': carousel,
     }
     return render(request, template, context)

@@ -75,8 +75,8 @@
                 <div class="profile-btn-background" id="orders-profile-background">
                     <img class="h-100 w-100" src="{{ MEDIA_URL}}receipt.jpg" alt="Several unopened doors">
                 </div>
-                <div class="profile-btn-background" id="calendar-profile-background">
-                    <img class="h-100 w-100" src="{{ MEDIA_URL}}calendar.jpg" alt="Several unopened doors">
+                <div class="profile-btn-background" id="rating-profile-background">
+                    <img class="h-100 w-100" src="{{ MEDIA_URL}}rating.jpg" alt="Several unopened doors">
                 </div>
 
                 <!--Buttons-->
@@ -123,16 +123,16 @@
 </div>
 
 <div class="container-fluid overflow-hidden" id="edit-profile">
-    <div class="row">
-        <div class="col-12 col-md-4 col-lg-3 col-xl-2 text-center d-block justify-content-middle bg-success" id="menu">
+    <div class="row h-100">
+        <div class="col-12 col-md-4 col-lg-3 col-xl-2 text-center py-5 d-block justify-content-middle bg-success" id="menu">
             <h3 class="logo-font mt-3">Menu:</h3>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="edit-profile-details" aria-disabled="false">Edit Profile</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="view-seo" aria-disabled="false">SEO</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="view-web" aria-disabled="false">Websites</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="view-orders" aria-disabled="false">Orders</a>
-            <a class="btn btn-md btn-black text-center w-50 my-2" id="view-calendar" aria-disabled="false">Calendar</a>
+            <a class="btn btn-md btn-black text-center w-50 my-2" id="view-rating" aria-disabled="false">Ratings</a>
         </div>
-        <div class="items col-12 col-md-8 col-lg-9 col-xl-10 p5 bg-success">
+        <div class="items col-12 col-md-8 col-lg-9 col-xl-10 py-5 bg-success">
             <div class="w-100 h-100" id="update-profile-info">
                 <h3 class="logo-font mt-3 text-center">Update Profile:</h3>
                 <div class="w-100 d-flex justify-content-center">
@@ -168,7 +168,7 @@
                     <hr class="w-50">
                 </div>
                 <h4 class="h1 text-center text-white">Feature Coming Soon...</h4>
-                <p class="text-white">
+                <p class="text-white text-center">
                     In the meantime, we will update you regularly via email on your 
                     SEO rankings, metrics and other data.
                 </p>
@@ -184,7 +184,7 @@
                         <p class="lead h4 text-black text-center">Total Spent: {{ price }}</p>
                         {% for line in line_items %}
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3 p-2">
-                                <div class="relative box-shadow bg-primary overflow-hidden px-2">
+                                <div class="relative box-shadow bg-white overflow-hidden px-2">
                                     <p class="lead text-center">{{ line.product }}</p>
                                     <p class="lead">Price: <span class="small">{{ line.product.price }}</span></p>
                                     <p class="lead">Ordered: <span class="small">{{ line.order.date }}</span></p>
@@ -200,21 +200,52 @@
                     <hr class="w-50">
                 </div>
                 <h4 class="h1 text-center text-white">Feature Coming Soon...</h4>
-                <p class="text-white">
+                <p class="text-white text-center">
                     This feature will be arriving in the coming weeks.
                 </p>
             </div>
-            <div class="w-100 h-100" id="calendar-profile">
-                <h3 class="logo-font mt-3 text-center">Calendar:</h3>
+            <div class="w-100 h-100" id="rating-profile">
+                <h3 class="logo-font mt-3 text-center">Ratings:</h3>
                 <div class="w-100 d-flex justify-content-center">
                     <hr class="w-50">
                 </div>
-                <h4 class="h1 text-center text-white">Feature Coming Soon...</h4>
-                <p class="text-white">
-                    You will soon be able to book meetings directly from your 
-                    profile page. <br>This will allow further automation, and ease of 
-                    access to our services.
-                </p>
+                {% if orders %}
+                    <div class="row">
+                        
+                        {% for line in line_items %}
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3 p-2">
+                            <div class="relative box-shadow bg-white overflow-hidden px-2">
+                                <p class="lead text-center">{{ line.product }}</p>
+                                <p class="lead">Price: <span class="small">{{ line.product.price }}</span></p>
+                                <p class="lead">Ordered: <span class="small">{{ line.order.date }}</span></p>
+                                <h1>{{line.product.id}}</h1>
+                                <!-- Append order line item with a user rating, then if no user rating show form-->
+                                <p class="lead">Your Rating:</p>
+                                {% if line.rating %}
+                                {{ line.rating|floatformat:1 }}
+                                {% else %}
+                                <form action="{% url 'user_profile' %}" method="POST" id="{{line.order.id}}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="ratingForm" class="ratingForm_{{line.order.id}}">
+                                    <input type="hidden" name="productID" class="productID" value="{{line.product.id}}">
+                                    <input type="hidden" name="orderID" class="orderID" value="{{line.order.id}}">
+                                    <button type="submit" class="hidden submit-rating" id="submit-rating-{{line.order.id}}">Submit Rating</button>
+                                </form>
+                                <div class="row">
+                                    <p class="w-100 d-flex justify-content-around">
+                                        <span class="pointer" onclick="rating(1, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star star1"></i></span>
+                                        <span class="pointer" onclick="rating(2, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star star2"></i></span>
+                                        <span class="pointer" onclick="rating(3, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star star3"></i></span>
+                                        <span class="pointer" onclick="rating(4, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star star4"></i></span>
+                                        <span class="pointer" onclick="rating(5, {{line.product.id}}, {{line.order.id}})"><i class="far fa-star star5"></i></span>
+                                    </p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -231,6 +262,7 @@
         $('#menu').css('height', height).css("vertical-align", 'middle');
     }
     function mainPageWrap(){
+
         $('#edit-profile').hide();
         // Main Menu Options
             $('#edit-profile-btn').click(function(e){
@@ -265,8 +297,8 @@
                 e.preventDefault();
                 $('#main-profile-page-wrap').hide(200);
                 $('#edit-profile').show(500);
-                $('#calendar-profile').siblings().hide();
-                $('#calendar-profile').show(200);
+                $('#rating-profile').siblings().hide();
+                $('#rating-profile').show(200);
             })
 
         // Styling
@@ -277,7 +309,7 @@
         $('#profile-card-background').hide();
         $('#website-profile-background').hide();
         $('#orders-profile-background').hide();
-        $('#calendar-profile-background').hide();
+        $('#rating-profile-background').hide();
         
         $('#edit-profile-btn').mouseenter(function(){
             $('#profile-card-background').fadeIn(300);
@@ -312,11 +344,11 @@
             $('#main-profile-page-wrap').css('background', '#f5f5f5');
         })
         $('#meeting-profile-btn').mouseenter(function(){
-            $('#calendar-profile-background').fadeIn(300);
+            $('#rating-profile-background').fadeIn(300);
             $('#main-profile-page-wrap').css('background', '#333333').css('transition', 'all 2s ease-in-out');
         })
         $('#meeting-profile-btn').mouseleave(function(){
-            $('#calendar-profile-background').fadeOut(300);
+            $('#rating-profile-background').fadeOut(300);
             $('#main-profile-page-wrap').css('background', '#f5f5f5');
         })
     }
@@ -337,10 +369,70 @@
             $('#orders-profile').siblings().hide(200);
             $('#orders-profile').show(500);
         })
-        $('#view-calendar').click(function(){
-            $('#calendar-profile').siblings().hide(200);
-            $('#calendar-profile').show(500);
+        $('#view-rating').click(function(){
+            $('#rating-profile').siblings().hide(200);
+            $('#rating-profile').show(500);
         })
     }
+    
+    function rating(rating, product_id, order_id){
+        $(`.ratingForm_${order_id}`).val(rating);
+        $(`#submit-rating-${order_id}`).trigger('click');
+    }
+    // Stars Style
+    function stars(){
+        
+        $('.star1').mouseenter(function(){
+            $(this).removeClass('far').addClass('fas');
+        })
+        $('.star1').mouseleave(function(){
+            $(this).removeClass('fas').addClass('far');
+        })
+        $('.star2').mouseenter(function(){
+            $('.star1').removeClass('far').addClass('fas');
+            $(this).removeClass('far').addClass('fas');
+        })
+        $('.star2').mouseleave(function(){
+            $('.star1').removeClass('fas').addClass('far');
+            $(this).removeClass('fas').addClass('far');
+        })
+        $('.star3').mouseenter(function(){
+            $('.star1').removeClass('far').addClass('fas');
+            $('.star2').removeClass('far').addClass('fas');
+            $(this).removeClass('far').addClass('fas');
+        })
+        $('.star3').mouseleave(function(){
+            $('.star1').removeClass('fas').addClass('far');
+            $('.star2').removeClass('fas').addClass('far');
+            $(this).removeClass('fas').addClass('far');
+        })
+        $('.star4').mouseenter(function(){
+            $('.star1').removeClass('far').addClass('fas');
+            $('.star2').removeClass('far').addClass('fas');
+            $('.star3').removeClass('far').addClass('fas');
+            $(this).removeClass('far').addClass('fas');
+        })
+        $('.star4').mouseleave(function(){
+            $('.star1').removeClass('fas').addClass('far');
+            $('.star2').removeClass('fas').addClass('far');
+            $('.star3').removeClass('fas').addClass('far');
+            $(this).removeClass('fas').addClass('far');
+        })
+        $('.star5').mouseenter(function(){
+            $('.star1').removeClass('far').addClass('fas');
+            $('.star2').removeClass('far').addClass('fas');
+            $('.star3').removeClass('far').addClass('fas');
+            $('.star4').removeClass('far').addClass('fas');
+            $(this).removeClass('far').addClass('fas');
+        })
+        $('.star5').mouseleave(function(){
+            $('.star1').removeClass('fas').addClass('far');
+            $('.star2').removeClass('fas').addClass('far');
+            $('.star3').removeClass('fas').addClass('far');
+            $('.star4').removeClass('fas').addClass('far');
+            $(this).removeClass('fas').addClass('far');
+        })
+    }
+    stars();
     </script>
 {% endblock %}
