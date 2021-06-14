@@ -1,15 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from .models import UserProfile, create_or_update_user_profile
-from datetime import datetime
+from datetime import datetime, date
 from django.contrib import messages
 from .forms import UserProfileForm
 from checkout.models import Order, OrderLineItem
 from products.models import Product
+from django.core import validators
 
 
 import json
 
-today = datetime.today()
+today = date.today()
 
 
 def after_login(request):
@@ -41,17 +42,23 @@ def user_profile(request):
     profile = UserProfile.objects.get(user=user)
     orders = ""
     price = 0
+    form = UserProfileForm(instance=profile)
     try:
         orders = Order.objects.filter(user_profile=profile)
-        line_items = []
+
+    except Exception:
+        messages.error(request, "Error retreiving orders, or you have no order history")
+
+    line_items = []
+    websites = []
+    if orders:
         for order in orders:
             line_items += OrderLineItem.objects.filter(order=order.id)
 
         for i in line_items:
             price = price + i.lineitem_total
-
-    except Exception:
-        messages.error(request, "Error retreiving orders, or you have no order history")
+            if (str(i.product.category) == "business" or str(i.product.category) == "personal" or str(i.product.category) == "ecommerce"):
+                websites.append(i)
 
     if request.method == "POST":
         try:
@@ -67,6 +74,7 @@ def user_profile(request):
                     product.rating_count = product.rating_count + 1
                     product.rating_total = product.rating_total + int(rating)
                     product.rating = product.rating_total / product.rating_count
+                    # product.expiry = today
                     product.save()
                     line.rating = int(rating)
                     line.save()
@@ -75,7 +83,18 @@ def user_profile(request):
         except Exception:
             pass
 
-    form = UserProfileForm
+        try:
+            form = UserProfileForm(request.POST, instance=profile)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Profile Updated Successfully")
+            else:
+                messages.error(
+                    request, "Update failed. Please ensure the form is valid")
+
+        except Exception:
+            pass
+
     template = 'profiles/user_profile.html'
     context = {
         "profile": profile,
@@ -84,5 +103,6 @@ def user_profile(request):
         "user": user,
         "orders": orders,
         "line_items": line_items,
+        "websites": websites,
     }
     return render(request, template, context)

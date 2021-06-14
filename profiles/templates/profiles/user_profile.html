@@ -138,7 +138,7 @@
                 <div class="w-100 d-flex justify-content-center">
                     <hr class="w-50">
                 </div>
-                <form action="" method="POST" id="profile-update-form">
+                <form action="{% url 'user_profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
@@ -156,7 +156,11 @@
                                 {{ form.street_address2 | as_crispy_field }}
                                 {{ form.postcode | as_crispy_field }}
                                 {{ form.country | as_crispy_field }}
-                                <p class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-personal"><i class="fas fa-angle-left"></i> Previous</p>
+                                <p>
+                                    <span class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-personal"><i class="fas fa-angle-left"></i> Previous</span>
+                                    <span><button type="submit" class="btn btn-lg btn-success btn-outline-black rounded-0 px-3 my-2" id="submit-info">Submit <i class="fas fa-angle-right"></i></button></span>
+                                </p>
+
                             </fieldset>
                         </div>
                     </div>
@@ -167,10 +171,11 @@
                 <div class="w-100 d-flex justify-content-center">
                     <hr class="w-50">
                 </div>
-                <h4 class="h1 text-center text-white">Feature Coming Soon...</h4>
+                <h4 class="h1 text-center text-white">Feature Coming Soon</h4>
                 <p class="text-white text-center">
-                    In the meantime, we will update you regularly via email on your 
-                    SEO rankings, metrics and other data.
+                    Soon our customers will be able to track their SEO rankings and updates automatically 
+                    within this tab. This feature will allow you to follow all of our SEO updates, including 
+                    strategies, targetted keywords, and ranking.
                 </p>
             </div>
             <div class="w-100 h-100" id="orders-profile">
@@ -186,6 +191,7 @@
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3 p-2">
                                 <div class="relative box-shadow bg-white overflow-hidden px-2">
                                     <p class="lead text-center">{{ line.product }}</p>
+                                    <h1>{{line.product.category}}</h1>
                                     <p class="lead">Price: <span class="small">{{ line.product.price }}</span></p>
                                     <p class="lead">Ordered: <span class="small">{{ line.order.date }}</span></p>
                                     {% if line.delivered %}
@@ -204,10 +210,37 @@
                 <div class="w-100 d-flex justify-content-center">
                     <hr class="w-50">
                 </div>
-                <h4 class="h1 text-center text-white">Feature Coming Soon...</h4>
-                <p class="text-white text-center">
-                    This feature will be arriving in the coming weeks.
+                {% if websites %}
+                    <div class="row">
+                        {% for line in websites %}
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3 p-2">
+                                <div class="relative box-shadow bg-white overflow-hidden px-2">
+                                    <p class="lead text-center">Product Name: <br><span class="text-success">{{line.product.name}}</span></p>
+                                    <p class="lead text-center">Ordered On: <br><span class="text-success">{{line.order.date}}</span></p>
+                                    {% if line.delivered %}
+                                        <p class="lead text-center">Delivered On: <br><span class="text-success">{{line.delivered}}</span></p>
+                                    {% else %}
+                                        <p class="lead text-center">Delivered On: <br><span class="fst-italic text-danger">In Progress</span></p>
+                                    {% endif %}
+                                    {% if line.website %}
+                                        <p class="lead text-center">Domain: <br><a href="{{line.website}}" class="text-decoration-none text-success" target="_blank">{{line.website}}</a></p>
+                                    {% else %}
+                                        <p class="lead text-center">Domain: <br><a href="#" class="text-decoration-none text-danger" target="_blank">No Current Domain</a></p>
+                                    {% endif %}
+                                    {% if line.subscription %}
+                                        <p class="lead text-center">Subscription Expiry: <br><span class="text-success">{{line.order.expiry}}</span></p>
+                                    {% else %}
+                                        <p class="lead text-center">Subscription Expiry: <br><span class="text-danger">No Subscription</span></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                <p class="text-center text-white">
+                    It appears as though you have no websites on order with us.
                 </p>
+                {% endif %}
             </div>
             <div class="w-100 h-100" id="rating-profile">
                 <h3 class="logo-font mt-3 text-center">Ratings:</h3>
@@ -269,7 +302,7 @@
         $('#menu').css('height', height).css("vertical-align", 'middle');
     }
     function mainPageWrap(){
-
+        
         $('#edit-profile').hide();
         // Main Menu Options
             $('#edit-profile-btn').click(function(e){
@@ -317,6 +350,15 @@
         $('#website-profile-background').hide();
         $('#orders-profile-background').hide();
         $('#rating-profile-background').hide();
+
+        $('#go-billing').click(function(){
+            $('#personal-details').hide();
+            $('#billing-details').slideDown();
+        })
+        $('#go-personal').click(function(){
+            $('#billing-details').hide();
+            $('#personal-details').slideDown();
+        })
         
         $('#edit-profile-btn').mouseenter(function(){
             $('#profile-card-background').fadeIn(300);
