@@ -1,20 +1,6 @@
 .carousel-home{
   height: 500px;
 }
-#rightHomeCol{
-  background: url('../../media/ipad.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: scroll;
-  width: 100%;
-  max-height: 100%;
-  opacity: 0.8;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
 #whyChooseUs{
-  overflow: hidden;
   height: 100%;
-  padding-bottom: 75px;
 }

@@ -32,7 +32,7 @@
                 <h3>About Us</h3>
                 <hr class="about-hr">
                 <p class="text-black">
-                    Manage My Web is a professional web design and search engine optimization company based in Dublin, Ireland. <br>
+                    Manage My Web is a professional web design and search engine optimization company based in Dublin, Ireland. <br><br>
                     We provide web development and SEO services to individuals and businesses around the world, providing turnkey solutions
                     to web development, eCommerce and SEO. 
                 </p>
@@ -45,12 +45,12 @@
                     to outperform our competitors on every level.
                 </p>
             </div>
-            <div class="pb-5">
+            <div class="pb-5" id="webDev">
                 <h3>Web Development</h3>
                 <hr class="about-hr">
                 <p class="text-black">
-                    Our success is driven by our professional web development team. As our main focus is on tailor made web solutions, we embrace 
-                    the latest in W3C standards, UX design, and the latest in programming best practice.
+                    Our success is driven by our professional web development team. As our main focus is tailor made web solutions, we embrace 
+                    the latest in W3C standards, UX design, and the latest programming best practices.
                 </p>
                 <p class="text-black">
                     All of our development projects follow a simple chain, which allows for a completely customisable and unique end product. Each 
@@ -119,6 +119,18 @@
             <p id="show-about-membership" class="pointer">Membership</p>
         </div>
         <div class="col-12 col-sm-12 col-md-8 px-1" id="right-about">
+            <!--Initial-->
+            <div id="initial">
+                <h3 class="text-center logo-font">
+                    Looking For More Information?
+                </h3>
+                <div class="row d-flex justify-content-center">
+                    <hr class="w-25">
+                </div>
+                <p class="lead text-black text-center pt-5">
+                    Please use the tabs provided to view your requested information.
+                </p>
+            </div>
             <!--Programming-->
             <div id="programming">
                 <h3 class="text-center logo-font">
@@ -148,10 +160,15 @@
                     <hr class="w-25">
                 </div>
                 <p class="text-black">
-                    
+                    eCommerce is our primary target when attracting new customers. Our development skills are perfectly suited to this industry thanks to our expertise with 
+                    payment processing. <br><br>
+                    Our eCommerce websites are built to utilize automation where possible to assist in providing seamless operations on our custom built platforms.
                 </p>
                 <p class="text-black">
-                    
+                    Our eCommerce websites are built using Django which will allow store owners and staff access to administration panels where they can easily create, update 
+                    or delete products, view order history, access email marketing lists and more. <br><br>
+                    At this time, due to the quantity of work involved, we only offer our eCommerce websites on a subsciption basis. This means we will not only create your 
+                    new website, but look after hosting, updates, and will be available to update and add sections to your website throughout your subscription period.
                 </p>
             </div>
 
@@ -164,10 +181,12 @@
                     <hr class="w-25">
                 </div>
                 <p class="text-black">
-                    
+                    Domains will define your new website. Custom branding will be heavily dependent on your domain. Although we do provide custom domains, available funding for 
+                    these domains is outlined in our terms and conditions. We must do this due to the potential high cost of premium domain names. 
                 </p>
                 <p class="text-black">
-                    
+                    Should our customers wish to utilize a more expensive domain, we will happily discuss this with you. Our team have vast experience with the acquisition of 
+                    domains and can assist in this process where needed. For further information on this, please reach out to us for a free consultation.
                 </p>
             </div>
 
@@ -180,26 +199,31 @@
                     <hr class="w-25">
                 </div>
                 <p class="text-black">
-                    
+                    Manage My Web provide hosting for all of our websites. Our hosting plans are based on servers located in Ireland and the USA meaning that we can provide 
+                    high page speeds throughout Europe and North America. 
                 </p>
                 <p class="text-black">
-                    
+                    Our hosting plans are another key feature which allows us to provide customers with a complete solution to web development, where customers simply have to 
+                    provide us with some details, and we will look after the rest.
                 </p>
             </div>
 
             <!--Members-->
             <div id="about-membership">
                 <h3 class="text-center logo-font">
-                    Manage My Web Membership
+                    Manage My Web Plans
                 </h3>
                 <div class="row d-flex justify-content-center">
                     <hr class="w-25">
                 </div>
                 <p class="text-black">
-                    
+                    Although Manage My Web offer individual products, our real speciality is providing turnkey web solutions. <br><br>
+                    Our plans will not only create your new website, but provide you with a custom domain and hosting. Finally we will get your website noticed online through 
+                    search engine optimization practices and strategies.
                 </p>
                 <p class="text-black">
-                    
+                    Throughout the duration of our plans, we provide website maintenance and search engine optimization and our development team are on standby to implement new 
+                    features, as well as build custom applications.
                 </p>
             </div>
         </div>
@@ -222,22 +246,27 @@
     
         $('#ux-design').click(function(){
             $(this).toggleClass('text-decoration-underline');
-            $('.ux-design').toggle(500);
+            $('.ux-design').siblings().hide(200);
+            $('.ux-design').slideDown(500);
         });
         $('#seos').click(function(){
             $(this).toggleClass('text-decoration-underline');
-            $('.seo').toggle(500);
+            $('.seo').siblings().hide(200);
+            $('.seo').slideDown(500);
         });
         $('#development').click(function(){
             $(this).toggleClass('text-decoration-underline');
-            $('.development').toggle(500);
+            $('.development').siblings().hide(200);
+            $('.development').slideDown(500);
         });
         $('#after-sales').click(function(){
             $(this).toggleClass('text-decoration-underline');
-            $('.after-sales').toggle(500);
+            $('.after-sales').siblings().hide(200);
+            $('.after-sales').slideDown(500);
         });
     }
     function menu(){
+        $('#initial').show();
         $('#programming').hide();
         $('#about-ecommerce').hide();
         $('#custom-domains').hide();
@@ -245,24 +274,24 @@
         $('#about-membership').hide();
 
         $('#show-programming').click(function(){
-            $('#programming').siblings().hide();
-            $('#programming').show(500);
+            $('#programming').siblings().slideUp();
+            $('#programming').slideDown(500);
         });
         $('#show-about-ecommerce').click(function(){
-            $('#about-ecommerce').siblings().hide();
-            $('#about-ecommerce').show(500);
+            $('#about-ecommerce').siblings().slideUp();
+            $('#about-ecommerce').slideDown(500);
         });
         $('#show-custom-domains').click(function(){
-            $('#custom-domains').siblings().hide();
-            $('#custom-domains').show(500);
+            $('#custom-domains').siblings().slideUp();
+            $('#custom-domains').slideDown(500);
         });
         $('#show-web-hosting').click(function(){
-            $('#web-hosting').siblings().hide();
-            $('#web-hosting').show(500);
+            $('#web-hosting').siblings().slideUp();
+            $('#web-hosting').slideDown(500);
         });
         $('#show-about-membership').click(function(){
-            $('#about-membership').siblings().hide();
-            $('#about-membership').show(500);
+            $('#about-membership').siblings().slideUp();
+            $('#about-membership').slideDown(500);
         });
     }
     </script>

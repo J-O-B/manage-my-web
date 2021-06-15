@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block extra_meta %}
+    <meta name="description" content="Find out more about Manage My Web, and see how we can help you!">
+{% endblock %}
+
+{% block extra_title %}
+    Website Management -
+{% endblock %}
+
+{% block page_header %}
+<!--Hero-->
+<div class="container-fluid pb-5 relative g-0">
+    <div class="hero-figure">
+        <svg class="placeholder" width="100vw" height="500" viewBox="0 0 528 396">
+        </svg>
+        <div class="hero-figure-box hero-figure-box-01" data-rotation="45deg"></div>
+        <div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg"></div>
+        <div class="hero-figure-box hero-figure-box-03" data-rotation="0deg"></div>
+        <div class="hero-figure-box hero-figure-box-04" data-rotation="-135deg"></div>
+        <div class="hero-figure-box hero-figure-box-05"></div>
+        <div class="hero-figure-box hero-figure-box-06"></div>
+        <div class="hero-figure-box hero-figure-box-07"></div>
+        <div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg"></div>
+        <div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
+        <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
+    </div>
+    <div class="row mt-4 py-5 absolute top w-100">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-1 py-5">
+        </div>
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-0 py-5">
+            <h1 class="mt-5 pt-5 pb-1 text-white text-center">SEO</h1>
+            <div class="w-100 d-flex justify-content-center">
+                <hr class="white-hr w-50">
+            </div>
+            <h3 class="mt-5 pt-1 pb-5 text-white text-center hero-text">
+                Search Engine Optimization<br>Boost Traffic<br>Increase Rankings
+            </h3>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="manage-page-contain p-0 g-0">
+    <div class="container">
+        <div class="row">
+            <h2 class="text-dark pt-5">
+                Search Engine Optimization
+            </h2>
+            <hr class="w-50">
+            <p class="text-dark">
+                A key factor that any website must take into consideration is that of search engine optimization. Unlike global brands that customers will likely 
+                go directly to, search engine optimization allows website owners to implement plans to increase their <span class="font-weight-bold">website rankings</span> 
+                to appear closer to the top of results on search engines such as Google, and Bing. <br><br>
+                As part of our subscription based services, we deliver on SEO strategies that will get your website noticed and generate traffic. This traffic will result in higher 
+                lead generation, as well as potential increased sales due to the volume of traffic.
+            </p>
+            <p class="text-dark">
+                Manage My Web also offer individual SEO products that can help with your current website, or research into a specific area you aim to target. <br><br>
+                These products include SEO audits and reports that will provide you with a detailed breakdown of targetted keywords, backlink profiles, social media 
+                interaction data, as well as on page & technical SEO. <br><br>
+                This information will help define your competition, or provide information on openings within a niche that you can target, in order to grow website rankings, 
+                and increase organic traffic.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-6 text-start">
+                <a href="{% url 'home' %}" class="my-5 btn btn-md btn-primary btn-outline-black"><i class="fas fa-chevron-left"></i> Back To Homepage</a>
+            </div>
+            <div class="col-6 text-end">
+                <a href="{% url 'about' %}" class="my-5 btn btn-md btn-success btn-outline-black">More About ManageMyWeb <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{block.super}}
+    <script type="text/javascript">
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block extra_meta %}
+    <meta name="description" content="Find out more about Manage My Web, and see how we can help you!">
+{% endblock %}
+
+{% block extra_title %}
+    Website Management -
+{% endblock %}
+
+{% block page_header %}
+<!--Hero-->
+<div class="container-fluid pb-5 relative g-0">
+    <div class="hero-figure">
+        <svg class="placeholder" width="100vw" height="500" viewBox="0 0 528 396">
+        </svg>
+        <div class="hero-figure-box hero-figure-box-01" data-rotation="45deg"></div>
+        <div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg"></div>
+        <div class="hero-figure-box hero-figure-box-03" data-rotation="0deg"></div>
+        <div class="hero-figure-box hero-figure-box-04" data-rotation="-135deg"></div>
+        <div class="hero-figure-box hero-figure-box-05"></div>
+        <div class="hero-figure-box hero-figure-box-06"></div>
+        <div class="hero-figure-box hero-figure-box-07"></div>
+        <div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg"></div>
+        <div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
+        <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
+    </div>
+    <div class="row mt-4 py-5 absolute top w-100">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-1 py-5">
+        </div>
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-0 py-5">
+            <h1 class="mt-5 pt-5 pb-1 text-white text-center">Website Management</h1>
+            <div class="w-100 d-flex justify-content-center">
+                <hr class="white-hr w-50">
+            </div>
+            <p class="mt-5 pt-1 pb-5 text-white text-center h3 hero-text">
+                Providing Easy Website Management <br>& <br>Turnkey Web Solutions
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="manage-page-contain p-0 g-0">
+    <div class="container">
+        <div class="row">
+            <h2 class="text-dark pt-5">
+                Website Management Solutions
+            </h2>
+            <hr class="w-50">
+            <p class="text-dark">
+                Part of the problem of websites, is their creation and upkeep, as well as the ongoing factors such as SEO, web hosting, web domains and more. <br><br>
+                Manage My Web offers a solution that tackles all of these problems in one package. Our "Silver" & "Gold" plans will remove the most common problems of 
+                websites for their owners. <br>
+                As a team of developers with knowledge and training in other areas of web development, our company will provide you with a turnkey solution that could 
+                potentially save you money. <br><br>
+                Our service removes the need for web developers, software engineers, SEO agencies, paid hosting, and domain acquisition. <br><br>
+            </p>
+        </div>
+        <div class="row">
+
+            <h2 class="text-dark pt-5">
+                Plans Available:
+            </h2>
+            <hr class="w-25">
+            <h2 class="h3 text-muted">
+                Silver
+            </h2>
+            <p class="text-dark px-3">
+                Our silver plan is designed for those who want basic website coverage. This plan will provide customers with a custom built website that will provide 
+                further information on their business, and will largely target lead generation. <br>
+                Examples of our silver plan websites include business and product landing pages which focus on providing visitors with further information of their 
+                company, as well as provide means of contact and lead generation.
+            </p>
+            <div class="d-flex justify-content-center w-100">
+                <hr class="w-75">
+            </div>
+            <h2 class="h3 text-muted">
+                Gold
+            </h2>
+            <p class="text-dark px-3">
+                Our gold plan is bespoke in nature. This means that we work closely with all of our gold customers to provide a level of service as if we worked within 
+                their organisation. This approach allows us to provide a platform and performance that is unmatched by agencies. <br><br>
+                This plan is perfect for larger projects, such as online retail, news organisations and professional blogs. Our bespoke website solution will provide 
+                customers with custom development to allow for lead generation, payment processing, automated marketing, advanced search engine optimization, custom graphics,
+                and more. <br><br>
+                Due to the nature, and large scope of our gold plan. We would ask clients to engage with us for a free consultation to see how we can work together.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-6 text-start">
+                <a href="{% url 'home' %}" class="my-5 btn btn-md btn-primary btn-outline-black"><i class="fas fa-chevron-left"></i> Back To Homepage</a>
+            </div>
+            <div class="col-6 text-end">
+                <a href="{% url 'about' %}" class="my-5 btn btn-md btn-success btn-outline-black">More About ManageMyWeb <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{block.super}}
+    <script type="text/javascript">
+
+    </script>
+
+{% endblock %}

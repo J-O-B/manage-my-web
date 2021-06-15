@@ -44,245 +44,177 @@
     <div class="row" id="homeCards">
         <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-1 mx-auto">
             <div class="card w-lg-75 box-shadow">
-                <h3 class="h5 card-header text-center text-black bg-success">Professional Web Design</h3>
+                <h3 class="h5 card-header text-center text-success bg-card">Web Design</h3>
                 <div class="card-body text-center">
-                    <h3 class="h5 card-title text-primary">Do You Need A Professional Website?</h3>
-                    <p class="card-text">We Provide A Selection Of Services That Are Designed To Help You.</p>
-                    <a href="{% url 'about' %}" class="btn btn-primary">Read More</a>
+                    <h3 class="h5 card-title text-white text-shadow">In Need A Professional Website?</h3>
+                    <p class="card-text text-white text-shadow small">We Provide A Selection Of Bespoke Web Development Services.</p>
+                    <a href="{% url 'about' %}#webDev" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>
         <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0 mx-auto">
             <div class="card w-lg-75 box-shadow">
-                <h3 class="h5 card-header text-center text-black bg-success">Website Management</h3>
+                <h3 class="h5 card-header text-center text-success bg-card">Website Management</h3>
                 <div class="card-body text-center">
-                    <h3 class="h5 card-title text-primary">Do You Need A Professional To Look After Your Website?</h3>
-                    <p class="card-text">We Provide Premium Services To Create & Manage Websites.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                    <h3 class="h5 card-title text-white text-shadow">Maintain Your Online Presence</h3>
+                    <p class="card-text text-white text-shadow small">We Provide Website Management Services To Deliver Turnkey Solutions.</p>
+                    <a href="{% url 'website-management' %}" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>
         <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0 mx-auto mb-5">
             <div class="card w-lg-75 box-shadow">
-                <h3 class="h5 card-header text-center text-black bg-success">SEO</h3>
+                <h3 class="h5 card-header text-center text-success bg-card">SEO</h3>
                 <div class="card-body text-center">
-                    <h3 class="h5 card-title text-primary">Get Noticed Online With Search Engine Optimization</h3>
-                    <p class="card-text">Get The Traffic You Deserve! See How We Can Help Improve Your Search Rank.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                    <h3 class="h5 card-title text-white text-shadow">Get Noticed Online</h3>
+                    <p class="card-text text-white text-shadow small">Increase Search Engine Rankings With Search Engine Optimization.</p>
+                    <a href="{% url 'seo'%}" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid g-0 m-0" id="bg-business">
-        <div class="row h-100">
-            <div class="col-12 col-sm-10 offset-sm-1 col-lg-7 offset-lg-0 relative" id="whyChooseUs">
-                <div class="haze-white"></div>
-                <div class="infront relative text-center">
-                    <h2 class="h1 logo-font mt-5 text-black">
+    <div class="container-fluid g-0 m-0 pb-5" id="bg-business">
+        <div class="row my-5">
+            <div class="col-12 col-sm-10 offset-sm-1" id="whyChooseUs">
+                <div class="bg-haze text-center my-5">
+                    <h2 class="h1 logo-font mt-5 text-white">
                         <span class="text-success">Why</span> <span class="underline-success">choose us?</span>
                     </h2>
                     <div class="row mt-lg-5 align-middle">
-                        <!-- Icons -->
-                        <div class="col-6 border-right">
-                            <div class="row py-5">
-                                <!--Icon - Text Rows-->
-                                <div class="row chooseItems" id="viewSEO">
-                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
-                                        <i class="h1 text-success fab fa-searchengin"></i>
-                                    </div>
-                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
-                                        <p class="h1 pt-1 text-success chooseHeading">SEO</p>
-                                        <p class="small text-black">SEO Friendly Websites</p>
-                                    </div>
-                                </div>
-                                <div class="row chooseItems" id="viewSpeed">
-                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
-                                        <i class="h1 text-success fas fa-tachometer-alt"></i>
-                                    </div>
-                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
-                                        <p class="h1 pt-1 text-success chooseHeading">Speed</p>
-                                        <p class="small text-black">Website Performance</p>
-                                    </div>
-                                </div>
-                                <div class="row chooseItems" id="viewQuality">
-                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
-                                        <i class="h1 text-success fas fa-award"></i>
-                                    </div>
-                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
-                                        <p class="h1 pt-1 text-success chooseHeading">Quality</p>
-                                        <p class="small text-black">Qualified Developers</p>
-                                    </div>
-                                </div>
+                        <div class="col-12 col-sm-10 offset-sm-1 col-md-4 offset-md-0 py-3 px-1">
+                            <h5 class="h4 font-weight-bold text-success text-center fst-italic"><i class="far fa-check-circle fa-lg pb-2"></i><br>Reliable</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="w-75 small text-white">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                </p>
                             </div>
                         </div>
-                        <!-- Text -->
-                        <div class="col-6">
-                            <div class="row py-5">
-                                <div class="row chooseItems" id="viewCode">
-                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
-                                        <i class="h1 text-success fas fa-laptop-code"></i>
-                                    </div>
-                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
-                                        <p class="h1 pt-1 text-success chooseHeading">Code</p>
-                                        <p class="small text-black">Custom Coding</p>
-                                    </div>
-                                </div>
-                                <div class="row chooseItems" id="viewCost">
-                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
-                                        <i class="h1 text-success fas fa-dollar-sign"></i>
-                                    </div>
-                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
-                                        <p class="h1 pt-1 text-success chooseHeading">Cost</p>
-                                        <p class="small text-black">Cost Efficiency</p>
-                                    </div>
-                                </div>
-                                <div class="row chooseItems" id="viewRevisions">
-                                    <div class="col-2 offset-3 d-none d-md-block align-items-center my-auto text-center">
-                                        <i class="h1 text-success fas fa-redo"></i>
-                                    </div>
-                                    <div class="col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
-                                        <p class="h1 pt-1 text-success chooseHeading">Revisions</p>
-                                        <p class="small text-black">Revisions Available</p>
-                                    </div>
-                                </div>
+                        <div class="col-12 col-sm-10 offset-sm-1 col-md-4 offset-md-0 py-3 px-1">
+                            <h5 class="h4 font-weight-bold text-success text-center fst-italic"><i class="far fa-check-circle fa-lg pb-2"></i><br>Performance</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="w-75 small text-white">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-10 offset-sm-1 col-md-4 offset-md-0 py-3 px-1">
+                            <h5 class="h4 font-weight-bold text-success text-center fst-italic"><i class="far fa-check-circle fa-lg pb-2"></i><br>Quality</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="w-75 small text-white">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-12 g-0 col-sm-10 offset-sm-1 col-lg-5 offset-lg-0 relative">
-                <div class="haze-black"></div>
-                <div class="infront relative text-center my-auto mx-auto h-100" id="rightHomeCol">
-                    <div class="col-10 offset-1" id="seo">
-                        <h2 class="logo-text text-success">Search Engine Optimization</h2>
-                        <hr class="mx-auto w-50">
-                        <p class="text-black plain-text">
-                            We develop websites that not only look great, but perform great on search engines. This factor 
-                            means that our websites will generate quality traffic, through multiple search engines.
-                        </p>
-                    </div>
-                    <div class="col-10 offset-1" id="speed">
-                        <h2 class="logo-text text-success">Website Performance</h2>
-                        <hr class="mx-auto w-50">
-                        <p class="text-black plain-text">
-                            Due to custom coding, we don't rely on bulky website plugins or other features that will hurt your 
-                            website speed and user experience. This means that our websites will help create businesses that will 
-                            generate lower bouce rates, whilst increasing sales per user.
-                        </p>
-                    </div>
-                    <div class="col-10 offset-1" id="quality">
-                        <h2 class="logo-text text-success">Website Quality</h2>
-                        <hr class="mx-auto w-50">
-                        <p class="text-black plain-text">
-                            As our websites are fully customized, your new website will be created specific to your needs. This means 
-                            your website will be individually tailord and provide a higher qualiity product when compared to "generic websites".
-                        </p>
-                    </div>
-                    <div class="col-10 offset-1" id="code">
-                        <h2 class="logo-text text-success">Custom Coding</h2>
-                        <hr class="mx-auto w-50">
-                        <p class="text-black plain-text">
-                            Depending on the needs of your website or project, we will create the custom code to ensure your 
-                            new website has all the tools needed to function perfectly. 
-                        </p>
-                    </div>
-                    <div class="col-10 offset-1" id="cost">
-                        <h2 class="logo-text text-success">Cost Efficiency</h2>
-                        <hr class="mx-auto w-50">
-                        <p class="text-black plain-text">
-                            When comparing our services to web development agencies, or to the costs of hiring a team of developers, our 
-                            prices will ultimately save you money. 
-                        </p>
-                    </div>
-                    <div class="col-10 offset-1" id="revisions">
-                        <h2 class="logo-text text-success">Revision</h2>
-                        <hr class="mx-auto w-50">
-                        <p class="text-black plain-text">
-                            All of our plans come with unlimited revisions, this means that should you want a specific item changed, or 
-                            removed, our developers are on standby to fix your website exactly how you want it.
-                        </p>
+                    <div class="row align-middle">
+                        <div class="col-12 col-sm-10 offset-sm-1 col-md-4 offset-md-0 py-3 px-1">
+                            <h5 class="h4 font-weight-bold text-success text-center fst-italic"><i class="far fa-check-circle fa-lg pb-2"></i><br>Knowledge</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="w-75 small text-white">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-10 offset-sm-1 col-md-4 offset-md-0 py-3 px-1">
+                            <h5 class="h4 font-weight-bold text-success text-center fst-italic"><i class="far fa-check-circle fa-lg pb-2"></i><br>Scope</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="w-75 small text-white">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-10 offset-sm-1 col-md-4 offset-md-0 py-3 px-1">
+                            <h5 class="h4 font-weight-bold text-success text-center fst-italic"><i class="far fa-check-circle fa-lg pb-2"></i><br>Secure</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="w-75 small text-white">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2 class="h1 logo-font text-black">Manage My Web</h2>
-                <hr class="w-25 mx-auto">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center mb-2">
-                <p class="lead">
-                    Manage My Web is one stop shop for individuals, and businesses alike. We offer web design, web development and SEO solutions
-                    that will enhance your online capabilities and search ratings. We do this through building responsive websites, with the latest in UX 
-                    design and ensuring high quality user experience on all of our projects.
-                </p>
-            </div>
-            <div class="col-12 col-sm-10 offset-sm-1 col-lg-6 offset-lg-0 py-5">
-                <div class="row">
-                    <div class="col-11 text-center py-3 px-3">
-                        <p class="">
-                            Manage My Web offer a range of services across multiple areas of expertise, our aim is to provide individuals and businesses 
-                            with an affordable way to get their website, store, portfolio or other projects online. <br><br>
-                            Although we offer a range of products that are ready to buy 'off the shelf', our main area of expertise comes with our package, 
-                            subscription services. These subscriptions come with a wide range of additional features which will be beneficial to you, your 
-                            business, and your future users. Our subscription services are what separates Manage My Web from other 'standard' web development 
-                            agencies. <br><br>
-                        </p>
-                    </div>
-                    <div class="col-1 m-auto">
-                        <i class="fas fa-arrow-alt-circle-right text-success fa-lg float-end"></i>
-                    </div>
+    <div class="container-fluid mt-5" id="bottom-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="h1 logo-font text-black">Manage My Web</h2>
+                    <hr class="w-25 mx-auto">
                 </div>
             </div>
-            <div class="col-12 col-sm-10 offset-sm-1 col-lg-6 offset-lg-0">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h3 class="h4 pt-5"><u>Plans Include:</u></h3>
-                    </div>
-                    <div class="col-5 text-center pt-5">
-                        <p class="lead w-100 bg-silver rounded-3 mb-3"><i class="fas fa-gem text-black"></i> <u>Silver Plan</u> <i class="fas fa-gem text-black"></i></p>
-                        <ul class="list-unstyled lh-3">
-                            <li><em>Custom Domain</em></li>
-                            <li><em>Hosting Plan</em></li>
-                            <li><em>Website*</em></li>
-                            <li><em>On Page SEO</em></li>
-                            <li><em>Updates</em></li>
-                        </ul>
-                    </div>
-                    <div class="col-7 text-center pt-5">
-                        <div class="row">
-                            <div class="col-12">
-                                <p class="lead w-100 bg-gold rounded-3 mb-3"><i class="fas fa-gem text-black"></i> <u>Gold Plan</u> <i class="fas fa-gem text-black"></i></p>
-                            </div>
-                            <div class="col-6">
-                                <ul class="list-unstyled lh-3">
-                                    <li><em>Custom Domain</em></li>
-                                    <li><em>Hosting Plan</em></li>
-                                    <li><em>Website*</em></li>
-                                    <li><em>On Page SEO</em></li>
-                                    <li><em>Off Page SEO</em></li>
-                                </ul>
-                            </div>
-                            <div class="col-6">
-                                <ul class="list-unstyled lh-3">
-                                    <li><em>Technical SEO</em></li>
-                                    <li><em>Security</em></li>
-                                    <li><em>Monthly Meeting</em></li>
-                                    <li><em>Affiliate Marketing</em></li>
-                                    <li><em>API Integration</em></li>
-                                </ul>
-                            </div>
+            <div class="row">
+                <div class="col-12 text-center mb-2">
+                    <p class="lead">
+                        Manage My Web is one stop shop for individuals, and businesses alike. We offer web design, web development and SEO solutions
+                        that will enhance your online capabilities and search ratings. We do this through building responsive websites, with the latest in UX 
+                        design and ensuring high quality user experience on all of our projects.
+                    </p>
+                </div>
+                <div class="col-12 col-sm-10 offset-sm-1 col-lg-6 offset-lg-0 py-5">
+                    <div class="row">
+                        <div class="col-11 text-center py-3 px-3">
+                            <p class="">
+                                Manage My Web offer a range of services across multiple areas of expertise, our aim is to provide individuals and businesses 
+                                with an affordable way to get their website, store, portfolio or other projects online. <br><br>
+                                Although we offer a range of products that are ready to buy 'off the shelf', our main area of expertise comes with our package, 
+                                subscription services. These subscriptions come with a wide range of additional features which will be beneficial to you, your 
+                                business, and your future users. Our subscription services are what separates Manage My Web from other 'standard' web development 
+                                agencies. <br><br>
+                            </p>
+                        </div>
+                        <div class="col-1 m-auto">
+                            <i class="fas fa-arrow-alt-circle-right text-success fa-lg float-end"></i>
                         </div>
                     </div>
-                    <div class="col-12 py-2 text-center">
-                        <p class="small">* Website Types May Be Limited Depending On Plan Type.</p>
-                        <a href="{% url 'subscription' %}" class="btn btn-lg btn-black rounded-0 logo-font">View subscription plans</a>
+                </div>
+                <div class="col-12 col-sm-10 offset-sm-1 col-lg-6 offset-lg-0">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h3 class="h4 pt-5"><u>Plans Include:</u></h3>
+                        </div>
+                        <div class="col-5 text-center pt-5">
+                            <p class="lead w-100 bg-silver rounded-3 mb-3"><i class="fas fa-gem text-black"></i> <u>Silver Plan</u> <i class="fas fa-gem text-black"></i></p>
+                            <ul class="list-unstyled lh-3">
+                                <li><em>Custom Domain</em></li>
+                                <li><em>Hosting Plan</em></li>
+                                <li><em>Website*</em></li>
+                                <li><em>On Page SEO</em></li>
+                                <li><em>Updates</em></li>
+                            </ul>
+                        </div>
+                        <div class="col-7 text-center pt-5">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="lead w-100 bg-gold rounded-3 mb-3"><i class="fas fa-gem text-black"></i> <u>Gold Plan</u> <i class="fas fa-gem text-black"></i></p>
+                                </div>
+                                <div class="col-6">
+                                    <ul class="list-unstyled lh-3">
+                                        <li><em>Custom Domain</em></li>
+                                        <li><em>Hosting Plan</em></li>
+                                        <li><em>Website*</em></li>
+                                        <li><em>On Page SEO</em></li>
+                                        <li><em>Off Page SEO</em></li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul class="list-unstyled lh-3">
+                                        <li><em>Technical SEO</em></li>
+                                        <li><em>Security</em></li>
+                                        <li><em>Monthly Meeting</em></li>
+                                        <li><em>Affiliate Marketing</em></li>
+                                        <li><em>API Integration</em></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 py-2 text-center">
+                            <p class="small">* Website Types May Be Limited Depending On Plan Type.</p>
+                            <a href="{% url 'subscription' %}" class="btn btn-lg btn-black rounded-0 logo-font">View subscription plans</a>
+                        </div>
                     </div>
                 </div>
             </div>
