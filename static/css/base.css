@@ -10,7 +10,23 @@ body{
     font-weight: 400;
     overflow-x: hidden;
 }
-
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0); 
+}
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+.logo-container img{
+    height: 90px;
+    width: auto;
+}
 input[name="q"]::placeholder{
     color: #aab7c4;
 }
@@ -49,7 +65,10 @@ h6,
 .faded{
     opacity: 0.5;
 }
-
+#secRow{
+    padding: 0;
+    margin-top: -30px;
+}
 #seo,
 #speed,
 #quality,
@@ -997,7 +1016,7 @@ h6,
     height: auto;
 }
 .bg-haze{
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.7);
 }
 .silver-haze{
     background: #c0c0c0;

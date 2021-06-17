@@ -1,18 +1,16 @@
 from django.shortcuts import render, get_object_or_404
-from .models import UserProfile, create_or_update_user_profile
-from datetime import datetime, date
+from .models import UserProfile
+from datetime import date
 from django.contrib import messages
 from .forms import UserProfileForm
 from checkout.models import Order, OrderLineItem
 from products.models import Product
-from django.core import validators
-
-
-import json
+from django.contrib.auth.decorators import login_required
 
 today = date.today()
 
 
+@login_required
 def after_login(request):
     user = request.user
     template = "profiles/after-login.html"
@@ -34,6 +32,7 @@ def after_login(request):
     return render(request, template, context)
 
 
+@login_required
 def user_profile(request):
     """
     Display a user profile
@@ -47,7 +46,8 @@ def user_profile(request):
         orders = Order.objects.filter(user_profile=profile)
 
     except Exception:
-        messages.error(request, "Error retreiving orders, or you have no order history")
+        messages.error(request, "Error retreiving orders, \
+        or you have no order history")
 
     line_items = []
     websites = []
@@ -57,7 +57,8 @@ def user_profile(request):
 
         for i in line_items:
             price = price + i.lineitem_total
-            if (str(i.product.category) == "business" or str(i.product.category) == "personal" or str(i.product.category) == "ecommerce"):
+            A = str(i.product.category)
+            if (A == "business" or A == "personal" or A == "ecommerce"):
                 websites.append(i)
 
     if request.method == "POST":
@@ -73,7 +74,8 @@ def user_profile(request):
                     product = get_object_or_404(Product, pk=int(productID))
                     product.rating_count = product.rating_count + 1
                     product.rating_total = product.rating_total + int(rating)
-                    product.rating = product.rating_total / product.rating_count
+                    product.rating = (
+                        product.rating_total / product.rating_count)
                     # product.expiry = today
                     product.save()
                     line.rating = int(rating)

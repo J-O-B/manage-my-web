@@ -4,6 +4,7 @@ from django.db.models import Q
 from .models import Product, Category
 from django.db.models.functions import Lower
 from datetime import datetime
+from django.core.mail import send_mail
 
 
 def all_products(request):
@@ -147,6 +148,35 @@ def product_detail(request, product_id):
     if product.normal_price:
         saving = (
             product.normal_price - product.price) / product.normal_price * 100
+    
+    if request.method == "POST":
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        try:
+            send_mail(
+                f'{first_name} {last_name} Would Like {subject}',
+                f'Message: {message}',
+                f'Reply To: {email}',
+                ['jonathanobrien@outlook.ie'],
+                fail_silently=False,
+            )
+            send_mail(
+                f'Receipt Of Message: {subject}',
+                f'Request received regarding {subject}, \
+one of our agents will get back to you shortly',
+                'Admin@ManageMyWeb.org',
+                [f'{email}'],
+                fail_silently=False,
+            )
+            messages.success(request, f"Thank you {first_name} {last_name} \
+for your query. We have emailed a copy of your request to: \
+{email}. One of our team will get back to you shortly.")
+
+        except Exception as e:
+            messages.error(request, f"An error occurred: {e}")
 
     template = 'products/product_detail.html'
     context = {

@@ -240,26 +240,26 @@
                     Product Images
                 </h2>
                 <hr class="pb-1 w-25 mx-auto">
-                <div id="carouselProductImages" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselProductImages" class="carousel slide" data-bs-ride="carousel" data-interval="5000">
                     <div class="carousel-inner product-carousel">
                         {% if product.image1 %}
-                            <div class="carousel-item active product-carousel-img" data-bs-interval="5000">
+                            <div class="carousel-item active product-carousel-img">
                                 <img src="{{product.image1.url}}" class="d-block w-100" alt="{{product.name}}">
                             </div>
                             {% if product.image2 %}
-                                <div class="carousel-item product-carousel-img" data-bs-interval="5000">
+                                <div class="carousel-item product-carousel-img">
                                     <img src="{{product.image2.url}}" class="d-block w-100" alt="{{product.name}}">
                                 </div>
                                 {% if product.image3 %}
-                                    <div class="carousel-item product-carousel-img" data-bs-interval="5000">
+                                    <div class="carousel-item product-carousel-img">
                                         <img src="{{product.image3.url}}" class="d-block w-100" alt="{{product.name}}">
                                     </div>
                                     {% if product.image4 %}
-                                        <div class="carousel-item product-carousel-img" data-bs-interval="5000">
+                                        <div class="carousel-item product-carousel-img">
                                             <img src="{{product.image4.url}}" class="d-block w-100" alt="{{product.name}}">
                                         </div>
                                         {% if product.image5 %}
-                                            <div class="carousel-item product-carousel-img" data-bs-interval="5000">
+                                            <div class="carousel-item product-carousel-img">
                                                 <img src="{{product.image5.url}}" class="d-block w-100" alt="{{product.name}}">
                                             </div>
                                         {% endif %}
@@ -267,20 +267,20 @@
                                 {% endif %}
                             {% endif %}
                         {% else %}
-                        <div class="carousel-item active" data-bs-interval="5000">
+                        <div class="carousel-item active">
                             <img src="{{ MEDIA_URL }}noimage.jpg" class="d-block w-100" alt="{{product.name}}">
                         </div>
                         {% endif %}
                         
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductImages" data-bs-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselProductImages" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProductImages" data-bs-slide="next">
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselProductImages" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                        <span class="sr-only">Next</span>
+                      </a>
                 </div>
             </div>
         </div>
@@ -331,7 +331,8 @@
                 <p class="text-center text-capitalize">
                     Contact us to find out more!
                 </p>
-                <form action="">
+                <form action="{% url 'product_detail' product_id=product.id %}" method="POST">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-6 text-center">
                             <div class="form-group">
@@ -346,7 +347,7 @@
                         <div class="col-12 col-sm-12 col-md-6 text-center">
                             <div class="form-group">
                                 <label for="subject">Subject:</label>
-                                <input class="form-control" name="subject" id="subject" type="text" placeholder="More Info On {{product.title}}" readonly>
+                                <input class="form-control" name="subject" id="subject" type="text" value="More Info On {{product.title}}" placeholder="More Info On {{product.title}}" readonly>
                                 <label for="message">Subject:</label>
                                 <textarea class="form-control" id="message" name="message" placeholder="Enter Your Message Here..." rows="3"></textarea>
                             </div>

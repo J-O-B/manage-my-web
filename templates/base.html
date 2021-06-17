@@ -43,199 +43,161 @@
                 <meta property="og:description" content="A customizable web store with stripe payments, admin panel and more.">
                 <meta property="og:image" content="{% static 'media/background.jpg' %}">
                 <meta property="og:url" content="">
-
+                
                 <!--Twitter SEO-->
                 <meta name="twitter:title" content="Your Store Template ">
                 <meta name="twitter:description" content=" Offering tour packages for individuals or groups.">
                 <meta name="twitter:image" content="{% static 'media/background.jpg' %}">
                 <meta name="twitter:card" content="summary_large_image">        
-            {% endblock %}
-
-            <!--Icon-->
-            <link rel="icon" type="image/jpg" href=""/>
-
-            <!--Browser Title-->
-            <title>{% block extra_title %}{%endblock%}Manage My Web</title>
-        </head>
-        <body>
-            <div id="topOfPage"></div>
-            <header class="container-fluid no-print fixed-top-desktop-onlysticky-top bg-white" id="topHeader">
-                <div class="row">
-                    <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-start d-none d-lg-block">
-                        <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                            <h2 class="logo-font text-black my-0">Manage My Web</h2>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-none d-lg-block">
-                        <form method="GET" action="{% url 'products' %}">
-                            <div class="input-group w-100">
-                                <input type="text" class="form-control border border-black rounded-0" name="q" placeholder="Search This Site">
-                                <div class="input-group-append bg-primary">
-                                    <button class="form-control btn btn-black border border-black rounded-0" type="submit">
-                                        <span class="icon">
-                                            <i class="fas fa-search"></i>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-none d-lg-block">
-                        <ul class="list-inline list-unstyled text-center text-lg-end my-0">
-                            <li class="list-inline-item dropdown">
-                                <a href="#" class="text-black nav-link" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <div class="text-center {% if user.is_authenticated %}text-primary{%else%}text-black{%endif%}">
-                                        <div><i class="fas fa-user fa-lg"></i></div>
-                                        <p class="my-0">My Account</p>
+                {% endblock %}
+                
+                <!--Icon-->
+                <link rel="icon" type="image/jpg" href=""/>
+                
+                <!--Browser Title-->
+                <title>{% block extra_title %}{%endblock%}Manage My Web</title>
+            </head>
+            <body>
+            <div id="content-container">
+                <div id="topOfPage"></div>
+                <header class="container-fluid no-print fixed-top-desktop-onlysticky-top bg-white" id="topHeader">
+                    <div class="row">
+                        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-start d-none d-lg-block infront">
+                            <a href="{% url 'home' %}" class="nav-link main-logo-link logo-container">
+                                <img src="{{MEDIA_URL}}logo.png" alt="Manage My Web Logo">
+                                <!--<h2 class="logo-font text-black my-0">Manage My Web</h2>-->
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-none d-lg-block">
+                            <form method="GET" action="{% url 'products' %}">
+                                <div class="input-group w-100">
+                                    <input type="text" class="form-control border border-black rounded-0" name="q" placeholder="Search This Site">
+                                    <div class="input-group-append bg-primary">
+                                        <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                            <span class="icon">
+                                                <i class="fas fa-search"></i>
+                                            </span>
+                                        </button>
                                     </div>
-                                </a>
-                                <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                                    {% if request.user.is_authenticated %}
-                                        {% if request.user.is_superuser %}
-                                            <a href="/admin" class="dropdown-item">
-                                                Product Management
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-none d-lg-block">
+                            <ul class="list-inline list-unstyled text-center text-lg-end my-0">
+                                <li class="list-inline-item dropdown">
+                                    <a href="#" class="text-black nav-link" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="text-center {% if user.is_authenticated %}text-primary{%else%}text-black{%endif%}">
+                                            <div><i class="fas fa-user fa-lg"></i></div>
+                                            <p class="my-0">My Account</p>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                        {% if request.user.is_authenticated %}
+                                            {% if request.user.is_superuser %}
+                                                <a href="/admin" class="dropdown-item">
+                                                    Product Management
+                                                </a>
+                                            {% endif %}
+                                            <a href="{% url 'user_profile' %}" class="dropdown-item">
+                                                My Profile
+                                            </a>
+                                            <a href="{% url 'account_logout' %}" class="dropdown-item">
+                                                Logout
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'account_signup' %}" class="dropdown-item">
+                                                Register
+                                            </a>
+                                            <a href="{% url 'account_login' %}" class="dropdown-item">
+                                                Login
                                             </a>
                                         {% endif %}
-                                        <a href="{% url 'user_profile' %}" class="dropdown-item">
-                                            My Profile
-                                        </a>
-                                        <a href="{% url 'account_logout' %}" class="dropdown-item">
-                                            Logout
-                                        </a>
-                                    {% else %}
-                                        <a href="{% url 'account_signup' %}" class="dropdown-item">
-                                            Register
-                                        </a>
-                                        <a href="{% url 'account_login' %}" class="dropdown-item">
-                                            Login
-                                        </a>
-                                    {% endif %}
-                                </div>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="{% url 'cart' %}" class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link">
-                                    <div class="text-center">
-                                        <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-                                        <p class="my-0">
-                                            {% if grand_total %}
-                                                €{{ total|floatformat:2 }}
-                                            {% else %}
-                                                €0.00
-                                            {% endif %}
-                                        </p>
                                     </div>
-                                </a>
-                            </li>
-                        </ul>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="{% url 'cart' %}" class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link">
+                                        <div class="text-center">
+                                            <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                                            <p class="my-0">
+                                                {% if grand_total %}
+                                                    €{{ total|floatformat:2 }}
+                                                {% else %}
+                                                    €0.00
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="row bg-white fixed-sm-top" id="secRow">
-                    <nav class="navbar navbar-expand-lg navbar-light w-100">
-                        <div class="row d-lg-none w-100">
-                            <div class="col-4">
-                                <button class="navbar-toggler text-black" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
+                    <div class="row bg-white fixed-sm-top" id="secRow">
+                        <nav class="navbar navbar-expand-lg navbar-light w-100">
+                            <div class="row d-lg-none w-100">
+                                <div class="col-4">
+                                    <button class="navbar-toggler text-black" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                </div>
+                                <div class="col-8 text-end">
+                                    <h2 class="logo-font text-success">Manage My Web</h2>
+                                </div>
                             </div>
-                            <div class="col-8 text-end">
-                                <h2 class="logo-font text-success">Manage My Web</h2>
+                            
+                            <div class="col-12 d-lg-none d-flex justify-content-around">
+                                {% include 'includes/mobile-top-header.html' %}
                             </div>
-                        </div>
-                        
-                        <div class="col-12 d-lg-none d-flex justify-content-around">
-                            {% include 'includes/mobile-top-header.html' %}
-                        </div>
-                        {% include 'includes/main-nav.html' %}
-                    </nav>
-                </div>
-            </header>
+                            {% include 'includes/main-nav.html' %}
+                        </nav>
+                    </div>
+                </header>
 
-            {% if messages %}
-                <div class="message-container text-black">
-                    {% for message in messages %}
-                    {% with message.level as level %}
-                        {% if level == 40 %}
-                            {% include 'includes/toasts/toast_error.html' %}
-                        {% elif level == 30 %}
-                            {% include 'includes/toasts/toast_warning.html' %}
-                        {% elif level == 25 %}
-                            {% include 'includes/toasts/toast_success.html' %}
-                        {% else %}
-                            {% include 'includes/toasts/toast_info.html' %}
-                        {% endif %}
-                    {% endwith %}
-                {% endfor %}
-                </div>
-            {% endif %}
+                {% if messages %}
+                    <div class="message-container text-black">
+                        {% for message in messages %}
+                        {% with message.level as level %}
+                            {% if level == 40 %}
+                                {% include 'includes/toasts/toast_error.html' %}
+                            {% elif level == 30 %}
+                                {% include 'includes/toasts/toast_warning.html' %}
+                            {% elif level == 25 %}
+                                {% include 'includes/toasts/toast_success.html' %}
+                            {% else %}
+                                {% include 'includes/toasts/toast_info.html' %}
+                            {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                    </div>
+                {% endif %}
 
-            {% block page_header %}
-            {% endblock %}
-
-            {% block content %}
-            {% endblock %}
+                {% block page_header %}
+                {% endblock %}
+            
+                {% block content %}
+                {% endblock %}
+            </div>
 
             <!-- Global Footer -->
-            <footer class="container-fluid bg-white infront pt-5 no-print" id="footer">
+            <footer class="container-fluid bg-white box-shadow pt-5 g-0 no-print pb-2" id="footer">
                 <div class="row">
-                    <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0">
-                        <div class="w-100 h-100 box-shadow text-center">
-                            <h3 class="h4 text-black logo-font pt-3 underline-success">
-                                Products
-                            </h3>
-                            <hr class="mx-auto w-50">
-                            <ul class="list-unstyled text-primary text-center">
-                                <li>Web Design</li>
-                                <li>SEO</li>
-                                <li>Offers</li>
-                                <li>Subscriptions</li>
-                                <li>View All</li>
-                            </ul>
-                        </div>
+                    <div class="col-12 col-sm-6 offset-sm-0 col-md-2 offset-md-1 text-center">
+                        <h2 class="h6 logo-font text-dark pb-3">
+                            Manage My Web
+                        </h2>
+                        <p class="text-dark small">&copy; ManageMyWeb 2021</p>
                     </div>
-                    <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0">
-                        <div class="w-100 h-100 box-shadow text-center">
-                            <h3 class="h4 text-black logo-font pt-3 underline-success">
-                                News & Releases
-                            </h3>
-                            <hr class="mx-auto w-50">
-                            <ul class="list-unstyled text-primary text-center">
-                                <li>Blog</li>
-                                <li>Latest Articles</li>
-                                <li>SEO</li>
-                                <li>Offers</li>
-                                <li>Products</li>
-                                <li>Blog</li>
-                            </ul>
-                        </div>
+                    <div class="col-12 col-sm-6 col-md-4 text-end">
+                        <blockquote id="randomquote">
+                            <p></p> <cite>&mdash; <span></span></cite>
+                        </blockquote>
                     </div>
-                    <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0">
-                        <div class="w-100 h-100 box-shadow text-center">
-                            <h3 class="h4 text-black logo-font pt-3 underline-success">
-                                Navigation
-                            </h3>
-                            <hr class="mx-auto w-50">
-                            <ul class="list-unstyled text-primary text-center">
-                                <li>Products</li>
-                                <li>Web Design</li>
-                                <li>SEO</li>
-                                <li>Offers</li>
-                                <li>Products</li>
-                                <li>Products</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-10 offset-sm-1 col-lg-3 offset-lg-0">
-                        <div class="w-100 h-100 box-shadow text-center">
-                            <h3 class="h4 text-black logo-font pt-3 underline-success">
-                                Social
-                            </h3>
-                            <hr class="mx-auto w-50">
-                            <ul class="list-unstyled text-primary text-center">
-                                <li>Facebook</li>
-                                <li>Twitter</li>
-                                <li>Pinterest</li>
-                                <li>Instagram</li>
-                            </ul>
+                    <div class="col-12 col-sm-12 col-md-4">
+                        <div class="w-100 d-flex justify-content-end">
+                            <p class="text-black small mx-3 underline-success"><a href="{% url 'home' %}" class="text-decoration-none text-black">Home</a></p> 
+                            <p class="text-black small mx-3 underline-success"><a href="{% url 'products' %}" class="text-decoration-none text-black">Products</a></p> 
+                            <p class="text-black small mx-3 underline-success"><a href="{% url 'about' %}" class="text-decoration-none text-black">About</a></p> 
+                            <p class="text-black small mx-3 underline-success"><a href="{% url 'home' %}" class="text-decoration-none text-black">Policy</a></p> 
+                            <p class="text-black small mx-3 underline-success"><a href="{% url 'home' %}" class="text-decoration-none text-black">Contact</a></p> 
                         </div>
                     </div>
                 </div>
@@ -347,6 +309,28 @@
             {% endif %}
             <!-- Global Script -->
             <script type="text/javascript">
+                function footerQuotes(){
+                    let myQuotes = [{
+                        quote: "“A website without visitors is like a ship lost in the horizon.”",
+                        cite: "Dr. Christopher Dayagdag",
+                    },{
+                        quote: "“If debugging is the process of removing software bugs, then programming must be the process of putting them in”",
+                        cite: "Edsger Dijkstra",
+                    },{
+                        quote: "“If you think math is hard, try web design.”",
+                        cite: "Trish Parr",
+                    },{
+                        quote: "“Great web design without functionality is like a sports car with no engine.”",
+                        cite: "Paul Cookson",
+                    },{
+                        quote: "“Websites promote you 24/7: No employee will do that.”",
+                        cite: "Paul Cookson",
+                    }];
+                let randomQuote = Math.floor(Math.random() * myQuotes.length);
+                $('p', '#randomquote').text(myQuotes[randomQuote].quote);
+                $('cite span', '#randomquote').text(myQuotes[randomQuote].cite);
+                }
+                footerQuotes();
                 function setCookie(cname, cvalue, exdays) {
                     var d = new Date();
                     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -366,8 +350,10 @@
                     window.scrollTo(0,0);
                 });
                 let footer = $('#footer');
+                let page = $('#content-container');
                 let bottom = footer.position().top + footer.outerHeight(true);
-                let height = $(window).height();
+                let height = $(window).outerHeight();
+                console.log(height);
                 if (bottom < height){
                     footer.css('position', 'absolute').css('bottom', '0');
                 }
@@ -376,7 +362,6 @@
                 })
                 $('.toast').toast('show');
             </script>
-            <script src="{% static 'js/cookie.js' %"></script>
 
             <!-- Template Additional Scripts-->
             {% block postloadjs %}
