@@ -5,9 +5,12 @@
 {% endblock %}
 
 {% block page_header %}
-<div id="home-hero" class="row g-0 relative overflow-hidden">
+{% endblock %}
+
+{% block content %}
+<div id="gold-hero" class="row g-0 relative overflow-hidden">
     <div class="gold-haze"></div>
-    <div class="col-12 col-sm-12 col-md-8 col-lg-7 py-5 px-2 infront">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-7 py-5 mt-5 px-2 infront">
         <hr class="mx-5 px-5 w-25">
         <h1 class="my-5 px-5 logo-font gold-title"><em>Gold Plan</em></h1>
         <hr class="mx-5 px-5 w-25">
@@ -59,190 +62,224 @@
         </form>
     </div>
 </div>
-{% endblock %}
 
-{% block content %}
-
-<div class="container-fluid" id="features">
-    <div class="row py-5">
-        <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
-            <h2 class="h3 logo-font">Custom Domain</h2>
-            <p>
-                Our gold plan comes standard with the inclusion of a custom domain name. This 
-                custom domain is unique to you and will help form a brand around your new website.
-            </p>
-        </div>
-        <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
-            <!--Image-->
-            <img src="{{MEDIA_URL}}subs/domain.jpg" alt="">
-        </div>
-    </div>
-<div class="d-flex justify-content-center w-100">
-    <hr class="white-hr w-50">
-</div>
-    <div class="row py-5">
-        <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
-            <!--Image-->
-            <img src="{{MEDIA_URL}}subs/hosting.jpg" alt="">
-        </div>
-        <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
-            <!--Text-->
-            <h2 class="h3 logo-font">Hosting</h2>
-            <p>
-                As part of your gold plan, Manage My Web will host your new website on one of our 
-                servers within the EU or USA. We will provide hosting in the area that is most suited 
-                to you.
-            </p>
-        </div>
-    </div>
-<div class="d-flex justify-content-center w-100">
-    <hr class="white-hr w-50">
-</div>
-    <div class="row py-5">
-        <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
-            <!--Text-->
-            <h2 class="h3 logo-font">Web Development</h2>
-            <p>
-                Our team of web developers will create the website you ask for. Although we will often 
-                ask you for your input, we will ultimately walk through this step with you to ensure 
-                your new website is exactly as you envisaged.
-            </p>
-        </div>
-        <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
-            <!--Image-->
-            <img src="{{MEDIA_URL}}subs/webdev.png" alt="">
-        </div>
-    </div>
-<div class="d-flex justify-content-center w-100">
-    <hr class="white-hr w-50">
-</div>
-    <div class="row py-5">
-        <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
-            <!--Image-->
-            <img src="{{MEDIA_URL}}subs/script.png" alt="">
-        </div>
-        <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
-            <!--Text-->
-            <h2 class="h3 logo-font">Scripting</h2>
-            <p>
-                Where necessary, our development team will generate custom scripts to give your new 
-                website unbeatable functionality, performance and user experience. 
-            </p>
-        </div>
-    </div>
-<div class="d-flex justify-content-center w-100">
-    <hr class="white-hr w-50">
-</div>
-    <div class="row py-5">
-        <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
-            <!--Text-->
-            <h2 class="h3 logo-font">Custom Apps</h2>
-            <p>
-                Each of our websites is created in the Django programming framework and can provide 
-                you with an unmatched level of customizations. Individual apps will form the building blocks 
-                of your website and help deliver exactly what you are looking for.
-            </p>
-        </div>
-        <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
-            <!--Image-->
-            <img src="{{MEDIA_URL}}subs/apps.png" alt="">
-        </div>
-    </div>
-<div class="d-flex justify-content-center w-100">
-    <hr class="white-hr w-50">
-</div>
-    <div class="row py-5">
-        <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
-            <!--Image-->
-            <img src="{{MEDIA_URL}}subs/stripe.png" alt="">
-        </div>
-        <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
-            <!--Text-->
-            <h2 class="h3 logo-font">Payment Processing</h2>
-            <p>
-                All gold plans can take advantage of payment processing services such as Stripe & PayPal. 
-                The decision of which service is completely up to you and will be built specific to your 
-                needs.
-            </p>
-        </div>
-    </div>
-    <div class="d-flex justify-content-center w-100">
-        <hr class="white-hr w-50">
-    </div>
-    <div class="row py-5">
-        <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
-            <!--Text-->
-            <h2 class="h3 logo-font">Social Media</h2>
-            <p>
-                Each of our gold plan websites will have complete social media coverage. This coverage can 
-                include bots for auto posting newsletters, or simply the required SEO for social media shares.
-            </p>
-        </div>
-        <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
-            <!--Image-->
-            <img src="{{MEDIA_URL}}subs/sm.png" alt="">
-        </div>
-    </div>
-<div class="d-flex justify-content-center w-100">
-    <hr class="white-hr w-50">
-</div>
-    <div class="row py-5">
-        <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
-            <!--Image-->
-            <img src="{{MEDIA_URL}}subs/email.png" alt="">
-        </div>
-        <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
-            <!--Text-->
-            <h2 class="h3 logo-font">Email Marketing</h2>
-            <p>
-                As we target eCommerce, all of our gold plan websites encorporate lead generation methods that 
-                will quickly grow your email marketing list. These lists can be sorted into categories and other 
-                defining groups. We also offer the ability to auto generate newsletters, promotions and reminders 
-                at set intervals.
-            </p>
-        </div>
-    </div>
-<div class="d-flex justify-content-center w-100">
-    <hr class="white-hr w-50">
-</div>
-    <div class="row py-5">
-        <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
-            <!--Text-->
-            <h2 class="h3 logo-font">Search Engine Optimization</h2>
-            <p>
-                The key to success online is getting noticed. Our gold plan comes with SEO coverage which will help 
-                generate organic traffic to your website. Advertising campaigns and paid traffic methods are also available 
-                at an extra cost.
-            </p>
-        </div>
-        <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
-            <!--Image-->
-            <img src="{{MEDIA_URL}}subs/seo.png" alt="">
-        </div>
-    </div>
-    <div class="d-flex justify-content-center w-100">
-        <hr class="white-hr w-50">
-    </div>
-    <div class="row py-5">
-        <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
-            <!--Image-->
-            <img src="{{MEDIA_URL}}subs/graphic.png" alt="">
-        </div>
-        <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
-            <!--Text-->
-            <h2 class="h3 logo-font">Graphics</h2>
-            <p>
-                Our graphics designers will ensure your new website has the images and icons it needs.
-            </p>
-        </div>
-    </div>
-    <div class="row d-flex justify-content-center">
-        <button type="submit" class="btn btn-lg rounded-3 w-25 btn-success btn-outline-black px-5 py-1 hover-bg-gold" id="trigger-btn">
-            Buy Now
-        </button>
-    </div>
+<div class="container my-5">
+    <h2 class="text-dark logo-font underline-success">Why Choose Our Gold Plan?</h2>
+    <p class="small text-black">
+        Our gold plan will provide you, or your business with a turnkey solution to web design, UX design, 
+        Search engine optimization, and customizable development. <br><br>
+        Unlike other web development agencies, we continue to work with you throughout your plan. This essentially 
+        means that you will have direct access to UX designers, web developers, programmers, and search engine 
+        optimization experts throughout your plan.
+    </p>
+    <h2 class="text-dark logo-font underline-success pt-5">How Does It Work?</h2>
+    <p class="small text-black">
+        After purchasing our gold plan, we will host an online meeting. During this meeting, we will gather various information from you 
+        that will allow us to design your new website. These designs will be sent to you within 72 hours of our meeting. Once we receive the 
+        go ahead from you that our wireframe designs meet your expectations, we will move ahead with development. <br><br>
+        The development phase will last at least 24 hours, but is largely dependent on your website needs. For larger websites, we may expidite 
+        development to a MVP (minimum viable product) to launch your website, whilst we continue to develop more advanced features & functionality. <br><br>
+        Once your website is up and running, we will provide you with the required information to access your administration panel. This dashboard 
+        will allow you to add an unlimited amount of products which will automatically be displayed, and available for sale on your website. <br><br>
+        Now that your website is functional, we will continue to work on our SEO strategy, including backlink building and various on page metrics 
+        such as keyword usage, and keyword density. <br><br>
+        Over the remainder of your plan, we will closely monitor your website, provide updates and patches where required, implement SEO strategy on 
+        an ongoing basis, and provide you with frequent updates as to the performance and work happening on your website. 
+    </p>
+    <h2 class="text-dark logo-font underline-success">Pricing</h2>
+    <p class="small text-black">
+        Our gold plan is priced in a way that will potentially save you money, if compared to the individual purchase of items that are included. <br><br>
+        
+    </p>
 </div>
 
+
+<div class="container-fluid g-0 p-0 m-0 w-100 my-3" id="features">
+    <div id="featuresCarousel" class="carousel slide g-0 p-0 m-0" data-ride="carousel">
+        <div class="carousel-inner g-0 bg-dark w-100 text-white">
+            <h2 class="text-center text-white underline-success pt-5">What's Included?</h2>
+            <div class="carousel-item active">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <h2 class="h3 logo-font">Custom Domain</h2>
+                        <p>
+                            Our gold plan comes standard with the inclusion of a custom domain name. This 
+                            custom domain is unique to you and will help form a brand around your new website.
+                        </p>
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/domain.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/hosting.jpg" alt="">
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Hosting</h2>
+                        <p>
+                            As part of your gold plan, Manage My Web will host your new website on one of our 
+                            servers within the EU or USA. We will provide hosting in the area that is most suited 
+                            to you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Web Development</h2>
+                        <p>
+                            Our team of web developers will create the website you ask for. Although we will often 
+                            ask you for your input, we will ultimately walk through this step with you to ensure 
+                            your new website is exactly as you envisaged.
+                        </p>
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/webdev.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/script.png" alt="">
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Scripting</h2>
+                        <p>
+                            Where necessary, our development team will generate custom scripts to give your new 
+                            website unbeatable functionality, performance and user experience. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Custom Apps</h2>
+                        <p>
+                            Each of our websites is created in the Django programming framework and can provide 
+                            you with an unmatched level of customizations. Individual apps will form the building blocks 
+                            of your website and help deliver exactly what you are looking for.
+                        </p>
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/apps.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/stripe.png" alt="">
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Payment Processing</h2>
+                        <p>
+                            All gold plans can take advantage of payment processing services such as Stripe & PayPal. 
+                            The decision of which service is completely up to you and will be built specific to your 
+                            needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Social Media</h2>
+                        <p>
+                            Each of our gold plan websites will have complete social media coverage. This coverage can 
+                            include bots for auto posting newsletters, or simply the required SEO for social media shares.
+                        </p>
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/sm.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/email.png" alt="">
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Email Marketing</h2>
+                        <p>
+                            As we target eCommerce, all of our gold plan websites encorporate lead generation methods that 
+                            will quickly grow your email marketing list. These lists can be sorted into categories and other 
+                            defining groups. We also offer the ability to auto generate newsletters, promotions and reminders 
+                            at set intervals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Search Engine Optimization</h2>
+                        <p>
+                            The key to success online is getting noticed. Our gold plan comes with SEO coverage which will help 
+                            generate organic traffic to your website. Advertising campaigns and paid traffic methods are also available 
+                            at an extra cost.
+                        </p>
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/seo.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/graphic.png" alt="">
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Graphics</h2>
+                        <p>
+                            Our graphics designers will ensure your new website has the images and icons it needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#featuresCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#featuresCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div> 
+</div>
+
+<div class="row d-flex justify-content-center">
+    <button type="submit" class="btn btn-lg rounded-3 w-25 btn-success btn-outline-black px-5 py-1 hover-bg-gold" id="trigger-btn">
+        Buy Now
+    </button>
+</div>
 {% endblock %}
 
 {% block postloadjs %}
@@ -251,25 +288,14 @@
     $('#trigger-btn').click(function(){
         $('#sign-up-btn').trigger("click");
     })
-    $('#features').find('.row').mouseenter(function(){
-        $(this).css('transform', 'scale(1.1,1.2)').css('transition', 'all 1s ease-in-out');
-    });
-    $('#features').find('.row').mouseleave(function(){
-        $(this).css('transform', 'scale(1.0,1.0)').css('transition', 'all 1s ease-in-out');
-    });
     $('img').css('height', "160px").css("width", "auto");
-    $('#feedback-carousel').hide();
-    $('#start').click(function(){
-        $('#start').hide();
-        $('#feedback-carousel').fadeIn(3000);
-    });
     $('#home-hero').mouseenter(function(){
         $('.title').css("color", "#d4af37").css("transition", "all 1s ease-in-out");
     })
     $('#home-hero').mouseleave(function(){
         $('.title').css("color", "#000").css("transition", "all 1s ease-in-out");
     })
-
+    $('.includedRow').find('p').addClass('small');
     
 </script>
 

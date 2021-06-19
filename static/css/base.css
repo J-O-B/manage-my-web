@@ -23,9 +23,14 @@ body{
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
+.logo-container,
 .logo-container img{
-    height: 90px;
+    height: 90px !important;
     width: auto;
+}
+#content-container{
+    width: 100vw;
+    overflow-x: hidden;
 }
 input[name="q"]::placeholder{
     color: #aab7c4;
@@ -314,6 +319,18 @@ h6,
 
 #home-hero{
     width: 100vw;
+    overflow: hidden;
+    background: url('../../media/hero-home.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 
+        inset 0px -20px 20px #f5f5f5,
+        inset 0px 1px 2px #333333;
+}
+#gold-hero{
+    width: 100vw;
+    min-height: 80vh;
     overflow: hidden;
     background: url('../../media/hero-home.jpg');
     background-size: cover;
