@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+
+{% block extra_meta %}
+    <meta name="description" content="Contact Manage My Web for any queries, custom quotes, or anything else you want to query.">
+{% endblock %}
+
+{% block extra_title %}
+    Contact -
+{% endblock %}
+
+{% block content %}
+    <div class="contact-page container-fluid p-0 m-0 w-100 h-100">
+        <div class="row my-5">
+            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 my-5 box-shadow p-4">
+                <div class="w-100 h-100" id="first">
+                    <h4 class="logo-font text-center">
+                        Which category does your query fall into?
+                    </h4>
+                    <div class="row">
+                        <div class="col-12 col-md-4 p-2">
+                            <div class="img-container overflow-hidden pointer" id="web_design_contact">
+
+                            </div>
+                            <p class="lead text-center">Web Design</p>
+                        </div>
+                        <div class="col-12 col-md-4 p-2">
+                            <div class="img-container overflow-hidden pointer" id="plans_contact">
+
+                            </div>
+                            <p class="lead text-center">Plans</p>
+                        </div>
+                        <div class="col-12 col-md-4 p-2">
+                            <div class="img-container overflow-hidden pointer" id="other_contact">
+
+                            </div>
+                            <p class="lead text-center">General Queries</p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a class="text-center btn btn-md btn-success btn-outline-black" id="continue1">Continue</a>
+                    </div>
+                </div>
+
+                <div class="w-100 h-100 text-center px-5" id="second">
+                    <form action="{% url 'contact' %}" method="POST" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="d-sm-block d-md-flex mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-dark text-white" id="to">&#8211; To:</span>
+                            </div>
+                            <input type="text" class="form-control" value="Admin@ManageMyWeb.org" aria-label="to" aria-describedby="to" readonly>
+                        </div>
+                        <div class="d-sm-block d-md-flex mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-dark text-white" id="subject">&#8211; Subject:</span>
+                            </div>
+                            <input type="text" class="form-control query_type" name="subject_data" aria-label="subject" aria-describedby="subject" readonly>
+                        </div>
+                        <div class="d-sm-block d-md-flex mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-dark text-white" id="full_name">&#8211; Full Name:</span>
+                            </div>
+                            <div class="d-block w-100">
+                                <input type="text" class="form-control" name="full_name_data" placeholder="Please Enter Your Full Name Here" aria-label="full_name" pattern="[A-Za-z]{3,}" aria-describedby="full_name" required>
+                                <div class="row invalid-feedback">
+                                    Please provide a valid name without punctuation.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-sm-block d-md-flex mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-dark text-white" id="email">&#8211; Email:</span>
+                            </div>
+                            <div class="d-block w-100">
+                                <input type="email" class="form-control" name="email_data" placeholder="Please Enter Your Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" aria-label="email" aria-describedby="email" required>
+                                <div class="row invalid-feedback">
+                                    Please provide a valid email.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-sm-block d-md-flex mb-0">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-dark text-white" id="message">&#8211; Message:</span>
+                            </div>
+                        </div>
+                        <div class="d-block mb-0">
+                            <textarea name="message_data" id="message_data" cols="30" class="w-100" rows="10" pattern="[A-Za-z]" required></textarea>
+                            <div class="row invalid-feedback pb-5">
+                                Please provide a valid input. Only letters (A-Z) and numbers (1-9) are accepted.
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center pb-5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                <label class="form-check-label" for="invalidCheck">
+                                    Agree to terms and conditions
+                                </label>
+                                <div class="invalid-feedback">
+                                    You must agree before submitting.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-warning mx-2 py-1 px-3 w-25 border-black prev-1"><i class="fas fa-chevron-left"></i> Back</button>
+                            <button class="btn btn-success mx-2 py-1 px-3 w-25 border-black">Submit <i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block postloadjs %}
+    <script type="text/javascript">
+    $('#continue1').hide();
+    $('#second').hide();
+    function validate() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            let forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            let validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    };
+    validate();
+
+    function imgSelect(){
+        $('#web_design_contact').mouseenter(function(){
+            $(this).siblings().css('transform', 'scale(1.2,1.2)').css('transition', 'all 0.5s ease-in-out').addClass('underline-success');
+        });
+        $('#plans_contact').mouseenter(function(){
+            $(this).siblings().css('transform', 'scale(1.2,1.2)').css('transition', 'all 0.5s ease-in-out').addClass('underline-success');
+        });
+        $('#other_contact').mouseenter(function(){
+            $(this).siblings().css('transform', 'scale(1.2,1.2)').css('transition', 'all 0.5s ease-in-out').addClass('underline-success');
+        });
+        $('#web_design_contact').mouseleave(function(){
+            $(this).siblings().css('transform', 'scale(1,1)').css('transition', 'all 0.5s ease-in-out').removeClass('underline-success');
+        });
+        $('#plans_contact').mouseleave(function(){
+            $(this).siblings().css('transform', 'scale(1,1)').css('transition', 'all 0.5s ease-in-out').removeClass('underline-success');
+        });
+        $('#other_contact').mouseleave(function(){
+            $(this).siblings().css('transform', 'scale(1,1)').css('transition', 'all 0.5s ease-in-out').removeClass('underline-success');
+        });
+    }
+    imgSelect();
+    let queryType = "";
+    function query(){
+        $('#web_design_contact').click(function(){
+            $(this).parent().addClass('border-black').addClass('bg-success');        
+            $(this).parent().siblings().removeClass('border-black').removeClass('bg-success');
+            queryType = "Web Design";
+            $('.query_type').val(`${queryType}`);
+            $('#continue1').show(500);
+        })
+        $('#plans_contact').click(function(){
+            $(this).parent().addClass('border-black').addClass('bg-success');        
+            $(this).parent().siblings().removeClass('border-black').removeClass('bg-success');
+            queryType = "Plan";
+            $('.query_type').val(`${queryType}`);
+            $('#continue1').show(500);
+        })
+        $('#other_contact').click(function(){
+            $(this).parent().addClass('border-black').addClass('bg-success');        
+            $(this).parent().siblings().removeClass('border-black').removeClass('bg-success');
+            queryType = "Other";
+            $('.query_type').val(`${queryType}`);
+            $('#continue1').show(500);
+        })
+    }
+    query();
+    $('#continue1').click(function(e){
+        e.preventDefault();
+        $('#first').hide();
+        $('#second').slideDown(1000);
+    });
+    $('.prev-1').click(function(){
+        $('#second').hide();
+        $('#first').slideDown(800);
+    });
+    function width(){
+        let width = window.innerWidth;
+        if (width > 560){
+            $('.input-group-prepend').addClass('w-25');
+        }
+    }
+    width();
+    </script>
+{% endblock %}

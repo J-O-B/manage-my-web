@@ -180,26 +180,27 @@
             <!-- Global Footer -->
             <footer class="container-fluid bg-white box-shadow pt-5 g-0 no-print pb-2" id="footer">
                 <div class="row">
-                    <div class="col-12 col-sm-6 offset-sm-0 col-md-2 offset-md-1 text-center">
+                    <div class="col-12 col-sm-12 col-md-4 offset-md-1 text-center">
                         <h2 class="h6 logo-font text-dark pb-3">
                             Manage My Web
                         </h2>
                         <p class="text-dark small">&copy; ManageMyWeb 2021</p>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 text-end">
-                        <blockquote id="randomquote">
-                            <p></p> <cite>&mdash; <span></span></cite>
-                        </blockquote>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-4">
+                    <div class="col-12 col-sm-12 col-md-7">
                         <div class="w-100 d-flex justify-content-end">
                             <p class="text-black small mx-3 underline-success"><a href="{% url 'home' %}" class="text-decoration-none text-black">Home</a></p> 
                             <p class="text-black small mx-3 underline-success"><a href="{% url 'products' %}" class="text-decoration-none text-black">Products</a></p> 
                             <p class="text-black small mx-3 underline-success"><a href="{% url 'about' %}" class="text-decoration-none text-black">About</a></p> 
                             <p class="text-black small mx-3 underline-success"><a href="{% url 'home' %}" class="text-decoration-none text-black">Policy</a></p> 
-                            <p class="text-black small mx-3 underline-success"><a href="{% url 'home' %}" class="text-decoration-none text-black">Contact</a></p> 
+                            <p class="text-black small mx-3 underline-success"><a href="{% url 'contact' %}" class="text-decoration-none text-black">Contact</a></p> 
                         </div>
                     </div>
+                </div>
+                <div class="row text-center">
+                    <blockquote id="randomquote">
+                        <p></p> 
+                        <cite>&mdash; <span></span></cite>
+                    </blockquote>
                 </div>
             </footer>
 

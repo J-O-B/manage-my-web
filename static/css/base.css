@@ -10,6 +10,7 @@ body{
     font-weight: 400;
     overflow-x: hidden;
 }
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -96,7 +97,20 @@ h6,
     color: #28a745;
     cursor: pointer;
 }
-
+@media screen and (max-width:600px) {
+    #footer{
+        position: relative !important;
+        padding-bottom: 100px !important;
+    }
+    #footer .text-end{
+        text-align: center !important;
+    }
+    #footer .justify-content-end{
+        position: relative !important;
+        display: block !important;
+        text-align: center !important;
+    }
+}
 .bg-success-circle{
     background: #28a745;
     border-radius: 50%;
@@ -319,6 +333,7 @@ h6,
 
 #home-hero{
     width: 100vw;
+    min-height: 70vh;
     overflow: hidden;
     background: url('../../media/hero-home.jpg');
     background-size: cover;
@@ -1106,6 +1121,32 @@ h6,
     cursor: pointer;
 }
 
+/***********Contact Page***********/
+#web_design_contact,
+#plans_contact,
+#other_contact{
+    height: 300px;
+    position: relative;
+    overflow:hidden;
+}
+#web_design_contact{
+    background: url('../../media/web_design.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#plans_contact{
+    background: url('../../media/plans.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#other_contact{
+    background: url('../../media/general-contact.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 /*-------Cookie Container ----------*/
 
 .popup-haze{

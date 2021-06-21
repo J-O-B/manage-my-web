@@ -11,6 +11,7 @@ from django.utils.safestring import mark_safe
 from cart.contexts import cart_contents
 from django.contrib.auth.models import User
 from dateutil.relativedelta import relativedelta
+from contact.models import EmailMarketing
 
 import stripe
 from datetime import datetime
@@ -66,6 +67,24 @@ def checkout(request):
     if request.method == "POST":
         cart = request.session.get('cart', {})
         current_cart = cart_contents(request)
+
+        try:
+            number = 0
+            number = number + int(EmailMarketing.objects.count())
+            if number >= 1:
+                id = number + 1
+            else:
+                id = 1
+            list = EmailMarketing(
+                id,
+                email=request.POST.get('email'),
+                users_name=request.POST.get('full_name'),
+                category="Prev Buyer")
+            list.save()
+        except Exception:
+            pass
+
+
         if current_cart['subscription']:
             subscription = True
             subscriber = "Yes"

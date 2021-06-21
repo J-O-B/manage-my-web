@@ -5,12 +5,9 @@
 {% endblock %}
 
 {% block page_header %}
-{% endblock %}
-
-{% block content %}
-<div id="gold-hero" class="row g-0 relative overflow-hidden">
+<div id="home-hero" class="row g-0 relative overflow-hidden">
     <div class="gold-haze"></div>
-    <div class="col-12 col-sm-12 col-md-8 col-lg-7 py-5 mt-5 px-2 infront">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-7 py-5 px-2 infront">
         <hr class="mx-5 px-5 w-25">
         <h1 class="my-5 px-5 logo-font gold-title"><em>Gold Plan</em></h1>
         <hr class="mx-5 px-5 w-25">
@@ -62,8 +59,11 @@
         </form>
     </div>
 </div>
+{% endblock %}
 
-<div class="container my-5">
+{% block content %}
+
+<div class="container mt-5">
     <h2 class="text-dark logo-font underline-success">Why Choose Our Gold Plan?</h2>
     <p class="small text-black">
         Our gold plan will provide you, or your business with a turnkey solution to web design, UX design, 
@@ -72,32 +72,13 @@
         means that you will have direct access to UX designers, web developers, programmers, and search engine 
         optimization experts throughout your plan.
     </p>
-    <h2 class="text-dark logo-font underline-success pt-5">How Does It Work?</h2>
-    <p class="small text-black">
-        After purchasing our gold plan, we will host an online meeting. During this meeting, we will gather various information from you 
-        that will allow us to design your new website. These designs will be sent to you within 72 hours of our meeting. Once we receive the 
-        go ahead from you that our wireframe designs meet your expectations, we will move ahead with development. <br><br>
-        The development phase will last at least 24 hours, but is largely dependent on your website needs. For larger websites, we may expidite 
-        development to a MVP (minimum viable product) to launch your website, whilst we continue to develop more advanced features & functionality. <br><br>
-        Once your website is up and running, we will provide you with the required information to access your administration panel. This dashboard 
-        will allow you to add an unlimited amount of products which will automatically be displayed, and available for sale on your website. <br><br>
-        Now that your website is functional, we will continue to work on our SEO strategy, including backlink building and various on page metrics 
-        such as keyword usage, and keyword density. <br><br>
-        Over the remainder of your plan, we will closely monitor your website, provide updates and patches where required, implement SEO strategy on 
-        an ongoing basis, and provide you with frequent updates as to the performance and work happening on your website. 
-    </p>
-    <h2 class="text-dark logo-font underline-success">Pricing</h2>
-    <p class="small text-black">
-        Our gold plan is priced in a way that will potentially save you money, if compared to the individual purchase of items that are included. <br><br>
-        
-    </p>
 </div>
 
 
 <div class="container-fluid g-0 p-0 m-0 w-100 my-3" id="features">
-    <div id="featuresCarousel" class="carousel slide g-0 p-0 m-0" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide g-0 p-0 m-0" data-ride="carousel">
         <div class="carousel-inner g-0 bg-dark w-100 text-white">
-            <h2 class="text-center text-white underline-success pt-5">What's Included?</h2>
+            <h2 class="text-center text-white underline-success">Whats Included?</h2>
             <div class="carousel-item active">
                 <div class="row py-5 includedRow">
                     <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
@@ -264,11 +245,11 @@
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#featuresCarousel" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#featuresCarousel" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
