@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static '/profiles/css/profile.css' %}">
+    <link rel="stylesheet" href="../../static/profiles/css/profile.css">
 {% endblock %}
 
 {% block page_header %}
@@ -138,33 +138,64 @@
                 <div class="w-100 d-flex justify-content-center">
                     <hr class="w-50">
                 </div>
-                <form action="{% url 'user_profile' %}" method="POST" id="profile-update-form">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
-                            <fieldset class="rounded px-3 mb-5 detailsSet" id="personal-details">
-                                <legend class="fieldset-label small text-black mx-2 w-100"><em>Personal Details:</em></legend>
-                                {{ form.full_name | as_crispy_field }}
-                                {{ form.email | as_crispy_field }}
-                                {{ form.phone_number | as_crispy_field }}
-                                <p class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-billing">Next <i class="fas fa-angle-right"></i></p>
-                            </fieldset>
-                            <fieldset class="rounded px-3 mb-5 billingSet" id="billing-details">
-                                <legend class="fieldset-label small text-black mx-2 w-100"><em>Billing Address:</em></legend>
-                                {{ form.town_or_city | as_crispy_field }}
-                                {{ form.street_address1 | as_crispy_field }}
-                                {{ form.street_address2 | as_crispy_field }}
-                                {{ form.postcode | as_crispy_field }}
-                                {{ form.country | as_crispy_field }}
-                                <p>
-                                    <span class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-personal"><i class="fas fa-angle-left"></i> Previous</span>
-                                    <span><button type="submit" class="btn btn-lg btn-success btn-outline-black rounded-0 px-3 my-2" id="submit-info">Submit <i class="fas fa-angle-right"></i></button></span>
-                                </p>
-
-                            </fieldset>
+                <div class="row" id="firstProfEdit">
+                    <div class="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+                        <h3 class="logo-font underline-success text-black">Current Profile Data:</h3>
+                        <div class="row">
+                            <p>
+                                <span class="text-black fst-italic">Name</span> : <span class="text-white small text-center">{{profile.full_name}}</span> <br>
+                                <span class="text-black fst-italic">Email</span> : <span class="text-white small text-center">{{profile.email}}</span><br>
+                                <span class="text-black fst-italic">Phone</span> : <span class="text-white small text-center">{{profile.phone_number}}</span><br>
+                                <span class="text-black fst-italic">Country</span> : <span class="text-white small text-center">{{profile.country}}</span><br>
+                                <span class="text-black fst-italic">Town / City</span> : <span class="text-white small text-center">{{profile.town_or_city}}</span><br>
+                            </p>
+                            <p>
+                                <span class="text-black fst-italic">Postcode</span> : <span class="text-white small">{{profile.postcode}}</span><br>
+                                <span class="text-black fst-italic">Address</span> : <span class="text-white small">{{profile.street_address1}}</span><br>
+                                <span class="text-black fst-italic">Address (cont.)</span>   <span class="text-white small">{{profile.street_address2}}</span><br>
+                                <span class="text-black fst-italic">Subscription</span> : <span class="text-white small">{{profile.subscription}}</span><br>
+                                <span class="text-black fst-italic">Subscription Expiry</span> : <span class="text-white small">{{profile.subscription_expiry}}</span><br>
+                            </p>
+                            <h5 class="logo-font text-black text-center mt-4">Would You Like To Edit This Data?</h5>
+                            <p class="text-center">
+                                <span class="btn btn-md btn-primary border-black px-3">No</span>
+                                <span class="btn btn-md btn-warning border-black px-3" id="yesEdit">Yes</span>
+                            </p>
                         </div>
                     </div>
-                </form>
+                </div>
+                <div class="row" id="secProfEdit">
+                    <form action="{% url 'user_profile' %}" method="POST" id="profile-update-form">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
+                                <fieldset class="rounded px-3 mb-5 detailsSet" id="personal-details">
+                                    <legend class="fieldset-label small text-black mx-2 w-100"><em>Personal Details:</em></legend>
+                                    {{ form.full_name | as_crispy_field }}
+                                    {{ form.email | as_crispy_field }}
+                                    {{ form.phone_number | as_crispy_field }}
+                                    <p>
+                                        <span class="btn btn-lg btn-info  rounded-0 px-3 my-2" id="go-back"><i class="fas fa-angle-left"></i> Back</span>
+                                        <span class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-billing">Next <i class="fas fa-angle-right"></i></span>
+                                    </p>
+                                </fieldset>
+                                <fieldset class="rounded px-3 mb-5 billingSet" id="billing-details">
+                                    <legend class="fieldset-label small text-black mx-2 w-100"><em>Billing Address:</em></legend>
+                                    {{ form.town_or_city | as_crispy_field }}
+                                    {{ form.street_address1 | as_crispy_field }}
+                                    {{ form.street_address2 | as_crispy_field }}
+                                    {{ form.postcode | as_crispy_field }}
+                                    {{ form.country | as_crispy_field }}
+                                    <p>
+                                        <span class="btn btn-lg btn-black rounded-0 px-3 my-2" id="go-personal"><i class="fas fa-angle-left"></i> Previous</span>
+                                        <span><button type="submit" class="btn btn-lg btn-success btn-outline-black rounded-0 px-3 my-2" id="submit-info">Submit <i class="fas fa-angle-right"></i></button></span>
+                                    </p>
+    
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="w-100 h-100" id="seo-info-profile">
                 <h3 class="logo-font mt-3 text-center">SEO News:</h3>
@@ -186,13 +217,22 @@
                 {% if orders %}
                     <div class="row">
                         <p class="lead h4 text-black text-center">You Have Purchased {{line_items|length}} {% if line_items|length == 1 %}Item{% else %}Items{% endif %}</p>
-                        <p class="lead h4 text-black text-center">Total Spent: {{ price }}</p>
+                        <p class="lead h4 text-black text-center">Total Spent: {{ price }} <span class="small">*Excl. Tax</span></p>
                         {% for line in line_items %}
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3 p-2">
                                 <div class="relative box-shadow bg-white overflow-hidden px-2">
                                     <p class="lead text-center">{{ line.product }}</p>
-                                    <h1>{{line.product.category}}</h1>
-                                    <p class="lead">Price: <span class="small">{{ line.product.price }}</span></p>
+                                    <div class="w-100 d-flex justify-content-center">
+                                        <hr class="w-50 border-black">
+                                    </div>
+                                    <div class="row g-0">
+                                        <div class="col-6">
+                                            <p class="lead">Price: <span class="small">{{ line.product.price }}</span></p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="lead">Tax: <span class="small text-danger taxSpent">{{ line.product.price }}</span></p>
+                                        </div>
+                                    </div>
                                     <p class="lead">Ordered: <span class="small">{{ line.order.date }}</span></p>
                                     {% if line.delivered %}
                                         <p class="lead">Delivered: <span class="small text-success">{{ line.delivered }}</span></p>
@@ -304,6 +344,16 @@
     function mainPageWrap(){
         
         $('#edit-profile').hide();
+        $('#secProfEdit').hide();
+        $('#yesEdit').click(function(){
+            $('#firstProfEdit').slideToggle();
+            $('#secProfEdit').slideToggle();
+        })
+        $('#go-back').click(function(){
+            $('#firstProfEdit').slideToggle();
+            $('#secProfEdit').slideToggle();
+        })
+
         // Main Menu Options
             $('#edit-profile-btn').click(function(e){
                 e.preventDefault();
@@ -358,7 +408,7 @@
         $('#go-personal').click(function(){
             $('#billing-details').hide();
             $('#personal-details').slideDown();
-        })
+        });
         
         $('#edit-profile-btn').mouseenter(function(){
             $('#profile-card-background').fadeIn(300);
@@ -477,5 +527,15 @@
         
     }
     stars();
+
+    function tax (){
+        $('.taxSpent').each(function(){
+            let value = $(this).text();
+            let tax = value * {{tax}};
+            $(this).text(tax.toFixed(2));
+        })
+        
+    }
+    tax();
     </script>
 {% endblock %}

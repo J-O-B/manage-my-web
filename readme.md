@@ -77,42 +77,50 @@ To expand further on strategy, I have included some user stories. They can be fo
 #### ***2. Scope:***
 
 *Functional Requirements:*
-> 1. A user must be capable of signing up to Ripe.
-> 2. A user must be capable of editing and deleting their profile.
-> 3. A user must be capable of adding a recipe to the database. 
-> 4. A user must be able to communicate with other users.
-> 5. A user must be able to leave comments on recipes.
-> 6. A user must be able to add items to their basket.
-> 7. A user must be able to view the items in their basket, and see a total price.
-> 8. An admin must have unrestricted access to all data, with the exception of a users password.
-> 9. An admin must be able to see, and reply to "tickets" to address any user needs.
-> 10. An admin must be able to delete users and recipes.
+> 1. A user must be able to browse the website regardless of membership.
+> 2. A user must be able to sign up.
+> 3. A member must have a profile dedicated to them.
+> 4. A member must be able to track previous orders.
+> 5. Any user must be able to purchase products.
+> 6. Users must be provided with contact information, and contact forms.
+> 7. Users must be able to search, sort, and filter products.
+> 8. Users must be able to view more about individual products.
+> 9. Users must be able to quickly add a product from the general products page.
+> 10. Users must be able to view, edit, and remove items in their cart.
+> 11. Users must be provided with receipts after checkout.
+> 12. Users must be provided with a policy page.
+> 13. Users must be provided with a cookie consent popup on initial visit.
+> 14. Users must be able to view tax rates. (currently set to Ireland)
 
 
 *Content Requirements:*
-> 1. Content must be relevant to specific recipes.
-> 2. Recipes must have the option to show nutritional data.
-> 3. Users must have a dashboard where they can see all of their information. (Profile page)
+> 1. Content must be targetted to specific products and or web design & SEO.
+> 2. Subscription based products must provide subscription explainer content.
+> 3. Users be able to see their data on their dashboard.
 
 #### ***3. Structure:***
 > * A standard navigation menu available across the entire website. With exceptions:
->   1. A user not logged in will see links that promote logging in or signing up.
->   2. A logged in user will see the full range of links available.
->   3. The homepage, whether logged in or not will provide a short list of key links to jump directly to a specific area of the website.
+>   1. A user not logged in will have the option to sign in, or login.
+>   2. A logged in user will be able to log out, or view their profile.
+>   3. A main search bar will provide users with a quick way to search for products.
+>   4. All main links will be provided in a global header, and footer section.
 >
 > * Each screen should provide a limited amount, but quality information to a user to decrease information overload and promote good UX.
 >
 > * All content should be contained in blocks that allow for distinction between certain areas. 
 
 #### ***4. Skeleton:***
-> As this project is centered around a recipe and product database, I decided to mold a website around a required database, rather than the 
-> other way around.
+> To create a structure for this website, key areas were identified. These areas will provide certain functionality, as well as user facing apps.
 >
 > Key areas were defined for the operation of this website, these areas are:
->   1. Store.
->   2. Profile / User Pages.
->   3. Recipe Pages.
->   4. Admin Panel.
+>   1. Products (both overall views, and individual view).
+>   2. Profile / User Dashboard.
+>   3. About Section.
+>   4. Contact Section & webhook.
+>   5. Cart.
+>   6. Checkout.
+>   7. Subscription Section.
+>   7. Policy Section.
 > 
 > Initial wireframes were created, but through the evolution of this project, several designs have been changed, either due to designs not 
 > fitting with the surrounding pages, or due to new features being added.
@@ -121,11 +129,13 @@ To expand further on strategy, I have included some user stories. They can be fo
 
 
 #### ***5. Surface:***
-> As this project is a user centric project, the surface plane was very important. Certain subtle additions have been added 
-> in an attempt to promote good design. As some of the forms can be quite long, JavaScript was used to break down these forms 
-> into small chunks, to make the process seem like an easier task. 
+> This project aims to provide users with a positive user experience which is aided through functionality, feedback and ease of use. 
 >
-> Feedback via Python's Flash function provides users with specific positive feedback.
+> Users are prompted with messages, to show successful, unsuccessful, or informative feedback when users perform certain tasks, such as adding products to their cart, sending messages etc.
+>
+> Users are provided with form clarification tools that will help them in the event of form regex errors.
+>
+> Members are provided with a dashboard. Within this dashboard, order history shows the current status of an order, as well as order date, and if an order has been delivered, an order completion date.
 
 
 ### <ins>**_Logo_**</ins>
@@ -147,49 +157,52 @@ Being a recipe database and store the following user stories specific to this pr
 
 | **As the creator I want to:** |
 | ------------------------------------------------------- |
-|1. *Allow users view products.* |
-|2. *Allow users to grow the recipe database.* |
+|1. *Allow users buy products.* |
+|2. *Allow users to sign up.* |
+|3. *Have a database of users who contact us.* |
+|4. *Easily view, edit and delete orders.* |
+|4. *Easily view, edit and delete products.* |
+|4. *Easily view members.* |
 
 | **As a user I want to:** |
 | ------------------------------------------------------- |
-|1. *Find recipes.* |
-|2. *Browse for random recipes.* |
-|3. *Save recipes for future reference.* |
-|4. *Get discounts from the store.* |
-|5. *Contact admins with issues.* |
-|6. *Contact other users, or comment on recipes.* |
+|1. *Search for products.* |
+|2. *Browse all products.* |
+|3. *Create an account.* |
+|4. *Track my data.* |
+|5. *Contact admins.* |
 
 
 ### <ins>**_Information Architectures_**</ins>
-For this project, I wanted to use a design that meets UX design goals as well as functioning in a similar way to what 
-users would expect. 
+For this project, I wanted to use a design that meets UX design goals as well as functioning in a similar way to what users would expect. 
 
-There really is 2 architectures at play in this project, that is for users that are members, and those who are not.
+I wanted members, and non members to have a similar experience, which is why the profile section is somewhat hidden away. I wanted all users to be provided with an easy to use, straight forward shopping experience. 
 
 #### *Non Members:*
-> A user who is not a member will be met by a landing page with a simple sign in, or sign up option as well as a third 
-button which will give a brief explain what Ripe is. 
-> Once inside the main structure of the website a non member will still have access to the full range of main navigation 
-links, but the dropdown menu will only show login and signup links.
+> Non members will have full access to all pages within ManageMyWeb other than a personal profile dashboard. This allows non members to have a straight forward shopping experience without the need to sign up and the validation process that is involved with that step.
 
 #### *Members:*
-> A user who is a member (and has a browser cookie) will be met by a landing page with a few quick links to main sections within
-the website.
+> A user who is a member of Manage My Web will have access to their personal dashboard. This dashboard will allow users to Read, Update and Delete profile information.
+>
+> Members will also be able to track previous orders. This profile section will also provide the platform where admins will upload messages and updated information for members to see regarding their websites.
 
 ### <ins>**_Responsive Design:_**</ins>
-This project is fully responsive and has been tested on screen widths between 375px up to 3800px. For this, Materialize CSS 
-was used throughout. - [Materialize.com](http://materializecss.com/)
+This project is fully responsive and has been tested on screen widths between 375px up to 3800px. For this, Bootstrap CSS was used throughout. - [GetBootstrap.com](https://getbootstrap.com/)
 
 ### <ins>**_Typography_**</ins>
-This project uses "Montez", and "Roboto" (Google Fonts).
+This project uses 'Zen Dots', and has a backup of sans-serif. Zen Dots is provided by (Google Fonts).
 
-![Fonts](assets/readme/readme-supporting-docs/Fonts.jpg)
 
 ### <ins>**_Colors_**</ins>
-There are three primary colors used in this project:
-1. rgb(245,41,135)
-2. rgb(179,229,252)
-3. rgb(234,128,252)
+There are 2 primary colors used in this project, as well as 3 secondary colours:
+> Primary:
+> 1. #0275d8 (Bootstrap Primary)
+> 2. #5cb85c (Bootstrap Success)
+
+> Secondary:
+> 1. #000 - Black
+> 2. #f5f5f5 - Off White
+> 3. #292b2c - Bootstrap Dark
 
 
 ### <ins>**_Icons:_**</ins>
@@ -199,59 +212,39 @@ from [Font Awsome](http://fontawesome.com/)
 --------------------
 ## **Features**
 
-Due to the quantity of features available on this website, a video has been made to outline each page, and all features on those pages.
+To create this website, specific apps were made to target certain user stories and enhance user experience. These apps provide the foundations for this website, and will continue to provide a platform to grow into the future, with increased automation.
 
 ### <ins>**_Existing Features:_**</ins>
 
-* Pagination
-* Recipe Comments
-* User Comments
-* Adding / Deleting Users 
-* Adding / Deleting Recipes 
-* Adding / Deleting Items in Cart 
-* A Custom Shopping List, Based On Recipe Ingredients A User Needs
-* Download A Text File Of Needed Ingredients
-* Placeholder Checkout Form (No functionality at this time)
-* Search Function (Via search page)
-* Search Function (Via global search bar under main navigation)
-* Search Function (Via voice search)
-* JavaScript Interactive Forms 
-* User Feedback On Forms, Cart & Various Places Around Website
-* Modals.
-* Auto rotating advert.
-* Ticketing system from users profile
-* Messaging feature on users "chopping board" (similar to facebook wall feature)
-* Comment on & rate recipes.
-* Save recipes to your personal profile.
-* Editing recipes (if you are the owner of that recipe)
-* 404 Handling (for invalid URLs)
-
-> **Visual Transitions**
-Due to this website being a food application, the idea of enjoying the process of making the food was considered. Hence visually appealing 
-transitions were used across the app to allow users enjoy their time browsing. Simply hiding and showing sections was too fast and didn't give 
-the wanted feel to the website. Longer transitions on the other hand would be harmful to key factors such as bounce rate. With both sides in mind, I 
-have tried to use timings that are fast enough, yet allow for the visual performance I wanted to achieve.
-
-#### *Implemented but removed:*
-
-Instant messenger:
-
-An instant messenger feature was added but removed. Code is saved in txt file.
+* Stripe Integration.
+* User Authentication.
+* Email Marketing List.
+* Email Notifications.
+* Webhooks.
+* Automated Chat.
+* Product Search.
+* Product Sorting.
+* Admin Panel.
+* Lead Generation.
+* Interactive Feedback
+* Error Handling
+* Interactive Forms
 
 
 ### <ins>**_Future Features:_**</ins>
 
-A helper bot to help customers with product orders and store FAQ.
-
-Automated email marketing. 
-
-Functioning checkout form.
-
-Non Member Cart 
-    - As I have not covered Django yet. The entire store is currently set as a "Placeholder" and although users can browse through the store, its 
-    functionality, such as adding and deleting items from their cart is available to members only. This sort of functionality will be added in my 
-    next project with incorporates Django.
+Items that have been included in the scope of this project, but have not yet been implemented are:
     
+    Meeting Room:
+
+    Providing a browser based meeting room to meet with clients and discuss progressions in their order.
+<br>
+
+    Automated Page Development:
+
+    An app that will allow users who purchase front end websites have their website automatically built on specific templates.
+
+
 ------------------
 ## **Technologies Used**
 
@@ -261,47 +254,37 @@ This project uses multiple languages, libraries and frameworks which can be foun
 ### Languages
 > 1. HTML / HTML5
 
-HTML makes up the foundation of this project.
+HTML makes up the foundation of this project, including all content.
 
 > 2. CSS / CSS3
 
 CSS3 is used for all styling throught this application.
 
-> 3. JavaScript
+> 3. JavaScript / jQuery
 
-JavaScript is used for all interactive forms and is used to compliment Python code regarding forms.
+JavaScript is used to manipulate data prior to passing it to Python based frameworks. Javascript is also used to help add interactive features, such as showing and hiding information. This allows more content to be provided, in a UX friendly way and avoid information overload.
 
-> 4. Python
+> 4. Python / Django
 
-Python is the brains behind this project. All website routing as well as all database information is passed via a Python program.
+Django provides the framework of this entire project. Handling all urls, and specific functionality features is provided by Python. This allows Manage My Web the ability to manipulate, data and direct information in various directions. 
+
+For example, all contact forms, as well as sending emails, will capture user credentials such as name and email, and populate a database of "leads" which may be used to market products and other services in the future.
 
 ### Frameworks, Libraries & Other
 1. Gitpod
 > GitPod was used to develop the project.
 2. Git
-> Git was used for version control to commit to Git and push to GitHub and Heroku.
+> Git was used for version control to commit to Git and push to GitHub.
 3. GitHub
 > GitHub is used to host the project files.
-4. Google Fonts
-> Google Fonts was used to provide the required fonts.
-5. Balsamiq
-> Balsamiq was used to create the mockup designs for the project.
-6. Materialize
-> Materialize was used for the design framework.
-7. MobgoDB
-> MongoDB is the fully managed cloud database that is used for this project.
-8. Heroku
-> Heroku is the cloud platform used for deploying this app online.
-9. Flask
-> Flask is the web framework used to provide libraries, tools and technologies for the app.
-10. Jinja
-> Jinja was used for templating Python
-11. Werkzeug
-> Werkzeug was used for password hashing in this project
-12. jQuery
-> jQuery was used throughout this project mainly to speed up programming.
-13. Fontawesome
-> Fontawesome was used to supply all icons in this project.
+4. cPanel
+> cPanel is used to store all deployed files.
+5. Google Fonts
+> Google fonts is used to provide custom fonts to this project.
+6. FontAwesome
+> FontAwesome is used for all icons.
+7. BOTUI
+> The BOTUI javascript framework is used for automated chat functionality.
 
 ---------------------
 ## **Testing**

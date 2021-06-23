@@ -6,6 +6,7 @@ from .forms import UserProfileForm
 from checkout.models import Order, OrderLineItem
 from products.models import Product
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 today = date.today()
 
@@ -42,6 +43,7 @@ def user_profile(request):
     orders = ""
     price = 0
     form = UserProfileForm(instance=profile)
+    tax = settings.TAX_RATE
     try:
         orders = Order.objects.filter(user_profile=profile)
 
@@ -104,6 +106,7 @@ def user_profile(request):
         "price": price,
         "user": user,
         "orders": orders,
+        "tax": tax,
         "line_items": line_items,
         "websites": websites,
     }
