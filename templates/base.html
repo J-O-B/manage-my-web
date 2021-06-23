@@ -49,7 +49,7 @@
                 <meta name="twitter:description" content=" Offering tour packages for individuals or groups.">
                 <meta name="twitter:image" content="{% static 'media/background.jpg' %}">
                 <meta name="twitter:card" content="summary_large_image">        
-                {% endblock %}
+            {% endblock %}
                 
                 <!--Icon-->
                 <link rel="icon" type="image/jpg" href=""/>
@@ -178,34 +178,32 @@
             </div>
 
             <!-- Global Footer -->
-            <footer class="container-fluid bg-white box-shadow pt-5 g-0 no-print pb-2" id="footer">
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-4 offset-md-1 text-center">
+            <footer class="container-fluid mt-2 pt-3 px-1 g-0 no-print" id="footer">
+                <div class="row bg-white box-shadow">
+                    <div class="col-12 col-sm-12 col-md-2 text-center order-sm-2 order-md-1">
                         <h2 class="h6 logo-font text-dark pb-3">
                             Manage My Web
                         </h2>
                         <p class="text-dark small">&copy; ManageMyWeb 2021</p>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-7">
-                        <div class="w-100 d-flex justify-content-end">
-                            <p class="text-black small mx-3 underline-success"><a href="{% url 'home' %}" class="text-decoration-none text-black">Home</a></p> 
-                            <p class="text-black small mx-3 underline-success"><a href="{% url 'products' %}" class="text-decoration-none text-black">Products</a></p> 
-                            <p class="text-black small mx-3 underline-success"><a href="{% url 'about' %}" class="text-decoration-none text-black">About</a></p> 
-                            <p class="text-black small mx-3 underline-success"><a href="{% url 'home' %}" class="text-decoration-none text-black">Policy</a></p> 
-                            <p class="text-black small mx-3 underline-success"><a href="{% url 'contact' %}" class="text-decoration-none text-black">Contact</a></p> 
-                        </div>
+                    <div class="col-12 col-md-4 d-none d-md-block text-center order-md-2">
+                        <blockquote id="randomquote">
+                            <p></p> 
+                            <cite>&mdash; <span></span></cite>
+                        </blockquote>
                     </div>
-                </div>
-                <div class="row text-center">
-                    <blockquote id="randomquote">
-                        <p></p> 
-                        <cite>&mdash; <span></span></cite>
-                    </blockquote>
+                    <div class="col-12 col-sm-12 col-md-6 order-sm-1 order-md-3 text-sm-center text-md-end">
+                        <span class="text-black small mx-3 underline-success"><a href="{% url 'home' %}" class="text-decoration-none text-black">Home</a></span> 
+                        <span class="text-black small mx-3 underline-success"><a href="{% url 'products' %}" class="text-decoration-none text-black">Products</a></span> 
+                        <span class="text-black small mx-3 underline-success"><a href="{% url 'about' %}" class="text-decoration-none text-black">About</a></span> 
+                        <span class="text-black small mx-3 underline-success"><a href="{% url 'policy' %}" class="text-decoration-none text-black">Policy</a></span> 
+                        <span class="text-black small mx-3 underline-success"><a href="{% url 'contact' %}" class="text-decoration-none text-black">Contact</a></span> 
+                    </div>
                 </div>
             </footer>
 
             <!--Back to top button-->
-            <div class="btt-button no-print rounded-50 border bg-white box-shadow infront">
+            <div class="btt-button no-print rounded-50 border-black p-1 bg-white box-shadow infront">
                 <a class="btt-link d-flex h-100">
                     <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
                 </a>
@@ -225,8 +223,9 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="chatBody">
                         <div class="scroll-y h-100 w-100">
+                            
                             <div class="botui-app-container">
                                 <div id="my-botui-app">
                                     <bot-ui></bot-ui>
@@ -350,14 +349,14 @@
                 $('.btt-link').click(function(e){
                     window.scrollTo(0,0);
                 });
-                let footer = $('#footer');
-                let page = $('#content-container');
-                let bottom = footer.position().top + footer.outerHeight(true);
-                let height = $(window).outerHeight();
-                console.log(height);
-                if (bottom < height){
-                    footer.css('position', 'absolute').css('bottom', '0');
+                function footerPos(){
+                    let footerHeight = $('#footer').outerHeight();
+                    let bodyHeight = $('#content-container').outerHeight();
+                    let winHeight = $(window).height();
+                    $('#content-container').css('min-height', winHeight - footerHeight);
+
                 }
+                footerPos();
                 $('.restartChat').click(function(){
                     clear();
                 })

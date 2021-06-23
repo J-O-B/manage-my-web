@@ -24,7 +24,7 @@
 
 {% block content %}
     <div class="container-fluid mt-5">
-        <div class="row g-3 m-0">
+        <div class="row g-3 my-1">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
                 <div class="image-container my-0 relative overflow-hidden">
                     {% if product.available > 0 and product.available < 5 %}
@@ -49,8 +49,8 @@
                             <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ MEDIAURL }}noimage.jpg" class="card-img-top img-fluid img1">
                         </a>
                     {% endif %}
-                    <div class="row px-5 h-100 d-flex justify-content-evenly align-items-center text-center">
-                        <div class="col-3 p-1 box-shadow pointer detail-bottom-images">
+                    <div class="row px-3 h-100 d-flex justify-content-evenly align-items-center text-center">
+                        <div class="col-3 p-1 pointer detail-bottom-images">
                             {% if product.image2 %}
                                 <a href="{{ product.image2.url }}" target="_blank">
                                     <img src="{{ product.image2.url }}" alt="{{ product.name }} image two" class="img-fluid img2">
@@ -61,7 +61,7 @@
                                 </a>
                             {% endif %}
                         </div>
-                        <div class="col-3 p-1 box-shadow pointer detail-bottom-images">
+                        <div class="col-3 p-1 pointer detail-bottom-images">
                             {% if product.image3 %}
                                 <a href="{{ product.image3.url }}" target="_blank">
                                     <img src="{{ product.image3.url }}" alt="{{ product.name }} image three" class="img-fluid img3">
@@ -72,7 +72,7 @@
                                 </a>
                             {% endif %}
                         </div>
-                        <div class="col-3 p-1 box-shadow pointer detail-bottom-images">
+                        <div class="col-3 p-1 pointer detail-bottom-images">
                             {% if product.image4 %}
                                 <a href="{{ product.image4.url }}" target="_blank">
                                     <img src="{{ product.image4.url }}" alt="{{ product.name }} image four" class="img-fluid img4">
@@ -83,7 +83,7 @@
                                 </a>
                             {% endif %}
                         </div>
-                        <div class="col-3 p-1 box-shadow pointer detail-bottom-images">
+                        <div class="col-3 p-1 pointer detail-bottom-images">
                             {% if product.image5 %}
                                 <a href="{{ product.image5.url }}" target="_blank">
                                     <img src="{{ product.image5.url }}" alt="{{ product.name }} image five" class="img-fluid img5">
@@ -206,25 +206,25 @@
                 </div>
             </div>
         </div>
-        <div class="row g-3 m-0">
+        <div class="row g-3 my-1">
             <div class="col-12 col-md-12 col-lg-8 bg-white offset-lg-2 box-shadow">
                 <h2 class="text-primary text-center pt-3">
                     {{ product.name|title }} Description:
                 </h2>
                 <hr class="pb-1 w-25 mx-auto">
-                <p class="text-black text-justify px-5">
+                <p class="text-black text-justify px-5 small">
                     {{product.description|linebreaksbr}}
                 </p>
             </div>
         </div>
         {% if product.plan == 2 %}
-        <div class="row g-3 m-0" id="subscription">
+        <div class="row g-3 my-1" id="subscription">
             <div class="col-12 col-md-12 bg-white col-lg-8 offset-lg-2 box-shadow">
                 <h2 class="text-primaryk text-center pt-3">
                     Subscription Explained
                 </h2>
                 <hr class="pb-1 w-25 mx-auto">
-                <p class="text-black text-justify px-5">
+                <p class="text-black text-justify px-5 small">
                     Subscriptions with Manage My Web is the ultimate option in bringing your business or portfolio online.
                     With our subscription plans, you will not only get the product as stated, but also a domain, hosting, 
                     developer support, website optimization and updates, search engine optimization and more. <br><br>
@@ -234,8 +234,8 @@
         </div>
         {% endif %}
 
-        <div class="row g-3 m-0" id="detailCarousel">
-            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 bg-white box-shadow">
+        <div class="row g-3 my-1" id="detailCarousel">
+            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 pb-2 bg-white box-shadow">
                 <h2 class="text-primary text-center pt-3">
                     Product Images
                 </h2>
@@ -285,8 +285,8 @@
             </div>
         </div>
 
-        <div class="row g-3 m-0">
-            <div class="col-12 col-md-12 bg-white col-lg-8 offset-lg-2 box-shadow">
+        <div class="row g-3 my-1">
+            <div class="col-12 col-md-12 bg-white col-lg-8 offset-lg-2 pb-2 box-shadow">
                 <div class="row w-100">
                     <div class="col-12 col-md-6">
                         <div class="inner bg-white p-2" id="rating">
@@ -320,9 +320,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="row g-3 m-0">
+
+        <div class="row g-3 my-1 pb-2">
             <div class="col-12 col-md-12 col-lg-8 offset-lg-2 bg-white box-shadow">
                 <h2 class="text-primary text-center pt-3">
                     Want To Know More?
@@ -378,6 +378,7 @@
     // Click events and shuffle
     $('.detail-bottom-images').mouseenter(function(){
         wantedPicture = $(this).find('img').attr('src');
+        $(this).addClass('box-shadow');
         if (wantedPicture == image1){
             $('.main-img-holder').find('img').attr('src', image1);
         }
@@ -396,6 +397,7 @@
     })
     $('.detail-bottom-images').mouseleave(function(){
         $('.main-img-holder').find('img').attr('src', image1);
+        $(this).removeClass('box-shadow');
     })
 
     $('#rating').height($('#included').height());

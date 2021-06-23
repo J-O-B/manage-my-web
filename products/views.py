@@ -148,7 +148,7 @@ def product_detail(request, product_id):
     if product.normal_price:
         saving = (
             product.normal_price - product.price) / product.normal_price * 100
-    
+
     if request.method == "POST":
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')

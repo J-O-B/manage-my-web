@@ -51,7 +51,22 @@ function website(){
                                     ]
                                 }).then(function (res) { 
                                     if (res.value == "y"){
-                                        // Notify admin to contact user
+                                        botui.message.add({
+                                            delay: 2000,
+                                            loading: true,
+                                            content: `Thanks ${usersName}, please wait while we redirect your request.`
+                                        }).then(function(){
+                                            $('#fnameChat').val(`${usersName}`);
+                                            $('#emailChat').val(`${email}`);
+                                            $('#messageChat').val("CHATBOT MESSAGE: Please get back to this person regarding their already made website.")
+                                            $('#contact-chat-btn').trigger('click');
+                                        }).then(function(){
+                                            botui.message.add({
+                                                delay: 2000,
+                                                loading: true,
+                                                content: "Thank you, your message has been passed to our team."
+                                            });
+                                        })
                                     }else if (res.value == "n"){
                                         botui.message.add({
                                             delay: 2000,
