@@ -1,5 +1,6 @@
 html{
     height: 100%;
+    width: 100%;
 }
 
 body{
@@ -1198,4 +1199,21 @@ h6,
 .refunds{
     height: 450px !important;
     overflow-y: scroll;
+}
+.menuToggler{
+    position: absolute;
+    left: 0;
+    top: 270px;
+    height: 30px;
+    width: 30px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    padding: 3px;
+    text-align: center;
+}
+.menuToggler:hover{
+    border: 1px solid #d9534f;
+    background-color: #000;
+    color: #f5f5f5
 }

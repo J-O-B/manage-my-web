@@ -27,390 +27,400 @@
                 <p class="text-center text-muted small" id="startPolicy">To Get Started Choose Your Requested Policy:</p>
                 <a class="btn btn-success btn-md border-black mx-2" id="showPrivacyPolicy">Privacy Policy</a>
                 <a class="btn btn-success btn-md border-black mx-2" id="showTerms">Terms of Use</a>
-                <a class="btn btn-success btn-md border-black mx-2">GDPR</a>
+                <a class="btn btn-success btn-md border-black mx-2" id="showGdpr">GDPR</a>
+                <a class="btn btn-success btn-md border-black mx-2" id="showCcpa">CCPA</a>
                 <a class="btn btn-success btn-md border-black mx-2" id="showRefunds">Refund Policy</a>
             </div>
             <div class="row m-0 p-1 w-100" id="policy-container">
-                <div class="col-12 col-sm-12 col-md-3 col-lg-2 h-100">
-                    <h3 class="logo-font underline-success text-center text-muted">
+                <div id="menu" class="col-12 col-sm-12 col-md-3 col-lg-2 h-100">
+                    <h3 class="logo-font underline-success text-center text-muted pt-5 relative">
                         Menu:
                     </h3>
                     <div class="row">
                         <div class="privacy-policy w-100">
                             <ul class="list-unstyled">
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#ppc">Consent</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#ppi">Collected Information</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#pph">Use of Information</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#pplog">Log Files</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#candw">Cookies and Web Beacons</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#ppgoog">DART Cookie</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#ppap">Advert Partners</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#ppap2">Advert Partner Privacy</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#pptpp">Third Party Policy</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#ppccpa">CCPA</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#ppgdpr">GDPR</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#ppci">Children</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#ppc">Consent</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#ppi">Collected Information</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#pph">Use of Information</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#pplog">Log Files</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#candw">Cookies and Web Beacons</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#ppgoog">DART Cookie</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#ppap">Advert Partners</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#ppap2">Advert Partner Privacy</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#pptpp">Third Party Policy</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#ppccpa">CCPA</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#ppgdpr">GDPR</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#ppci">Children</a></li>
                             </ul>
                         </div>
                         <div class="terms-of-use w-100">
                             <ul class="list-unstyled">
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#touintro">Intro</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#touaccess">Access</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#touthird">Third Party</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#toudisclaimer">Disclaimers</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#touliab">Liability</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#toucopy">Copyright</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#tougeneral">General</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#toucontact">Contact Information</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#touintro">Intro</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#touaccess">Access</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#touthird">Third Party</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#toudisclaimer">Disclaimers</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#touliab">Liability</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#toucopy">Copyright</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#tougeneral">General</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#toucontact">Contact Information</a></li>
                             </ul>
                         </div>
                         <div class="refunds w-100">
                             <ul class="list-unstyled">
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#rere">Returns</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#reref">Refunds</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#relomr">Late or Missing Refund</a></li>
-                                <li><i class="fas fa-caret-right text-black"></i> <a href="#resi">Sale Items</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#rere">Returns</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#reref">Refunds</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#relomr">Late or Missing Refund</a></li>
+                                <li><i class="fas fa-caret-right text-black"></i> <a class="text-black" href="#resi">Sale Items</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-9 col-lg-10 h-100">
-                    <div class="row">
-                        <div class="intro w-100 pt-5 mt-5">
-                            <p class="lead text-center mt-5 pt-5">
-                                To Begin, Use The Buttons Above
-                            </p>
+                <div id="content" class="col-12 col-sm-12 col-md-9 col-lg-10 h-100">
+                    <div class="row g-0 relative">
+                        <div class="col-1">
+                            <div class="menuToggler pointer">
+                                <i class="fas fa-angle-left"></i>
+                            </div>
                         </div>
-                        <div class="privacy-policy w-100">
-                            <h2 class="underline-success pt-3">Privacy Policy for Manage My Web</h1>
-                
-                            <p class="small px-3">At Manage My Web, accessible from ManageMyWeb.org, one of our main priorities is the privacy of our visitors. 
-                                This Privacy Policy document contains types of information that is collected and recorded by Manage My Web and how we use it.</p>
-                
-                            <p class="small px-3">If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
-                
-                            <p class="small px-3">This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the 
-                                information that they shared and/or collect in Manage My Web. This policy is not applicable to any information collected offline or via 
-                                channels other than this website.</p>
-                
-                            <h2 class="underline-success pt-3" id="ppc">Consent</h2>
-                
-                            <p class="small px-3">By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
-                
-                            <h2 class="underline-success pt-3" id="ppi">Information we collect</h2>
-                
-                            <p class="small px-3">The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.</p>
-                            <p class="small px-3">If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.</p>
-                            <p class="small px-3">When you register for an Account, we may ask for your contact information, including items such as name, company name, address, email address, and telephone number.</p>
-                
-                            <h2 class="underline-success pt-3" id="pph">How we use your information</h2>
-                
-                            <p class="small px-3">We use the information we collect in various ways, including to:</p>
-                
-                            <ul>
-                                <li>Provide, operate, and maintain our website</li>
-                                <li>Improve, personalize, and expand our website</li>
-                                <li>Understand and analyze how you use our website</li>
-                                <li>Develop new products, services, features, and functionality</li>
-                                <li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>
-                                <li>Send you emails</li>
-                                <li>Find and prevent fraud</li>
-                            </ul>
-                
-                            <h2 class="underline-success pt-3" id="pplog">Log Files</h2>
-                
-                            <p class="small px-3">Manage My Web follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.</p>
-                
-                            <h2 class="underline-success pt-3" id="candw">Cookies and Web Beacons</h2>
-                
-                            <p class="small px-3">Like any other website, Manage My Web uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
-                
-                            <p class="small px-3">For more general information on cookies, please read 
-                                <a href='#' data-toggle="modal" data-target="#cookieModal">"What Are Cookies"</a>.</p>
-            
-                            <div class="modal fade" id="cookieModal" tabindex="-1" role="dialog" aria-labelledby="cookieModal" aria-hidden="true">
-                                <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">What Are Cookies?</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p class="text-black small">
-                                            Also known as browser cookies or tracking cookies, cookies are small, usually encrypted text files, located in your browser's directory.
-                                            <br><br>
-                                            They are used by publishers on the Internet to help users navigate websites and perform certain functions. Thanks to their core role of enhancing usability or site functions, completely disabling cookies may prevent users from using certain websites.
-                                            <br><br>
-                                            This is how some sites know when you return and keep you logged in, or will display a particular page that you like. Often a cookie may be used to show some content only once – say a popup or pop-under or some other advertisement that shows only the first time you visit a site and not every single time you change pages or revisit.
-                                            <br><br>
-                                            Cookies are created when your browser loads a particular website. The website sends information to the browser which then creates a text file. Every time the user goes back to the same website, the browser retrieves and sends this file to the web server.
-                                            <br><br>
-                                            Cookies are created not only by the website that the user is browsing at any particular moment, but also by other websites that run ads, widgets, or other page elements. These cookies govern how the ads appear or how the widgets and other elements function on the page.
-                                        </p>
-                                        <hr>
-                                        <h3 class="underline-success">
-                                            Standard uses for browser cookies
-                                        </h3>
-                                        <p class="text-black small">
-                                            Websites set cookies to help authenticate a user if the user logs into a secure area of a website. Login information or credentials are stored in a cookie so that the user may enter and exit the website without having to re-type the same login information over and over again.
-                                        </p>
-                                        <hr>
-                                        <h3 class="underline-success">
-                                            Session Cookies
-                                        </h3>
-                                        <p class="text-black small">
-                                            Session Cookies are used by the web server to store information about user page activities so users can easily pick up where they left off on the server's pages. Without using such cookies, a webpage can not ‘remember' where you were on your last visit – this can only be done with the use of session cookies. Session Cookies tell the server what pages to show the user so the user doesn't have to remember where he/she left off or start navigating the site all over again. Session Cookies function almost like a "bookmark" when used on such a site. Similarly, cookies can store ordering information needed to make shopping carts work instead of forcing the user to remember all the items the user put in the shopping cart. This is very useful if your system experiences a disruption in connectivity or your computer ‘crashes' while you are in thr process of filling a shopping cart.
-                                        </p>
-            
-                                        <hr>
-                                        <h3 class="underline-success">
-                                            Persistent or tracking Cookies
-                                        </h3>
-                                        <p class="text-black small">
-                                            Persistent Cookies store user preferences. Many websites allow users to customize exactly how information is presented through site layouts or themes. These customizations make the site easier to navigate and/or lets user leave a part of the user's "personality" at the site.
-                                        </p>
-            
-                                        <hr>
-                                        <h3 class="underline-success">
-                                            Cookie security and privacy issues
-                                        </h3>
-                                        <p class="text-black small">
-                                            Cookies are NOT viruses. Cookies use a plain text format. They are not compiled pieces of code so they cannot be executed nor are they self-executing. Accordingly, they cannot make copies of themselves and spread to other networks to execute and replicate again. Since they cannot perform these functions, they fall outside the standard virus definition.
-                                            <br><br>
-                                            Cookies CAN be used for malicious purposes though. Since they store information about a user's browsing preferences and history, both on a specific site and browsing among several sites, cookies can be used to act as a form of spyware.
-                                            <br><br>
-                                            The way responsible and ethical web developers deal with privacy issues caused by cookie tracking is by including clear descriptions of how cookies are deployed on their site. Privacy Policy Online strives to help web developers generate clear and easy-to-understand information for web publishers to include on their web pages.
-                                        </p>
-                                        <hr>
-                                        <h3 class="text-center">
-                                            Video Explainer <br> From Google:
-                                        </h3>
-                                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/TBR-xtJVq7E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
+                        <div class="col-11">
+                            <div class="row pt-5 px-2">
+                                <div class="intro w-100 pt-5 mt-5">
+                                    <p class="lead text-center mt-5 pt-5">
+                                        To Begin, Use The Buttons Above
+                                    </p>
                                 </div>
+                                <div class="privacy-policy w-100">
+                                    <h2 class="underline-success pt-3">Privacy Policy for Manage My Web</h1>
+                        
+                                    <p class="small px-3">At Manage My Web, accessible from ManageMyWeb.org, one of our main priorities is the privacy of our visitors. 
+                                        This Privacy Policy document contains types of information that is collected and recorded by Manage My Web and how we use it.</p>
+                        
+                                    <p class="small px-3">If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
+                        
+                                    <p class="small px-3">This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the 
+                                        information that they shared and/or collect in Manage My Web. This policy is not applicable to any information collected offline or via 
+                                        channels other than this website.</p>
+                        
+                                    <h2 class="underline-success pt-3" id="ppc">Consent</h2>
+                        
+                                    <p class="small px-3">By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+                        
+                                    <h2 class="underline-success pt-3" id="ppi">Information we collect</h2>
+                        
+                                    <p class="small px-3">The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.</p>
+                                    <p class="small px-3">If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.</p>
+                                    <p class="small px-3">When you register for an Account, we may ask for your contact information, including items such as name, company name, address, email address, and telephone number.</p>
+                        
+                                    <h2 class="underline-success pt-3" id="pph">How we use your information</h2>
+                        
+                                    <p class="small px-3">We use the information we collect in various ways, including to:</p>
+                        
+                                    <ul>
+                                        <li>Provide, operate, and maintain our website</li>
+                                        <li>Improve, personalize, and expand our website</li>
+                                        <li>Understand and analyze how you use our website</li>
+                                        <li>Develop new products, services, features, and functionality</li>
+                                        <li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>
+                                        <li>Send you emails</li>
+                                        <li>Find and prevent fraud</li>
+                                    </ul>
+                        
+                                    <h2 class="underline-success pt-3" id="pplog">Log Files</h2>
+                        
+                                    <p class="small px-3">Manage My Web follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.</p>
+                        
+                                    <h2 class="underline-success pt-3" id="candw">Cookies and Web Beacons</h2>
+                        
+                                    <p class="small px-3">Like any other website, Manage My Web uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
+                        
+                                    <p class="small px-3">For more general information on cookies, please read 
+                                        <a href='#' data-toggle="modal" data-target="#cookieModal">"What Are Cookies"</a>.</p>
+                    
+                                    <div class="modal fade" id="cookieModal" tabindex="-1" role="dialog" aria-labelledby="cookieModal" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">What Are Cookies?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p class="text-black small">
+                                                    Also known as browser cookies or tracking cookies, cookies are small, usually encrypted text files, located in your browser's directory.
+                                                    <br><br>
+                                                    They are used by publishers on the Internet to help users navigate websites and perform certain functions. Thanks to their core role of enhancing usability or site functions, completely disabling cookies may prevent users from using certain websites.
+                                                    <br><br>
+                                                    This is how some sites know when you return and keep you logged in, or will display a particular page that you like. Often a cookie may be used to show some content only once – say a popup or pop-under or some other advertisement that shows only the first time you visit a site and not every single time you change pages or revisit.
+                                                    <br><br>
+                                                    Cookies are created when your browser loads a particular website. The website sends information to the browser which then creates a text file. Every time the user goes back to the same website, the browser retrieves and sends this file to the web server.
+                                                    <br><br>
+                                                    Cookies are created not only by the website that the user is browsing at any particular moment, but also by other websites that run ads, widgets, or other page elements. These cookies govern how the ads appear or how the widgets and other elements function on the page.
+                                                </p>
+                                                <hr>
+                                                <h3 class="underline-success">
+                                                    Standard uses for browser cookies
+                                                </h3>
+                                                <p class="text-black small">
+                                                    Websites set cookies to help authenticate a user if the user logs into a secure area of a website. Login information or credentials are stored in a cookie so that the user may enter and exit the website without having to re-type the same login information over and over again.
+                                                </p>
+                                                <hr>
+                                                <h3 class="underline-success">
+                                                    Session Cookies
+                                                </h3>
+                                                <p class="text-black small">
+                                                    Session Cookies are used by the web server to store information about user page activities so users can easily pick up where they left off on the server's pages. Without using such cookies, a webpage can not ‘remember' where you were on your last visit – this can only be done with the use of session cookies. Session Cookies tell the server what pages to show the user so the user doesn't have to remember where he/she left off or start navigating the site all over again. Session Cookies function almost like a "bookmark" when used on such a site. Similarly, cookies can store ordering information needed to make shopping carts work instead of forcing the user to remember all the items the user put in the shopping cart. This is very useful if your system experiences a disruption in connectivity or your computer ‘crashes' while you are in thr process of filling a shopping cart.
+                                                </p>
+                    
+                                                <hr>
+                                                <h3 class="underline-success">
+                                                    Persistent or tracking Cookies
+                                                </h3>
+                                                <p class="text-black small">
+                                                    Persistent Cookies store user preferences. Many websites allow users to customize exactly how information is presented through site layouts or themes. These customizations make the site easier to navigate and/or lets user leave a part of the user's "personality" at the site.
+                                                </p>
+                    
+                                                <hr>
+                                                <h3 class="underline-success">
+                                                    Cookie security and privacy issues
+                                                </h3>
+                                                <p class="text-black small">
+                                                    Cookies are NOT viruses. Cookies use a plain text format. They are not compiled pieces of code so they cannot be executed nor are they self-executing. Accordingly, they cannot make copies of themselves and spread to other networks to execute and replicate again. Since they cannot perform these functions, they fall outside the standard virus definition.
+                                                    <br><br>
+                                                    Cookies CAN be used for malicious purposes though. Since they store information about a user's browsing preferences and history, both on a specific site and browsing among several sites, cookies can be used to act as a form of spyware.
+                                                    <br><br>
+                                                    The way responsible and ethical web developers deal with privacy issues caused by cookie tracking is by including clear descriptions of how cookies are deployed on their site. Privacy Policy Online strives to help web developers generate clear and easy-to-understand information for web publishers to include on their web pages.
+                                                </p>
+                                                <hr>
+                                                <h3 class="text-center">
+                                                    Video Explainer <br> From Google:
+                                                </h3>
+                                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/TBR-xtJVq7E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                        
+                                    <h2 class="underline-success pt-3" id="ppgoog">Google DoubleClick DART Cookie</h2>
+                        
+                                    <p class="small px-3">Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
+                        
+                                    <h2 class="underline-success pt-3" id="ppap">Our Advertising Partners</h2>
+                        
+                                    <p class="small px-3">Some of advertisers on our site may use cookies and web beacons. Our advertising partners are listed below. Each of our advertising partners has their own Privacy Policy for their policies on user data. For easier access, we hyperlinked to their Privacy Policies below.</p>
+                        
+                                    <ul>
+                                        <li>
+                                            <p class="small px-3">Google</p>
+                                            <p class="small px-3"><a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
+                                        </li>
+                                    </ul>
+                        
+                                    <h2 class="underline-success pt-3" id="ppap2">Advertising Partners Privacy Policies</h2>
+                        
+                                    <p class="small px-3">You may consult this list to find the Privacy Policy for each of the advertising partners of Manage My Web.</p>
+                        
+                                    <p class="small px-3">Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Manage My Web, which are sent directly to users' browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.</p>
+                        
+                                    <p class="small px-3">Note that Manage My Web has no access to or control over these cookies that are used by third-party advertisers.</p>
+                        
+                                    <h2 class="underline-success pt-3" id="pptpp">Third Party Privacy Policies</h2>
+                        
+                                    <p class="small px-3">Manage My Web's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options. </p>
+                        
+                                    <p class="small px-3">You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites.</p>
+                        
+                                    <h2 class="underline-success pt-3" id="ppccpa">CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+                        
+                                    <p class="small px-3">Under the CCPA, among other rights, California consumers have the right to:</p>
+                                    <p class="small px-3">Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</p>
+                                    <p class="small px-3">Request that a business delete any personal data about the consumer that a business has collected.</p>
+                                    <p class="small px-3">Request that a business that sells a consumer's personal data, not sell the consumer's personal data.</p>
+                                    <p class="small px-3">If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
+                        
+                                    <h2 class="underline-success pt-3" id="ppgdpr">GDPR Data Protection Rights</h2>
+                        
+                                    <p class="small px-3">We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:</p>
+                                    <p class="small px-3">The right to access – You have the right to request copies of your personal data. We may charge you a small fee for this service.</p>
+                                    <p class="small px-3">The right to rectification – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.</p>
+                                    <p class="small px-3">The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</p>
+                                    <p class="small px-3">The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</p>
+                                    <p class="small px-3">The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.</p>
+                                    <p class="small px-3">The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</p>
+                                    <p class="small px-3">If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
+                        
+                                    <h2 class="underline-success pt-3" id="ppci">Children's Information</h2>
+                        
+                                    <p class="small px-3">Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
+                        
+                                    <p class="small px-3">Manage My Web does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
+                                </div>
+                                <div class="terms-of-use w-100">
+                                    <h2 class="underline-success pt-3" id="touintro">Website Terms of Use</h2>
+            
+                                    <p class="small px-3">Version 1.0</p>
+            
+                                    <p class="small px-3">The Manage My Web website located at ManageMyWeb.org is a copyrighted work belonging to Manage My Web. Certain features of the Site may be subject to additional guidelines, terms, or rules, which will be posted on the Site in connection with such features.</p>
+            
+                                    <p class="small px-3">All such additional terms, guidelines, and rules are incorporated by reference into these Terms.</p>
+            
+                                    <p class="small px-3">These Terms of Use described the legally binding terms and conditions that oversee your use of the Site. BY LOGGING INTO THE SITE, YOU ARE BEING COMPLIANT THAT THESE TERMS and you represent that you have the authority and capacity to enter into these Terms. YOU SHOULD BE AT LEAST 18 YEARS OF AGE TO ACCESS THE SITE. IF YOU DISAGREE WITH ALL OF THE PROVISION OF THESE TERMS, DO NOT LOG INTO AND/OR USE THE SITE.<p class="small px-3">
+            
+                                    <p class="small px-3">These terms require the use of arbitration Section 10.2 on an individual basis to resolve disputes and also limit the remedies available to you in the event of a dispute. These Terms of Use were created with the help of the <a href="https://www.termsofusegenerator.net">Terms Of Use Generator</a>.</p>
+            
+            
+                                    <h2 class="underline-success pt-3" id="touaccess">Access to the Site</h2>
+            
+                                    <p class="small px-3"><strong>Subject to these Terms.</strong> Company grants you a non-transferable, non-exclusive, revocable, limited license to access the Site solely for your own personal, noncommercial use.</p>
+            
+                                    <p class="small px-3"><strong>Certain Restrictions.</strong> The rights approved to you in these Terms are subject to the following restrictions: (a) you shall not sell, rent, lease, transfer, assign, distribute, host, or otherwise commercially exploit the Site; (b) you shall not change, make derivative works of, disassemble, reverse compile or reverse engineer any part of the Site; (c) you shall not access the Site in order to build a similar or competitive website; and (d) except as expressly stated herein, no part of the Site may be copied, reproduced, distributed, republished, downloaded, displayed, posted or transmitted in any form or by any means unless otherwise indicated, any future release, update, or other addition to functionality of the Site shall be subject to these Terms.  All copyright and other proprietary notices on the Site must be retained on all copies thereof.</p>
+            
+                                    <p class="small px-3">Company reserves the right to change, suspend, or cease the Site with or without notice to you.  You approved that Company will not be held liable to you or any third-party for any change, interruption, or termination of the Site or any part.</p>
+            
+                                    <p class="small px-3"><strong>No Support or Maintenance.</strong> You agree that Company will have no obligation to provide you with any support in connection with the Site.</p>
+            
+                                    <p class="small px-3">Excluding any User Content that you may provide, you are aware that all the intellectual property rights, including copyrights, patents, trademarks, and trade secrets, in the Site and its content are owned by Company or Company’s suppliers. Note that these Terms and access to the Site do not give you any rights, title or interest in or to any intellectual property rights, except for the limited access rights expressed in Section 2.1. Company and its suppliers reserve all rights not granted in these Terms.</p>
+            
+            
+                                    <h2 class="underline-success pt-3" id="touthird">Third-Party Links & Ads; Other Users</h2>
+            
+                                    <p class="small px-3"><strong>Third-Party Links & Ads.</strong> The Site may contain links to third-party websites and services, and/or display advertisements for third-parties.  Such Third-Party Links & Ads are not under the control of Company, and Company is not responsible for any Third-Party Links & Ads.  Company provides access to these Third-Party Links & Ads only as a convenience to you, and does not review, approve, monitor, endorse, warrant, or make any representations with respect to Third-Party Links & Ads.  You use all Third-Party Links & Ads at your own risk, and should apply a suitable level of caution and discretion in doing so. When you click on any of the Third-Party Links & Ads, the applicable third party’s terms and policies apply, including the third party’s privacy and data gathering practices.</p>
+            
+                                    <p class="small px-3"><strong>Other Users.</strong> Each Site user is solely responsible for any and all of its own User Content.  Because we do not control User Content, you acknowledge and agree that we are not responsible for any User Content, whether provided by you or by others.  You agree that Company will not be responsible for any loss or damage incurred as the result of any such interactions.  If there is a dispute between you and any Site user, we are under no obligation to become involved.</p>
+            
+                                    <p class="small px-3">You hereby release and forever discharge the Company and our officers, employees, agents, successors, and assigns from, and hereby waive and relinquish, each and every past, present and future dispute, claim, controversy, demand, right, obligation, liability, action and cause of action of every kind and nature, that has arisen or arises directly or indirectly out of, or that relates directly or indirectly to, the Site. If you are a California resident, you hereby waive California civil code section 1542 in connection with the foregoing, which states: "a general release does not extend to claims which the creditor does not know or suspect to exist in his or her favor at the time of executing the release, which if known by him or her must have materially affected his or her settlement with the debtor."</p>
+            
+                                    <p class="small px-3"><strong>Cookies and Web Beacons.</strong> Like any other website, Manage My Web uses ‘cookies’. These cookies are used to store information including visitors’ preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users’ experience by customizing our web page content based on visitors’ browser type and/or other information.</p>
+            
+                                    <p class="small px-3"><strong>Google DoubleClick DART Cookie.</strong> Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
+            
+                                    <p class="small px-3"><strong>Our Advertising Partners.</strong> Some of advertisers on our site may use cookies and web beacons. Our advertising partners are listed below. Each of our advertising partners has their own Privacy Policy for their policies on user data. For easier access, we hyperlinked to their Privacy Policies below.</p>
+            
+                                    <ul>
+                                        <li>
+                                            <p class="small px-3">Google</p>
+                                            <p class="small px-3"><a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
+                                        </li>
+                                    </ul>
+            
+                                    <h2 class="underline-success pt-3" id="toudisclaimer">Disclaimers</h2>
+            
+                                    <p class="small px-3">The site is provided on an "as-is" and "as available" basis, and company and our suppliers expressly disclaim any and all warranties and conditions of any kind, whether express, implied, or statutory, including all warranties or conditions of merchantability, fitness for a particular purpose, title, quiet enjoyment, accuracy, or non-infringement.  We and our suppliers make not guarantee that the site will meet your requirements, will be available on an uninterrupted, timely, secure, or error-free basis, or will be accurate, reliable, free of viruses or other harmful code, complete, legal, or safe.  If applicable law requires any warranties with respect to the site, all such warranties are limited in duration to ninety (90) days from the date of first use.</p>
+            
+                                    <p class="small px-3">Some jurisdictions do not allow the exclusion of implied warranties, so the above exclusion may not apply to you.  Some jurisdictions do not allow limitations on how long an implied warranty lasts, so the above limitation may not apply to you.</p>
+            
+                                    <h2 class="underline-success pt-3" id="touliab">Limitation on Liability</h2>
+            
+                                    <p class="small px-3">To the maximum extent permitted by law, in no event shall company or our suppliers be liable to you or any third-party for any lost profits, lost data, costs of procurement of substitute products, or any indirect, consequential, exemplary, incidental, special or punitive damages arising from or relating to these terms or your use of, or incapability to use the site even if company has been advised of the possibility of such damages.  Access to and use of the site is at your own discretion and risk, and you will be solely responsible for any damage to your device or computer system, or loss of data resulting therefrom.</p>
+            
+                                    <p class="small px-3">To the maximum extent permitted by law, notwithstanding anything to the contrary contained herein, our liability to you for any damages arising from or related to this agreement, will at all times be limited to a maximum of fifty U.S. dollars (u.s. $50). The existence of more than one claim will not enlarge this limit.  You agree that our suppliers will have no liability of any kind arising from or relating to this agreement.</p>
+            
+                                    <p class="small px-3">Some jurisdictions do not allow the limitation or exclusion of liability for incidental or consequential damages, so the above limitation or exclusion may not apply to you.</p>
+            
+                                    <p class="small px-3"><strong>Term and Termination.</strong> Subject to this Section, these Terms will remain in full force and effect while you use the Site.  We may suspend or terminate your rights to use the Site at any time for any reason at our sole discretion, including for any use of the Site in violation of these Terms.  Upon termination of your rights under these Terms, your Account and right to access and use the Site will terminate immediately.  You understand that any termination of your Account may involve deletion of your User Content associated with your Account from our live databases.  Company will not have any liability whatsoever to you for any termination of your rights under these Terms.  Even after your rights under these Terms are terminated, the following provisions of these Terms will remain in effect: Sections 2 through 2.5, Section 3 and Sections 4 through 10.</p>
+            
+                                    <h2 class="underline-success pt-3" id="toucopy">Copyright Policy.</h2>
+            
+                                    <p class="small px-3">Company respects the intellectual property of others and asks that users of our Site do the same.  In connection with our Site, we have adopted and implemented a policy respecting copyright law that provides for the removal of any infringing materials and for the termination of users of our online Site who are repeated infringers of intellectual property rights, including copyrights.  If you believe that one of our users is, through the use of our Site, unlawfully infringing the copyright(s) in a work, and wish to have the allegedly infringing material removed, the following information in the form of a written notification (pursuant to 17 U.S.C. § 512(c)) must be provided to our designated Copyright Agent:</p>
+            
+                                    <ul>
+                                        <li>your physical or electronic signature;</li>
+                                        <li>identification of the copyrighted work(s) that you claim to have been infringed;</li>
+                                        <li>identification of the material on our services that you claim is infringing and that you request us to remove;</li>
+                                        <li>sufficient information to permit us to locate such material;</li>
+                                        <li>your address, telephone number, and e-mail address;</li>
+                                        <li>a statement that you have a good faith belief that use of the objectionable material is not authorized by the copyright owner, its agent, or under the law; and</li>
+                                        <li>a statement that the information in the notification is accurate, and under penalty of perjury, that you are either the owner of the copyright that has allegedly been infringed or that you are authorized to act on behalf of the copyright owner.</li>
+                                    </ul>
+            
+                                    <p class="small px-3">Please note that, pursuant to 17 U.S.C. § 512(f), any misrepresentation of material fact in a written notification automatically subjects the complaining party to liability for any damages, costs and attorney’s fees incurred by us in connection with the written notification and allegation of copyright infringement.</p>
+            
+                                    <h2 class="underline-success pt-3" id="tougeneral">General</h2>
+            
+                                    <p class="small px-3">These Terms are subject to occasional revision, and if we make any substantial changes, we may notify you by sending you an e-mail to the last e-mail address you provided to us and/or by prominently posting notice of the changes on our Site.  You are responsible for providing us with your most current e-mail address.  In the event that the last e-mail address that you have provided us is not valid our dispatch of the e-mail containing such notice will nonetheless constitute effective notice of the changes described in the notice.  Any changes to these Terms will be effective upon the earliest of thirty (30) calendar days following our dispatch of an e-mail notice to you or thirty (30) calendar days following our posting of notice of the changes on our Site.  These changes will be effective immediately for new users of our Site.  Continued use of our Site following notice of such changes shall indicate your acknowledgement of such changes and agreement to be bound by the terms and conditions of such changes.
+                                    Dispute Resolution. Please read this Arbitration Agreement carefully. It is part of your contract with Company and affects your rights.  It contains procedures for MANDATORY BINDING ARBITRATION AND A CLASS ACTION WAIVER.</p>
+            
+                                    <p class="small px-3"><strong>Applicability of Arbitration Agreement.</strong> All claims and disputes in connection with the Terms or the use of any product or service provided by the Company that cannot be resolved informally or in small claims court shall be resolved by binding arbitration on an individual basis under the terms of this Arbitration Agreement.  Unless otherwise agreed to, all arbitration proceedings shall be held in English.  This Arbitration Agreement applies to you and the Company, and to any subsidiaries, affiliates, agents, employees, predecessors in interest, successors, and assigns, as well as all authorized or unauthorized users or beneficiaries of services or goods provided under the Terms.</p>
+            
+                                    <p class="small px-3"><strong>Notice Requirement and Informal Dispute Resolution.</strong> Before either party may seek arbitration, the party must first send to the other party a written Notice of Dispute describing the nature and basis of the claim or dispute, and the requested relief.  A Notice to the Company should be sent to: Dublin, Ireland. After the Notice is received, you and the Company may attempt to resolve the claim or dispute informally.  If you and the Company do not resolve the claim or dispute within thirty (30) days after the Notice is received, either party may begin an arbitration proceeding.  The amount of any settlement offer made by any party may not be disclosed to the arbitrator until after the arbitrator has determined the amount of the award to which either party is entitled.</p>
+            
+                                    <p class="small px-3"><strong>Arbitration Rules.</strong> Arbitration shall be initiated through the American Arbitration Association, an established alternative dispute resolution provider that offers arbitration as set forth in this section.  If AAA is not available to arbitrate, the parties shall agree to select an alternative ADR Provider.  The rules of the ADR Provider shall govern all aspects of the arbitration except to the extent such rules are in conflict with the Terms.  The AAA Consumer Arbitration Rules governing the arbitration are available online at adr.org or by calling the AAA at 1-800-778-7879.  The arbitration shall be conducted by a single, neutral arbitrator.  Any claims or disputes where the total amount of the award sought is less than Ten Thousand U.S. Dollars (US $10,000.00) may be resolved through binding non-appearance-based arbitration, at the option of the party seeking relief.  For claims or disputes where the total amount of the award sought is Ten Thousand U.S. Dollars (US $10,000.00) or more, the right to a hearing will be determined by the Arbitration Rules.  Any hearing will be held in a location within 100 miles of your residence, unless you reside outside of the United States, and unless the parties agree otherwise.  If you reside outside of the U.S., the arbitrator shall give the parties reasonable notice of the date, time and place of any oral hearings. Any judgment on the award rendered by the arbitrator may be entered in any court of competent jurisdiction.  If the arbitrator grants you an award that is greater than the last settlement offer that the Company made to you prior to the initiation of arbitration, the Company will pay you the greater of the award or $2,500.00.  Each party shall bear its own costs and disbursements arising out of the arbitration and shall pay an equal share of the fees and costs of the ADR Provider.</p>
+            
+                                    <p class="small px-3"><strong>Additional Rules for Non-Appearance Based Arbitration.</strong> If non-appearance based arbitration is elected, the arbitration shall be conducted by telephone, online and/or based solely on written submissions; the specific manner shall be chosen by the party initiating the arbitration.  The arbitration shall not involve any personal appearance by the parties or witnesses unless otherwise agreed by the parties.</p>
+            
+                                    <p class="small px-3"><strong>Time Limits.</strong> If you or the Company pursues arbitration, the arbitration action must be initiated and/or demanded within the statute of limitations and within any deadline imposed under the AAA Rules for the pertinent claim.</p>
+            
+                                    <p class="small px-3"><strong>Authority of Arbitrator.</strong> If arbitration is initiated, the arbitrator will decide the rights and liabilities of you and the Company, and the dispute will not be consolidated with any other matters or joined with any other cases or parties.  The arbitrator shall have the authority to grant motions dispositive of all or part of any claim.  The arbitrator shall have the authority to award monetary damages, and to grant any non-monetary remedy or relief available to an individual under applicable law, the AAA Rules, and the Terms.  The arbitrator shall issue a written award and statement of decision describing the essential findings and conclusions on which the award is based.  The arbitrator has the same authority to award relief on an individual basis that a judge in a court of law would have.  The award of the arbitrator is final and binding upon you and the Company.</p>
+            
+                                    <p class="small px-3"><strong>Waiver of Jury Trial.</strong> THE PARTIES HEREBY WAIVE THEIR CONSTITUTIONAL AND STATUTORY RIGHTS TO GO TO COURT AND HAVE A TRIAL IN FRONT OF A JUDGE OR A JURY, instead electing that all claims and disputes shall be resolved by arbitration under this Arbitration Agreement.  Arbitration procedures are typically more limited, more efficient and less expensive than rules applicable in a court and are subject to very limited review by a court.  In the event any litigation should arise between you and the Company in any state or federal court in a suit to vacate or enforce an arbitration award or otherwise, YOU AND THE COMPANY WAIVE ALL RIGHTS TO A JURY TRIAL, instead electing that the dispute be resolved by a judge.</p>
+            
+                                    <p class="small px-3"><strong>Waiver of Class or Consolidated Actions.</strong> All claims and disputes within the scope of this arbitration agreement must be arbitrated or litigated on an individual basis and not on a class basis, and claims of more than one customer or user cannot be arbitrated or litigated jointly or consolidated with those of any other customer or user.</p>
+            
+                                    <p class="small px-3"><strong>Confidentiality.</strong> All aspects of the arbitration proceeding shall be strictly confidential.  The parties agree to maintain confidentiality unless otherwise required by law.  This paragraph shall not prevent a party from submitting to a court of law any information necessary to enforce this Agreement, to enforce an arbitration award, or to seek injunctive or equitable relief.</p>
+            
+                                    <p class="small px-3"><strong>Severability.</strong> If any part or parts of this Arbitration Agreement are found under the law to be invalid or unenforceable by a court of competent jurisdiction, then such specific part or parts shall be of no force and effect and shall be severed and the remainder of the Agreement shall continue in full force and effect.</p>
+            
+                                    <p class="small px-3"><strong>Right to Waive.</strong> Any or all of the rights and limitations set forth in this Arbitration Agreement may be waived by the party against whom the claim is asserted.  Such waiver shall not waive or affect any other portion of this Arbitration Agreement.</p>
+            
+                                    <p class="small px-3"><strong>Survival of Agreement.</strong> This Arbitration Agreement will survive the termination of your relationship with Company.</p>
+            
+                                    <p class="small px-3"><strong>Small Claims Court.</strong> Nonetheless the foregoing, either you or the Company may bring an individual action in small claims court.</p>
+            
+                                    <p class="small px-3"><strong>Emergency Equitable Relief.</strong> Anyhow the foregoing, either party may seek emergency equitable relief before a state or federal court in order to maintain the status quo pending arbitration.  A request for interim measures shall not be deemed a waiver of any other rights or obligations under this Arbitration Agreement.</p>
+            
+                                    <p class="small px-3"><strong>Claims Not Subject to Arbitration.</strong> Notwithstanding the foregoing, claims of defamation, violation of the Computer Fraud and Abuse Act, and infringement or misappropriation of the other party’s patent, copyright, trademark or trade secrets shall not be subject to this Arbitration Agreement.</p>
+            
+                                    <p class="small px-3">In any circumstances where the foregoing Arbitration Agreement permits the parties to litigate in court, the parties hereby agree to submit to the personal jurisdiction of the courts located within Netherlands County, California, for such purposes.</p>
+            
+                                    <p class="small px-3">The Site may be subject to U.S. export control laws and may be subject to export or import regulations in other countries. You agree not to export, re-export, or transfer, directly or indirectly, any U.S. technical data acquired from Company, or any products utilizing such data, in violation of the United States export laws or regulations.</p>
+            
+                                    <p class="small px-3">Company is located at the address in Section 10.8. If you are a California resident, you may report complaints to the Complaint Assistance Unit of the Division of Consumer Product of the California Department of Consumer Affairs by contacting them in writing at 400 R Street, Sacramento, CA 95814, or by telephone at (800) 952-5210.</p>
+            
+                                    <p class="small px-3"><strong>Electronic Communications.</strong> The communications between you and Company use electronic means, whether you use the Site or send us emails, or whether Company posts notices on the Site or communicates with you via email. For contractual purposes, you (a) consent to receive communications from Company in an electronic form; and (b) agree that all terms and conditions, agreements, notices, disclosures, and other communications that Company provides to you electronically satisfy any legal obligation that such communications would satisfy if it were be in a hard copy writing.</p>
+            
+                                    <p class="small px-3"><strong>Entire Terms.</strong> These Terms constitute the entire agreement between you and us regarding the use of the Site. Our failure to exercise or enforce any right or provision of these Terms shall not operate as a waiver of such right or provision. The section titles in these Terms are for convenience only and have no legal or contractual effect. The word "including" means "including without limitation". If any provision of these Terms is held to be invalid or unenforceable, the other provisions of these Terms will be unimpaired and the invalid or unenforceable provision will be deemed modified so that it is valid and enforceable to the maximum extent permitted by law.  Your relationship to Company is that of an independent contractor, and neither party is an agent or partner of the other.  These Terms, and your rights and obligations herein, may not be assigned, subcontracted, delegated, or otherwise transferred by you without Company’s prior written consent, and any attempted assignment, subcontract, delegation, or transfer in violation of the foregoing will be null and void.  Company may freely assign these Terms.  The terms and conditions set forth in these Terms shall be binding upon assignees.</p>
+            
+                                    <p class="small px-3"><strong>Your Privacy.</strong> Please read our Privacy Policy.</p>
+            
+                                    <p class="small px-3"><strong>Copyright/Trademark Information.</strong> Copyright ©. All rights reserved.  All trademarks, logos and service marks displayed on the Site are our property or the property of other third-parties. You are not permitted to use these Marks without our prior written consent or the consent of such third party which may own the Marks.</p>
+            
+                                    <h2 class="underline-success pt-3" id="toucontact">Contact Information</h2>
+            
+                                    <p class="small px-3">Address: Dublin, Ireland</p>
+                                    <p class="small px-3">Email: Admin@ManageMyWeb.org</p>
+                                </div>
+                                <div class="refunds w-100">
+                                    <h2 class="underline-success" id="rere">
+                                        RETURNS
+                                    </h2>
+                                    <p class="small px-3">
+                                        Our policy lasts 30 days. If 30 days have gone by since your purchase, unfortunately we can’t offer you a refund or exchange.
+                                    </p>
+            
+                                    <p class="small px-3">
+                                        To complete your return, we require a receipt or proof of purchase.
+                
+                                        Please send refund requests to us via the "other" category on our <a href="{% url 'contact' %}">contact page</a>.
+                                    </p>
+            
+                                    <h2 class="underline-success" id="reref">Refunds (if applicable)</h2>
+                                    <p class="small px-3">Once your request is received and inspected, we will send you an email to notify you that we have received your application. 
+                                    We will also notify you of the approval or rejection of your refund. If you are approved, then your refund will be processed, 
+                                    and a credit will automatically be applied to your credit card or original method of payment, within a certain amount of days.</p>
+            
+                                    <h2 class="underline-success" id="relomr">Late or missing refunds (if applicable)</h2>
+                                    <p class="small px-3">If you haven’t received a refund yet, first check your bank account again.
+                                    Then contact your credit card company, it may take some time before your refund is officially posted.
+                                    Next contact your bank. There is often some processing time before a refund is posted.
+                                    If you’ve done all of this and you still have not received your refund yet, please contact us at Admin@ManageMyWeb.org.</p>
+            
+                                    <h2 class="underline-success" id="resi">Sale items (if applicable)</h2>
+                                    <p class="small px-3">Only regular priced items may be refunded, unfortunately sale items cannot be refunded.</p>
                                 </div>
                             </div>
-                
-                            <h2 class="underline-success pt-3" id="ppgoog">Google DoubleClick DART Cookie</h2>
-                
-                            <p class="small px-3">Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
-                
-                            <h2 class="underline-success pt-3" id="ppap">Our Advertising Partners</h2>
-                
-                            <p class="small px-3">Some of advertisers on our site may use cookies and web beacons. Our advertising partners are listed below. Each of our advertising partners has their own Privacy Policy for their policies on user data. For easier access, we hyperlinked to their Privacy Policies below.</p>
-                
-                            <ul>
-                                <li>
-                                    <p class="small px-3">Google</p>
-                                    <p class="small px-3"><a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
-                                </li>
-                            </ul>
-                
-                            <h2 class="underline-success pt-3" id="ppap2">Advertising Partners Privacy Policies</h2>
-                
-                            <p class="small px-3">You may consult this list to find the Privacy Policy for each of the advertising partners of Manage My Web.</p>
-                
-                            <p class="small px-3">Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Manage My Web, which are sent directly to users' browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.</p>
-                
-                            <p class="small px-3">Note that Manage My Web has no access to or control over these cookies that are used by third-party advertisers.</p>
-                
-                            <h2 class="underline-success pt-3" id="pptpp">Third Party Privacy Policies</h2>
-                
-                            <p class="small px-3">Manage My Web's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options. </p>
-                
-                            <p class="small px-3">You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites.</p>
-                
-                            <h2 class="underline-success pt-3" id="ppccpa">CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
-                
-                            <p class="small px-3">Under the CCPA, among other rights, California consumers have the right to:</p>
-                            <p class="small px-3">Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</p>
-                            <p class="small px-3">Request that a business delete any personal data about the consumer that a business has collected.</p>
-                            <p class="small px-3">Request that a business that sells a consumer's personal data, not sell the consumer's personal data.</p>
-                            <p class="small px-3">If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
-                
-                            <h2 class="underline-success pt-3" id="ppgdpr">GDPR Data Protection Rights</h2>
-                
-                            <p class="small px-3">We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:</p>
-                            <p class="small px-3">The right to access – You have the right to request copies of your personal data. We may charge you a small fee for this service.</p>
-                            <p class="small px-3">The right to rectification – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.</p>
-                            <p class="small px-3">The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</p>
-                            <p class="small px-3">The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</p>
-                            <p class="small px-3">The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.</p>
-                            <p class="small px-3">The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</p>
-                            <p class="small px-3">If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
-                
-                            <h2 class="underline-success pt-3" id="ppci">Children's Information</h2>
-                
-                            <p class="small px-3">Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
-                
-                            <p class="small px-3">Manage My Web does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
-                        </div>
-                        <div class="terms-of-use w-100">
-                            <h2 class="underline-success pt-3" id="touintro">Website Terms of Use</h2>
-    
-                            <p class="small px-3">Version 1.0</p>
-    
-                            <p class="small px-3">The Manage My Web website located at ManageMyWeb.org is a copyrighted work belonging to Manage My Web. Certain features of the Site may be subject to additional guidelines, terms, or rules, which will be posted on the Site in connection with such features.</p>
-    
-                            <p class="small px-3">All such additional terms, guidelines, and rules are incorporated by reference into these Terms.</p>
-    
-                            <p class="small px-3">These Terms of Use described the legally binding terms and conditions that oversee your use of the Site. BY LOGGING INTO THE SITE, YOU ARE BEING COMPLIANT THAT THESE TERMS and you represent that you have the authority and capacity to enter into these Terms. YOU SHOULD BE AT LEAST 18 YEARS OF AGE TO ACCESS THE SITE. IF YOU DISAGREE WITH ALL OF THE PROVISION OF THESE TERMS, DO NOT LOG INTO AND/OR USE THE SITE.<p class="small px-3">
-    
-                            <p class="small px-3">These terms require the use of arbitration Section 10.2 on an individual basis to resolve disputes and also limit the remedies available to you in the event of a dispute. These Terms of Use were created with the help of the <a href="https://www.termsofusegenerator.net">Terms Of Use Generator</a>.</p>
-    
-    
-                            <h2 class="underline-success pt-3" id="touaccess">Access to the Site</h2>
-    
-                            <p class="small px-3"><strong>Subject to these Terms.</strong> Company grants you a non-transferable, non-exclusive, revocable, limited license to access the Site solely for your own personal, noncommercial use.</p>
-    
-                            <p class="small px-3"><strong>Certain Restrictions.</strong> The rights approved to you in these Terms are subject to the following restrictions: (a) you shall not sell, rent, lease, transfer, assign, distribute, host, or otherwise commercially exploit the Site; (b) you shall not change, make derivative works of, disassemble, reverse compile or reverse engineer any part of the Site; (c) you shall not access the Site in order to build a similar or competitive website; and (d) except as expressly stated herein, no part of the Site may be copied, reproduced, distributed, republished, downloaded, displayed, posted or transmitted in any form or by any means unless otherwise indicated, any future release, update, or other addition to functionality of the Site shall be subject to these Terms.  All copyright and other proprietary notices on the Site must be retained on all copies thereof.</p>
-    
-                            <p class="small px-3">Company reserves the right to change, suspend, or cease the Site with or without notice to you.  You approved that Company will not be held liable to you or any third-party for any change, interruption, or termination of the Site or any part.</p>
-    
-                            <p class="small px-3"><strong>No Support or Maintenance.</strong> You agree that Company will have no obligation to provide you with any support in connection with the Site.</p>
-    
-                            <p class="small px-3">Excluding any User Content that you may provide, you are aware that all the intellectual property rights, including copyrights, patents, trademarks, and trade secrets, in the Site and its content are owned by Company or Company’s suppliers. Note that these Terms and access to the Site do not give you any rights, title or interest in or to any intellectual property rights, except for the limited access rights expressed in Section 2.1. Company and its suppliers reserve all rights not granted in these Terms.</p>
-    
-    
-                            <h2 class="underline-success pt-3" id="touthird">Third-Party Links & Ads; Other Users</h2>
-    
-                            <p class="small px-3"><strong>Third-Party Links & Ads.</strong> The Site may contain links to third-party websites and services, and/or display advertisements for third-parties.  Such Third-Party Links & Ads are not under the control of Company, and Company is not responsible for any Third-Party Links & Ads.  Company provides access to these Third-Party Links & Ads only as a convenience to you, and does not review, approve, monitor, endorse, warrant, or make any representations with respect to Third-Party Links & Ads.  You use all Third-Party Links & Ads at your own risk, and should apply a suitable level of caution and discretion in doing so. When you click on any of the Third-Party Links & Ads, the applicable third party’s terms and policies apply, including the third party’s privacy and data gathering practices.</p>
-    
-                            <p class="small px-3"><strong>Other Users.</strong> Each Site user is solely responsible for any and all of its own User Content.  Because we do not control User Content, you acknowledge and agree that we are not responsible for any User Content, whether provided by you or by others.  You agree that Company will not be responsible for any loss or damage incurred as the result of any such interactions.  If there is a dispute between you and any Site user, we are under no obligation to become involved.</p>
-    
-                            <p class="small px-3">You hereby release and forever discharge the Company and our officers, employees, agents, successors, and assigns from, and hereby waive and relinquish, each and every past, present and future dispute, claim, controversy, demand, right, obligation, liability, action and cause of action of every kind and nature, that has arisen or arises directly or indirectly out of, or that relates directly or indirectly to, the Site. If you are a California resident, you hereby waive California civil code section 1542 in connection with the foregoing, which states: "a general release does not extend to claims which the creditor does not know or suspect to exist in his or her favor at the time of executing the release, which if known by him or her must have materially affected his or her settlement with the debtor."</p>
-    
-                            <p class="small px-3"><strong>Cookies and Web Beacons.</strong> Like any other website, Manage My Web uses ‘cookies’. These cookies are used to store information including visitors’ preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users’ experience by customizing our web page content based on visitors’ browser type and/or other information.</p>
-    
-                            <p class="small px-3"><strong>Google DoubleClick DART Cookie.</strong> Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
-    
-                            <p class="small px-3"><strong>Our Advertising Partners.</strong> Some of advertisers on our site may use cookies and web beacons. Our advertising partners are listed below. Each of our advertising partners has their own Privacy Policy for their policies on user data. For easier access, we hyperlinked to their Privacy Policies below.</p>
-    
-                            <ul>
-                                <li>
-                                    <p class="small px-3">Google</p>
-                                    <p class="small px-3"><a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
-                                </li>
-                            </ul>
-    
-                            <h2 class="underline-success pt-3" id="toudisclaimer">Disclaimers</h2>
-    
-                            <p class="small px-3">The site is provided on an "as-is" and "as available" basis, and company and our suppliers expressly disclaim any and all warranties and conditions of any kind, whether express, implied, or statutory, including all warranties or conditions of merchantability, fitness for a particular purpose, title, quiet enjoyment, accuracy, or non-infringement.  We and our suppliers make not guarantee that the site will meet your requirements, will be available on an uninterrupted, timely, secure, or error-free basis, or will be accurate, reliable, free of viruses or other harmful code, complete, legal, or safe.  If applicable law requires any warranties with respect to the site, all such warranties are limited in duration to ninety (90) days from the date of first use.</p>
-    
-                            <p class="small px-3">Some jurisdictions do not allow the exclusion of implied warranties, so the above exclusion may not apply to you.  Some jurisdictions do not allow limitations on how long an implied warranty lasts, so the above limitation may not apply to you.</p>
-    
-                            <h2 class="underline-success pt-3" id="touliab">Limitation on Liability</h2>
-    
-                            <p class="small px-3">To the maximum extent permitted by law, in no event shall company or our suppliers be liable to you or any third-party for any lost profits, lost data, costs of procurement of substitute products, or any indirect, consequential, exemplary, incidental, special or punitive damages arising from or relating to these terms or your use of, or incapability to use the site even if company has been advised of the possibility of such damages.  Access to and use of the site is at your own discretion and risk, and you will be solely responsible for any damage to your device or computer system, or loss of data resulting therefrom.</p>
-    
-                            <p class="small px-3">To the maximum extent permitted by law, notwithstanding anything to the contrary contained herein, our liability to you for any damages arising from or related to this agreement, will at all times be limited to a maximum of fifty U.S. dollars (u.s. $50). The existence of more than one claim will not enlarge this limit.  You agree that our suppliers will have no liability of any kind arising from or relating to this agreement.</p>
-    
-                            <p class="small px-3">Some jurisdictions do not allow the limitation or exclusion of liability for incidental or consequential damages, so the above limitation or exclusion may not apply to you.</p>
-    
-                            <p class="small px-3"><strong>Term and Termination.</strong> Subject to this Section, these Terms will remain in full force and effect while you use the Site.  We may suspend or terminate your rights to use the Site at any time for any reason at our sole discretion, including for any use of the Site in violation of these Terms.  Upon termination of your rights under these Terms, your Account and right to access and use the Site will terminate immediately.  You understand that any termination of your Account may involve deletion of your User Content associated with your Account from our live databases.  Company will not have any liability whatsoever to you for any termination of your rights under these Terms.  Even after your rights under these Terms are terminated, the following provisions of these Terms will remain in effect: Sections 2 through 2.5, Section 3 and Sections 4 through 10.</p>
-    
-                            <h2 class="underline-success pt-3" id="toucopy">Copyright Policy.</h2>
-    
-                            <p class="small px-3">Company respects the intellectual property of others and asks that users of our Site do the same.  In connection with our Site, we have adopted and implemented a policy respecting copyright law that provides for the removal of any infringing materials and for the termination of users of our online Site who are repeated infringers of intellectual property rights, including copyrights.  If you believe that one of our users is, through the use of our Site, unlawfully infringing the copyright(s) in a work, and wish to have the allegedly infringing material removed, the following information in the form of a written notification (pursuant to 17 U.S.C. § 512(c)) must be provided to our designated Copyright Agent:</p>
-    
-                            <ul>
-                                <li>your physical or electronic signature;</li>
-                                <li>identification of the copyrighted work(s) that you claim to have been infringed;</li>
-                                <li>identification of the material on our services that you claim is infringing and that you request us to remove;</li>
-                                <li>sufficient information to permit us to locate such material;</li>
-                                <li>your address, telephone number, and e-mail address;</li>
-                                <li>a statement that you have a good faith belief that use of the objectionable material is not authorized by the copyright owner, its agent, or under the law; and</li>
-                                <li>a statement that the information in the notification is accurate, and under penalty of perjury, that you are either the owner of the copyright that has allegedly been infringed or that you are authorized to act on behalf of the copyright owner.</li>
-                            </ul>
-    
-                            <p class="small px-3">Please note that, pursuant to 17 U.S.C. § 512(f), any misrepresentation of material fact in a written notification automatically subjects the complaining party to liability for any damages, costs and attorney’s fees incurred by us in connection with the written notification and allegation of copyright infringement.</p>
-    
-                            <h2 class="underline-success pt-3" id="tougeneral">General</h2>
-    
-                            <p class="small px-3">These Terms are subject to occasional revision, and if we make any substantial changes, we may notify you by sending you an e-mail to the last e-mail address you provided to us and/or by prominently posting notice of the changes on our Site.  You are responsible for providing us with your most current e-mail address.  In the event that the last e-mail address that you have provided us is not valid our dispatch of the e-mail containing such notice will nonetheless constitute effective notice of the changes described in the notice.  Any changes to these Terms will be effective upon the earliest of thirty (30) calendar days following our dispatch of an e-mail notice to you or thirty (30) calendar days following our posting of notice of the changes on our Site.  These changes will be effective immediately for new users of our Site.  Continued use of our Site following notice of such changes shall indicate your acknowledgement of such changes and agreement to be bound by the terms and conditions of such changes.
-                            Dispute Resolution. Please read this Arbitration Agreement carefully. It is part of your contract with Company and affects your rights.  It contains procedures for MANDATORY BINDING ARBITRATION AND A CLASS ACTION WAIVER.</p>
-    
-                            <p class="small px-3"><strong>Applicability of Arbitration Agreement.</strong> All claims and disputes in connection with the Terms or the use of any product or service provided by the Company that cannot be resolved informally or in small claims court shall be resolved by binding arbitration on an individual basis under the terms of this Arbitration Agreement.  Unless otherwise agreed to, all arbitration proceedings shall be held in English.  This Arbitration Agreement applies to you and the Company, and to any subsidiaries, affiliates, agents, employees, predecessors in interest, successors, and assigns, as well as all authorized or unauthorized users or beneficiaries of services or goods provided under the Terms.</p>
-    
-                            <p class="small px-3"><strong>Notice Requirement and Informal Dispute Resolution.</strong> Before either party may seek arbitration, the party must first send to the other party a written Notice of Dispute describing the nature and basis of the claim or dispute, and the requested relief.  A Notice to the Company should be sent to: Dublin, Ireland. After the Notice is received, you and the Company may attempt to resolve the claim or dispute informally.  If you and the Company do not resolve the claim or dispute within thirty (30) days after the Notice is received, either party may begin an arbitration proceeding.  The amount of any settlement offer made by any party may not be disclosed to the arbitrator until after the arbitrator has determined the amount of the award to which either party is entitled.</p>
-    
-                            <p class="small px-3"><strong>Arbitration Rules.</strong> Arbitration shall be initiated through the American Arbitration Association, an established alternative dispute resolution provider that offers arbitration as set forth in this section.  If AAA is not available to arbitrate, the parties shall agree to select an alternative ADR Provider.  The rules of the ADR Provider shall govern all aspects of the arbitration except to the extent such rules are in conflict with the Terms.  The AAA Consumer Arbitration Rules governing the arbitration are available online at adr.org or by calling the AAA at 1-800-778-7879.  The arbitration shall be conducted by a single, neutral arbitrator.  Any claims or disputes where the total amount of the award sought is less than Ten Thousand U.S. Dollars (US $10,000.00) may be resolved through binding non-appearance-based arbitration, at the option of the party seeking relief.  For claims or disputes where the total amount of the award sought is Ten Thousand U.S. Dollars (US $10,000.00) or more, the right to a hearing will be determined by the Arbitration Rules.  Any hearing will be held in a location within 100 miles of your residence, unless you reside outside of the United States, and unless the parties agree otherwise.  If you reside outside of the U.S., the arbitrator shall give the parties reasonable notice of the date, time and place of any oral hearings. Any judgment on the award rendered by the arbitrator may be entered in any court of competent jurisdiction.  If the arbitrator grants you an award that is greater than the last settlement offer that the Company made to you prior to the initiation of arbitration, the Company will pay you the greater of the award or $2,500.00.  Each party shall bear its own costs and disbursements arising out of the arbitration and shall pay an equal share of the fees and costs of the ADR Provider.</p>
-    
-                            <p class="small px-3"><strong>Additional Rules for Non-Appearance Based Arbitration.</strong> If non-appearance based arbitration is elected, the arbitration shall be conducted by telephone, online and/or based solely on written submissions; the specific manner shall be chosen by the party initiating the arbitration.  The arbitration shall not involve any personal appearance by the parties or witnesses unless otherwise agreed by the parties.</p>
-    
-                            <p class="small px-3"><strong>Time Limits.</strong> If you or the Company pursues arbitration, the arbitration action must be initiated and/or demanded within the statute of limitations and within any deadline imposed under the AAA Rules for the pertinent claim.</p>
-    
-                            <p class="small px-3"><strong>Authority of Arbitrator.</strong> If arbitration is initiated, the arbitrator will decide the rights and liabilities of you and the Company, and the dispute will not be consolidated with any other matters or joined with any other cases or parties.  The arbitrator shall have the authority to grant motions dispositive of all or part of any claim.  The arbitrator shall have the authority to award monetary damages, and to grant any non-monetary remedy or relief available to an individual under applicable law, the AAA Rules, and the Terms.  The arbitrator shall issue a written award and statement of decision describing the essential findings and conclusions on which the award is based.  The arbitrator has the same authority to award relief on an individual basis that a judge in a court of law would have.  The award of the arbitrator is final and binding upon you and the Company.</p>
-    
-                            <p class="small px-3"><strong>Waiver of Jury Trial.</strong> THE PARTIES HEREBY WAIVE THEIR CONSTITUTIONAL AND STATUTORY RIGHTS TO GO TO COURT AND HAVE A TRIAL IN FRONT OF A JUDGE OR A JURY, instead electing that all claims and disputes shall be resolved by arbitration under this Arbitration Agreement.  Arbitration procedures are typically more limited, more efficient and less expensive than rules applicable in a court and are subject to very limited review by a court.  In the event any litigation should arise between you and the Company in any state or federal court in a suit to vacate or enforce an arbitration award or otherwise, YOU AND THE COMPANY WAIVE ALL RIGHTS TO A JURY TRIAL, instead electing that the dispute be resolved by a judge.</p>
-    
-                            <p class="small px-3"><strong>Waiver of Class or Consolidated Actions.</strong> All claims and disputes within the scope of this arbitration agreement must be arbitrated or litigated on an individual basis and not on a class basis, and claims of more than one customer or user cannot be arbitrated or litigated jointly or consolidated with those of any other customer or user.</p>
-    
-                            <p class="small px-3"><strong>Confidentiality.</strong> All aspects of the arbitration proceeding shall be strictly confidential.  The parties agree to maintain confidentiality unless otherwise required by law.  This paragraph shall not prevent a party from submitting to a court of law any information necessary to enforce this Agreement, to enforce an arbitration award, or to seek injunctive or equitable relief.</p>
-    
-                            <p class="small px-3"><strong>Severability.</strong> If any part or parts of this Arbitration Agreement are found under the law to be invalid or unenforceable by a court of competent jurisdiction, then such specific part or parts shall be of no force and effect and shall be severed and the remainder of the Agreement shall continue in full force and effect.</p>
-    
-                            <p class="small px-3"><strong>Right to Waive.</strong> Any or all of the rights and limitations set forth in this Arbitration Agreement may be waived by the party against whom the claim is asserted.  Such waiver shall not waive or affect any other portion of this Arbitration Agreement.</p>
-    
-                            <p class="small px-3"><strong>Survival of Agreement.</strong> This Arbitration Agreement will survive the termination of your relationship with Company.</p>
-    
-                            <p class="small px-3"><strong>Small Claims Court.</strong> Nonetheless the foregoing, either you or the Company may bring an individual action in small claims court.</p>
-    
-                            <p class="small px-3"><strong>Emergency Equitable Relief.</strong> Anyhow the foregoing, either party may seek emergency equitable relief before a state or federal court in order to maintain the status quo pending arbitration.  A request for interim measures shall not be deemed a waiver of any other rights or obligations under this Arbitration Agreement.</p>
-    
-                            <p class="small px-3"><strong>Claims Not Subject to Arbitration.</strong> Notwithstanding the foregoing, claims of defamation, violation of the Computer Fraud and Abuse Act, and infringement or misappropriation of the other party’s patent, copyright, trademark or trade secrets shall not be subject to this Arbitration Agreement.</p>
-    
-                            <p class="small px-3">In any circumstances where the foregoing Arbitration Agreement permits the parties to litigate in court, the parties hereby agree to submit to the personal jurisdiction of the courts located within Netherlands County, California, for such purposes.</p>
-    
-                            <p class="small px-3">The Site may be subject to U.S. export control laws and may be subject to export or import regulations in other countries. You agree not to export, re-export, or transfer, directly or indirectly, any U.S. technical data acquired from Company, or any products utilizing such data, in violation of the United States export laws or regulations.</p>
-    
-                            <p class="small px-3">Company is located at the address in Section 10.8. If you are a California resident, you may report complaints to the Complaint Assistance Unit of the Division of Consumer Product of the California Department of Consumer Affairs by contacting them in writing at 400 R Street, Sacramento, CA 95814, or by telephone at (800) 952-5210.</p>
-    
-                            <p class="small px-3"><strong>Electronic Communications.</strong> The communications between you and Company use electronic means, whether you use the Site or send us emails, or whether Company posts notices on the Site or communicates with you via email. For contractual purposes, you (a) consent to receive communications from Company in an electronic form; and (b) agree that all terms and conditions, agreements, notices, disclosures, and other communications that Company provides to you electronically satisfy any legal obligation that such communications would satisfy if it were be in a hard copy writing.</p>
-    
-                            <p class="small px-3"><strong>Entire Terms.</strong> These Terms constitute the entire agreement between you and us regarding the use of the Site. Our failure to exercise or enforce any right or provision of these Terms shall not operate as a waiver of such right or provision. The section titles in these Terms are for convenience only and have no legal or contractual effect. The word "including" means "including without limitation". If any provision of these Terms is held to be invalid or unenforceable, the other provisions of these Terms will be unimpaired and the invalid or unenforceable provision will be deemed modified so that it is valid and enforceable to the maximum extent permitted by law.  Your relationship to Company is that of an independent contractor, and neither party is an agent or partner of the other.  These Terms, and your rights and obligations herein, may not be assigned, subcontracted, delegated, or otherwise transferred by you without Company’s prior written consent, and any attempted assignment, subcontract, delegation, or transfer in violation of the foregoing will be null and void.  Company may freely assign these Terms.  The terms and conditions set forth in these Terms shall be binding upon assignees.</p>
-    
-                            <p class="small px-3"><strong>Your Privacy.</strong> Please read our Privacy Policy.</p>
-    
-                            <p class="small px-3"><strong>Copyright/Trademark Information.</strong> Copyright ©. All rights reserved.  All trademarks, logos and service marks displayed on the Site are our property or the property of other third-parties. You are not permitted to use these Marks without our prior written consent or the consent of such third party which may own the Marks.</p>
-    
-                            <h2 class="underline-success pt-3" id="toucontact">Contact Information</h2>
-    
-                            <p class="small px-3">Address: Dublin, Ireland</p>
-                            <p class="small px-3">Email: Admin@ManageMyWeb.org</p>
-                        </div>
-                        <div class="refunds w-100">
-                            <h2 class="underline-success" id="rere">
-                                RETURNS
-                            </h2>
-                            <p class="small px-3">
-                                Our policy lasts 30 days. If 30 days have gone by since your purchase, unfortunately we can’t offer you a refund or exchange.
-                            </p>
-    
-                            <p class="small px-3">
-                                To complete your return, we require a receipt or proof of purchase.
-        
-                                Please send refund requests to us via the "other" category on our <a href="{% url 'contact' %}">contact page</a>.
-                            </p>
-    
-                            <h2 class="underline-success" id="reref">Refunds (if applicable)</h2>
-                            <p class="small px-3">Once your request is received and inspected, we will send you an email to notify you that we have received your application. 
-                            We will also notify you of the approval or rejection of your refund. If you are approved, then your refund will be processed, 
-                            and a credit will automatically be applied to your credit card or original method of payment, within a certain amount of days.</p>
-    
-                            <h2 class="underline-success" id="relomr">Late or missing refunds (if applicable)</h2>
-                            <p class="small px-3">If you haven’t received a refund yet, first check your bank account again.
-                            Then contact your credit card company, it may take some time before your refund is officially posted.
-                            Next contact your bank. There is often some processing time before a refund is posted.
-                            If you’ve done all of this and you still have not received your refund yet, please contact us at Admin@ManageMyWeb.org.</p>
-    
-                            <h2 class="underline-success" id="resi">Sale items (if applicable)</h2>
-                            <p class="small px-3">Only regular priced items may be refunded, unfortunately sale items cannot be refunded.</p>
                         </div>
                     </div>
                 </div>
@@ -430,6 +440,7 @@
     $('.terms-of-use').hide();
     $('.refunds').hide();
     $('#policy-container').hide();
+    $('#content-menu-toggler').hide();
     $('#showPrivacyPolicy').click(function(){
         if ($("#policy-container").is(":visible")){
             $('#footer').css('position', 'relative');
@@ -457,6 +468,43 @@
         $('.refunds').siblings().hide();
         $('.refunds').fadeIn(1000);
     });
+    $('#showGdpr').click(function(){
+        $('#policy-container').show(500);
+        $('.privacy-policy').siblings().hide();
+        $('.privacy-policy').fadeIn(1000);
+        let target = $("#ppgdpr").offset().top;
+        $('.privacy-policy').animate({
+            scrollTop: target - 550
+        }, 2000);
+    });
+    $('#showCcpa').click(function(){
+        $('#policy-container').show(500);
+        $('.privacy-policy').siblings().hide();
+        $('.privacy-policy').fadeIn(1000);
+        let target = $("#ppccpa").offset().top;
+        $('.privacy-policy').animate({
+            scrollTop: target - 550
+        }, 2000);
+    })
+    $('.menuToggler').click(function(){
+        if ($("#menu").is(":visible")){
+            $('#content').toggle(1000,function(){
+                $('#content').toggleClass('col-md-9').toggleClass("col-md-8 offset-md-2 offset-lg-1 box-shadow");
+                $('#menu').toggle(1000, function(){
+                    $('#content').toggle(1000);
+                });
+            });
+        }else{
+            $('#content').toggle(1000,function(){
+                $('#content').toggleClass('col-md-8 offset-md-2 offset-lg-1 box-shadow').toggleClass("col-md-9");
+                $('#menu').toggle(1000,function(){
+                    $('#content').toggle(1000);
+                });
+            });
+        }
+        
+    });
+
 </script>
 {% endblock %}
 

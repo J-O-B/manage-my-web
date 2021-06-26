@@ -10,10 +10,9 @@
 
 {% block page_header %}
 <!--Hero-->
-<div class="container-fluid pb-5 relative g-0">
-    <div class="hero-figure">
-        <svg class="placeholder" width="100vw" height="500" viewBox="0 0 528 396">
-        </svg>
+<div class="container-fluid pb-5 relative g-0 overflow-hidden">
+    <div class="hero-figure absolute top behind">
+        <svg class="placeholder" width="100%" height="500" viewBox="0 0 528 396"></svg>
         <div class="hero-figure-box hero-figure-box-01" data-rotation="45deg"></div>
         <div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg"></div>
         <div class="hero-figure-box hero-figure-box-03" data-rotation="0deg"></div>
@@ -25,11 +24,12 @@
         <div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
         <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
     </div>
-    <div class="row mt-4 py-5 absolute top w-100">
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-1 py-5">
+    <div class="row mt-4 py-5 absolute top w-100 infront">
+        <div class="relative col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-1 py-5 d-none d-lg-block">
+            <iframe width="89%" height="390" src="https://www.youtube.com/embed/jQo1ZWpEnD0?controls=0&rel=0" title="ManageMyWeb Website Management" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-0 py-5">
-            <h1 class="mt-5 pt-5 pb-1 text-white text-center">Website Management</h1>
+        <div class=" relative col-12 col-sm-10 offset-sm-1 col-md-5 offset-md-0 py-md-5">
+            <h1 class="mt-lg-5 pt-lg-5 pb-1 text-white text-center">Website Management</h1>
             <div class="w-100 d-flex justify-content-center">
                 <hr class="white-hr w-50">
             </div>
