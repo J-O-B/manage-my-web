@@ -7,9 +7,11 @@ from checkout.models import Order, OrderLineItem
 from products.models import Product
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from dateutil.relativedelta import relativedelta
+from datetime import datetime
 
 today = date.today()
-
+currentDate = datetime.now()
 
 @login_required
 def after_login(request):
@@ -39,8 +41,13 @@ def user_profile(request):
     Display a user profile
     """
     user = request.user
-    profile = UserProfile.objects.get(user=user)
-    orders = ""
+
+    # Catch users with no profile, create one if needed
+    try:
+        profile = UserProfile.objects.get(user=user)
+    except Exception:
+        profile = UserProfile.objects.create(user=user)
+    orders = False
     price = 0
     form = UserProfileForm(instance=profile)
     tax = settings.TAX_RATE
@@ -48,6 +55,7 @@ def user_profile(request):
         orders = Order.objects.filter(user_profile=profile)
 
     except Exception:
+        orders = False
         messages.error(request, "Error retreiving orders, \
         or you have no order history")
 
@@ -56,13 +64,28 @@ def user_profile(request):
     if orders:
         for order in orders:
             line_items += OrderLineItem.objects.filter(order=order.id)
+            for i in line_items:
+                """
+                Feedback and update userprofile for subscriptions
+                """
+                if i.subscription:
+                    profile.subscription = True
+                    # Get the latest date then update
+                    quantity = i.quantity
+                    expiry = today + relativedelta(years=quantity)
+                    if profile.subscription_expiry:
+                        if expiry > profile.subscription_expiry:
+                            profile.subscription_expiry = expiry
+                        else:
+                            pass
+                    else:
+                        profile.subscription_expiry = expiry
+                profile.save()
 
-        for i in line_items:
-            price = price + i.lineitem_total
-            A = str(i.product.category)
-            if (A == "business" or A == "personal" or A == "ecommerce"):
-                websites.append(i)
-
+                price = price + i.lineitem_total
+                A = str(i.product.category)
+                if (A == "business" or A == "personal" or A == "ecommerce"):
+                    websites.append(i)
     if request.method == "POST":
         try:
             rating = request.POST.get('ratingForm')
@@ -99,6 +122,10 @@ def user_profile(request):
         except Exception:
             pass
 
+    if orders:
+        no_orders = True
+    else:
+        no_orders = False
     template = 'profiles/user_profile.html'
     context = {
         "profile": profile,
@@ -106,6 +133,7 @@ def user_profile(request):
         "price": price,
         "user": user,
         "orders": orders,
+        "no_orders": no_orders,
         "tax": tax,
         "line_items": line_items,
         "websites": websites,

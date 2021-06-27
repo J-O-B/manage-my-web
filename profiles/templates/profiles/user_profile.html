@@ -124,23 +124,23 @@
 
 <div class="container-fluid overflow-hidden" id="edit-profile">
     <div class="row h-100">
-        <div class="col-12 col-md-4 col-lg-3 col-xl-2 text-center py-5 d-block justify-content-middle bg-success" id="menu">
-            <h3 class="logo-font mt-3">Menu:</h3>
+        <div class="col-12 col-md-4 col-lg-3 col-xl-2 text-center py-5 d-block justify-content-middle bg-dark" id="menu">
+            <h3 class="logo-font mt-3 text-success">Menu:</h3>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="edit-profile-details" aria-disabled="false">Edit Profile</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="view-seo" aria-disabled="false">SEO</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="view-web" aria-disabled="false">Websites</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="view-orders" aria-disabled="false">Orders</a>
             <a class="btn btn-md btn-black text-center w-50 my-2" id="view-rating" aria-disabled="false">Ratings</a>
         </div>
-        <div class="items col-12 col-md-8 col-lg-9 col-xl-10 py-5 bg-success">
+        <div class="items col-12 col-md-8 col-lg-9 col-xl-10 py-5 bg-dark">
             <div class="w-100 h-100" id="update-profile-info">
-                <h3 class="logo-font mt-3 text-center">Update Profile:</h3>
+                <h3 class="logo-font mt-3 text-center text-success">Update Profile:</h3>
                 <div class="w-100 d-flex justify-content-center">
                     <hr class="w-50">
                 </div>
                 <div class="row" id="firstProfEdit">
                     <div class="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-                        <h3 class="logo-font underline-success text-black">Current Profile Data:</h3>
+                        <h3 class="logo-font underline-success text-success">Current Profile Data:</h3>
                         <div class="row">
                             <p>
                                 <span class="text-black fst-italic">Name</span> : <span class="text-white small text-center">{{profile.full_name}}</span> <br>
@@ -198,7 +198,7 @@
                 </div>
             </div>
             <div class="w-100 h-100" id="seo-info-profile">
-                <h3 class="logo-font mt-3 text-center">SEO News:</h3>
+                <h3 class="logo-font mt-3 text-center text-success">SEO News:</h3>
                 <div class="w-100 d-flex justify-content-center">
                     <hr class="w-50">
                 </div>
@@ -210,7 +210,7 @@
                 </p>
             </div>
             <div class="w-100 h-100" id="orders-profile">
-                <h3 class="logo-font mt-3 text-center">Your Orders:</h3>
+                <h3 class="logo-font mt-3 text-center text-success">Your Orders:</h3>
                 <div class="w-100 d-flex justify-content-center">
                     <hr class="w-50">
                 </div>
@@ -243,10 +243,21 @@
                             </div>
                         {% endfor %}
                     </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="text-center text-white">
+                                It appears you have no orders.
+                            </h2>
+                            <p class="text-black small text-center">
+                                Is this wrong? If so please <a class="text-black" href="{% url 'contact' %}">contact us</a>. We reward users who report bugs!
+                            </p>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
             <div class="w-100 h-100" id="websites-profile">
-                <h3 class="logo-font mt-3 text-center">Website:</h3>
+                <h3 class="logo-font mt-3 text-center text-success">Website:</h3>
                 <div class="w-100 d-flex justify-content-center">
                     <hr class="w-50">
                 </div>
@@ -287,8 +298,8 @@
                 <div class="w-100 d-flex justify-content-center">
                     <hr class="w-50">
                 </div>
-                {% if orders %}
-                    <div class="row">
+                <div class="row">
+                    {% if orders %}
                         {% for line in line_items %}
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3 p-2">
                             <div class="relative box-shadow bg-white overflow-hidden px-2">
@@ -324,8 +335,17 @@
                             </div>
                         </div>
                         {% endfor %}
-                    </div>
-                {% endif %}
+                    {% else %}
+                        <div class="col-12">
+                            <h2 class="text-center text-white pt-3">
+                                No previous orders to rate.
+                            </h2>
+                            <p class="text-black small text-center pt-3">
+                                Is this wrong? If so please <a class="text-black" href="{% url 'contact' %}">contact us</a>. We reward users who report bugs!
+                            </p>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

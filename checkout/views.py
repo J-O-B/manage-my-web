@@ -11,11 +11,14 @@ from django.utils.safestring import mark_safe
 from cart.contexts import cart_contents
 from django.contrib.auth.models import User
 from dateutil.relativedelta import relativedelta
+from datetime import datetime, date
 from contact.models import EmailMarketing
 
 import stripe
-from datetime import datetime
 import json
+
+
+currentDate = date.today()
 
 
 @require_POST
@@ -71,19 +74,23 @@ def checkout(request):
         try:
             number = 0
             number = number + int(EmailMarketing.objects.count())
-            if number >= 1:
-                id = number + 1
-            else:
-                id = 1
-            list = EmailMarketing(
-                id,
-                email=request.POST.get('email'),
-                users_name=request.POST.get('full_name'),
-                category="Prev Buyer")
-            list.save()
+            try:
+                listings = EmailMarketing.objects.filter(email=request.POST.get('email'))
+            except Exception:
+                listings = False
+            if not listings:
+                if number >= 1:
+                    id = number + 1
+                else:
+                    id = 1
+                list = EmailMarketing(
+                    id,
+                    email=request.POST.get('email'),
+                    users_name=request.POST.get('full_name'),
+                    category="Prev Buyer")
+                list.save()
         except Exception:
             pass
-
 
         if current_cart['subscription']:
             subscription = True
@@ -106,6 +113,7 @@ def checkout(request):
         order_form = OrderForm(form_data)
 
         if order_form.is_valid():
+            # Processing Order
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
@@ -114,10 +122,17 @@ def checkout(request):
             order.subscription = subscription
             user = request.user
             if str(user) != "AnonymousUser":
-                order.user_profile = UserProfile.objects.get(
-                    user=user.id)
-            else:
-                pass
+                try:
+                    # Check For Current User Profile
+                    order.user_profile = UserProfile.objects.get(
+                        user=user.id)
+                except Exception:
+                    # Create Profile If It Doesn't Exist
+                    user_profile = UserProfile.objects.create(user=user)
+                finally:
+                    # Add the order to the new profile if just created
+                    order.user_profile = UserProfile.objects.get(
+                        user=user.id)
             order.save()
             for item_id, item_data in cart.items():
                 try:
@@ -155,6 +170,15 @@ def checkout(request):
                     return redirect(reverse('cart'))
             request.session['save_info'] = 'save-info' in request.POST
             request.session['subscription'] = subscription
+
+            # Add Credentials to Profile:
+            if request.session['save_info']:
+                try:
+                    old_profile = UserProfile.objects.get(
+                        user=user.id)
+                except Exception:
+                    old_profile = UserProfile.objects.create(user=user)
+
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]))
         else:
@@ -226,7 +250,45 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     subscription = request.session.get('subscription')
+    user = request.user
+    if user.is_authenticated:
+        try:
+            user_profile = UserProfile.objects.get(user=user)
+
+        except Exception:
+            user_profile = UserProfile.objects.create(user=user)
+
     order = get_object_or_404(Order, order_number=order_number)
+    updated = False
+    if save_info:
+        user_profile.full_name = order.full_name
+        user_profile.email = order.email
+        user_profile.phone_number = order.phone_number
+        user_profile.country = order.country
+        user_profile.postcode = order.postcode
+        user_profile.town_or_city = order.town_or_city
+        user_profile.street_address1 = order.street_address1
+        user_profile.street_address2 = order.street_address2
+        updated = True
+    if subscription and user.is_authenticated:
+        try:
+            line_items = OrderLineItem.objects.get(order_number=order_number)
+            current_expiry = user_profile.subscription_expiry
+            for item in line_items:
+                if item.subscription:
+                    years = item.quantity
+                    new_expiry = currentDate + relativedelta(years=years)
+                    if new_expiry > current_expiry:
+                        user_profile.subscription_expiry = new_expiry
+                else:
+                    pass
+        except:
+            # catch any errors
+            pass
+        updated = True
+    
+    if updated:
+        user_profile.save()
 
     messages.success(request, mark_safe(f'<strong>Order Successfully Processed!</strong><br><br> \
         <small>Your order number is: <br><em>{order_number}\

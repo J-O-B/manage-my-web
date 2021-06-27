@@ -54,7 +54,7 @@
                             <div class="col-7">
                                 <p class="my-0 mx-4"><strong>{{ item.product.name }}</strong></p>
                                 {% if item.product.plan == 2 %}
-                                    <p class="my-0 mx-4 small">1 Year Subscription</p>
+                                    <p class="my-0 mx-4 small">Subscription Until {{expiry}}</p>
                                 {% else %}
                                     <p class="my-0 mx-4 small">Qty: {{item.quantity}}</p>
                                 {% endif %}

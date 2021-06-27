@@ -153,7 +153,7 @@
                 </header>
 
                 {% if messages %}
-                    <div class="message-container text-black">
+                    <div class="message-container text-black d-print-none">
                         {% for message in messages %}
                         {% with message.level as level %}
                             {% if level == 40 %}
@@ -361,6 +361,7 @@
                     clear();
                 })
                 $('.toast').toast('show');
+                console.log($('#content-container').offset().top);
             </script>
 
             <!-- Template Additional Scripts-->

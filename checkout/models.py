@@ -72,24 +72,11 @@ class Order(models.Model):
     def update_order(self):
         line_items = OrderLineItem.objects.filter(order=self.id)
         # Update grand total each time a line item is added, accounting for tax
-        """self.order_total = self.lineitems.aggregate(
+        self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total'))['lineitem_total__sum'] or 0
-        if self.order_total > 0:
-            self.grand_total = self.order_total + (
-                self.order_total * settings.TAX_PERCENTAGE / 100)
-            self.tax = self.order_total * settings.TAX_PERCENTAGE / 100
-        else:
-            self.order_total = 0
-            self.grand_total = 0
-            self.tax = 0"""
-        for i in line_items:
-            if i.subscription:
-                self.subscription = True
-                self.subscriber = "Yes"
-                return
-            else:
-                self.subscription = False
-                self.subscriber = "No"
+        self.grand_total = self.order_total + (
+            self.order_total * settings.TAX_PERCENTAGE / 100)
+        self.tax = self.order_total * settings.TAX_PERCENTAGE / 100
         self.save()
 
     def save(self, *args, **kwargs):

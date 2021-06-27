@@ -227,8 +227,11 @@ To create this website, specific apps were made to target certain user stories a
 * Admin Panel.
 * Lead Generation.
 * Interactive Feedback
-* Error Handling
+* Error Handling 
 * Interactive Forms
+* Product Limits - Built in "Availability" with front end feedback (banner on product image)
+* Payment Error Capturing - Checkout first creates an order instance in the database, before trying to checkout, this way a user will not get charged multiple times if checkout page is refreshed etc.
+* 
 
 
 ### <ins>**_Future Features:_**</ins>

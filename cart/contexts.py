@@ -19,7 +19,7 @@ def cart_contents(request):
     grand_total = 0
     subscription = False
 
-    expiry = (currentDate + relativedelta(years=1)).date()
+    expiry = (currentDate).date()
     cart = request.session.get("cart", {})
     consent = request.COOKIES.get("MMWconsent",)
 
@@ -32,7 +32,7 @@ def cart_contents(request):
                 subscription = True
 
         total += quantity * product.price
-
+        expiry = (currentDate + relativedelta(years=quantity)).date()
         product_count += quantity
         cart_items.append({
             'item_id': item_id,

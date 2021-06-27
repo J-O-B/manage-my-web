@@ -23,7 +23,7 @@
 
 
 {% block content %}
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-5" id="productPageWrap">
         <div class="row g-3 my-1">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
                 <div class="image-container my-0 relative overflow-hidden">
@@ -427,6 +427,10 @@
             $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
         }
         $(this).nextAll().toggle(1000);
+    });
+    $('#productPageWrap').hide();
+    $(document).ready(function(){
+        $('#productPageWrap').fadeIn(1500);
     })
     </script>
 {% endblock %}

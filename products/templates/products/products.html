@@ -5,14 +5,6 @@
     <link rel="stylesheet" href="{% static 'css/products.css' %}"> 
 {% endblock %}
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
-
 {% block content %}
     <div class="container-fluid mt-5">
         <div class="row">
@@ -28,43 +20,14 @@
                     <h3 class="text-muted h5">Current View: Sorted By {{subtitle|title}}</h3>
                 {% endif %}
                 <hr class="w-25 mb-2 mx-auto">
-                <p class="lead text-muted">Available Categories:</p>
-                <a href="{% url 'products' %}" class="category-badge text-decoration-none">
-                    <span class="p-2 m-2 badge badge-white rounded-0 box-shadow text-black scale">
-                        <i class="fas fa-tag mr-1"></i> View All
-                    </span>
-                </a>
-                {% for category in categories %}
-                    <a href="{% url 'products' %}?category={{category.name}}" class="category-badge text-decoration-none">
-                        <span class="p-2 m-2 badge badge-white rounded-0 box-shadow text-black scale">
-                            <i class="fas fa-tag mr-1"></i> {{category.friendly_name}}
-                        </span>
-                    </a>
-                {% endfor %}
-                <hr class="w-25 mb-2 mx-auto">
             </div>
         </div>
         <div class="row">
             <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2">
                     <!--Sorting Section-->
-                    <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
-                        <div class="sort-select-wrapper w-50">
-                            <select id="sort-selector" class="w-100 custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{%else%}black{%endif%}">
-                                <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-                                <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
-                                <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
-                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
-                                <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
-                                <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
-                                <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
-                                <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
-                                <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 order-md-first">
-                        <p class="text-muted mt-3 text-center text-md-start">
+                    <div class="col-12 col-md-4 my-2 d-flex justify-content-center">
+                        <p class="btn btn-black w-75 custom-select custom-select-sm border-black text-start">
                             {% if search_term or current_categories or current_sorting != 'None_None' %}
                                 {% if current_categories %}
                                     {% for i in current_categories %}
@@ -83,6 +46,38 @@
                             </span>
                         </p>
                     </div>
+                    <div class="col-12 col-md-4 my-2 d-flex justify-content-center">
+                        <div class="dropdown show relative w-75">
+                            <a class="btn btn-black w-100 custom-select custom-select-sm border-black text-start" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Filter by...
+                            </a>
+                            <p class="absolute top-right text-white">
+                                <i class="fas fa-angle-down"></i>
+                            </p>
+                            <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
+                                <a href="{% url 'products' %}" class="dropdown-item">View All</a>
+                                {% for category in categories %}
+                                    <a href="{% url 'products' %}?category={{category.name}}" class="dropdown-item">{{category.friendly_name}}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 my-2 d-flex justify-content-center justify-content-md-end">
+                        <div class="sort-select-wrapper w-75">
+                            <select id="sort-selector" class="btn btn-black w-100 custom-select custom-select-sm border border-{% if current_sorting != 'None_None' %}info{%else%}black{%endif%}">
+                                <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                                <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                                <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
+                                <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
+                                <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                                <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                                <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                                <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="row">
                     {% for product in products %}

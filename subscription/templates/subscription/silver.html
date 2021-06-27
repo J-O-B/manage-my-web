@@ -5,14 +5,11 @@
 {% endblock %}
 
 {% block page_header %}
-    <!--Override Top Margin-->
-{% endblock %}
-
-{% block content %}
-<div id="home-hero" class="row p-5 g-0">
-    <div class="col-12 col-sm-12 col-md-8 col-lg-7 my-5 px-5">
+<div id="home-hero" class="row g-0 relative overflow-hidden">
+    <div class="silver-haze"></div>
+    <div class="col-12 col-sm-12 col-md-8 col-lg-7 py-5 px-2 infront">
         <hr class="mx-5 px-5 w-25">
-        <h1 class="my-5 px-5 logo-font silver-title"><em>silver Plan</em></h1>
+        <h1 class="my-5 px-5 logo-font silver-title"><em>Silver Plan</em></h1>
         <hr class="mx-5 px-5 w-25">
         <p class="small px-5 text-black logo-font">
             <span class="lead">Perfect for</span> - <br>
@@ -21,7 +18,7 @@
             <span class="px-3">Professional Blogs</span>
         </p>
     </div>
-    <div class="col-12 col-sm-12 col-md-4 col-lg-5 my-5 px-5">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-5 py-5 px-2 infront">
         <div class="row included rounded-3">
             <h2 class="silver-title">Included:</h2>
             <div class="col-6">
@@ -47,419 +44,241 @@
             </div>
             <h3 class="h2 silver-title">Price:</h3>
             <p class="infront text-center">
-                <span class="hover-white lead text-warning px-5 price-fade">€1499.99 / Year</span>
+                <span class="hover-white lead silver-title px-5 price-fade">€1499.99 / Year</span>
             </p>
         </div>
     </div>
-    <div class="col-12 text-center">
-        <form action="{% url 'add_to_cart' 13 %}" method="POST">
+    <div class="col-12 pb-3 text-center infront">
+        <form action="{% url 'add_to_cart' 12 %}" method="POST">
             {% csrf_token %}
-            <input type="number" class="hidden" name="quantity" value="1" data-item_id="13" id="id_qty_13">
+            <input type="number" class="hidden" name="quantity" value="1" data-item_id="12" id="id_qty_12">
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
-            <button type="submit" class="btn btn-lg rounded-3 btn-success btn-outline-black px-5 py-3 hover-bg-silver" id="sign-up-btn">
-                Sign Up
+            <button type="submit" class="btn btn-lg rounded-3 btn-success btn-outline-black px-5 py-1 hover-bg-silver" id="sign-up-btn">
+                Buy Now
             </button>
         </form>
-        <p class="h1 silver-down-arrow">
-            <i class="fas fa-chevron-down fa-lg pointer"></i>
-        </p>
     </div>
 </div>
+{% endblock %}
 
-<div class="container-fluid g-0">
-    <div class="row g-0 mb-1 mt-1 w-100 relative" id="description">
-        <div class="col-12 text-center infront pt-5">
-            <h2 class="h1 logo-font silver-title">
-                Why Sign Up For Our silver Plan?
-            </h2>
-        </div>
-        <div class="g-0 h-100 w-100 absolute desc-bg"></div>
-        <div id="descriptionCarousel" class="carousel slide infront" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Custom Domain</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            Each silver plan comes with a custom domain. <br>
-                                            (.com / .net / .org)
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Web Hosting</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            Each silver plan comes with a website hosting. <br>
-                                            (VPS hosting worth €19 p/m)
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Development</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            Each silver plan comes with a professionally 
-                                            built website.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Scripting</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            Each silver plan comes with custom scripts 
-                                            built specifically for you.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Products</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            We don't limit products built on eCommerce 
-                                            websites.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">15 Apps</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            Each silver plan comes with a range of custom
-                                            made apps, such as a checkout or blog.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Payments</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            Each silver plan comes with payment 
-                                            processing, such as Stripe integration.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Social</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            We provide social accounts for all silver 
-                                            clients which interact with your new website.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Email Marketing</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            silver clients will avail of our email marketing 
-                                            scripts, to enable further sales and promotion strategies.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Technical SEO</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            Our websites are built to encompass the best 
-                                            practices in technical SEO.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Analytics</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            All of our websites can easily be tracked 
-                                            via our ongoing analytics to monitor various metrics.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="flip-card my-5 my-5 h-100 w-100 rounded-3 overflow-hidden">
-                                <div class="flip-card-inner box-shadow">
-                                    <div class="flip-card-front p-5">
-                                        <i class="fas fa-at h1 silver-title"></i>
-                                        <h3 class="logo-font silver-title">Graphics</h3>
-                                    </div>
-                                    <div class="flip-card-back p-5">
-                                        <p class="lead text-black">
-                                            silver clients will avail of our graphic designers, 
-                                            providing quality graphics where needed.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{% block content %}
 
-    <div class="row g-0 mb-1 w-100 relative" id="feedback">
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 infront">
-            <div class="feedback-image mb-5 d-flex justify-content-center">
-                <img src="{{MEDIA_URL}}board.jpg" alt="Feedback" class="box-shadow">
-            </div>
-        </div>
-        <div class="absolute feedback-bg w-100 h-100"></div>
-        <div class="col-6 offset-6 infront h-100 text-end" id="feedback-intro">
-            <p class="text-end btn btn-lg btn-outline-black btn-success rounded-3 px-5 py-3" id="start">
-                Read Feedback
-            </p>
-        </div>
-        <div class="col-12 absolute h-100 w-100 py-4 text-center text-white" id="feedback-carousel">
-            <div class="feedback-carousel-bg absolute w-100 h-100"></div>
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="logo-font silver-title h1 mt-5">
-                        Customer Feedback:
-                    </h2>
-                    <div id="feedbackCarousel" class="carousel slide h-100" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#feedbackCarousel" data-slide-to="0" class="active text-white"></li>
-                            <li data-target="#feedbackCarousel" data-slide-to="1" class="text-white"></li>
-                            <li data-target="#feedbackCarousel" data-slide-to="2" class="text-white"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="row mt-3 p-5">
-                                    <p class="h3 logo-font silver-title mt-5">"Great after service"</p>
-                                    <div class="col-6 offset-3">
-                                        <hr>
-                                        <p class="text-white">
-                                            "The after service at Manage My Web is second to none, almost providing an entire IT department 
-                                            that is ready to provide assistance."
-                                        </p>
-                                    </div>
-                                    <p class="text-muted">
-                                        - John O'Brien
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row mt-3 p-5">
-                                    <p class="h3 logo-font silver-title mt-5">"Value For money"</p>
-                                    <div class="col-6 offset-3">
-                                        <hr>
-                                        <p class="text-white">
-                                            "The service offered, against the price of this service is great value for money."
-                                        </p>
-                                    </div>
-                                    <p class="text-muted">
-                                        - John Test
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row mt-3 p-5">
-                                    <p class="h3 logo-font silver-title mt-5">"Test"</p>
-                                    <div class="col-6 offset-3">
-                                        <hr>
-                                        <p class="text-white">
-                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita est 
-                                            reprehenderit vero tempore recusandae voluptates aliquid nulla ducimus 
-                                            pariatur ut numquam, qui mollitia ea deserunt doloribus! Quia ad libero soluta.
-                                        </p>
-                                    </div>
-                                    <p class="text-muted">
-                                        - JohnS Tester
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#feedbackCarousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon text-white" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#feedbackCarousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon text-white" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row g-0 mb-2 w-100 relative" id="contact-silver">
-        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 d-inline align-middle">
-            <div class="contact-image mb-5 infront">
-                <img src="{{MEDIA_URL}}rocket.png" alt="Rocket" class="box-shadow">
-            </div>
-            <h2 class="h1 silver-title logo-font text-center">Want To Know More?</h2>
-            <form method="post" class="mt-5 pt-5">
-                {% csrf_token %}
-                <h3>Drop Us a Message!</h3>
-               <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" name="txtName" class="form-control btn-outline-black mb-1" placeholder="Your Name *" value="" required validate>
-                            <label for="txtName" class="sr-only">Please Enter Your Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="txtEmail" class="form-control btn-outline-black mb-1" placeholder="Your Email *" value="" required validate>
-                            <label for="txtEmail" class="sr-only">Please Enter Your Email</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="number" name="txtPhone" class="form-control btn-outline-black mb-1" placeholder="Your Phone Number *" value="" required>
-                            <label for="txtPhone" class="sr-only">Please Enter Your Phone Number</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="btnSubmit" class="btn btn-lg btn-success btn-outline-black mb-1 w-100" value="Send Message" required>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="txtMsg" class="sr-only">Please enter your message here</label>
-                            <textarea name="txtMsg" class="form-control btn-outline-black mb-1" placeholder="Your Message *" style="width: 100%; height: 175px;" required></textarea>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+<div class="container mt-5">
+    <h2 class="text-dark logo-font underline-success">Why Choose Our Silver Plan?</h2>
+    <p class="small text-black">
+        Our silver plan will provide you, or your business with a turnkey solution to web design, UX design, 
+        Search engine optimization, and customizable development. <br><br>
+        Unlike other web development agencies, we continue to work with you throughout your plan. This essentially 
+        means that you will have direct access to UX designers, web developers, programmers, and search engine 
+        optimization experts throughout your plan.
+    </p>
 </div>
 
+
+<div class="container-fluid g-0 p-0 m-0 w-100 my-3" id="features">
+    <div id="carouselExampleIndicators" class="carousel slide g-0 p-0 m-0" data-ride="carousel">
+        <div class="carousel-inner g-0 bg-dark w-100 text-white">
+            <h2 class="text-center text-white underline-success">Whats Included?</h2>
+            <div class="carousel-item active">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <h2 class="h3 logo-font">Custom Domain</h2>
+                        <p>
+                            Our silver plan comes standard with the inclusion of a custom domain name. This 
+                            custom domain is unique to you and will help form a brand around your new website.
+                        </p>
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/domain.jpg" alt="Domains">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/hosting.jpg" alt="Hosting">
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Hosting</h2>
+                        <p>
+                            As part of your silver plan, Manage My Web will host your new website on one of our 
+                            servers within the EU or USA. We will provide hosting in the area that is most suited 
+                            to you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Web Development</h2>
+                        <p>
+                            Our team of web developers will create the website you ask for. Although we will often 
+                            ask you for your input, we will ultimately walk through this step with you to ensure 
+                            your new website is exactly as you envisaged.
+                        </p>
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/webdev.png" alt="Web Development">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/script.png" alt="Custom Scripting">
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Scripting</h2>
+                        <p>
+                            Where necessary, our development team will generate custom scripts to give your new 
+                            website unbeatable functionality, performance and user experience. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Custom Apps</h2>
+                        <p>
+                            Each of our websites is created in the Django programming framework and can provide 
+                            you with an unmatched level of customizations. Individual apps will form the building blocks 
+                            of your website and help deliver exactly what you are looking for.
+                        </p>
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/apps.png" alt="Custom Built Apps">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/stripe.png" alt="Payment Processing">
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Payment Processing</h2>
+                        <p>
+                            All silver plans can take advantage of payment processing services such as Stripe & PayPal. 
+                            The decision of which service is completely up to you and will be built specific to your 
+                            needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Social Media</h2>
+                        <p>
+                            Each of our silver plan websites will have complete social media coverage. This coverage can 
+                            include bots for auto posting newsletters, or simply the required SEO for social media shares.
+                        </p>
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/sm.png" alt="Social Media Integration">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/email.png" alt="Email Marketing">
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Email Marketing</h2>
+                        <p>
+                            As we target eCommerce, all of our silver plan websites encorporate lead generation methods that 
+                            will quickly grow your email marketing list. These lists can be sorted into categories and other 
+                            defining groups. We also offer the ability to auto generate newsletters, promotions and reminders 
+                            at set intervals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Search Engine Optimization</h2>
+                        <p>
+                            The key to success online is getting noticed. Our silver plan comes with SEO coverage which will help 
+                            generate organic traffic to your website. Advertising campaigns and paid traffic methods are also available 
+                            at an extra cost.
+                        </p>
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/seo.png" alt="Search Engine Optimization">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row py-5 includedRow">
+                    <div class="col-12 col-10 offset-sm-1 col-md-4 offset-md-0 d-flex justify-content-center">
+                        <!--Image-->
+                        <img src="{{MEDIA_URL}}subs/graphic.png" alt="Custom Graphics">
+                    </div>
+                    <div class="col-12 col-10 offset-sm-1 col-md-6 offset-md-1 text-center">
+                        <!--Text-->
+                        <h2 class="h3 logo-font">Graphics</h2>
+                        <p>
+                            Our graphics designers will ensure your new website has the images and icons it needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div> 
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-12 offset-sm-0 col-md-6 offset-md-3 col-lg-4 offset-lg-4 d-flex justify-content-center">
+        <button type="submit" class="btn btn-lg rounded-3 btn-success btn-outline-black px-5 py-1 hover-bg-silver" id="trigger-btn">
+            Buy Now
+        </button>
+    </div>
+</div>
 {% endblock %}
 
 {% block postloadjs %}
 {{block.super}}
 <script type="text/javascript">
-    $('#feedback-carousel').hide();
-    $('#start').click(function(){
-        $('#start').hide();
-        $('#feedback-carousel').fadeIn(3000);
-
+    $('#trigger-btn').click(function(){
+        $('#sign-up-btn').trigger("click");
     })
+    $('img').css('height', "160px").css("width", "auto");
     $('#home-hero').mouseenter(function(){
         $('.title').css("color", "#d4af37").css("transition", "all 1s ease-in-out");
     })
     $('#home-hero').mouseleave(function(){
         $('.title').css("color", "#000").css("transition", "all 1s ease-in-out");
     })
-
-    $('.silver-down-arrow').click(function (e) { 
-        let next_row = $('#description');
-        $('html, body').animate({
-            scrollTop: $(next_row).offset().top - 20
-        }, 'slow');
-    });
-    // Steps section
-    $.fn.isInViewport = function() {
-        let elementTop = $(this).offset().top;
-        let elementBottom = elementTop + $(this).outerHeight();
-
-        let viewportTop = $(window).scrollTop();
-        let viewportBottom = viewportTop + $(window).height();
-
-        return elementBottom > viewportTop && elementTop < viewportBottom;
-    };
-    $(window).on('resize scroll', function() {
-        if ($('#steps').isInViewport()) {
-
-        } else {
-
-        }
-        if ($('#whyList').isInViewport()) {
-
-        }else{
-
-        }
-    });
-
+    $('.includedRow').find('p').addClass('small');
     
 </script>
 
