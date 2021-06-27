@@ -207,10 +207,13 @@
             </div>
         </div>
         <div class="row g-3 my-1">
-            <div class="col-12 col-md-12 col-lg-8 bg-white offset-lg-2 box-shadow">
+            <div class="col-12 col-md-12 col-lg-8 bg-white offset-lg-2 box-shadow relative">
                 <h2 class="text-primary text-center pt-3">
                     {{ product.name|title }} Description:
                 </h2>
+                <div class="collapse-section bg-primary p-2">
+                    <i class="fas fa-angle-down fa-lg"></i>
+                </div>
                 <hr class="pb-1 w-25 mx-auto">
                 <p class="text-black text-justify px-5 small">
                     {{product.description|linebreaksbr}}
@@ -219,10 +222,13 @@
         </div>
         {% if product.plan == 2 %}
         <div class="row g-3 my-1" id="subscription">
-            <div class="col-12 col-md-12 bg-white col-lg-8 offset-lg-2 box-shadow">
+            <div class="col-12 col-md-12 bg-white col-lg-8 offset-lg-2 box-shadow relative">
                 <h2 class="text-primaryk text-center pt-3">
                     Subscription Explained
                 </h2>
+                <div class="collapse-section bg-primary p-2">
+                    <i class="fas fa-angle-down fa-lg"></i>
+                </div>
                 <hr class="pb-1 w-25 mx-auto">
                 <p class="text-black text-justify px-5 small">
                     Subscriptions with Manage My Web is the ultimate option in bringing your business or portfolio online.
@@ -235,10 +241,13 @@
         {% endif %}
 
         <div class="row g-3 my-1" id="detailCarousel">
-            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 pb-2 bg-white box-shadow">
+            <div class="col-12 col-md-12 col-lg-8 offset-lg-2 pb-2 bg-white box-shadow relative">
                 <h2 class="text-primary text-center pt-3">
                     Product Images
                 </h2>
+                <div class="collapse-section bg-primary p-2">
+                    <i class="fas fa-angle-down fa-lg"></i>
+                </div>
                 <hr class="pb-1 w-25 mx-auto">
                 <div id="carouselProductImages" class="carousel slide" data-bs-ride="carousel" data-interval="5000">
                     <div class="carousel-inner product-carousel">
@@ -271,7 +280,6 @@
                             <img src="{{ MEDIA_URL }}noimage.jpg" class="d-block w-100" alt="{{product.name}}">
                         </div>
                         {% endif %}
-                        
                     </div>
                     <a class="carousel-control-prev" href="#carouselProductImages" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -399,7 +407,26 @@
         $('.main-img-holder').find('img').attr('src', image1);
         $(this).removeClass('box-shadow');
     })
+    function includedHeight(){
+        let ratingHeight = $('#rating').outerHeight() + 10;
+        let includedH = $('#included').outerHeight() + 10;
+        if (ratingHeight > includedH){
+            $('#rating').height(ratingHeight);
+            $('#included').height(ratingHeight);
+        } else{
+            $('#rating').height(includedH);
+            $('#included').height(includedH);
+        }
+    }
+    includedHeight();
 
-    $('#rating').height($('#included').height());
+    $('.collapse-section').click(function(){
+        if ($(this).nextAll().is(":visible")){
+            $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
+        }else{
+            $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+        }
+        $(this).nextAll().toggle(1000);
+    })
     </script>
 {% endblock %}
