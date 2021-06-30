@@ -426,7 +426,6 @@
   border: 1px solid #828AF1;
   border-radius: 20px;
   height: 80px;
-  padding-top: 30px;
   color:white;
   font-size: 12px !important;
   margin-bottom: 10px;
@@ -437,11 +436,15 @@
 .cancellation:hover {
   background-color: #d9534f;
   border: 1px solid #f5f5f5;
-  padding-top: 25px;
   text-align: center;
   font-size: 16px !important;
   cursor: pointer;
   transition: all 0.5s linear;
+}
+
+.cancellation button{
+  background: rgba(0,0,0,0);
+  border: 0;
 }
 
 
@@ -461,3 +464,5 @@
   margin-bottom: 20px;
   
 }
+
+/********************/

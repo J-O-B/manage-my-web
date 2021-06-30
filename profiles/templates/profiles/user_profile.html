@@ -222,19 +222,26 @@
                     <div class="row">
                         <p class="lead h4 text-black text-center">You Have Purchased {{line_items|length}} {% if line_items|length == 1 %}Item{% else %}Items{% endif %}</p>
                         <p class="lead h4 text-black text-center">Total Spent: {{ price }} <span class="small">*Excl. Tax</span></p>
+
+
                         {% for line in line_items %}
-                            <div class="col-12 col-sm-6 col-lg-4 g-3 rounded-3 overflow-hidden">
+                        <!--
+
+                            Carousel with .d-none .lg-block (2 items)
+                            Carousel with d.lg-none (1 item)
+                        -->
+                            <div class="col-12 col-sm-12 col-lg-6 g-3 rounded-3 overflow-hidden">
                                 <div class="orderContainer">
                                     <div class="header">
-                                      <div class="order-summary">
-                                        <div class="order-status">Order date:</div>
-                                        <div class="order-date">
-                                            {{line.order.date|naturaltime}}
+                                        <div class="order-summary">
+                                            <div class="order-status">Order date:</div>
+                                            <div class="order-date">
+                                                {{line.order.date|naturaltime}}
+                                            </div>
+                                            <div class="order-day">
+                                                {{line.order.date.date}}
+                                            </div>
                                         </div>
-                                        <div class="order-day">
-                                            {{line.order.date.date}}
-                                        </div>
-                                      </div>
                                     </div>
                                     <div class="hero-img-container">
                                         <div class="triangle1"></div>
@@ -293,49 +300,137 @@
                                         </div>
                                     </div>
                                     <div class="order-details-container">
-                                      <div class="odc-header">
-                                      <div class="cta-text">See your product details</div>
-                                      <div class="cta-button-container">
-                                        <button class="cta-button">View</button>
-                                      </div>
-                                      </div>
-                                      <div class="odc-wrapper">
-                                      <div class="odc-header-line">
-                                        Your order details
-                                      </div>
-                                      <div class="odc-header-details">
-                                        Order Product Details
-                                      </div>
-                                      <div class="product-container">
-                                        <div class="product">
-                                          <div class="product-photo">
-                                            <img src="https://s3.eu-central-1.amazonaws.com/sneakerjagers.com/products/396x396/92074.jpg" class="img-photo">
-                                          </div>
-                                          <div class="product-desc">
-                                            <span>{{line.product.name|title}}</span>
-                                            <span>${{line.lineitem_total}}</span>
-                                          </div>
+                                        <div class="odc-header">
+                                            <div class="cta-text">See your product details</div>
+                                            <div class="cta-button-container">
+                                                <button class="cta-button">View</button>
+                                            </div>
+                                        </div>
+                                        <div class="odc-wrapper">
+                                            <div class="odc-header-line">
+                                                Your order details
+                                            </div>
+                                            <div class="odc-header-details">
+                                                Order Product Details
+                                            </div>
+                                            <div class="product-container">
+                                                <div class="product">
+                                                    <div class="product-photo">
+                                                        <img src="https://s3.eu-central-1.amazonaws.com/sneakerjagers.com/products/396x396/92074.jpg" class="img-photo">
+                                                    </div>
+                                                    <div class="product-desc">
+                                                        <span>{{line.product.name|title}}</span>
+                                                        <span>${{line.lineitem_total}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="cancellation">
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="h-100 w-100 canBtn text-white" data-toggle="modal" data-target="{{line.order.date}}{{line.product}}">
+                                                    Request {% if line.delivered %}Refund{% else %}Cancellation{% endif %}?
+                                                </button>
+                                            </div>
+                                            <div class="shipping-desc">Delivering To</div>
+                                            <div class="shipping-address text-wrap">
+                                                <p class="text-center">
+                                                    <span class="py-1 fst-italic">{{line.order.full_name}},</span><br>
+                                                    <span class="py-1 fst-italic">{{line.order.street_address1}}, </span>
+                                                    <span class="py-1 fst-italic">{{line.order.town_or_city}},</span><br>
+                                                    <span class="py-1 fst-italic">{{line.order.postcode}},</span><br>
+                                                    <span class="py-1 fst-italic">{{line.order.country.name}}</span><br><br>
+                                                    <span class="pt-2">{{line.order.email}}</span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="cancellation">
-                                        <p class="my-auto">Request Cancellation?</p>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="{{line.order.date}}{{line.product}}" tabindex="-1" role="dialog" aria-labelledby="{{line.order.date}}{{line.product}}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Request {% if line.delivered %}Refund{% else %}Cancellation{% endif %} - {{line.product|title}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body bg-white">
+                                            <div class="row">
+                                                <div class="col-12 text-center canStepOne">
+                                                    <h3 class="text-black">
+                                                        {% if line.delivered %}Refund{% else %}Cancellation{% endif %} Request
+                                                    </h3>
+                                                    <hr class="mx-auto w-50">
+                                                    <p class="my-4 text-black">
+                                                        Please Confirm You Wish To Proceed?
+                                                        <br>
+                                                        <span class="small">
+                                                            By Clicking 'Yes' You Will Start The Cancellation 
+                                                            Process Of The Following Product: <br>
+                                                            <i class="fas fa-caret-right"></i> {{line.product|title}}
+                                                        </span>
+                                                    </p>
+                                                    <div class="row d-flex justify-content-center">
+                                                        <span class="mx-2 px-3 py-1 btn btn-success w-25" data-dismiss="modal">No</span>
+                                                        <span class="mx-2 btn btn-md btn-black rounded-3 w-25 w-25 next-step">Yes</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 canStepTwo text-center">
+                                                    <form action="">
+                                                        <h3 class="text-black">Please Confirm Your Details:</h3>
+                                                        <hr class="mx-auto w-50">
+                                                        <div class="row d-flex justify-content-around px-1 my-1">
+                                                            <div class="col-6">
+                                                                <label for="name{{line.order.date}}{{line.product}}">Full Name</label>
+                                                                <input type="text" id="name{{line.order.date}}{{line.product}}" name="name{{line.order.date}}{{line.product}}" class="form-control btn-outline-black" placeholder="{{line.order.full_name|title}}">
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for="{{line.order.phone_number}}{{line.product}}">Phone Number</label>
+                                                                <input type="number" id="{{line.order.phone_number}}{{line.product}}" name="{{line.order.phone_number}}{{line.product}}" class="form-control btn-outline-black" placeholder="{{line.order.phone_number}}">
+                                                            </div>
+                                                        </div>
+                                        
+                                                        <div class="row d-flex justify-content-around px-1 my-1">
+                                                            <div class="col-6">
+                                                                <label for="product{{line.order.date}}">Product</label>
+                                                                <input type="text" name="product{{line.order.date}}" id="product{{line.order.date}}" class="form-control btn-outline-black" placeholder="{{line.product|title}}" readonly>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label for="orderdate{{line.order.date}}">Order Date</label>
+                                                                <input type="text" name="orderdate{{line.order.date}}" id="orderdate{{line.order.date}}" class="form-control btn-outline-black" placeholder="{{line.order.date.date}}" readonly>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row d-flex justify-content-around px-1 my-1">
+                                                            <div class="col-12">
+                                                                <label for="{{line.order.email}}{{line.product}}{{line.order.date}}">Email</label>
+                                                                <input type="email" name="email{{line.order.email}}{{line.product}}{{line.order.date}}" id="{{line.order.email}}{{line.product}}{{line.order.date}}" class="form-control btn-outline-black" placeholder="{{line.order.email}}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row d-flex justify-content-around px-1 my-1">
+                                                            <div class="col-12">
+                                                                <label for="text{{line.order.date}}{{line.product}}">{% if line.delivered %}Refund{% else %}Cancellation{% endif %} Reason</label>
+                                                                <textarea class="form-control" id="text{{line.order.date}}{{line.product}}" rows="3" placeholder="Please provide a reason for this request. The more details you can provide, the higher the possibility of successful {% if line.delivered %}refund{% else %}cancellation{% endif %}."></textarea>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+                                                    <div class="row d-flex justify-content-center my-3">
+                                                        <span class="mx-2 btn btn-md btn-black rounded-3 w-25 prev-step"><i class="fas fa-chevron-left"></i> Previous</span>
+                                                        <span class="mx-2 btn btn-md btn-danger rounded-3 w-25">Submit <i class="fas fa-chevron-right"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer canFooter">
+                                        <button type="button" class="btn btn-secondary btn-outline-black" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
-                                      
-                                      <div class="shipping-desc">Delivering To</div>
-                                      
-                                    <div class="shipping-address text-wrap">
-                                        <p class="text-center">
-                                            <span class="py-1 fst-italic">{{line.order.full_name}},</span><br>
-                                            <span class="py-1 fst-italic">{{line.order.street_address1}}, </span>
-                                            <span class="py-1 fst-italic">{{line.order.town_or_city}},</span><br>
-                                            <span class="py-1 fst-italic">{{line.order.postcode}},</span><br>
-                                            <span class="py-1 fst-italic">{{line.order.country.name}}</span><br><br>
-                                            <span class="pt-2">{{line.order.email}}</span>
-                                        </p>
                                     </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
@@ -453,6 +548,24 @@
     $(document).ready(function(){
         mainPageWrap();
         sideMenuOptions();
+    });
+    $('.canBtn').click(function(){
+        let target = $(this).data('target');
+        $(this).closest('.orderContainer').siblings('.modal').modal('toggle');
+    })
+    $('.canStepTwo').hide();
+    $('.canFooter').hide();
+    $('.next-step').click(function(){
+        let top = $(this).closest('.modal-body');
+        $(top).find('.canStepOne').toggle(1000);
+        $(top).find('.canStepTwo').toggle(1000);
+        $(top).siblings('.canFooter').toggle(1500);
+    })
+    $('.prev-step').click(function(){
+        let top = $(this).closest('.modal-body');
+        $(top).find('.canStepOne').toggle(1000);
+        $(top).find('.canStepTwo').toggle(1000);
+        $(top).siblings('.canFooter').toggle(1500);
     })
     function equalHeight(height){
         $('#menu').css('height', height).css("vertical-align", 'middle');
