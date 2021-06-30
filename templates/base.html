@@ -297,9 +297,8 @@
                     </h3>
                     <p class="text-capitalize text-center">
                         We Use Cookies To ensure the functionality of this website.
-                        Should you wish to know more, please view our <a href="#" class="text-decoration-none">cookie policy</a>& <a href="#" class="text-decoration-none">privacy policy</a><br>
-                        By clicking accept, you agree to our policies. <br>
-                        {{ consent }}
+                        Should you wish to know more, please view our <a href="{% url 'policy' %}" class="text-black underline-success">policy page</a>.
+                        By clicking accept, you agree to our policies.
                     </p>
                     <div class="w-100 text-end">
                         <a href="#" class="btn btn-success btn-lg" id="cookie-accept">Accept</a>
@@ -338,14 +337,20 @@
                     document.cookie = cname + "=" + cvalue + "; " + expires;
                 }
                 $('#cookie-accept').click(function(e){
-                    setCookie("MMWconsent", "accepted", 7)
+                    // 90 Day Cookie
+                    setCookie("MMWconsent", "accepted", 90)
                     $('.cookie-container').fadeOut(500);
                 })
                 $('.popup-haze').height($(document).height());
+                
+                $('.popup-haze').click(function(){
+                    $('.cookie-message').css('transform', 'scale(1.1,1.1)').then(
+                        $('.cookie-message').css('transform', 'scale(1,1)'));
+                });
                 $('#chatFormContain').hide();
                 $('#restartChat').click(function(){
                     $('#chatFormContain').hide();
-                })
+                });
                 $('.btt-link').click(function(e){
                     window.scrollTo(0,0);
                 });

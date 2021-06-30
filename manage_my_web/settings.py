@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     # Crispy Forms
     'crispy_forms',
 
+    # Natural Time
+    'django.contrib.humanize',
+
     # My apps
     'home',
     'products',
