@@ -22,8 +22,12 @@ def after_login(request):
     except UserProfile.DoesNotExist:
         profile = False
     if profile:
-        messages.success(
-            request, f'Welcome back {profile.full_name}.')
+        if profile.full_name:
+            messages.success(
+                request, f'Welcome back {profile.full_name}.')
+        else:
+            messages.success(
+                request, f'Welcome back!')
     else:
         messages.info(
             request, 'Welcome back {user}. It seems like your profile is incomplete, please \

@@ -760,7 +760,7 @@
     function tax (){
         $('.taxSpent').each(function(){
             let value = $(this).text();
-            let tax = value * {{tax}};
+            let tax = (value * {{tax}});
             $(this).text(tax.toFixed(2));
         })
     }
