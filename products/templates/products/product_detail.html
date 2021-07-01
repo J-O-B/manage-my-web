@@ -187,15 +187,17 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-2">
+                                        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
                                             <span class="icon">
                                                 <i class="fas fa-chevron-left"></i>
                                             </span>
                                             <span class="text-uppercase">Keep Shopping</span>
                                         </a>
-                                        <button type="submit" class="btn btn-primary btn-outline-black rounded-0 text-uppercase mt-2" {% if product.available < 1 %}disabled{%endif%}>
-                                            <i class="fas fa-cart-plus fa-lg"></i> 
+                                        <button type="submit" class="btn btn-primary btn-outline-black rounded-0 text-uppercase mt-5" {% if product.available < 1 %}disabled{%endif%}>
                                             <span class="text-uppercase">Add To Cart</span>
+                                            <span class="icon">
+                                                <i class="fas fa-chevron-right"></i>
+                                            </span>
                                         </button>
                                     </div>
                                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -232,20 +234,38 @@
                     </div>
                     <hr class="pb-1 w-25 mx-auto">
                     <div class="row">
-                        <h5 class="text-primary underline-success text-center py-2">
+                        <h3 class="text-primary underline-success text-center py-2">
                             Comparison:
-                        </h5>
-                        <div class="col-6">
+                        </h3>
+                        <div class="col-4">
                             <h6 class="underline-success text-center">{{product.name}}</h6>
-                            <p class="text-muted text-center small">
-                                {{product.included|linebreaksbr}}
-                            </p>
+                            <div class="row border-right">
+                                {% for i in included %}
+                                        <p class="text-muted text-center small">
+                                            {{i}}
+                                        </p>
+                                {% endfor %}
+                            </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-8">
                             <h6 class="underline-success text-center">{{product.upsell_target.name}}</h6>
-                            <p class="text-primary text-center small">
-                                {{product.upsell_target.included|linebreaksbr}}
-                            </p>
+                            <div class="row">
+                                {% for c in comparison %}
+                                    {% if forloop.counter|divisibleby:2 %}
+                                        <div class="col-6 m-0">
+                                            <p class="text-black small">
+                                                {{c}}
+                                            </p>
+                                        </div>
+                                    {% else %}
+                                        <div class="col-6 text-end">
+                                            <p class="text-black small">
+                                                {{c}} <i class="far fa-check-circle text-primary px-5"></i>
+                                            </p>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
                         </div>
                         <a href="{% url 'product_detail' product.upsell_target.id %}" class="btn btn-primary btn-outline-black btn-md w-25 mx-auto mb-3">Go For Premium</a>
                     </div>
@@ -254,7 +274,7 @@
         {% endif %}
 
 
-        {% if product.preview_url %}
+        {% if product.preview %}
             <div class="row g-3 my-1">
                 <div class="col-12 col-md-12 col-lg-8 bg-white offset-lg-2 box-shadow relative">
                     <h2 class="text-primary text-center pt-3">
@@ -264,14 +284,14 @@
                         <i class="fas fa-angle-down fa-lg"></i>
                     </div>
                     <hr class="pb-1 w-25 mx-auto">
-                    <iframe src="{{product.preview_url}}" width="100%" height="500px" frameborder="0"></iframe>
+                    <iframe src="{{product.preview}}" width="100%" height="500px" frameborder="0"></iframe>
                 </div>
             </div>
         {% endif %}
         {% if product.plan == 2 %}
         <div class="row g-3 my-1" id="subscription">
             <div class="col-12 col-md-12 bg-white col-lg-8 offset-lg-2 box-shadow relative">
-                <h2 class="text-primaryk text-center pt-3">
+                <h2 class="text-primary text-center pt-3">
                     Subscription Explained
                 </h2>
                 <div class="collapse-section bg-primary p-2">
@@ -369,9 +389,21 @@
                                 Whats Included?
                             </h2>
                             <hr class="pb-1 w-25 mx-auto">
-                            <p class="text-black text-center small px-1">
-                                {{product.included|linebreaksbr}}
-                            </p>
+                            {% if included|length > 10 %}
+                                <div class="row">
+                                    {% for i in included %}
+                                    <div class="col-6">
+                                        <span class="small text-black"><i class="far fa-check-circle text-primary"></i> {{i}}</span>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="row">
+                                    {% for i in included %}
+                                        <p class="small text-black text-center"><i class="far fa-check-circle text-primary"></i> {{i}}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -455,6 +487,7 @@
         $('.main-img-holder').find('img').attr('src', image1);
         $(this).removeClass('box-shadow');
     })
+
     function includedHeight(){
         let ratingHeight = $('#rating').outerHeight() + 10;
         let includedH = $('#included').outerHeight() + 10;

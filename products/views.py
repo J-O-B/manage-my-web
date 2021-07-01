@@ -177,11 +177,19 @@ for your query. We have emailed a copy of your request to: \
 
         except Exception as e:
             messages.error(request, f"An error occurred: {e}")
-    
 
-
+    try:
+        included = product.included.split(",")
+    except Exception:
+        included = []
+    try:
+        comparison = product.upsell_target.included.split(",")
+    except Exception:
+        comparison = []
     template = 'products/product_detail.html'
     context = {
+        'included': included,
+        'comparison': comparison,
         'product': product,
         'saving': saving,
         'rating': rating,
