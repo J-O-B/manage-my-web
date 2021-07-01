@@ -27,11 +27,18 @@ class Product(models.Model):
         (1, "No"),
         (2, "Yes"),
     )
+    upsellOptions = (
+        (1, "No"),
+        (2, "Yes"),
+    )
     # Title is for Meta description
     title = models.CharField(max_length=65, null=True, blank=True)
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
     plan = models.IntegerField(choices=planOptions, default=1)
+    has_upsell = models.IntegerField(choices=planOptions, default=1)
+    upsell_target = models.ForeignKey(
+        'Product', null=True, blank=True, on_delete=models.SET_NULL)
     add_date = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=2)
@@ -47,6 +54,7 @@ class Product(models.Model):
         max_digits=6, decimal_places=2, default=0)
     rating_update = models.DateTimeField(null=True, blank=True)
     included = models.TextField()
+    preview_url = models.URLField(max_length=256, null=True, blank=True)
     image_url1 = models.URLField(max_length=1024, null=True, blank=True)
     image1 = models.ImageField(null=True, blank=True)
     image_url2 = models.URLField(max_length=1024, null=True, blank=True)

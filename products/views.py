@@ -177,6 +177,8 @@ for your query. We have emailed a copy of your request to: \
 
         except Exception as e:
             messages.error(request, f"An error occurred: {e}")
+    
+
 
     template = 'products/product_detail.html'
     context = {

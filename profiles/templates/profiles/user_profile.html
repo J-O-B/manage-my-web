@@ -293,49 +293,49 @@
                                         </div>
                                     </div>
                                     <div class="order-details-container">
-                                      <div class="odc-header">
-                                      <div class="cta-text">See your product details</div>
-                                      <div class="cta-button-container">
-                                        <button class="cta-button">View</button>
-                                      </div>
-                                      </div>
-                                      <div class="odc-wrapper">
-                                      <div class="odc-header-line">
-                                        Your order details
-                                      </div>
-                                      <div class="odc-header-details">
-                                        Order Product Details
-                                      </div>
-                                      <div class="product-container">
-                                        <div class="product">
-                                          <div class="product-photo">
-                                            <img src="https://s3.eu-central-1.amazonaws.com/sneakerjagers.com/products/396x396/92074.jpg" class="img-photo">
-                                          </div>
-                                          <div class="product-desc">
-                                            <span>{{line.product.name|title}}</span>
-                                            <span>${{line.lineitem_total}}</span>
-                                          </div>
+                                        <div class="odc-header">
+                                            <div class="cta-text">See your product details</div>
+                                            <div class="cta-button-container">
+                                                <button class="cta-button">View</button>
+                                            </div>
+                                        </div>
+                                        <div class="odc-wrapper">
+                                            <div class="odc-header-line">
+                                                Your order details
+                                            </div>
+                                            <div class="odc-header-details">
+                                                Order Product Details
+                                            </div>
+                                            <div class="product-container">
+                                                <div class="product">
+                                                    <div class="product-photo">
+                                                        <img src="https://s3.eu-central-1.amazonaws.com/sneakerjagers.com/products/396x396/92074.jpg" class="img-photo">
+                                                    </div>
+                                                    <div class="product-desc">
+                                                        <span>{{line.product.name|title}}</span>
+                                                        <span>${{line.lineitem_total}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="cancellation">
+                                                <p class="my-auto">Request Cancellation?</p>
+                                            </div>
+                                      
+                                            <div class="shipping-desc">Delivering To</div>
+                                      
+                                            <div class="shipping-address text-wrap">
+                                                <p class="text-center">
+                                                    <span class="py-1 fst-italic">{{line.order.full_name}},</span><br>
+                                                    <span class="py-1 fst-italic">{{line.order.street_address1}}, </span>
+                                                    <span class="py-1 fst-italic">{{line.order.town_or_city}},</span><br>
+                                                    <span class="py-1 fst-italic">{{line.order.postcode}},</span><br>
+                                                    <span class="py-1 fst-italic">{{line.order.country.name}}</span><br><br>
+                                                    <span class="pt-2">{{line.order.email}}</span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="cancellation">
-                                        <p class="my-auto">Request Cancellation?</p>
-                                    </div>
-                                      
-                                      <div class="shipping-desc">Delivering To</div>
-                                      
-                                    <div class="shipping-address text-wrap">
-                                        <p class="text-center">
-                                            <span class="py-1 fst-italic">{{line.order.full_name}},</span><br>
-                                            <span class="py-1 fst-italic">{{line.order.street_address1}}, </span>
-                                            <span class="py-1 fst-italic">{{line.order.town_or_city}},</span><br>
-                                            <span class="py-1 fst-italic">{{line.order.postcode}},</span><br>
-                                            <span class="py-1 fst-italic">{{line.order.country.name}}</span><br><br>
-                                            <span class="pt-2">{{line.order.email}}</span>
-                                        </p>
-                                    </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
