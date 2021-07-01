@@ -47,6 +47,7 @@ class Product(models.Model):
         max_digits=6, decimal_places=2, default=0)
     rating_update = models.DateTimeField(null=True, blank=True)
     included = models.TextField()
+    preview = models.URLField(max_length=1024, null=True, blank=True)
     image_url1 = models.URLField(max_length=1024, null=True, blank=True)
     image1 = models.ImageField(null=True, blank=True)
     image_url2 = models.URLField(max_length=1024, null=True, blank=True)
