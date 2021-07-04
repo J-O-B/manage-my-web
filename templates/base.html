@@ -52,7 +52,7 @@
             {% endblock %}
                 
                 <!--Icon-->
-                <link rel="icon" type="image/jpg" href=""/>
+                <link rel="icon" type="image/jpg" href="{{MEDIA_URL}}comp.svg"/>
                 
                 <!--Browser Title-->
                 <title>{% block extra_title %}{%endblock%}Manage My Web</title>
@@ -297,8 +297,7 @@
                     </h3>
                     <p class="text-capitalize text-center">
                         We Use Cookies To ensure the functionality of this website.
-                        Should you wish to know more, please view our <a href="{% url 'policy' %}" class="text-black underline-success">policy page</a>.
-                        By clicking accept, you agree to our policies.
+                        Should you wish to know more, please view our <a href="{% url 'policy' %}" class="text-decoration-none underline-success">policy page.</a> By clicking accept, you agree to our policies.
                     </p>
                     <div class="w-100 text-end">
                         <a href="#" class="btn btn-success btn-lg" id="cookie-accept">Accept</a>
@@ -366,7 +365,6 @@
                     clear();
                 })
                 $('.toast').toast('show');
-                console.log($('#content-container').offset().top);
             </script>
 
             <!-- Template Additional Scripts-->

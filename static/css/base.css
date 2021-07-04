@@ -231,6 +231,16 @@ h6,
     width:100%;
     height: 200px;
 }
+
+.product-hover{
+    border: 1px solid #000;
+    box-shadow: 3px 2px 3px rgba(33,33,33,.8), 5px 4px 10px rgba(33,33,33,.4); 
+    transition: all 0.3s ease-in-out;
+}
+.product-hover:hover{
+    border:1px solid rgba(33,33,33,.4);
+    box-shadow: 1px 1px 2px rgba(33,33,33,.1); 
+}
 .product-carousel-img img{
     width: 100%;
     height: auto;
@@ -275,10 +285,16 @@ h6,
 
 .card{
     overflow: hidden !important;
-    background: linear-gradient(180deg, rgba(16,16,16, 1), #f5f5f5) !important;
+    background: #fff;
+}
+.card-body{
+    background-color: #fff;
 }
 .bg-card{
-    background-color: rgba(16,16,16, 0.0);
+    background-color: rgba(16,16,16, 1);
+}
+.bg-blk-success{
+    background: linear-gradient(180deg, rgba(16,16,16, 1) 10%, rgba(40,167,69, 0.9));
 }
 
 #topHeader{

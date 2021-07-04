@@ -252,16 +252,19 @@
                             <div class="row">
                                 {% for c in comparison %}
                                     {% if forloop.counter|divisibleby:2 %}
-                                        <div class="col-6 m-0">
+                                        <div class="col-5 comp">
                                             <p class="text-black small">
                                                 {{c}}
                                             </p>
                                         </div>
                                     {% else %}
-                                        <div class="col-6 text-end">
+                                        <div class="col-5 text-end comp">
                                             <p class="text-black small">
-                                                {{c}} <i class="far fa-check-circle text-primary px-5"></i>
+                                                {{c}} </i>
                                             </p>
+                                        </div>
+                                        <div class="col-2 text-center">
+                                            <i class="far fa-check-circle text-primary"></i>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -308,6 +311,7 @@
         </div>
         {% endif %}
 
+        {% if show_carousel %}
         <div class="row g-3 my-1" id="detailCarousel">
             <div class="col-12 col-md-12 col-lg-8 offset-lg-2 pb-2 bg-white box-shadow relative">
                 <h2 class="text-primary text-center pt-3">
@@ -321,23 +325,23 @@
                     <div class="carousel-inner product-carousel">
                         {% if product.image1 %}
                             <div class="carousel-item active product-carousel-img">
-                                <img src="{{product.image1.url}}" class="d-block w-100" alt="{{product.name}}">
+                                <img src="{{product.image1.url}}" class="d-block w-100 h-100 img-fluid" alt="{{product.name}}">
                             </div>
                             {% if product.image2 %}
                                 <div class="carousel-item product-carousel-img">
-                                    <img src="{{product.image2.url}}" class="d-block w-100" alt="{{product.name}}">
+                                    <img src="{{product.image2.url}}" class="d-block w-100 h-100" alt="{{product.name}}">
                                 </div>
                                 {% if product.image3 %}
                                     <div class="carousel-item product-carousel-img">
-                                        <img src="{{product.image3.url}}" class="d-block w-100" alt="{{product.name}}">
+                                        <img src="{{product.image3.url}}" class="d-block w-100 h-100" alt="{{product.name}}">
                                     </div>
                                     {% if product.image4 %}
                                         <div class="carousel-item product-carousel-img">
-                                            <img src="{{product.image4.url}}" class="d-block w-100" alt="{{product.name}}">
+                                            <img src="{{product.image4.url}}" class="d-block w-100 h-100" alt="{{product.name}}">
                                         </div>
                                         {% if product.image5 %}
                                             <div class="carousel-item product-carousel-img">
-                                                <img src="{{product.image5.url}}" class="d-block w-100" alt="{{product.name}}">
+                                                <img src="{{product.image5.url}}" class="d-block w-100 h-100" alt="{{product.name}}">
                                             </div>
                                         {% endif %}
                                     {% endif %}
@@ -345,7 +349,7 @@
                             {% endif %}
                         {% else %}
                         <div class="carousel-item active">
-                            <img src="{{ MEDIA_URL }}noimage.jpg" class="d-block w-100" alt="{{product.name}}">
+                            <img src="{{ MEDIA_URL }}noimage.jpg" class="d-block w-100 h-100" alt="{{product.name}}">
                         </div>
                         {% endif %}
                     </div>
@@ -360,6 +364,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
 
         <div class="row g-3 my-1">
             <div class="col-12 col-md-12 bg-white col-lg-8 offset-lg-2 pb-2 box-shadow">
@@ -512,6 +517,20 @@
     $('#productPageWrap').hide();
     $(document).ready(function(){
         $('#productPageWrap').fadeIn(1500);
+    })
+    $('.comp').mouseenter(function(){
+        if ($(this).next().hasClass('col-2')){
+            $(this).next().find('i').removeClass('text-primary').addClass('text-success fa-lg');
+        }else{
+            $(this).prev().find('i').removeClass('text-primary').addClass('text-success fa-lg');
+        }
+    })
+    $('.comp').mouseleave(function(){
+        if ($(this).next().hasClass('col-2')){
+            $(this).next().find('i').removeClass('text-success fa-lg').addClass('text-primary');
+        }else{
+            $(this).prev().find('i').removeClass('text-success fa-lg').addClass('text-primary');
+        }
     })
     </script>
 {% endblock %}

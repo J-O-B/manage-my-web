@@ -178,16 +178,28 @@ for your query. We have emailed a copy of your request to: \
         except Exception as e:
             messages.error(request, f"An error occurred: {e}")
 
+    # Convert textbox from admin to a list
     try:
         included = product.included.split(",")
     except Exception:
         included = []
+
+    # If product has upsell item, get the comparisons textbox and convert to list
     try:
         comparison = product.upsell_target.included.split(",")
     except Exception:
         comparison = []
+
+    # Hide the carousel for SEO items
+    seo = ["offpage", "onpage", "technical", "report"]
+    if product.category.name in seo:
+        show_carousel = False
+    else:
+        show_carousel = True
+
     template = 'products/product_detail.html'
     context = {
+        'show_carousel': show_carousel,
         'included': included,
         'comparison': comparison,
         'product': product,
