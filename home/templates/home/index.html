@@ -84,7 +84,7 @@
                     <h3 class="logo-font text-black">
                         We Provide <span class="underline-success">Solutions</span>
                     </h3>
-                    <div class="row mt-lg-5 py-5 align-middle">
+                    <div class="row mt-lg-5 py-5 align-middle" id="firstRowIcons">
                         <div class="col-12 col-sm-10 offset-sm-1 col-md-3 offset-md-0 py-3 px-1" id="showWebDes">
                             <div class="w-100 py-3 pointer">
                                 <div class="w-100 d-flex justify-content-center card-img">
@@ -139,51 +139,22 @@
                             
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12" id="webDes">
-                            <h3 class="logo-font">Web Design</h3>
-                            <div class="w-100 d-flex justify-content-center">
-                                <hr class="w-25 pb-1">
+                    <div class="row" id="secondRowIcons">
+                        <div class="row mt-lg-5 py-5 mx-auto" id="webDes">
+                            <div class="card-img">
+                                <img src="{{MEDIA_URL}}web-design.png" alt="Web design icon">
                             </div>
-                            <p class="text-black">
-                                Our web design teams provide websites that are based on user expectations whilst following the latest 
-                                in UX design and other metrics to help provide a simplistic design, with maximum functionality to 
-                                give your visitors a positive user experience and maintain high levels of satisfaction.
+                            <h2 class="logo-font text-black fst-italic underline-success text-center">Web Design</h2>
+                            <p class="text-black px-3">
+                                Web design is an umbrella term used frequently that contains a variety of various sub categories. The team 
+                                at ManageMyWeb are trained and qualified in all of these sub categories including web graphic design, user 
+                                interface design, programming, various propietary software, UX design and also search engine optimization.
+                                <br>
+                                These areas of expertise allow ManageMyWeb to offer a complete package to web design, providing various 
+                                layers of expertise, to combine into one website that looks, and functions as it should, regardless of viewing 
+                                device.
                             </p>
-                        </div>
-                        <div class="col-12" id="uxDes">
-                            <h3 class="logo-font">UX Design</h3>
-                            <div class="w-100 d-flex justify-content-center">
-                                <hr class="w-25 pb-1">
-                            </div>
-                            <p class="text-black">
-                                Part of our development process includes UX design. This key area of development will allow us to question, 
-                                and provide answers to the 5 planes of UX which will help in delivering a website that is user friendly, 
-                                provides purpose, and meets users expectations, whilst being easy to use and navigate through.
-                            </p>
-                        </div>
-                        <div class="col-12" id="seoDes">
-                            <h3 class="logo-font">SEO</h3>
-                            <div class="w-100 d-flex justify-content-center">
-                                <hr class="w-25 pb-1">
-                            </div>
-                            <p class="text-black">
-                                All websites need some form of SEO to allow search engines gather information on what the website is, who it 
-                                targets, and what it contains. Our websites are all built with SEO in mind, integrating technical SEO from 
-                                the foundations will allow for easy manipulation and implementation of SEO strategies for future traffic targetting.
-                            </p>
-                        </div>
-                        <div class="col-12" id="webDev">
-                            <h3 class="logo-font">Web Development</h3>
-                            <div class="w-100 d-flex justify-content-center">
-                                <hr class="w-25 pb-1">
-                            </div>
-                            <p class="text-black">
-                                Our web developers are well versed in multiple programming languages, this allows us to provide custom development 
-                                features to help provide unmatched website functionality. This flexability in programming languages such as HTML, 
-                                CSS, Javascript, jQuery, Python, Flask, Django and SQL paired with knowledge of machine learning and automation means 
-                                that we can provide website functionality that is seldom found at regular web development agencies.
-                            </p>
+                            <button class="btn btn-primary btn-lg btn-outline-black w-25 mx-auto my-5 backIcons">Back</button>
                         </div>
                     </div>
                 </div>
@@ -278,27 +249,19 @@
 {% block postloadjs %} 
 {{ block.super }}
     <script type="text/javascript">
+    $('#secondRowIcons').hide();
+    $('#showWebDes').click(function(){
+        $('#firstRowIcons').fadeToggle(1000);
+        $('#webDes').show();
+        $('#secondRowIcons').delay(900).fadeToggle(1000);
+    })
+    $('.backIcons').click(function(){
+        $('#secondRowIcons').fadeToggle(1000);
+        $('#firstRowIcons').delay(900).fadeToggle(1000);
         $('#webDes').hide();
-        $('#uxDes').hide();
-        $('#seoDes').hide();
-        $('#webDev').hide();
-        
-        $('#showWebDes').click(function(){
-            $('#webDes').siblings().slideUp();
-            $('#webDes').slideDown(1500);
-        });
-        $('#showUxDes').click(function(){
-            $('#uxDes').siblings().slideUp();
-            $('#uxDes').slideToggle(1500);
-        });
-        $('#showSeo').click(function(){
-            $('#seoDes').siblings().slideUp();
-            $('#seoDes').slideToggle(1500);
-        });
-        $('#showWebDev').click(function(){
-            $('#webDev').siblings().slideUp();
-            $('#webDev').slideToggle(1500);
-        });
+        $('#webDes').siblings().hide();
+    })
+
     // Typing Effect
         let TxtType = function(el, toRotate, period) {
             this.toRotate = toRotate;

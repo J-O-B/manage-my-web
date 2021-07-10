@@ -5,6 +5,7 @@ from .models import Product, Category
 from django.db.models.functions import Lower
 from datetime import datetime
 from django.core.mail import send_mail
+from contact.models import EmailMarketing
 
 
 def all_products(request):
@@ -159,8 +160,8 @@ def product_detail(request, product_id):
             send_mail(
                 f'{first_name} {last_name} Would Like {subject}',
                 f'Message: {message}',
-                f'Reply To: {email}',
-                ['jonathanobrien@outlook.ie'],
+                f'{email}',
+                ['Admin@ManageMyWeb.org'],
                 fail_silently=False,
             )
             send_mail(
@@ -174,6 +175,14 @@ one of our agents will get back to you shortly',
             messages.success(request, f"Thank you {first_name} {last_name} \
 for your query. We have emailed a copy of your request to: \
 {email}. One of our team will get back to you shortly.")
+
+            # Add User To Marketing List
+            db = EmailMarketing(
+                users_name=str(first_name) + " " + str(last_name), 
+                email=str(email),
+                category="Interested In: " + str(product.category)
+                )
+            db.save()
 
         except Exception as e:
             messages.error(request, f"An error occurred: {e}")
