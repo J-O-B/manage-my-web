@@ -69,19 +69,19 @@
 
                 <!--Image Backgrounds-->
                 <div class="profile-btn-background" id="profile-card-background">
-                    <img class="h-100 w-100" src="{{ MEDIA_URL }}profile-btn.jpg" alt="Several unopened doors">
+                    <img class="h-100 w-100" src="{{ MEDIA_URL }}profile-btn.jpg" alt="Person Thinking">
                 </div>
                 <div class="profile-btn-background" id="seo-background">
                     <img class="h-100 w-100" src="{{ MEDIA_URL}}seo-btn.jpg" alt="Several unopened doors">
                 </div>
                 <div class="profile-btn-background" id="website-profile-background">
-                    <img class="h-100 w-100" src="{{ MEDIA_URL}}websites-btn.jpg" alt="Several unopened doors">
+                    <img class="h-100 w-100" src="{{ MEDIA_URL}}websites-btn.jpg" alt="Laptop image">
                 </div>
                 <div class="profile-btn-background" id="orders-profile-background">
-                    <img class="h-100 w-100" src="{{ MEDIA_URL}}receipt.jpg" alt="Several unopened doors">
+                    <img class="h-100 w-100" src="{{ MEDIA_URL}}receipt.jpg" alt="Picture of a receipt">
                 </div>
                 <div class="profile-btn-background" id="rating-profile-background">
-                    <img class="h-100 w-100" src="{{ MEDIA_URL}}rating.jpg" alt="Several unopened doors">
+                    <img class="h-100 w-100" src="{{ MEDIA_URL}}rating.jpg" alt="Stars on building">
                 </div>
 
                 <!--Buttons-->
@@ -116,8 +116,8 @@
                     </div>
                     <div class="row relative infront">
                         <div class="col-6 offset-3 text-center">
-                            <a href="" class="btn btn-lg btn-black p-2 my-2 border w-100 mb-5" id="meeting-profile-btn">
-                                Schedule Meeting
+                            <a href="" class="btn btn-lg btn-black p-2 my-2 border w-100 mb-5" id="rating-profile-btn">
+                                Rate Your Orders
                             </a>
                         </div>
                     </div>
@@ -612,7 +612,7 @@
                 $('#orders-profile').siblings().hide();
                 $('#orders-profile').show(200);
             })
-            $('#meeting-profile-btn').click(function(e){
+            $('#rating-profile-btn').click(function(e){
                 e.preventDefault();
                 $('#main-profile-page-wrap').hide(200);
                 $('#edit-profile').show(500);
@@ -671,11 +671,11 @@
             $('#orders-profile-background').fadeOut(300);
             $('#main-profile-page-wrap').css('background', '#f5f5f5');
         })
-        $('#meeting-profile-btn').mouseenter(function(){
+        $('#rating-profile-btn').mouseenter(function(){
             $('#rating-profile-background').fadeIn(300);
             $('#main-profile-page-wrap').css('background', '#333333').css('transition', 'all 2s ease-in-out');
         })
-        $('#meeting-profile-btn').mouseleave(function(){
+        $('#rating-profile-btn').mouseleave(function(){
             $('#rating-profile-background').fadeOut(300);
             $('#main-profile-page-wrap').css('background', '#f5f5f5');
         })

@@ -8,10 +8,10 @@
 <div id="home-hero" class="row g-0 relative overflow-hidden">
     <div class="silver-haze"></div>
     <div class="col-12 col-sm-12 col-md-8 col-lg-7 py-5 px-2 infront">
-        <hr class="mx-5 px-5 w-25">
-        <h1 class="my-5 px-5 logo-font silver-title"><em>Silver Plan</em></h1>
-        <hr class="mx-5 px-5 w-25">
-        <p class="small px-5 text-black logo-font">
+        <hr class="mx-auto w-25 mt-5">
+        <h1 class="my-5 logo-font silver-title text-center"><em>Silver Plan</em></h1>
+        <hr class="mx-auto w-25">
+        <p class="small px-5 text-black logo-font text-center">
             <span class="lead">Perfect for</span> - <br>
             <span class="px-3">eCommerce</span> <br>
             <span class="px-3">News Websites</span> <br>
@@ -19,7 +19,7 @@
         </p>
     </div>
     <div class="col-12 col-sm-12 col-md-4 col-lg-5 py-5 px-2 infront">
-        <div class="row included rounded-3">
+        <div class="row included rounded-3 mt-5">
             <h2 class="silver-title">Included:</h2>
             <div class="col-6">
                 <p class="infront text-black">
@@ -27,9 +27,7 @@
                     <span class="hover-white"><i class="far fa-check-circle"></i> Complimentary Hosting</span><br>
                     <span class="hover-white"><i class="far fa-check-circle"></i> Web Development</span><br>
                     <span class="hover-white"><i class="far fa-check-circle"></i> Custom Scripting</span><br>
-                    <span class="hover-white"><i class="far fa-check-circle"></i> Unlimited Products</span><br>
-                    <span class="hover-white"><i class="far fa-check-circle"></i> Up To 15 Apps*</span><br>
-                    <span class="hover-white"><i class="far fa-check-circle"></i> Stripe Integration</span><br>
+                    <span class="hover-white"><i class="far fa-check-circle"></i> Personalized Email</span><br>
                 </p>
             </div>
             <div class="col-6">
@@ -38,20 +36,19 @@
                     <span class="hover-white"><i class="far fa-check-circle"></i> Email Marketing Lists</span><br>
                     <span class="hover-white"><i class="far fa-check-circle"></i> Technical SEO</span><br>
                     <span class="hover-white"><i class="far fa-check-circle"></i> On Page SEO</span><br>
-                    <span class="hover-white"><i class="far fa-check-circle"></i> Off Page SEO</span><br>
                     <span class="hover-white"><i class="far fa-check-circle"></i> Graphics</span>
                 </p>
             </div>
             <h3 class="h2 silver-title">Price:</h3>
             <p class="infront text-center">
-                <span class="hover-white lead silver-title px-5 price-fade">€1499.99 / Year</span>
+                <span class="hover-white lead silver-title px-5 price-fade">€999.99 / Year</span>
             </p>
         </div>
     </div>
     <div class="col-12 pb-3 text-center infront">
-        <form action="{% url 'add_to_cart' 12 %}" method="POST">
+        <form action="{% url 'add_to_cart' 22 %}" method="POST">
             {% csrf_token %}
-            <input type="number" class="hidden" name="quantity" value="1" data-item_id="12" id="id_qty_12">
+            <input type="number" class="hidden" name="quantity" value="1" data-item_id="22" id="id_qty_22">
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
             <button type="submit" class="btn btn-lg rounded-3 btn-success btn-outline-black px-5 py-1 hover-bg-silver" id="sign-up-btn">
                 Buy Now
