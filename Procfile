@@ -1,0 +1,1 @@
+web: gunicorn managa_my_web.wsgi:application

@@ -233,6 +233,7 @@ To avoid a scenario where a user, or a combination of users could order too many
 * Webhooks.
 * Automated Chat.
 * Product Search.
+* iFrame Product Previews (Websites - "Personal Portfolio Website" for example has this feature.)
 * Product Sorting.
 * Product Backlog Prevention.
 * Admin Panel.
@@ -260,8 +261,6 @@ Items that have been included in the scope of this project, but have not yet bee
     This feature is almost functional, and uses a rest api that I have created in an external flask application, to take in user data, such as website name and other features, before generating a website pack. This pack includes a static html document, as well as the relevant CSS and Javascript. 
 
     
-
-
 ------------------
 ## **Technologies Used**
 
@@ -372,10 +371,7 @@ To ensure responsive design I have used [Responsive Design](http://ami.responsiv
 ## **Deployment**
 
 ### Requirements To Deploy:
-- Python3
-- Github account
-- 
-- Heroku account
+- Amazon AWS Account
 
 ### Cloning This Project:
 To create a clone, follow the following steps.
@@ -385,19 +381,10 @@ To create a clone, follow the following steps.
 3. Click “Open with GitHub Desktop” and follow the prompts in the GitHub Desktop Application or follow the instructions from [GitHub](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to see how to clone the repository in other ways.
 
 #### To Work With Your Local Clone:
-1. Install all the requirements: Go to the workspace of your local copy. In the terminal window of your IDE type: 
-> pip3 install -r requirements.txt.
-2. Create your database in MongoDB.
-    1. Signup Or Login For [MongoDB](https://www.mongodb.com/)
-    2. Create a cluster as well as a database.
-    3. Create the following collections in the Database:
-        1. comments
-        2. messages
-        3. products
-        4. recipes
-        5. tickets
-        6. users
-> Database Architectures Can Be Found [Here](assets/readme/infoArc.md)
+1. A
+2. b
+3. c
+
 3. Create environment variables (env.py):
     1. Create a .gitignore file in the root directory of the project.
     2. Create a file in the root directory called "env.py". This will contain all of your envornment variables. Your env.py file should look similar to the following:
@@ -416,7 +403,7 @@ To create a clone, follow the following steps.
     3. Add "env.py" to your .gitignore file.
     4. Finally to run the app, open a terminal and type "python3 app.py" and run the application.
 
-### Deploying To Heroku
+### Deploying To AWS (Amazon Web Services)
 
 To deploy our application on Heroku, we are required to have a requirements.txt file as well as a Procfile. These files will allow Heroku understand 
 what dependencies are required to run the application, as well as tell Heroku which file to run, to launch the application.
@@ -455,28 +442,20 @@ This project, although pieced together by myself, incorporates images, video, so
     
 
 ### <ins>**_Media:_**</ins>
-1. Smoke - [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/abstract-smoke-background-swirl-69124/)
-2. Fire - [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/flames-black-red-yellow-fire-1645399/)
-3. Logo - [Pixabay Stock & Royalty Free Image](https://pixabay.com/vectors/chef-cook-wink-perfect-uniform-29205/)
-4. Recipe Photos - Recipes added by admin originate from BBC good food and can be found by searching for the name of recipe.
-5. Wood - [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/wood-floor-backdrop-background-1866667/)
-6. Starters Card: [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/dakos-tomato-olives-olive-oil-3538425/)
-7. Main Card: [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/fry-up-paella-pan-frying-pan-fry-285360/)
-8. Desserts Card: [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/cupcakes-dessert-frosting-food-690040/)
-9. Drinks Card: [Pixabay Stock & Royalty Free Image](https://pixabay.com/photos/bar-beverage-cocktail-drink-glass-1839361/)
+
 
 
 ### <ins>**_Content:_**</ins>
-> All text content is my own, with the exception of recipes added by "Admin" and product descriptions which originate from 
-both BBC Good Food, and Amazon. Recipes have not been altered from their original, to see original versions, please copy a 
-recipe name, and search on BBC good food for the original copies.
+> All text content is my own, with the exception of:
+1. Quotes in footer - All of which are cited, please check live website or source code for individual quotes & authors.
+2. Mock websites - Websites contained within iFrames use template websites that are available for download via [FreeCSS](https://www.free-css.com/free-css-templates). These templates remain the property of their respective authors. 
 
 ### <ins>**Code:**</ins>
-> Pagination code prior to editing was posted on [Stack Overflow](https://stackoverflow.com/questions/6726896/how-to-make-jquery-pagination)
->
-> Card "flip" used on recipe pages originally from W3Schools prior to editing.
+All code created in this project is my own, and has been created using prior knowledge, as well as picking ideas from [StackOverflow](stackoverflow.com)
 
-*I have used W3 Schools and StackOverflow when I did not achieve a result, these specific codes are referenced within pages and / or scripts through notation.*
+Payment processing code is closely paired to the [Code Institute](https://codeinstitute.net/) Django tutorial, but changed to match the needs of this project.
+
+*Any code that is a direct copy from W3Schools, or Stackoverflow will include the correct comments. This will be the case in all CSS, Javascript and Python files throughout this project*
 
 ### <ins>**_Acknowledgments:_**</ins>
 I would like to acknowledge my mentor <ins>Caleb Mbakwe</ins> for his guidance and tips during this project.
@@ -484,17 +463,3 @@ I would like to acknowledge my mentor <ins>Caleb Mbakwe</ins> for his guidance a
 ## *Previews:*
 Here are a few previews of Ripe Recipes (mockups from [Am I Responsive](http://ami.responsivedesign.is/))
 
-### Landing Page 
-![Landing Page](assets/readme/Front.jpg)
-
-### Recipe Page
-![Recipe Page](assets/readme/Recipe.jpg)
-
-### Search Page With Results
-![Search Page](assets/readme/search.jpg)
-
-### Store Page
-![Store Page](assets/readme/store.jpg)
-
-### Cart Page
-![Cart Page](assets/readme/cart.jpg)
