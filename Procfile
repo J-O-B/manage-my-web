@@ -1,1 +1,1 @@
-web: gunicorn managa_my_web.wsgi:application
+web: gunicorn manage_my_web.wsgi:application
