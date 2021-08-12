@@ -14,11 +14,11 @@
 
 
 {% block page_header %}
-    <div class="container header-container">
+    <!--<div class="container header-container">
         <div class="row">
             <div class="col"></div>
         </div>
-    </div>
+    </div>-->
 {% endblock %}
 
 
@@ -210,7 +210,7 @@
         </div>
         <div class="row g-3 my-1">
             <div class="col-12 col-md-12 col-lg-8 bg-white offset-lg-2 box-shadow relative">
-                <h2 class="text-primary text-center pt-3">
+                <h2 class="text-primary text-center pt-5">
                     {{ product.name|title }} Description:
                 </h2>
                 <div class="collapse-section bg-primary p-2">
@@ -226,7 +226,7 @@
         {% if product.has_upsell == 2 %}
             <div class="row g-3 my-1">
                 <div class="col-12 col-md-12 col-lg-8 bg-white offset-lg-2 box-shadow relative">
-                    <h2 class="text-primary text-center pt-3">
+                    <h2 class="text-primary text-center pt-5">
                         Prefer To Get The Premium Version?
                     </h2>
                     <div class="collapse-section bg-primary p-2">
@@ -280,7 +280,7 @@
         {% if product.preview %}
             <div class="row g-3 my-1">
                 <div class="col-12 col-md-12 col-lg-8 bg-white offset-lg-2 box-shadow relative">
-                    <h2 class="text-primary text-center pt-3">
+                    <h2 class="text-primary text-center pt-5">
                         {{ product.name|title }} Preview:
                     </h2>
                     <div class="collapse-section bg-primary p-2">
@@ -294,7 +294,7 @@
         {% if product.plan == 2 %}
         <div class="row g-3 my-1" id="subscription">
             <div class="col-12 col-md-12 bg-white col-lg-8 offset-lg-2 box-shadow relative">
-                <h2 class="text-primary text-center pt-3">
+                <h2 class="text-primary text-center pt-5">
                     Subscription Explained
                 </h2>
                 <div class="collapse-section bg-primary p-2">
@@ -314,7 +314,7 @@
         {% if show_carousel %}
         <div class="row g-3 my-1" id="detailCarousel">
             <div class="col-12 col-md-12 col-lg-8 offset-lg-2 pb-2 bg-white box-shadow relative">
-                <h2 class="text-primary text-center pt-3">
+                <h2 class="text-primary text-center pt-5">
                     Product Images
                 </h2>
                 <div class="collapse-section bg-primary p-2">

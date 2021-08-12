@@ -17,10 +17,11 @@
                 Web Design
             </a>
             <div class="dropdown-menu bg-white border-0 px-5 menu-border" aria-labelledby="webdesign-nav">
-                <a href="{% url 'products' %}?category=personal" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Personal</a>
-                <a href="{% url 'products' %}?category=business" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Business</a>
+                <a href="{% url 'products' %}?category=portfolio" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Portfolio</a>
+                <a href="{% url 'products' %}?category=landing_page" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Landing Pages</a>
                 <a href="{% url 'products' %}?category=ecommerce" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> eCommerce</a>
-                <a href="{% url 'products' %}?category=webdesign,personal,business,ecommerce" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> All Web Design</a>
+                <a href="{% url 'products' %}?category=widgets,api,tools" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Web Tools</a>
+                <a href="{% url 'products' %}?category=landing_page,ecommerce,portfolio" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> All Web Design</a>
             </div>
         </li>
 
@@ -29,11 +30,11 @@
                 SEO
             </a>
             <div class="dropdown-menu bg-white border-0 px-5 menu-border" aria-labelledby="seo-nav">
-                <a href="{% url 'products' %}?category=report" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> SEO Reports</a>
-                <a href="{% url 'products' %}?category=technical" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Technical SEO</a>
-                <a href="{% url 'products' %}?category=onpage" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> On Page SEO</a>
-                <a href="{% url 'products' %}?category=offpage" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Off Page SEO</a>
-                <a href="{% url 'products' %}?category=seo,report,technical,onpage,offpage" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> All SEO</a>
+                <a href="{% url 'products' %}?category=full_seo" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Complete SEO</a>
+                <a href="{% url 'products' %}?category=technical_seo" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Technical SEO</a>
+                <a href="{% url 'products' %}?category=on_page_seo" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> On Page SEO</a>
+                <a href="{% url 'products' %}?category=off_page_seo" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> Off Page SEO</a>
+                <a href="{% url 'products' %}?category=technical_seo,on_page_seo,off_page_seo,full_seo" class="dropdown-item hover-success"><i class="fas fa-angle-right"></i> All SEO</a>
             </div>
         </li>
 
