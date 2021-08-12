@@ -30,9 +30,9 @@ if "SECRET_KEY" in os.environ:
     SECRET_KEY = os.environ.get("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['manage-my-web.herokuapp.com', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
