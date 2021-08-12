@@ -1,9 +1,9 @@
 from django.db import models
 
 
-class Category(models.Model):
+class ParentCategory(models.Model):
     class Meta:
-        verbose_name_plural = "Categories"
+        verbose_name_plural = "Parent Categories"
 
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
@@ -13,6 +13,25 @@ class Category(models.Model):
 
     def get_friendly_name(self):
         return str(self.friendly_name)
+
+
+class Category(models.Model):
+    class Meta:
+        verbose_name_plural = "Categories"
+
+    parent_category = models.ForeignKey(
+        'ParentCategory', null=True, blank=True, on_delete=models.SET_NULL)
+    name = models.CharField(max_length=254)
+    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.name)
+
+    def get_friendly_name(self):
+        return str(self.friendly_name)
+    
+    def show_parent(self):
+        return str(self.parent_category)
 
 
 class Product(models.Model):

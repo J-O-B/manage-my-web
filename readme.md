@@ -6,8 +6,8 @@
 Welcome to Manage My Web, an eCommerce website that offers web design, development and SEO products both as individual 
 products, as well as subscription based services.
 
-For this project, I wanted to create the foundations of a project I could continue to develop after finishing my work with 
-Code Institute. This platform has all of the features 
+For this project, I wanted to create the MVP (minimum viable product) of a project I could possibly continue to develop after finishing my studies with 
+Code Institute. 
 
 Further specific information on this project can be found below:
 
@@ -50,7 +50,7 @@ The plan that created Manage My Web was the fact that a lot of web development a
 
 Although individual "products" such as landing pages, and basic front end websites can be purchased as an individual item. Package deals or "plans" are available whereby a user will get all of the required services in one location, from web design to SEO. 
 
-Although the scope of this project includes automation, the website currently has all of the foundations to continue building. Future developments will offload tasks that can be completed via automation, such as SEO reports of a specific webpage, among others.
+Although the scope of this project includes automation, the website currently is at or above its identified MVP point. Future developments will offload tasks that can be completed via automation, such as SEO reports of a specific webpage, among others.
 
 ---------------
 ## **UX**
@@ -62,17 +62,19 @@ This project is highly focussed on the main principles of UX design, including e
 #### ***1. Strategy:***
 > The strategy for this project is to produce a recipe database that users can browse and also promote products via an online store. 
 > 
-> Users will be able to browse recipes by category (starters, mains, desserts, or drinks).
+> Users will be able to browse products by filter (Category, price, name).
 >
-> Users will be able to search for recipes.
+> Users will be able to search for products.
 >
 > Users will be able to create a profile and edit that profile.
 >
-> Users will be able to communicate with other users.
+> Users will be able to communicate with admins.
 >
-> Users will be able to save recipes for future reference.
-
-To expand further on strategy, I have included some user stories. They can be found in the [user stories](#User-Stories) section.
+> Users will be able to rate purchased products.
+>
+> Users will be able to view previously purchased products.
+>
+> Users will be able to see the stage of development of their purchase (from order confirmation to being delivered).
 
 #### ***2. Scope:***
 
@@ -85,12 +87,13 @@ To expand further on strategy, I have included some user stories. They can be fo
 > 6. Users must be provided with contact information, and contact forms.
 > 7. Users must be able to search, sort, and filter products.
 > 8. Users must be able to view more about individual products.
-> 9. Users must be able to quickly add a product from the general products page.
+> 9. Users must be able to quickly add a product directly to their cart from the general products page.
 > 10. Users must be able to view, edit, and remove items in their cart.
 > 11. Users must be provided with receipts after checkout.
 > 12. Users must be provided with a policy page.
 > 13. Users must be provided with a cookie consent popup on initial visit.
 > 14. Users must be able to view tax rates. (currently set to Ireland)
+> 15. Users must not have to click more than 4 times to take them from the homepage, to buying a product.
 
 
 *Content Requirements:*
@@ -142,7 +145,7 @@ To expand further on strategy, I have included some user stories. They can be fo
 The logo for this project is based simply on a photo that was available via [Pixabay](https://pixabay.com)
 
 ### <ins>**_Wireframes_**</ins>
-You can view the wireframe designs [here](assets/readme/RipeWire.pdf)
+You can view the wireframe designs [here](./wireframe.pdf)
 
 The wireframes for this project served as an initial design idea. As more features developed designs have been altered, or 
 changed completely.
@@ -150,10 +153,8 @@ changed completely.
 
 ### <ins>**_User Stories_**</ins>
 
-A full breakdown of user stories and the features created to address them are located in the [Full User Stories](assets/readme/user-stories-features.md) file. Below are the 
-initial, 'founding' user stories.
 
-Being a recipe database and store the following user stories specific to this project are: 
+Being an eCommerce website based on providing web solutions to users, the following user stories specific to this project are: 
 
 | **As the creator I want to:** |
 | ------------------------------------------------------- |
@@ -161,16 +162,22 @@ Being a recipe database and store the following user stories specific to this pr
 |2. *Allow users to sign up.* |
 |3. *Have a database of users who contact us.* |
 |4. *Easily view, edit and delete orders.* |
-|4. *Easily view, edit and delete products.* |
-|4. *Easily view members.* |
+|5. *Easily view, edit and delete products.* |
+|6. *Easily view members.* |
+|6. *Have a list of users for future upselling. (Leads)* |
+|7. *Limit the quantity of sales on specific products. (To avoid possibility of unworkable quantity websites / products being ordered at the same time)* |
 
 | **As a user I want to:** |
 | ------------------------------------------------------- |
 |1. *Search for products.* |
 |2. *Browse all products.* |
-|3. *Create an account.* |
-|4. *Track my data.* |
-|5. *Contact admins.* |
+|3. *Filter products.* |
+|4. *Create an account.* |
+|5. *Track my data.* |
+|6. *Contact admins.* |
+|7. *See more about who I'm buying from.* |
+|8. *See policies for refunds etc.* |
+|9. *See products that are on sale.*
 
 
 ### <ins>**_Information Architectures_**</ins>
@@ -179,10 +186,10 @@ For this project, I wanted to use a design that meets UX design goals as well as
 I wanted members, and non members to have a similar experience, which is why the profile section is somewhat hidden away. I wanted all users to be provided with an easy to use, straight forward shopping experience. 
 
 #### *Non Members:*
-> Non members will have full access to all pages within ManageMyWeb other than a personal profile dashboard. This allows non members to have a straight forward shopping experience without the need to sign up and the validation process that is involved with that step.
+> Non members will have full access to all pages within ManageMyWeb other than a personal profile dashboard. This allows non members to have a straight forward shopping experience without the need to sign up, therefore skipping the entire validation process that is involved with that step.
 
 #### *Members:*
-> A user who is a member of Manage My Web will have access to their personal dashboard. This dashboard will allow users to Read, Update and Delete profile information.
+> A user who is a member of Manage My Web will have access to their personal dashboard. This dashboard will allow users to Create, Read, Update and Delete profile information.
 >
 > Members will also be able to track previous orders. This profile section will also provide the platform where admins will upload messages and updated information for members to see regarding their websites.
 
@@ -190,7 +197,7 @@ I wanted members, and non members to have a similar experience, which is why the
 This project is fully responsive and has been tested on screen widths between 375px up to 3800px. For this, Bootstrap CSS was used throughout. - [GetBootstrap.com](https://getbootstrap.com/)
 
 ### <ins>**_Typography_**</ins>
-This project uses 'Zen Dots', and has a backup of sans-serif. Zen Dots is provided by (Google Fonts).
+This project uses 'Oswald' & 'Zen Dots'. These main fonts are provided by [Google Fonts](https://fonts.google.com/).
 
 
 ### <ins>**_Colors_**</ins>
@@ -212,7 +219,10 @@ from [Font Awsome](http://fontawesome.com/)
 --------------------
 ## **Features**
 
-To create this website, specific apps were made to target certain user stories and enhance user experience. These apps provide the foundations for this website, and will continue to provide a platform to grow into the future, with increased automation.
+To create this website, specific apps were made to target certain user stories and enhance user experience. These apps provide the foundations for this website, and will continue to provide a platform to grow into the future, with increased automation. As the products for sale on this project are webdesign and SEO related, I had to create a way to limit the quantity of sales, this is explained below:
+
+### <ins>**_Limiting Sales:_**</ins>
+To avoid a scenario where a user, or a combination of users could order too many products to work with. I have included a product quantity, much like a product stock take. This enables me to disable the further purchase of this product, whilst keeping the product visible (with a sold out flag). Once a backlog has been cleared, the available products can be updated to continue accepting sales.
 
 ### <ins>**_Existing Features:_**</ins>
 
@@ -224,6 +234,7 @@ To create this website, specific apps were made to target certain user stories a
 * Automated Chat.
 * Product Search.
 * Product Sorting.
+* Product Backlog Prevention.
 * Admin Panel.
 * Lead Generation.
 * Interactive Feedback
@@ -231,7 +242,8 @@ To create this website, specific apps were made to target certain user stories a
 * Interactive Forms
 * Product Limits - Built in "Availability" with front end feedback (banner on product image)
 * Payment Error Capturing - Checkout first creates an order instance in the database, before trying to checkout, this way a user will not get charged multiple times if checkout page is refreshed etc.
-* 
+* User Dashboard.
+* Automated Emails.
 
 
 ### <ins>**_Future Features:_**</ins>
@@ -240,12 +252,14 @@ Items that have been included in the scope of this project, but have not yet bee
     
     Meeting Room:
 
-    Providing a browser based meeting room to meet with clients and discuss progressions in their order.
+    Providing a browser based meeting room to meet with clients and discuss progress in their order, or discuss strategies with members.
 <br>
 
-    Automated Page Development:
+    Automated Web Page Development:
 
-    An app that will allow users who purchase front end websites have their website automatically built on specific templates.
+    This feature is almost functional, and uses a rest api that I have created in an external flask application, to take in user data, such as website name and other features, before generating a website pack. This pack includes a static html document, as well as the relevant CSS and Javascript. 
+
+    
 
 
 ------------------
@@ -266,6 +280,7 @@ CSS3 is used for all styling throught this application.
 > 3. JavaScript / jQuery
 
 JavaScript is used to manipulate data prior to passing it to Python based frameworks. Javascript is also used to help add interactive features, such as showing and hiding information. This allows more content to be provided, in a UX friendly way and avoid information overload.
+
 
 > 4. Python / Django
 
@@ -317,11 +332,10 @@ As forms use a change in value as part of a submission plan. Console log was use
 As a means to testing visual problems, dev tools was used to identify and fix styling issues.
 Dev tools was also used to improve features such as accessability, SEO, and performance where possible.
 
-**Lighthouse:**
+**Google Chrome 'Lighthouse':**
 
-Lighthouse (Google Chrome Dev Tools) was used to find and fix performance, accessability, best practices and SEO issues. A sample lighthouse report can be found below:
+Lighthouse (Google Chrome Dev Tools) was used to find and fix performance, accessability, best practices and SEO issues. 
 
-![Lighthouse Review](assets/readme/readme-supporting-docs/lighthouse.jpg)
 
 **Responsive Design:**
 
@@ -329,22 +343,30 @@ To ensure responsive design I have used [Responsive Design](http://ami.responsiv
 
 ### **Bugs & Issues**:
 
-> Auto Submit Forms:
-> On multiple occasions I came across a bug that was automatically submitting forms on page load.
+> ### *Categories & Sub-Categories:*
+> 
+> This problem relates to the hierarchical structure of products:
+>
+> I originally wanted to create for example the parent category, with sub categories which I found can be tricky with SQLite.
+>
+> #### **Solution:**
+>* Manipulate categories using one to many / one to one etc. This allows for essentially the same hierarchical structure, without the added complexity of most solutions available on [Stack Overflow](https://stackoverflow.com/).
 
-* Fix: This problem was solved by using an if statement in Python, paired with a ".click()" function in jQuery. This means that 
-on clicking submit a forms submit button will be given the value of "1". This will then satisfy the IF statement in Python and submit 
-the form. 
+<br>
 
-> Updating a record was deleting all other fields. (MongoDB)
+> ### *Accessing Line Items In Orders, To Edit Admin Page:*
+>
+> This problem relates mainly to the subscriptions / expiry part of my orders model. 
+>
+> I wanted to parse through order line items, and if one line item was a subscription based product, the order would be updated to a subscription service, this would then trigger the editing of the user profile, to update the expiry date of their subscription etc.
+>
+> #### **Solution:**
+>* Not sure why the initial bug appeared in the first place, however, a fix was to access the order line item, get the product id. 
+>* Now access the product, check for membership or single product.
+>* If product is just a single product, skip to next order line item.
+>* If product is a membership, update the order record.
+>* Using relative time delta, add one year to the order date, and use this for the expiry in the order model.
 
-* Fix: One fix for this bug was to supply all of the previous information back into MongoDB. 
-
-> Deleting item from cart would delete all items with matching descriptions.
-
-* Fix: Generate a random string and attach this string to each list. Therefore even adding the same product twice will 
-essentially create fields that can be differentiated between. This was chosen as a viable solution as I wanted to retain a nested list 
-style within my database.
 
 --------------------
 ## **Deployment**
@@ -352,7 +374,7 @@ style within my database.
 ### Requirements To Deploy:
 - Python3
 - Github account
-- MongoDB account
+- 
 - Heroku account
 
 ### Cloning This Project:
