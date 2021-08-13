@@ -392,7 +392,7 @@ h6,
 
 #home-hero{
     width: 100vw;
-    min-height: 50vh;
+    min-height: 60vh;
     overflow: hidden;
     background: url('../../media/hero-home.jpg');
     background-size: cover;
