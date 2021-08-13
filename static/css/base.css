@@ -835,6 +835,10 @@ h6,
     font-size: 14px;
     font-weight: 300 !important;
 }
+.text-xs{
+    font-size: 10px;
+    font-weight: 300;
+}
 .productDetailCarouselImage{
     height: 400px;
     width: auto;
@@ -857,7 +861,7 @@ h6,
 }
 .toast-image{
     max-width: 100%;
-    max-height: 125px;
+    height: auto;
 }
 #toast-image-holder{
     overflow: hidden;

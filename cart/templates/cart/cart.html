@@ -3,182 +3,151 @@
 {% load cart_tools %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+    <!--Override Header-->
 {% endblock %}
 
 {% block content %}
-    <div class="container mb-2">
+    <div class="container-fluid mb-2">
         <div class="row">
-            <div class="col">
+            <div class="col-12">
                 <hr>
-                <h1 class="logo-font mb-4">
-                    {{ title }} <i class="fas fa-shopping-cart text-primary"></i>
+                <h1 class="logo-font text-center mb-4">
+                    <u>{{ title }}</u>
                 </h1>
                 <hr>
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-12">
                 {% if cart_items %}
-                    <div class="table rounded">
-                        <table class="table table-sm table-borderless">
-                            <thead class="text-black">
-                                <tr class="text-center">
-                                    <th scope="col"><strong class="h3">Product Info:</strong></th>
-                                    <th scope="col"><u><em>Product Name</em></u></th>
-                                    <th scope="col"><u><em>Price</em></u></th>
-                                    <th scope="col"><u><em>Qty</em></u></th>
-                                    <th scope="col"><u><em>Subtotal</em></u></th>
-                                    <th scope="col"><!-- Delete Icon Column --></th>
-                                </tr>
-                            </thead>
-
-                            {% for item in cart_items %}
-                                <tr class="my-auto">
-                                    <td class="align-middle d-flex align-items-center">
-                                        {% if item.product.image1 %}
-                                            <img src="{{ item.product.image1.url }}" alt="{{ item.product.name}}" class="mx-auto img-fluid rounded cart-product-image">
-                                        {% else %}
-                                            <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ item.product.name}}" class="mx-auto img-fluid rounded cart-product-image">
-                                        {% endif %}
-                                    </td>
-                                    <td class="w-25 text-center align-middle">
-                                        <p class="my-0"><strong>{{item.product.name|title}}</strong></p>
-                                        <p class="my-0"><strong class="small">Type: {% if item.product.plan == 2 %}Subscription{%else%}Product{%endif%}</strong></p>
-                                        <p class="my-0 small text-muted">Category: {{item.product.category.friendly_name|title}}</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="my-0">€{{item.product.price}}</p>
-                                    </td>
-                                    <td class="pt-4 w-25">
-                                        <div class="my-0 px-3 text-center">
-                                            {% if item.product.plan == 2 %}
-                                                <p class="text-muted">{{item.quantity}} Year</p>
-                                            {% else %}
-                                            <div class="w-100">
-                                                <form method="POST" action="{% url 'adjust_cart' item.item_id %}" class="form update-form">
-                                                    {% csrf_token %}
-                                                    <div class="form-group">
-                                                        <div class="input-group w-100">
-                                                            <div class="col-12 col-md-3 d-flex">
-                                                                <div class="input-group-prepend mx-auto">
-                                                                    <button class="decrement-qty btn btn-sm btn-qty rounded-0"
-                                                                        data-item-id="{{item.product.id}}" id="decrement-qty_{{ item.product.id }}" disabled>
-                                                                        <span>
-                                                                            <i class="fas fa-minus fa-sm"></i>
-                                                                        </span>
-                                                                    </button>
-                                                                    <button class="increment-qty btn btn-sm btn-qty rounded-0 d-md-none"
-                                                                        data-item-id="{{item.product.id}}" id="increment-qty_{{ item.product.id }}">
-                                                                        <span>
-                                                                            <i class="fas fa-plus fa-sm"></i>
-                                                                        </span>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-12 col-md-6">
-                                                                <input type="number" class="w-100 form-control form-control-sm qty_input text-center" 
-                                                                    name="quantity" value="{{item.quantity}}" min="0" max="{% if item.product.available %}{{item.product.available}}{% else %}10{% endif %}" 
-                                                                    data-item_id={{item.product.id}} id="id_qty_{{item.product.id}}">
-                                                                <input type="hidden" value="{{item.product.available}}" class="productAvailability">
-                                                            </div>
-
-                                                            <div class="col-12 col-md-3">
-                                                                <div class="input-group-append mx-auto d-none d-md-block">
-                                                                    <button class="increment-qty btn btn-sm btn-qty rounded-0 "
-                                                                        data-item-id="{{item.product.id}}" id="increment-qty_{{ item.product.id }}">
-                                                                        <span>
-                                                                            <i class="fas fa-plus fa-sm"></i>
-                                                                        </span>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                            <span class="text-danger topLimitMessage text-center w-100">Limit Reached</span>
+                    <div class="row m-2 relative" id="cart-item-container">
+                        <div class="col-12 text-sm-center text-md-end pb-3">
+                            <span id="close-items" class="text-center">
+                                <!--Minify Cart Items-->
+                                <span id="minify-text" class="d-block d-md-inline-flex">Minimize Items</span>
+                                <i id="minify-items" class="d-block d-md-inline-flex pointer h3 fas fa-compress-arrows-alt"></i>
+                            </span>
+                        </div>
+                        {% for item in cart_items %}
+                            <div class="row mx-2 border-bottom cart-item">
+                                <div class="col-12 col-md-2 d-flex justify-content-center">
+                                    {% if item.product.image1 %}
+                                        <img src="{{ item.product.image1.url }}" alt="{{ item.product.name}}" class="mx-auto img-fluid rounded cart-product-image">
+                                    {% else %}
+                                        <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ item.product.name}}" class="mx-auto img-fluid rounded cart-product-image">
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 col-md-3 text-center pt-2">
+                                    <p class="my-0"><strong>{{item.product.name|title}}</strong></p>
+                                    <p class="my-0"><strong class="small">Type: {% if item.product.plan == 2 %}Subscription{%else%}Product{%endif%}</strong></p>
+                                    <p class="my-0 small text-muted">Category: {{item.product.category.friendly_name|title}}</p>
+                                </div>
+                                <div class="col-xs-6 col-md-1 text-center align-middle">
+                                    <span class="my-0 text-xs d-none d-xl-block">Individual Price:</span>
+                                    <span class="my-0 text-xs d-block d-xl-none">Price:</span>
+                                    <span class="my-0 small">€{{item.product.price}}</span>
+                                </div>
+                                <div class="col-xs-6 col-md-3 text-center align-middle">
+                                    {% if item.product.plan == 2 %}
+                                        <span class="text-muted text-xs d-none d-xl-block">Subscription: </span>
+                                        <span class="text-muted text-xs d-block d-xl-none">Duration: </span>
+                                        <span class="text-muted small">{{item.quantity}} Year{% if item.quantity > 1 %}s{%else%}{%endif%}</span>
+                                    {% else %}
+                                    <div class="w-100 align-middle">
+                                        <form method="POST" action="{% url 'adjust_cart' item.item_id %}" class="form update-form">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <div class="input-group w-100">
+                                                    <div class="col-12 col-md-3 d-flex">
+                                                        <div class="input-group-prepend mx-auto">
+                                                            <button class="decrement-qty btn btn-sm btn-qty rounded-0"
+                                                                data-item-id="{{item.product.id}}" id="decrement-qty_{{ item.product.id }}" disabled>
+                                                                <span>
+                                                                    <i class="fas fa-minus fa-sm"></i>
+                                                                </span>
+                                                            </button>
+                                                            <button class="increment-qty btn btn-sm btn-qty rounded-0 d-md-none"
+                                                                data-item-id="{{item.product.id}}" id="increment-qty_{{ item.product.id }}">
+                                                                <span>
+                                                                    <i class="fas fa-plus fa-sm"></i>
+                                                                </span>
+                                                            </button>
                                                         </div>
                                                     </div>
-                                                    <button type="submit" class="hidden updateValue"></button>
-                                                </form>
-                                                <p class="update-link text-primary text-center w-100">
-                                                    <small><i class="fas fa-sync-alt"></i> Update</small>
-                                                </p>
+
+                                                    <div class="col-12 col-md-6">
+                                                        <input type="number" class="w-100 form-control form-control-sm qty_input text-center" 
+                                                            name="quantity" value="{{item.quantity}}" min="0" max="{% if item.product.available %}{{item.product.available}}{% else %}10{% endif %}" 
+                                                            data-item_id={{item.product.id}} id="id_qty_{{item.product.id}}">
+                                                        <input type="hidden" value="{{item.product.available}}" class="productAvailability">
+                                                    </div>
+
+                                                    <div class="col-12 col-md-3">
+                                                        <div class="input-group-append mx-auto d-none d-md-block">
+                                                            <button class="increment-qty btn btn-sm btn-qty rounded-0 "
+                                                                data-item-id="{{item.product.id}}" id="increment-qty_{{ item.product.id }}">
+                                                                <span>
+                                                                    <i class="fas fa-plus fa-sm"></i>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-danger topLimitMessage text-center w-100">Limit Reached</span>
+                                                </div>
                                             </div>
-                                            {% endif %}
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="my-0 px-1">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                                    </td>
-                                    <td class="align-middle">
-                                        <i class="remove-item fas fa-trash-alt fa-lg text-danger" id="{{ item.product.id }}"></i>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            {% if subscription %}
-                                <tr>
-                                    <td colspan="5">
-                                        <div class="row">
-                                            <div class="col-8 offset-2 box-shadow text-center mt-3">
-                                                <h2 class="h3 pt-2 text-danger">
-                                                    You Have A Subscription In Your Cart
-                                                </h2>
-                                                <h4 class="text-success">A 10% Discount Has Been Added To Your Entire Cart.</h4>
-                                                <hr class="w-50 mx-auto pb-1">
-                                                <p>
-                                                    Please Note That The Following Product<span class="small">(</span>s<span class="small">)</span> Are Subscription Based:
-                                                </p>
-                                                <ul class="list-unstyled">
-                                                    {% for i in cart_items %}
-                                                        {% if i.product.plan == 2 %}
-                                                            <li class="text-success text-uppercase">{{ i.product.name }}</li>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </ul>
-                                                <p class="mx-auto">
-                                                    If you do not already have an account with us, one will automatically be created 
-                                                    for you at checkout. Please ensure your email and details are accurate at checkout.
-                                                    <br><br>
-                                                    Your Subscription Will Be Valid Until : <span class="text-success">{{ expiry }}</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                            <button type="submit" class="hidden updateValue"></button>
+                                        </form>
+                                        <p class="update-link text-primary text-center w-100">
+                                            <span class="small"><i class="fas fa-sync-alt"></i> Update</span>
+                                        </p>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 col-md-2 text-center align-middle">
+                                    <span class="my-0 px-1 text-xs d-block">Subtotal: </span>
+                                    <span class="my-0 px-1 small">€{{ item.product.price | calc_subtotal:item.quantity }}</span>
+                                </div>
+                                <div class="col-12 col-md-1 text-center align-middle">
+                                    <i class="remove-item fas fa-trash-alt fa-lg text-danger" id="{{ item.product.id }}"></i>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!--Total Information-->
+                    <div class="row" id="total-container">
+                        <div class="col-12 text-end px-5 mt-3">
+                            <h4>Cart Calculation:</h4>
+                            <p class="h6"><strong>Cart Total: <span class="text-primary">€{{total|floatformat:2}}</span></strong></p>
+                            <p class="h6">+ Tax ({{tax_rate|floatformat:0}}%): <span class="text-danger">€{{tax|floatformat:2}}</span></p>
+                            {% if discount > 0 %}
+                            <p class="h6 text-success">- Discount: <span class="text-success">€{{discount|floatformat:2}}</span></p>
                             {% endif %}
-                                <tr>
-                                    <td colspan="5" class="pt-3 text-center text-lg-end">
-                                        <p class="h6"><strong>Cart Total: <span class="text-primary">€{{total|floatformat:2}}</span></strong></p>
-                                        <p class="h6">+ Tax ({{tax_rate|floatformat:0}}%): <span class="text-danger">€{{tax|floatformat:2}}</span></p>
-                                        {% if discount > 0 %}
-                                        <p class="h6 text-success">- Discount: <span class="text-success">€{{discount|floatformat:2}}</span></p>
-                                        {% endif %}
-                                        <div class="d-flex justify-content-lg-end justify-content-xs-center g-0 m-0">
-                                            <hr class="w-25 align-middle">
-                                        </div>
-                                        <h3 class="mt-2"><strong>Grand Total: <span class="text-success">€{{grand_total|floatformat:2}}</span></strong></h3>
-                                    </td>
-                                </tr>
-                                <tr>
-                                <td colspan="5" class="text-center">
-                                    <a href="{% url 'products' %}" class="btn btn-outline-black btn-black rounded-0 btn-lg float-start">
-                                        <span class="icon">
-                                            <i class="fas fa-chevron-left"></i>
-                                        </span>
-                                        <span class="text-uppercase">Keep Shopping</span>
-                                    </a>
-                                    <a href="{% url 'checkout' %}" class="btn btn-success rounded-0 btn-lg btn-outline-black float-end">
-                                        <span class="text-uppercase">Secure Checkout</span>
-                                        <span class="icon">
-                                            <i class="fas fa-lock"></i>
-                                        </span>
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
+                            <div class="d-flex justify-content-lg-end justify-content-xs-center g-0 m-0">
+                                <hr class="w-25">
+                            </div>
+                            <h3 class="mt-2"><strong>Grand Total: <span class="text-success">€{{grand_total|floatformat:2}}</span></strong></h3>
+                        </div>
+                    </div>
+
+                    <!--Buttons-->
+                    <div class="row mt-3" id="buttons">
+                        <div class="col-sm-12 col-md-6 text-center text-md-end">
+                            <a href="{% url 'products' %}" class="btn btn-outline-black btn-black rounded-0 btn-sm-sm btn-lg-lg">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="text-uppercase">Keep Shopping</span>
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-md-6 text-center text-md-start">
+                            <a href="{% url 'checkout' %}" class="btn btn-success rounded-0 btn-sm-sm btn-lg-lg btn-outline-black">
+                                <span class="text-uppercase">Secure Checkout</span>
+                                <span class="icon">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 {% else %}
                     <h2 class="mb-5 text-black text-center">
@@ -193,6 +162,61 @@
                         </span>
                     </a>
                 {% endif %}
+            </div>
+        </div>
+        <div class="row sr-only bg-primary">
+            <!-- Button trigger modal -->
+            <!-- Button trigger modal -->
+            <button id="subscription-notification-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                Launch demo modal
+            </button>
+            {% if subscription %}
+                <span id="cart-has-sub">yes</span>
+            {% else %}
+                <span id="cart-has-sub">no</span>
+            {% endif %}
+        </div>
+        <!-- Modal For Subscription Popup -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Subscription Notification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mt-3" id="subscription-container">
+                        <div class="col-12 text-center mt-3">
+                            <h6 class="h5 pt-2 text-danger">
+                                You Have A Subscription In Your Cart
+                            </h6>
+                            <h3 class="text-success">A 10% Discount Has Been Added To Your Entire Cart.</h3>
+                            <hr class="w-50 mx-auto pb-1">
+                            <p class="small">
+                                Please Note That The Following Product<span class="small">(</span>s<span class="small">)</span> Are Subscription Based:
+                            </p>
+                            <ul class="list-unstyled">
+                                {% for i in cart_items %}
+                                    {% if i.product.plan == 2 %}
+                                        <li class="text-success text-uppercase small">{{ i.product.name }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            <p class="mx-auto small">
+                                If you do not already have an account with us, one will automatically be created 
+                                for you at checkout. Please ensure your email and details are accurate at checkout.
+                                <br><br>
+                                Your Subscription Will Be Valid Until : <span class="text-success">{{ expiry }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -220,6 +244,40 @@
             location.reload();
         });
     })
+    </script>
+    <script type="text/javascript">
+    // Styling script
 
+    $('.align-middle').each(function(){
+        let minusHeight = $(this).children().height();
+        let totalHeight = $(this).height();
+        let paddingTop = (totalHeight - minusHeight);
+        $(this).css('padding-top', paddingTop / 3);
+    })
+
+    $('#close-items').click(function(){
+        if ($('#minify-items').hasClass('fas fa-compress-arrows-alt')){
+            $('#minify-items').removeClass('fas fa-compress-arrows-alt').addClass('fas fa-expand-arrows-alt');
+            $('#minify-text').text('Maximize Items');
+            $('.cart-item').each(function(){
+                $(this).toggle(700);
+            });
+        }else{
+            $('#minify-items').removeClass('fas fa-expand-arrows-alt').addClass('fas fa-compress-arrows-alt');
+            $('#minify-text').text('Minimize Items');
+            $('.cart-item').each(function(){
+                $(this).toggle(700);
+            });
+        }
+    })
+    function hasSubs(){
+        let answer = $('#cart-has-sub').text();
+        if (answer == "yes"){
+            $('#subscription-notification-button').trigger('click');
+        }else{
+            console.log("This has no Subscription");
+        }
+    }
+    hasSubs();
     </script>
 {% endblock %}
