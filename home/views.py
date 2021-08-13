@@ -25,3 +25,7 @@ def ChatBotHook(request):
         messages.success(request, response)
 
     return redirect('home')
+
+
+def HandleNotFound(request, exception):
+    return render(request, 'home/404.html')

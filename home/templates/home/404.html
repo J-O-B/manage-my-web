@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <!--Override Header-->
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1 col-md-6 offset-md-3 d-flex justify-content-center">
+            <img src="{MEDIA_URL}/lost.gif" alt="lost">
+        </div>
+        <h1 class="logo-font">
+            Seems You May Be Lost!
+        </h1>
+        <h3 class="logo-font text-muted">
+            <span class="mx-2"><a href="{%url 'home'%}" class="btn btn-black btn-outline-black btn-md">Back To Homepage</a></span>
+            <span class="mx-2"><a href="{%url 'products'%}" class="btn btn-success btn-outline-black btn-md">Go Shopping</a></span>
+        </h3>
+    </div>
+</div>
+
+
+{% endblock %}

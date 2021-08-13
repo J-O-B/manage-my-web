@@ -60,7 +60,7 @@ This project is highly focussed on the main principles of UX design, including e
 
 ### 5 Planes of UX:
 #### ***1. Strategy:***
-> The strategy for this project is to produce a recipe database that users can browse and also promote products via an online store. 
+> The strategy for this project is to produce a functional eCommerce store with payment processing integration. 
 > 
 > Users will be able to browse products by filter (Category, price, name).
 >
@@ -145,7 +145,7 @@ This project is highly focussed on the main principles of UX design, including e
 The logo for this project is based simply on a photo that was available via [Pixabay](https://pixabay.com)
 
 ### <ins>**_Wireframes_**</ins>
-You can view the wireframe designs [here](./wireframe.pdf)
+You can view the wireframe designs [here](./readme-assets/wireframe.pdf)
 
 The wireframes for this project served as an initial design idea. As more features developed designs have been altered, or 
 changed completely.
@@ -238,13 +238,22 @@ To avoid a scenario where a user, or a combination of users could order too many
 * Product Backlog Prevention.
 * Admin Panel.
 * Lead Generation.
-* Interactive Feedback
-* Error Handling 
-* Interactive Forms
-* Product Limits - Built in "Availability" with front end feedback (banner on product image)
+* Interactive Feedback.
+* Error Handling.
+* Interactive Forms.
+* Product Limits - Built in "Availability" with front end feedback (banner on product image).
 * Payment Error Capturing - Checkout first creates an order instance in the database, before trying to checkout, this way a user will not get charged multiple times if checkout page is refreshed etc.
 * User Dashboard.
 * Automated Emails.
+* Product Title (Converts to page title).
+* META Information.
+* Responsive Design.
+* User Order Summaries.
+* Product Rating.
+* Authentication Before Rating (Only Users Who Have Purchased Can Rate A Product).
+* JavaScript Interactive Features (Policy Box For Example).
+* Receipt Printing On Checkout.
+
 
 
 ### <ins>**_Future Features:_**</ins>
@@ -458,8 +467,11 @@ Payment processing code is closely paired to the [Code Institute](https://codein
 *Any code that is a direct copy from W3Schools, or Stackoverflow will include the correct comments. This will be the case in all CSS, Javascript and Python files throughout this project*
 
 ### <ins>**_Acknowledgments:_**</ins>
-I would like to acknowledge my mentor <ins>Caleb Mbakwe</ins> for his guidance and tips during this project.
+I would like to acknowledge my mentor <ins>Caleb Mbakwe</ins> for his guidance and tips during this project. Additionally, I would like to thank the Django instructors at Code Institute for a brilliant tutorial on this framework!
 
 ## *Previews:*
-Here are a few previews of Ripe Recipes (mockups from [Am I Responsive](http://ami.responsivedesign.is/))
+Here are a few previews of ManageMyWeb:
+
+![image](readme-assets/3-devices-white.png)
+![image](readme-assets/all-devices-white.png)
 
