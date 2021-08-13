@@ -33,4 +33,4 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-handler404 = "home.views.HandleNotFound"
+handler404 = "manage_my_web.views.Not_Found"
