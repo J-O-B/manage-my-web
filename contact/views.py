@@ -15,7 +15,6 @@ def contact(request):
         message = request.POST.get('message_data')
         date = today
 
-
         send_mail(
             f'{subject}',
             f'{full_name} has asked: {message}. Date: {date}',

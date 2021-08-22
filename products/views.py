@@ -157,6 +157,7 @@ def product_detail(request, product_id):
         subject = request.POST.get('subject')
         message = request.POST.get('message')
         try:
+            # Send email to admin
             send_mail(
                 f'{first_name} {last_name} Would Like {subject}',
                 f'Message: {message}',
@@ -164,6 +165,7 @@ def product_detail(request, product_id):
                 ['Jonathanmichaelobrien@gmail.com'],
                 fail_silently=False,
             )
+            # Send confirmation email
             send_mail(
                 f'Receipt Of Message: {subject}',
                 f'Request received regarding {subject}, \
