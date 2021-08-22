@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import LeadGen
 from datetime import date
 from django.contrib import messages
+from django.core.mail import send_mail
 
 today = date.today()
 
@@ -13,6 +14,15 @@ def contact(request):
         email = request.POST.get('email_data')
         message = request.POST.get('message_data')
         date = today
+
+
+        send_mail(
+            f'{subject}',
+            f'{full_name} has asked: {message}. Date: {date}',
+            f'{email}',
+            ['jonathanmichaelobrien@gmail.com'],
+            fail_silently=False,
+        )
 
         number = 0
         number = number + int(LeadGen.objects.count())

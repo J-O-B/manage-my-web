@@ -28,7 +28,7 @@ def ChatBotHook(request):
                 'Chat Message',
                 f'{message}, from: {first_name} {last_name}, phone: {phone}',
                 f'{email}',
-                ['jonathanobrien@outlook.ie'],
+                ['jonathanmichaelobrien@gmail.com'],
                 fail_silently=False,
             )
             messages.success(request, response)

@@ -161,14 +161,14 @@ def product_detail(request, product_id):
                 f'{first_name} {last_name} Would Like {subject}',
                 f'Message: {message}',
                 f'{email}',
-                ['Admin@ManageMyWeb.org'],
+                ['Jonathanmichaelobrien@gmail.com'],
                 fail_silently=False,
             )
             send_mail(
                 f'Receipt Of Message: {subject}',
                 f'Request received regarding {subject}, \
 one of our agents will get back to you shortly',
-                'Admin@ManageMyWeb.org',
+                'Jonathanmichaelobrien@gmail.com',
                 [f'{email}'],
                 fail_silently=False,
             )

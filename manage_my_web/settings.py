@@ -31,6 +31,7 @@ if "SECRET_KEY" in os.environ:
     SECRET_KEY = os.environ.get("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Debug true only in local development, 
 if 'DEVELOPMENT' in os.environ:
     DEBUG = False
 else:
