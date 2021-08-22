@@ -21,7 +21,7 @@ class LeadGen(models.Model):
     date = models.DateField(
         auto_now=True, blank=False, null=False)
 
-    def _get_name(self):
+    def __str__(self):
         return str(self.full_name)
 
 
@@ -38,5 +38,5 @@ class EmailMarketing(models.Model):
     category = models.CharField(
         max_length=50, null=False, blank=False)
 
-    def _get_name(self):
+    def __str__(self):
         return str(self.users_name)

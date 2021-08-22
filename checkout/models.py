@@ -6,9 +6,6 @@ from products.models import Product
 from profiles.models import UserProfile
 
 import uuid
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
-from django.utils import timezone
 from django_countries.fields import CountryField
 
 

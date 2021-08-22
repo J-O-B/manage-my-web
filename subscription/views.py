@@ -1,5 +1,4 @@
-from django.shortcuts import (render, redirect, reverse,
-                              get_object_or_404, HttpResponse)
+from django.shortcuts import render
 from django.contrib import messages
 from django.core.mail import send_mail
 

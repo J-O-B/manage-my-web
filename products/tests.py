@@ -1,6 +1,4 @@
-from django.test import RequestFactory, TestCase
-from .views import all_products
-from django.shortcuts import reverse
+from django.test import TestCase
 
 
 class URLTests(TestCase):
@@ -8,4 +6,3 @@ class URLTests(TestCase):
     def test_main_products(self):
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
-

@@ -178,7 +178,7 @@ for your query. We have emailed a copy of your request to: \
 
             # Add User To Marketing List
             db = EmailMarketing(
-                users_name=str(first_name) + " " + str(last_name), 
+                users_name=str(first_name) + " " + str(last_name),
                 email=str(email),
                 category="Interested In: " + str(product.category)
                 )
@@ -193,7 +193,8 @@ for your query. We have emailed a copy of your request to: \
     except Exception:
         included = []
 
-    # If product has upsell item, get the comparisons textbox and convert to list
+    # If product has upsell item, get the comparisons textbox
+    # and convert to list
     try:
         comparison = product.upsell_target.included.split(",")
     except Exception:

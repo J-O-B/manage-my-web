@@ -29,7 +29,7 @@ class Category(models.Model):
 
     def get_friendly_name(self):
         return str(self.friendly_name)
-    
+
     def show_parent(self):
         return str(self.parent_category)
 

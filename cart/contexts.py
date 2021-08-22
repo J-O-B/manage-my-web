@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
-from django.contrib import messages
 
 
 currentDate = datetime.now()

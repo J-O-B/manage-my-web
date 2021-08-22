@@ -8,8 +8,8 @@ class TestForm(TestCase):
     def testFields(self):
         fields = UserProfileForm.Meta.fields
         test_fields = ("full_name", "email", "phone_number",
-                        "street_address1", "street_address2",
-                        "town_or_city", "postcode", "country",)
+                       "street_address1", "street_address2",
+                       "town_or_city", "postcode", "country",)
         self.assertEqual(fields, test_fields)
 
     def testModel(self):
@@ -21,7 +21,7 @@ class TestForm(TestCase):
         form = UserProfileForm()
         statement = form.fields['full_name'].widget.attrs['autofocus']
         self.assertEqual(statement, True)
-    
+
     def testPlaceholder(self):
         form = UserProfileForm()
         placeholders = {

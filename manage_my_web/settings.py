@@ -34,7 +34,7 @@ if "SECRET_KEY" in os.environ:
 if 'DEVELOPMENT' in os.environ:
     DEBUG = False
 else:
-    DEBUG = False
+    DEBUG = True
 
 ALLOWED_HOSTS = ['manage-my-web.herokuapp.com', 'localhost']
 

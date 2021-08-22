@@ -13,6 +13,7 @@ from datetime import datetime
 today = date.today()
 currentDate = datetime.now()
 
+
 @login_required
 def after_login(request):
     user = request.user
@@ -27,7 +28,7 @@ def after_login(request):
                 request, f'Welcome back {profile.full_name}.')
         else:
             messages.success(
-                request, f'Welcome back!')
+                request, 'Welcome back!')
     else:
         messages.info(
             request, 'Welcome back {user}. It seems like your profile is incomplete, please \

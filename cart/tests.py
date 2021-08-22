@@ -8,4 +8,3 @@ class URLTests(TestCase):
         url = reverse('cart')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-
