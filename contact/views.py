@@ -17,7 +17,7 @@ def contact(request):
 
         send_mail(
             f'{subject}',
-            f'{full_name} has asked: {message}. Date: {date}',
+            f'{full_name} has asked: {message} on {date}. Reply to {email}',
             f'{email}',
             ['jonathanmichaelobrien@gmail.com'],
             fail_silently=False,
