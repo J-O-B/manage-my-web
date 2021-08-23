@@ -263,11 +263,14 @@ Items that have been included in the scope of this project, but have not yet bee
     Meeting Room:
 
     Providing a browser based meeting room to meet with clients and discuss progress in their order, or discuss strategies with members.
+    Unfortunately the service for this seems to be only a paid option and I did not have the time to create a meeting room from scratch, hence why it has not 
+    been implemented.
 <br>
 
     Automated Web Page Development:
 
-    This feature is almost functional, and uses a rest api that I have created in an external flask application, to take in user data, such as website name and other features, before generating a website pack. This pack includes a static html document, as well as the relevant CSS and Javascript. 
+    This feature is almost functional, and uses a rest api that I have created in an external flask application, to take in user data, such as website name and 
+    other features, before generating a website pack. This pack includes a static html document, as well as the relevant CSS and Javascript. 
 
     
 ------------------
@@ -277,40 +280,47 @@ This project uses multiple languages, libraries and frameworks which can be foun
 
 
 ### Languages
-> 1. HTML / HTML5
+1. HTML / HTML5
 
-HTML makes up the foundation of this project, including all content.
+>HTML makes up the foundation of this project, including all content.
 
-> 2. CSS / CSS3
+2. CSS / CSS3
 
-CSS3 is used for all styling throught this application.
+>CSS3 is used for all styling throught this application.
 
-> 3. JavaScript / jQuery
+3. JavaScript / jQuery
 
-JavaScript is used to manipulate data prior to passing it to Python based frameworks. Javascript is also used to help add interactive features, such as showing and hiding information. This allows more content to be provided, in a UX friendly way and avoid information overload.
+>JavaScript is used to manipulate data prior to passing it to Python based frameworks. Javascript is also used to help add interactive features, 
+such as showing and hiding information. This allows more content to be provided, in a UX friendly way and avoid information overload.
 
+4. Python / Django
 
-> 4. Python / Django
-
-Django provides the framework of this entire project. Handling all urls, and specific functionality features is provided by Python. This allows Manage My Web the ability to manipulate, data and direct information in various directions. 
-
-For example, all contact forms, as well as sending emails, will capture user credentials such as name and email, and populate a database of "leads" which may be used to market products and other services in the future.
+>Django provides the framework of this entire project. Handling all urls, and specific functionality features is provided by Python. This allows Manage My Web the ability to manipulate, data and direct information in various directions. 
+>
+>For example, all contact forms, as well as sending emails, will capture user credentials such as name and email, and populate a database of "leads" which may be used to market products and other services in the future.
 
 ### Frameworks, Libraries & Other
 1. Gitpod
-> GitPod was used to develop the project.
+    
+    GitPod was used to develop the project.
 2. Git
-> Git was used for version control to commit to Git and push to GitHub.
+
+    Git was used for version control to commit to Git and push to GitHub.
 3. GitHub
-> GitHub is used to host the project files.
+
+    GitHub is used to host the project files.
 4. cPanel
-> cPanel is used to store all deployed files.
+
+    cPanel is used to store all deployed files.
 5. Google Fonts
-> Google fonts is used to provide custom fonts to this project.
+
+    Google fonts is used to provide custom fonts to this project.
 6. FontAwesome
-> FontAwesome is used for all icons.
+
+    FontAwesome is used for all icons.
 7. BOTUI
-> The BOTUI javascript framework is used for automated chat functionality.
+    
+    The BOTUI javascript framework is used for automated chat functionality.
 
 ---------------------
 ## **Testing**
@@ -327,6 +337,8 @@ This project has passed through several phases of testing, these phases include:
 4. [PEP 8](http://pep8online.com/) to check all Python code.
 
 5. [Autoprefixer](https://autoprefixer.github.io/) to ensure web browser compatability in CSS code.
+
+6. [Flake8](https://pypi.org/project/flake8/) was used to check for errors in code. I elected to keep some of the "errors" that Flake8 identified, such as empty django files with imports.
 
 > Testing was important in this project, with multiple forms located on pages. A recurring bug seemed to be the submission of multiple forms at once. To fix this problem 
 jQuery was used to change a submit buttons value, this paired with an if statement in Python gave the desired outcome.
