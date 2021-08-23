@@ -23,15 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-# Fake Key Used Locally
-SECRET_KEY = 'django-insecure-9sft4$7)s60g6qs_4(w+6uep*+^h#84fw(s6yy2)_!t(bz(g$j'
+SECRET_KEY = ''
 
 # Real Key (Hidden in live OS):
 if "SECRET_KEY" in os.environ:
     SECRET_KEY = os.environ.get("SECRET_KEY", "")
+else:
+    # Fake Key That Can Be Used In Testing Locally
+    SECRET_KEY = "django-insecure-9sft4$7)s60g6qs_4(w+6uep*+^h#84fw(s6yy2)_!t(bz(g$j"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# Debug true only in local development, 
+# Debug true only in local development. False for live deployed website.
 if 'DEVELOPMENT' in os.environ:
     DEBUG = False
 else:
