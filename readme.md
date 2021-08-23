@@ -325,6 +325,8 @@ such as showing and hiding information. This allows more content to be provided,
 ---------------------
 ## **Testing**
 
+To allow easy access to the debug console, instead of simply using Debug = True or False, I have included code to look for an OS.environment variable before setting the debug to its wanted setting. This allows for the same code to be used without editing settings each time I wish to test code in development. 
+
 This project has passed through several phases of testing, these phases include:
 
 1. [W3 Validator](https://validator.w3.org/) to check all HTML. 
