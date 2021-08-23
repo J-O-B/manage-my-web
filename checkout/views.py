@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 from dateutil.relativedelta import relativedelta
 from datetime import datetime, date
 from contact.models import EmailMarketing
+from django.core.mail import send_mail
 
 import stripe
 import json
@@ -282,11 +283,11 @@ def checkout_success(request, order_number):
                         user_profile.subscription_expiry = new_expiry
                 else:
                     pass
-        except:
+        except Exception:
             # catch any errors
             pass
         updated = True
-    
+
     if updated:
         user_profile.save()
 
@@ -295,6 +296,16 @@ def checkout_success(request, order_number):
             </em></small>.<br><br>A confirmation email will be\
                 sent to {order.email}.<br><br> \
                     <strong>Thank You.</strong>'))
+    send_mail(
+        'Order Receipt',
+        f'Your order is now being processed. \
+        Your order number is {order_number}. \
+        Your order details: {order}.\
+        Thank you for using ManageMyWeb.',
+        'Orders@ManageMyWeb.org',
+        [f'{order.email}'],
+        fail_silently=False,
+    )
 
     if 'cart' in request.session:
         del request.session['cart']
