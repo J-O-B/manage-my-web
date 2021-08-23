@@ -381,6 +381,7 @@ To ensure responsive design I have used [Responsive Design](http://ami.responsiv
 
 ### Requirements To Deploy:
 - Amazon AWS Account
+- Heroku Account
 
 ### Cloning This Project:
 To create a clone, follow the following steps.
@@ -390,32 +391,19 @@ To create a clone, follow the following steps.
 3. Click “Open with GitHub Desktop” and follow the prompts in the GitHub Desktop Application or follow the instructions from [GitHub](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to see how to clone the repository in other ways.
 
 #### To Work With Your Local Clone:
-1. A
-2. b
-3. c
+1. Install the requirements from "requirements.txt" with PIP.
+2. Build a new database using the "makemigrations & migrate" commands. 
+3. Create a new superuser using the "django-admin createsuperuser" and follow the steps.
+4. Run the django application using the django runserver command.
+5. Login using your superuser credentials by adding "/admin" to the url.
+6. From the admin menu, you can quickly create, read, update & delete records including products, users, email lists and more. (as this is a fresh install, the database will be blank)
 
-3. Create environment variables (env.py):
-    1. Create a .gitignore file in the root directory of the project.
-    2. Create a file in the root directory called "env.py". This will contain all of your envornment variables. Your env.py file should look similar to the following:
-> Import os
->
-> os.environ.setdefault("IP", "<IP TO USE>")
->
-> os.environ.setdefault("PORT", "<PORT TO USE>")
->
-> os.environ.setdefault("SECRET_KEY", "<ADD YOUR SECRET KEY>")
->
-> os.environ.setdefault("MONGO_URI", "<ADD YOUR MONGO URI>")
->
-> os.environ.setdefault("MONGO_DBNAME", "<ADD YOUR DATABASE NAME>")
+### Deploying To Heroku & AWS (Amazon Web Services)
 
-    3. Add "env.py" to your .gitignore file.
-    4. Finally to run the app, open a terminal and type "python3 app.py" and run the application.
-
-### Deploying To AWS (Amazon Web Services)
+Although the static and media files are hosted on AWS. The functionality of this website is thanks to Heroku. This section will walk through the complete deployment sequence for both Heroku & AWS.
 
 To deploy our application on Heroku, we are required to have a requirements.txt file as well as a Procfile. These files will allow Heroku understand 
-what dependencies are required to run the application, as well as tell Heroku which file to run, to launch the application.
+what dependencies are required to run the application, as well as tell Heroku which file to run, in order to launch the web application.
 
 #### Create a procfile:
 > Type "python app.py > Procfile"
@@ -424,7 +412,7 @@ what dependencies are required to run the application, as well as tell Heroku wh
 > Type "pip freeze --local > requirements.txt"
 **This new file should simply be a list of all dependencies required**
 
-#### For Deployment:
+#### For Deployment To Heroku:
 1. Open [Heroku](http://heroku.com/).
 2. Login or signup for Heroku.
 3. Once logged in create a new app and select the desired region. 
@@ -434,16 +422,105 @@ what dependencies are required to run the application, as well as tell Heroku wh
 6. Once you have connected your GitHub repository:
     1. Navigate to the "Settings" tab:
         1. Scroll to the section "Config Vars" here you will have to tell Heroku what these variables are:
-            1. Input data from env.py in the key value section: (e.g. SECRET_KEY in the first box, <YOUR SECRET_KEY> in the second box)
-            2. Input all data for IP, PORT, SECRET_KEY, MONGO_DBNAME & MONGO_URI
+            1. Input any environment variables, such as secret keys in the fields provided. (ensure names match those in settings.py)
     2. Navigate back to the "Deploy" tab:
         1. Scroll to the "Manual Deploy" tab:
             1. Select the branch you wish to deploy (master is default)
             2. Click the "Deploy Branch" button. (This may take some time as Heroku uploads the app to their servers.) 
 
-> *Once the build is complete, a "View App" button will appear just below the build progress box. You can click this to see immediately if the build was successful. If the app doesn't load first time, try refresh once prior to investigating further.*
-> 
+> *Once the build is complete, a "View App" button will appear just below the build progress box. You can click this to see immediately if the build was successful. If the app doesn't load first time, try refresh once prior to investigating further.* 
+>
 > *Common issues include outdated requirements.txt and/or missing Procfile, if errors occur, check these are both correct before investigating further.*
+
+#### For Deployment To AWS (S3 Bucket):
+*Prior to completing this step, the Heroku application will not have any styling, and may not function correctly if there are missing static Javascript files.*
+
+To complete this step the assumption is made that you already have an AWS account, if not, you can sign up for AWS. The free tier covers this projects needs. To do this:
+1. Navigate to [Amazon Aws](https://aws.amazon.com)
+2. Click "Create an AWS account" and follow the steps.
+
+__Now with your created account:__
+1. Sign into the console.
+2. Under the "AWS services" search box, type "S3" and click the associated service.
+3. Click the "Create Bucket" button.
+4. Provide a name, and the closest region to you.
+5. Uncheck the "Block all public access" checkbox & acknowledge the bucket will be public.
+6. Click "create bucket" at the end of this form.
+7. Once redirected, click on the name of your bucket to enter the area specific to this project.
+8. Click the "Properties" tab & select "static website hosting" to enabled.
+9. In the box that pops up, click "Use this bucket to host a website".
+10. We won't use the fields, but they are required, so just use "index.html" and "error.html" for the index document & error document fields.
+11. Click save.
+12. Click on the "permissions" tab and click on "CORS configuration".
+13. Paste in the following code into the area provided:
+    > [
+    {
+        "AllowedHeaders": [
+            "Authorization"
+        ],
+        "AllowedMethods": [
+            "GET"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": []
+    }
+]
+14. Click save.
+15. Click on Bucket policy, copy the "ARN" identifier, then select "Policy Generator".
+16. Use the following settings for the form:
+    > Policy Type: S3 Bucket Policy,
+    >
+    > Add Statements: Effect: "allow", Principal: "*", Actions: "GetObject" ARN: *Paste your ARN*
+17. Click "Add Statement", then "Generate Policy"
+18. Copy the generated policy and paste it back into the bucket policy editor.
+19. Add "/*" to the end of the "Resource" part of the code and click save.
+20. Click on the Access Control List under the "Permissions" tab.
+21. Under the "Everyone (public access)" click the "List Objects" option & then "Save".
+
+__Your AWS S3 is now configured. To grant specific access, now follow these steps to allow controlled access via the IAM service on AWS.__
+1. Click on the "Services" tab on the top left of the page.
+2. Search for "IAM" and click the associated service.
+3. Add this service and navigate (if not redirected) to the IAM dashboard.
+4. Under the "Access Management" tab, click "Groups".
+5. Create a new group by providing a name, then click "next" without any further configuration (which will be done in the next steps).
+6. At the end of the form, select "Create Group"
+7. Click "Policies" under the "Access Management" tab.
+8. Click "Create Policy", then open the JSON tab.
+9. Click "Import Managed Policy"
+10. Select the "AmazonS3FullAccess" option and click "Import"
+11. Now to only allow specific access to the project bucket. In a new tab go back to the S3 bucket and copy the "ARN" again from the bucket policy page.
+12. Now in the JSON Policy for the IAM group, next to resources remove the "/*" and add the following:
+>
+   
+    "Resource": [ 
+       "arn: YOUR ARN CODE",
+       "arn: YOUR ARN CODE/*",
+    ]
+
+13. Now click "Review Policy"
+14. Provide a name and description and click "Create Policy"
+15. Click on "Groups" under the Access Management section.
+16. Click on the group you have created for this project. 
+17. Under Permissions, click "Attach Policy"
+18. Search for the policy you just created and select it using the checkbox.
+19. Click "Attach Policy"
+
+__Now add a user to the group__
+1. Click the "Users" from under the Access Management section.
+2. Select "Add User".
+3. Provide a user name, and select "Programmatic access".
+4. Click next for permissions.
+5. Select the group for the project using the checkbox provided.
+6. Click all the way through to the end without changing any further details.
+7. At the end of the form you will be given some user credentials, here you can download a CSV file with the user access keys.
+
+To finalize the setup, add your access keys to the environment variables in the Heroku Config Variables. This will allow your Django application to use these settings on the deployed project.
+
+To ensure these keys work, you must configure the settings file of your django application to find these variables using os.environ. 
+
+Further information on setting environment variables can be found here: [Django Docs](https://docs.djangoproject.com/en/3.2/topics/settings/)
 
 ----------------------
 ## **Credits**
@@ -472,6 +549,9 @@ I would like to acknowledge my mentor <ins>Caleb Mbakwe</ins> for his guidance a
 ## *Previews:*
 Here are a few previews of ManageMyWeb:
 
+Front page with Cookie Policy overlay (new customers)
 ![image](readme-assets/3-devices-white.png)
+
+Products View 
 ![image](readme-assets/all-devices-white.png)
 
